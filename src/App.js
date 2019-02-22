@@ -1,25 +1,52 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import PrimarySearchAppBar from './Components/PrimarySearchAppBar/PrimarySearchAppBar.js'
+import Card from './Components/Card/Card'
+import Select from './Components/Select/Select.js'
+import './App.scss';
+const movieData = [
+  {
+    name: "ALITA: BATTLE ANGEL",
+    img: 'Alita.jpg',
+  },
+  {
+    name: "AQUAMAN",
+    img: 'aquaman.jpg',
+  },
+  {
+    name: "BOHEMIAN RHAPSODY",
+    img: 'rhapsody.jpg',
+  },
+  {
+    name: "CAN YOU EVER FORGIVE ME",
+    img: 'canyou.jpg',
+  },
+]
+
+/* const style = styles; */
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className='container'>
+        <PrimarySearchAppBar />
+        <div className='content'>
+          <Select />
+          <div className='cardsContainer'>
+            {movieData.map((movie) => <Card movie={movie} />)}
+            {/*             <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card /> */}
+          </div>
+        </div>
       </div>
     );
   }
