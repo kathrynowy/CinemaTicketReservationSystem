@@ -18,6 +18,7 @@ const styles = theme => ({
 
   root: {
     width: '100%',
+
   },
   grow: {
     flexGrow: 1,
@@ -31,6 +32,8 @@ const styles = theme => ({
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
+    lineHeight: '1.35',
+    fontSize: '30px',
   },
   search: {
     position: 'relative',
@@ -141,14 +144,6 @@ class PrimarySearchAppBar extends React.Component {
         open={isMobileMenuOpen}
         onClose={this.handleMenuClose}
       >
-        {/* <MenuItem onClick={this.handleMobileMenuClose}>
-          <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <MailIcon />
-            </Badge>
-          </IconButton>
-          <p>Messages</p>
-        </MenuItem> */}
         <MenuItem onClick={this.handleProfileMenuOpen}>
           <IconButton color="inherit">
             <AccountCircle />
@@ -160,7 +155,7 @@ class PrimarySearchAppBar extends React.Component {
 
     return (
       <div className={classes.root}>
-        <AppBar position="static" className={classes.app} /* classes={{ root: 'app' }} */>
+        <AppBar position="static" className={classes.app}>
           <Toolbar>
             <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
               <MenuIcon />

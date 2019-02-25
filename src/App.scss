@@ -1,14 +1,9 @@
 .container {
-  /* margin: "0 20em", */
   font-family: '"Roboto", "Helvetica", "Arial", "sansSerif"';
 }
-.content {
-  margin: '0 15em';
-  background: lightpink;
-  
-}
+
 .cardsContainer {
-  background-color: lightblue;
+  justify-content: center;
   display: flex;
   align-items: space-between;
   flex-direction: row;
