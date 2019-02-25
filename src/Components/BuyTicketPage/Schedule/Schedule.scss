@@ -26,5 +26,12 @@
       font-weight: bold;
       background: url('../../../Assets/tck_normal_new.png') no-repeat;
     }
+
+    a:hover {
+      background: url('../../../Assets/tck_hover_new.png') no-repeat;
+      color: white;
+    }
   }
+
+
 }
