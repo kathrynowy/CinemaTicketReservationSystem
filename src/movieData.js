@@ -19,6 +19,16 @@ const movieData = [
     name: "CAN YOU EVER FORGIVE ME",
     img: 'https://media.pathe.nl/nocropthumb/180x254/gfx_content/posterhr/Brugklas-De-tijd-van-mijn-leven_ps_1_jpg_sd-high.jpg',
   },
+  {
+    id: "5",
+    name: "CAN YOU EVER FORGIVE ME",
+    img: 'https://media.pathe.nl/nocropthumb/180x254/gfx_content/posterhr/Brugklas-De-tijd-van-mijn-leven_ps_1_jpg_sd-high.jpg',
+  },
+  {
+    id: "6",
+    name: "CAN YOU EVER FORGIVE ME",
+    img: 'https://media.pathe.nl/nocropthumb/180x254/gfx_content/posterhr/Brugklas-De-tijd-van-mijn-leven_ps_1_jpg_sd-high.jpg',
+  },
 ]
 
 export default movieData;

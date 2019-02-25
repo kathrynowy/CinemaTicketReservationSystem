@@ -1,0 +1,18 @@
+td > span, th > span {
+  display: block;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+    border-radius: 30px;
+    
+}
+span.date:hover{
+  background-color: lightblue;
+  cursor: pointer;
+  }
+
+.calendar-div {
+  margin-top: 5px;
+  border-top: 1px solid #ccc;
+}
