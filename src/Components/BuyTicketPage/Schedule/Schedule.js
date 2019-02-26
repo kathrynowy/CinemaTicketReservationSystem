@@ -9,7 +9,7 @@ class Schedule extends Component {
         <div className="schedule-cinema">{cinema}</div>
         <div className="schedule-space"></div>
         <div className="schedule-tickets">
-          {time.map((time) => <a key={time} >{time}</a>)}
+          {time.map((time) => <a key={time}>{time}</a>)}
         </div>
       </div>
     );

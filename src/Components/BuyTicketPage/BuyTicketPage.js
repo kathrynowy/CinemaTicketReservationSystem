@@ -19,7 +19,7 @@ class BuyTicketPage extends Component {
         <div className="tickets-information-content to-left">
           <h2>{name}</h2>
           <Calendar />
-          {tickets.map((ticket) => <Schedule cinema={ticket.cinema} time={ticket.time} id={ticket.id} />)}
+          {tickets.map((ticket) => <Schedule cinema={ticket.cinema} time={ticket.time} key={ticket.id} />)}
         </div>
       </div>
     );
