@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Schedule.scss';
 
+
 class Schedule extends Component {
   render() {
     const { cinema, time } = this.props;

@@ -13,8 +13,10 @@ class BuyTicketPage extends Component {
         <hr className="divider" />
         <div className="movie-information-content to-left">
           <img src={img} className="movie-img"></img>
-          <h3>Description</h3>
-          <p>{description}</p>
+          <div className="description">
+            <h3>Description</h3>
+            <p>{description}</p>
+          </div>
         </div>
         <div className="tickets-information-content to-left">
           <h2>{name}</h2>

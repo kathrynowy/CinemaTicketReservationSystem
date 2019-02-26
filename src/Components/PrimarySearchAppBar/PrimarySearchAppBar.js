@@ -1,12 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
+import { AppBar, Toolbar, IconButton, Typography, InputBase, MenuItem, Menu } from '@material-ui/core';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -15,10 +9,8 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
 
 const styles = theme => ({
-
   root: {
     width: '100%',
-
   },
   grow: {
     flexGrow: 1,
@@ -87,12 +79,10 @@ const styles = theme => ({
     },
   },
   app: {
-    background: '#7986cb',/*  #880E4F */
+    background: '#7986cb',
     color: 'black',
   }
-
 });
-
 
 class PrimarySearchAppBar extends React.Component {
   state = {
@@ -172,7 +162,7 @@ class PrimarySearchAppBar extends React.Component {
                 classes={{
                   root: classes.inputRoot,
                   input: classes.inputInput,
-                }} /* style={{ background: '#b2ab6d', color: 'black' }} */ />
+                }} />
             </div>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
