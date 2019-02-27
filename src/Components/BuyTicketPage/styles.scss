@@ -7,7 +7,29 @@
   font-family: 'Nunito','Helvetica Neue','Helvetica','Arial','sans-serif';
 }
 
-@media only screen and (max-width: 420px) {}
+@media only screen and (max-width: 420px) {
+  .movie-info {
+    display: flex;
+    flex-direction: column;
+    margin: 0 2rem;
+  }
+
+  .movie-information-content {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 15px;
+    margin-top: 15px; 
+
+    .movie-img {
+      height: 200px;
+      width: 130px;
+    }
+
+    .description {
+      display: none;
+    }
+  }
+}
 
 @media only screen and (max-width: 992px) {
   .movie-info {
@@ -114,7 +136,7 @@
   .movie-info {
     margin: 0px 7rem;
   }
-  
+
   .movie-information-content {
     width: 35%;
     margin-top:10px;

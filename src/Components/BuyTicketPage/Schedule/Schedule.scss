@@ -1,4 +1,3 @@
-@media only screen and (max-width: 420px) {} 
 
 @media only screen and (max-width: 992px) {
   .schedule {
@@ -12,7 +11,7 @@
     }
 
     .schedule-space {
-      display: inline-block;
+      display: inline-block;          
       width: 35%;
     }
     
@@ -79,6 +78,47 @@
     }
   }
 }
+
+@media only screen and (max-width: 420px) {
+  .schedule {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+
+    .schedule-cinema {
+      display: block;
+      width: 100%;
+    }
+
+    .schedule-space {
+      display: none;          
+    }
+    
+    .schedule-tickets {
+      display: block;
+      width: 100%;
+      flex-wrap: wrap;
+  
+      a {
+        display: inline-block;
+        font-size: 13px;
+        color: grey;
+        width: 4.2rem;
+        padding: 5px 10px;
+        margin-left: 4px;
+        margin-bottom: 2px;
+        font-weight: bold;
+        background: url('../../../Assets/tck_normal_new.png') no-repeat;
+      }
+  
+      a:hover {
+        background: url('../../../Assets/tck_hover_new.png') no-repeat;
+        color: white;
+      }
+    }
+  }
+} 
+
 
 @media only screen and (min-width: 993px) {
   .schedule {

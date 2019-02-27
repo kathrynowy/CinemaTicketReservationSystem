@@ -31,10 +31,10 @@ class Calendar extends Component {
         <table>
           <tbody>
             <tr className="weekdays">
-              {formattedDays.map((day) => <td key={day.key} className={(day.weekday === 'вс') || (day.weekday === 'сб') ? "we" : ''} ><span>{day.weekday}</span></td>)}
+              {formattedDays.map((day) => <td key={day.key} className={(day.weekday === 'вс') || (day.weekday === 'сб') ? "we" : ''} ><span className="calendar-day">{day.weekday}</span></td>)}
             </tr>
             <tr>
-              {formattedDays.map((day) => <th key={day.key}><span className="date">{day.day}</span></th>)}
+              {formattedDays.map((day) => <th key={day.key}><span className="date calendar-day">{day.day}</span></th>)}
             </tr>
           </tbody>
         </table>

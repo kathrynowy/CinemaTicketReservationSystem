@@ -5,6 +5,7 @@ import Select from './Components/Select/Select.js'
 import movieData from './movieData.js'
 import BuyTicketPage from './Components/BuyTicketPage/BuyTicketPage.js';
 import SignIn from './Components/SignIn/SignIn.js'
+import SelectSeats from './Components/SelectSeats/SelectSeats.js'
 import './reset.css';
 import './App.scss';
 
@@ -25,7 +26,15 @@ class App extends Component {
           </div>
         </div>
         <SignIn />
-
+        <div className="hall">
+          <div className="hall__screen"></div>
+          <SelectSeats />{/* seatsmap */}
+          <div className="hall-legend">
+            <div className="hall-legend__seat-type_free"><div className="hall-legend__icon_free"></div> <span className="hall-legend__text_free">free</span> </div>
+            <div className="hall-legend__seat-type_selected"><div className="hall-legend__icon_selected"></div> <span className="hall-legend__text_selected">selected</span></div>
+            <div className="hall-legend__seat-type_bought"><div className="hall-legend__icon_bought"></div> <span className="hall-legend__text_bought">bought</span> </div>
+          </div>
+        </div>
       </div>
     );
   }
