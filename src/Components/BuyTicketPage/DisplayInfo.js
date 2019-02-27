@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import Schedule from './Schedule/Schedule'
 import tickets from './Schedule/ScheduleData.js'
 import Calendar from './Calendar/Calendar';
+import MovieData from '../../movieData.js'
 import './styles.scss';
 
-
-class BuyTicketPage extends Component {
+class DisplayInfo extends Component {
   render() {
     const { name, img, description } = this.props;
     return (
@@ -19,11 +19,10 @@ class BuyTicketPage extends Component {
         <div className="tickets-information-content to-left">
           <h2>{name}</h2>
           <Calendar />
-          {tickets.map((ticket) => <Schedule cinema={ticket.cinema} time={ticket.time} key={ticket.id} />)}
+          {tickets.map((ticket) => <Schedule cinema={ticket.cinema} time={ticket.time} id={ticket.id} />)}
         </div>
       </div>
     );
   }
 }
 
-export default BuyTicketPage;

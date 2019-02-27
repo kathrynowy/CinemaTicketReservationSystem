@@ -87,7 +87,7 @@ const styles = theme => ({
     },
   },
   app: {
-    background: '#fff7b0',/*  #880E4F */
+    background: '#7986cb',/*  #880E4F */
     color: 'black',
   }
 
