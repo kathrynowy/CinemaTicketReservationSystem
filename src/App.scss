@@ -1,0 +1,22 @@
+.container {
+  font-family: 'Nunito','Helvetica Neue','Helvetica','Arial','sans-serif';
+
+  background-color:#e8eaf6;
+}
+
+.cardsContainer {
+  margin: 0px 9rem;
+  justify-content: center;
+  display: flex;
+  align-items: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.film-container {
+  justify-content: flex-start;
+  display: flex;
+  align-items: space-around;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

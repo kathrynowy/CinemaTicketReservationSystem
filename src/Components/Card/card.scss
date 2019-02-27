@@ -1,0 +1,42 @@
+.card {
+  margin: 5px 5px;
+  min-width: 250px;
+  display: 'inline-block';
+
+}
+
+.title {
+  text-align: center;
+  height: 2.3rem;
+  padding: 2px !important;
+  font-size: 1.2rem !important;
+  font-weight: 300;
+}
+
+.movie-title {
+  margin: auto;
+  margin-bottom: 0.5rem;
+
+}
+
+.container {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 5px;
+ 
+}
+
+.media {
+  height: 350px;
+  width: 250px;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  width: '100%';
+  margin: '0';
+}
