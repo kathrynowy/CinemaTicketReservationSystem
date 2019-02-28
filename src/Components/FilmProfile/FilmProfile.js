@@ -5,7 +5,7 @@ import Calendar from './Calendar/Calendar';
 import './styles.scss';
 
 
-class BuyTicketPage extends Component {
+class FilmProfile extends Component {
   render() {
     const { name, img, description } = this.props;
     return (
@@ -27,4 +27,4 @@ class BuyTicketPage extends Component {
   }
 }
 
-export default BuyTicketPage;
+export default FilmProfile;

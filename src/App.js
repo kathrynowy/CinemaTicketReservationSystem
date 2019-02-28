@@ -3,7 +3,7 @@ import PrimarySearchAppBar from './Components/PrimarySearchAppBar/PrimarySearchA
 import Card from './Components/Card/Card'
 import Select from './Components/Select/Select.js'
 import movieData from './movieData.js'
-import BuyTicketPage from './Components/BuyTicketPage/BuyTicketPage.js';
+import FilmProfile from './Components/FilmProfile/FilmProfile.js';
 import SignIn from './Components/SignIn/SignIn.js'
 import SelectSeats from './Components/SelectSeats/SelectSeats.js'
 import './reset.css';
@@ -20,7 +20,7 @@ class App extends Component {
         <div className='card-list'>
           {movieData.map((movie) => <Card movie={movie} key={movie.id} />)}
         </div>
-        <BuyTicketPage name="How to train your dragon 3" img='http://kino.bycard.by/public/timthumb.php?src=/public/images/1547642482drakon3.jpg&w=270&h=405&q=80&zc=1&a=c' description="Когда-то викинги жили в гармонии с драконами. В те времена они делили радость, горе… и последние штаны. Казалось, что так будет всегда, но появление загадочной Дневной Фурии изменило жизнь острова. И теперь Иккинг и Беззубик столкнутся с безжалостным охотником на драконов, жаждущим уничтожить все, что им дорого." />
+        <FilmProfile name="How to train your dragon 3" img='http://kino.bycard.by/public/timthumb.php?src=/public/images/1547642482drakon3.jpg&w=270&h=405&q=80&zc=1&a=c' description="Когда-то викинги жили в гармонии с драконами. В те времена они делили радость, горе… и последние штаны. Казалось, что так будет всегда, но появление загадочной Дневной Фурии изменило жизнь острова. И теперь Иккинг и Беззубик столкнутся с безжалостным охотником на драконов, жаждущим уничтожить все, что им дорого." />
         <SignIn />
         <div className="hall">
           <div className="hall__screen"></div>
