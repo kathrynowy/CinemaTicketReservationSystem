@@ -3,6 +3,12 @@
   background-color:#e8eaf6;
 }
 
+.seats-information {
+  margin: 0px 30px;
+  font-size: 24px;
+  font-weight: 500;
+}
+
  @media only screen and (max-width: 992px) {
   .card-list {
     margin: 0px 4rem;
@@ -11,65 +17,6 @@
     align-items: space-between;
     flex-direction: row;
     flex-wrap: wrap;
-  }
-   
-  .hall {
-    margin: 0px 30px;
-    margin-top: 300px;
-    margin-bottom: 300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: #898b94 solid 1px;
-  }
-
-  .hall__screen {
-    margin-top: 15px;
-    margin-bottom: 35px;
-    border-top: 40px solid rgb(105, 104, 104);
-    border-left: 80px solid transparent;
-    border-right: 80px solid transparent;
-    height: 0;
-    width: 550px;
-  }
-  .hall-legend {
-    margin-top: 15px;
-  
-    .hall-legend__seat-type_free,
-    .hall-legend__seat-type_selected,
-    .hall-legend__seat-type_bought
-    {
-      display: inline-block;
-      width: 25px;
-      height: 25px;
-    }
-
-    .hall-legend__seat-type_selected,
-    .hall-legend__seat-type_bought {
-      margin-left: 140px;
-    }
-    
-    .hall-legend__icon_free,
-    .hall-legend__icon_selected,
-    .hall-legend__icon_bought {
-      display: inline-block;
-      box-shadow: 0 1px 3px 1px #BBB;
-      width: 22px;
-      height: 22px;
-    }
-
-    .hall-legend__icon_free {
-      background-color: #fff;
-    }
-
-    .hall-legend__icon_selected {
-      background-color: #90caf9;
-    }
-
-    .hall-legend__icon_bought {
-      background-color: #e57373;
-    }
   }
  }
 
@@ -82,69 +29,6 @@
     flex-direction: row;
     flex-wrap: wrap;
   }
-   
-
-  .hall {
-    margin: 0px 10px;
-    margin-top: 300px;
-    margin-bottom: 300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: #898b94 solid 1px;
-  }
-
-  .hall__screen {
-    margin-top: 15px;
-    margin-bottom: 25px;
-    border-top: 35px solid rgb(105, 104, 104);
-    border-left: 70px solid transparent;
-    border-right: 70px solid transparent;
-    width: 450px;
-  }
-  .hall-legend {
-    margin-top: 15px;
-  
-    .hall-legend__seat-type_free,
-    .hall-legend__seat-type_selected,
-    .hall-legend__seat-type_bought
-    {
-      display: inline-block;
-    }
-
-    .hall-legend__seat-type_selected,
-    .hall-legend__seat-type_bought {
-      margin-left: 90px;
-    }
-    
-    .hall-legend__icon_free,
-    .hall-legend__icon_selected,
-    .hall-legend__icon_bought {
-      display: inline-block;
-      box-shadow: 0 1px 3px 1px #BBB;
-      width: 18px;
-      height: 18px;
-    }
-
-    .hall-legend__icon_free {
-      background-color: #fff;
-    }
-
-    .hall-legend__icon_selected {
-      background-color: #90caf9;
-    }
-
-    .hall-legend__icon_bought {
-      background-color: #e57373;
-    }
-
-    .hall-legend__text_free,
-    .hall-legend__text_selected,
-    .hall-legend__text_bought {
-      font-size: 14px;
-    }
-  }
  }
 
  @media only screen and (max-width: 420px) {
@@ -155,68 +39,6 @@
     align-items: space-between;
     flex-direction: row;
     flex-wrap: wrap;
-  }
-   
-  .hall {
-    margin: 0px;
-    margin-top: 300px;
-    margin-bottom: 300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: #898b94 solid 1px;
-  }
-
-  .hall__screen {
-    margin-top: 15px;
-    margin-bottom: 15px;
-    border-top: 25px solid rgb(105, 104, 104);
-    border-left: 80px solid transparent;
-    border-right: 80px solid transparent;
-    width: 350px;
-  }
-  .hall-legend {
-    margin-top: 10px;
-  
-    .hall-legend__seat-type_free,
-    .hall-legend__seat-type_selected,
-    .hall-legend__seat-type_bought
-    {
-      display: inline-block;
-    }
-
-    .hall-legend__seat-type_selected,
-    .hall-legend__seat-type_bought {
-      margin-left: 80px;
-    }
-    
-    .hall-legend__icon_free,
-    .hall-legend__icon_selected,
-    .hall-legend__icon_bought {
-      display: inline-block;
-      box-shadow: 0 1px 3px 1px #BBB;
-      width: 13px;
-      height: 13px;
-    }
-
-    .hall-legend__icon_free {
-      background-color: #fff;
-    }
-
-    .hall-legend__icon_selected {
-      background-color: #90caf9;
-    }
-
-    .hall-legend__icon_bought {
-      background-color: #e57373;
-    }
-
-    .hall-legend__text_free,
-    .hall-legend__text_selected,
-    .hall-legend__text_bought {
-      font-size: 12px;
-    }
   }
  }
 
@@ -229,66 +51,6 @@
     flex-direction: row;
     flex-wrap: wrap;
   }
-   
-  .hall {
-    margin: 0px 30px;
-    margin-top: 300px;
-    margin-bottom: 300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: #898b94 solid 1px;
-  }
-
-  .hall__screen {
-    margin-top: 15px;
-    margin-bottom: 40px;
-    border-top: 50px solid rgb(105, 104, 104);
-    border-left: 80px solid transparent;
-    border-right: 80px solid transparent;
-    height: 0;
-    width: 650px;
-  }
-  .hall-legend {
-    margin-top: 20px;
-  
-    .hall-legend__seat-type_free,
-    .hall-legend__seat-type_selected,
-    .hall-legend__seat-type_bought
-    {
-      display: inline-block;
-      box-shadow: 0 1px 3px 1px #BBB;
-      width: 25px;
-      height: 25px;
-    }
-
-    .hall-legend__seat-type_selected,
-    .hall-legend__seat-type_bought {
-      margin-left: 160px;
-    }
-    
-    .hall-legend__icon_free,
-    .hall-legend__icon_selected,
-    .hall-legend__icon_bought {
-      display: inline-block;
-      box-shadow: 0 1px 3px 1px #BBB;
-      width: 25px;
-      height: 25px;
-    }
-
-    .hall-legend__icon_free {
-      background-color: #fff;
-    }
-
-    .hall-legend__icon_selected {
-      background-color: #90caf9;
-    }
-
-    .hall-legend__icon_bought {
-      background-color: #e57373;
-    }
-  }
  }
  
  @media only screen and (min-width: 1200px) {
@@ -299,66 +61,5 @@
     align-items: space-between;
     flex-direction: row;
     flex-wrap: wrap;
-  }
-   
-
-  .hall {
-    margin: 0px 7rem;
-    margin-top: 300px;
-    margin-bottom: 300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: #898b94 solid 1px;
-  }
-
-  .hall__screen {
-    margin-top: 15px;
-    margin-bottom: 40px;
-    border-top: 50px solid rgb(105, 104, 104);
-    border-left: 80px solid transparent;
-    border-right: 80px solid transparent;
-    height: 0;
-    width: 650px;
-  }
-  .hall-legend {
-    margin-top: 20px;
-  
-    .hall-legend__seat-type_free,
-    .hall-legend__seat-type_selected,
-    .hall-legend__seat-type_bought
-    {
-      display: inline-block;
-      box-shadow: 0 1px 3px 1px #BBB;
-      width: 25px;
-      height: 25px;
-    }
-
-    .hall-legend__seat-type_selected,
-    .hall-legend__seat-type_bought {
-      margin-left: 160px;
-    }
-    
-    .hall-legend__icon_free,
-    .hall-legend__icon_selected,
-    .hall-legend__icon_bought {
-      display: inline-block;
-      box-shadow: 0 1px 3px 1px #BBB;
-      width: 25px;
-      height: 25px;
-    }
-
-    .hall-legend__icon_free {
-      background-color: #fff;
-    }
-
-    .hall-legend__icon_selected {
-      background-color: #90caf9;
-    }
-
-    .hall-legend__icon_bought {
-      background-color: #e57373;
-    }
   }
  }

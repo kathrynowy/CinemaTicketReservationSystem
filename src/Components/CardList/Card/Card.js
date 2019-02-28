@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
+import { Link } from "react-router-dom";
 import './card.scss';
 
 
@@ -16,9 +17,16 @@ class MovieCard extends Component {
         <div className="card__title">
           {movie.name}
         </div>
-        <Button variant="contained" fullWidth color='primary' size="large" className="card__button">
-          Buy ticket
-        </Button>
+        <Link to={{
+          pathname: "/film-profile",
+          name: movie.name,
+          img: movie.img,
+          description: 'kfghkrsghrkhgrrkgn'
+        }} >
+          <Button variant="contained" fullWidth color='primary' size="large" className="card__button">
+            Buy ticket
+          </Button>
+        </Link>
       </div>
     );
   }

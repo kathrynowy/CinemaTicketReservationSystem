@@ -6,12 +6,12 @@ const SeatsData = [
   },
   {
     row: 2,
-    amountOfSeats: 10,
+    amountOfSeats: 22,
     cost: 12
   },
   {
     row: 3,
-    amountOfSeats: 12,
+    amountOfSeats: 20,
     cost: 15
   },
   {

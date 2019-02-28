@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Schedule.scss';
+import { Link } from "react-router-dom";
 
 
 class Schedule extends Component {
@@ -10,7 +11,7 @@ class Schedule extends Component {
         <div className="schedule__cinema">{cinema}</div>
         <div className="schedule__space"></div>
         <div className="schedule__ticket-list">
-          {time.map((time) => <a className="schedule__ticket" key={time}>{time}</a>)}
+          {time.map((time) => <Link to="/hall"> <a className="schedule__ticket" key={time}>{time}</a></Link>)}
         </div>
       </div>
     );
