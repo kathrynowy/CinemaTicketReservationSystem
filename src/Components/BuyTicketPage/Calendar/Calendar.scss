@@ -17,17 +17,17 @@
     color: #b0b0b0;
   }
 
-  td.we {
+  .calendar__weekday {
     color: #629ee5;
   }
 
-  span.date:hover{
+  .calendar__day:hover{
     background-color: rgb(188, 208, 245);
     color: white;
     cursor: pointer;
   }
 
-  .calendar-div {
+  .calendar {
     margin-top: 5px;
     border-top: 1px solid #ccc;
     overflow: hidden;
@@ -51,17 +51,17 @@
     color: #b0b0b0;
   }
 
-  td.we {
+  .calendar__weekday {
     color: #629ee5;
   }
 
-  span.date:hover{
+  .calendar__day:hover{
     background-color: rgb(188, 208, 245);
     color: white;
     cursor: pointer;
   }
 
-  .calendar-div {
+  .calendar {
     margin-top: 5px;
     border-top: 1px solid #ccc;
     overflow: hidden;
@@ -85,17 +85,17 @@
     color: #b0b0b0;
   }
 
-  td.we {
+  .calendar__weekday {
     color: #629ee5;
   }
 
-  span.date:hover{
+  .calendar__day:hover{
     background-color: rgb(188, 208, 245);
     color: white;
     cursor: pointer;
   }
 
-  .calendar-div {
+  .calendar {
     margin-top: 5px;
     border-top: 1px solid #ccc;
     overflow: hidden;
@@ -119,17 +119,17 @@
     color: #b0b0b0;
   }
 
-  td.we {
+  .calendar__weekday {
     color: #629ee5;
   }
 
-  span.date:hover{
+  .calendar__day:hover{
     background-color: rgb(188, 208, 245);
     color: white;
     cursor: pointer;
   }
 
-  .calendar-div {
+  .calendar {
     margin-top: 5px;
     border-top: 1px solid #ccc;
     overflow: hidden;

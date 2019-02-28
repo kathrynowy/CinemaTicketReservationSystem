@@ -1,25 +1,24 @@
-
 @media only screen and (max-width: 992px) {
   .schedule {
     margin-top: 15px;
     display: flex;
     align-items: center;
 
-    .schedule-cinema {
+    .schedule__cinema {
       display: inline-block;
       width: 20%;
     }
 
-    .schedule-space {
+    .schedule__space {
       display: inline-block;          
       width: 35%;
     }
     
-    .schedule-tickets {
+    .schedule__ticket-list {
       display: inline-block;
       width: 45%;
   
-      a {
+      .schedule__ticket {
         display: inline-block;
         font-size: 13px;
         color: grey;
@@ -31,7 +30,7 @@
         background: url('../../../Assets/tck_normal_new.png') no-repeat;
       }
   
-      a:hover {
+      .schedule__ticket:hover {
         background: url('../../../Assets/tck_hover_new.png') no-repeat;
         color: white;
       }
@@ -44,22 +43,24 @@
     margin-top: 10px;
     display: flex;
     align-items: center;
+    flex-direction: column;
 
-    .schedule-cinema {
-      display: inline-block;
-      width: 20%;
+    .schedule__cinema {
+      display: block;
+      width: 100%;
+      margin-bottom: 10px;
     }
 
-    .schedule-space {
-      display: inline-block;
-      width: 35%;
+    .schedule__space {
+      display: none;    
     }
     
-    .schedule-tickets {
-      display: inline-block;
-      width: 45%;
+    .schedule__ticket-list {
+      display: flex;
+      width: 100%;
+      flex-wrap: wrap;
   
-      a {
+      .schedule__ticket {
         display: inline-block;
         font-size: 13px;
         color: grey;
@@ -71,7 +72,7 @@
         background: url('../../../Assets/tck_normal_new.png') no-repeat;
       }
   
-      a:hover {
+      .schedule__ticket:hover {
         background: url('../../../Assets/tck_hover_new.png') no-repeat;
         color: white;
       }
@@ -84,22 +85,24 @@
     margin-top: 15px;
     display: flex;
     align-items: center;
+    flex-direction: column;
 
-    .schedule-cinema {
+    .schedule__cinema {
       display: block;
       width: 100%;
+      margin-bottom: 10px;
     }
 
-    .schedule-space {
+    .schedule__space {
       display: none;          
     }
     
-    .schedule-tickets {
-      display: block;
+    .schedule__ticket-list {
+      display: flex;
       width: 100%;
       flex-wrap: wrap;
   
-      a {
+      .schedule__ticket {
         display: inline-block;
         font-size: 13px;
         color: grey;
@@ -111,7 +114,7 @@
         background: url('../../../Assets/tck_normal_new.png') no-repeat;
       }
   
-      a:hover {
+      .schedule__ticket:hover {
         background: url('../../../Assets/tck_hover_new.png') no-repeat;
         color: white;
       }
@@ -119,28 +122,27 @@
   }
 } 
 
-
 @media only screen and (min-width: 993px) {
   .schedule {
     margin-top: 15px;
     display: flex;
     align-items: center;
 
-    .schedule-cinema {
+    .schedule__cinema {
       display: inline-block;
       width: 20%;
     }
 
-    .schedule-space {
+    .schedule__space {
       display: inline-block;
       width: 35%;
     }
     
-    .schedule-tickets {
+    .schedule__ticket-list {
       display: inline-block;
       width: 45%;
   
-      a {
+      .schedule__ticket {
         display: inline-block;
         font-size: 13px;
         color: grey;
@@ -152,7 +154,7 @@
         background: url('../../../Assets/tck_normal_new.png') no-repeat;
       }
   
-      a:hover {
+      .schedule__ticket:hover {
         background: url('../../../Assets/tck_hover_new.png') no-repeat;
         color: white;
       }
@@ -166,19 +168,19 @@
     display: flex;
     align-items: center;
    
-    .schedule-cinema {
+    .schedule__cinema {
       display: inline-block;
       width: 20%;
     }
-    .schedule-space {
+    .schedule__space {
       display: inline-block;
       width: 35%;
     }
-    .schedule-tickets {
+    .schedule__ticket-list {
       display: inline-block;
       width: 45%;
   
-      a {
+      .schedule__ticket {
         display: inline-block;
         font-size: 13px;
         color: grey;
@@ -190,7 +192,7 @@
         background: url('../../../Assets/tck_normal_new.png') no-repeat ;
       }
   
-      a:hover {
+      .schedule__ticket:hover {
         background: url('../../../Assets/tck_hover_new.png') no-repeat;
         color: white;
       }

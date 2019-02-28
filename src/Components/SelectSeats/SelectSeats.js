@@ -1,23 +1,14 @@
 import React, { Component } from 'react';
 import SeatsData from './SeatsData.js'
 import './SelectSeats.scss';
+import Seat from './Seat/Seat.js'
 
 
 class SelectSeats extends Component {
-  state = {
-    isSelected: false,
-  };
-
-  handleSelect = () => {
-    this.setState({
-      isSelected: true,
-    });
-  }
-
   handleDrawSeats = (amount, row, cost) => {
     let seats = [];
     for (let i = 0; i < amount; i++) {
-      seats.push(<div className={"row__seat"} data-title={`${row}ряд ${cost}руб`} color={this.state.isSelected && 'blue'} onClick={this.handleSelect} key={i + 1}>{i + 1}</div >)
+      seats.push(<Seat number={i} row={row} cost={cost} />)
     }
     return seats;
   };

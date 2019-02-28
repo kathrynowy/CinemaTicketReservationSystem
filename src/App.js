@@ -16,15 +16,11 @@ class App extends Component {
     return (
       <div className="container">
         <PrimarySearchAppBar />
-        <div className='container'>
-          <Select />
-          <div className='cardsContainer'>
-            {movieData.map((movie) => <Card movie={movie} key={movie.id} />)}
-          </div>
-          <div className="film-container">
-            <BuyTicketPage name="How to train your dragon 3" img='http://kino.bycard.by/public/timthumb.php?src=/public/images/1547642482drakon3.jpg&w=270&h=405&q=80&zc=1&a=c' description="Когда-то викинги жили в гармонии с драконами. В те времена они делили радость, горе… и последние штаны. Казалось, что так будет всегда, но появление загадочной Дневной Фурии изменило жизнь острова. И теперь Иккинг и Беззубик столкнутся с безжалостным охотником на драконов, жаждущим уничтожить все, что им дорого." />
-          </div>
+        <Select />
+        <div className='card-list'>
+          {movieData.map((movie) => <Card movie={movie} key={movie.id} />)}
         </div>
+        <BuyTicketPage name="How to train your dragon 3" img='http://kino.bycard.by/public/timthumb.php?src=/public/images/1547642482drakon3.jpg&w=270&h=405&q=80&zc=1&a=c' description="Когда-то викинги жили в гармонии с драконами. В те времена они делили радость, горе… и последние штаны. Казалось, что так будет всегда, но появление загадочной Дневной Фурии изменило жизнь острова. И теперь Иккинг и Беззубик столкнутся с безжалостным охотником на драконов, жаждущим уничтожить все, что им дорого." />
         <SignIn />
         <div className="hall">
           <div className="hall__screen"></div>

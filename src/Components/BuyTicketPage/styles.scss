@@ -2,54 +2,37 @@
   float: left;
 }
 
-.movie-info {
+.movie-profile {
   margin-top: 55px;
   font-family: 'Nunito','Helvetica Neue','Helvetica','Arial','sans-serif';
-}
-
-@media only screen and (max-width: 420px) {
-  .movie-info {
+  justify-content: flex-start;
     display: flex;
-    flex-direction: column;
-    margin: 0 2rem;
-  }
-
-  .movie-information-content {
-    display: flex;
+    align-items: space-around;
     flex-direction: row;
-    margin-bottom: 15px;
-    margin-top: 15px; 
-
-    .movie-img {
-      height: 200px;
-      width: 130px;
-    }
-
-    .description {
-      display: none;
-    }
-  }
+    flex-wrap: wrap;
 }
+
+
 
 @media only screen and (max-width: 992px) {
-  .movie-info {
+  .movie-profile {
     margin: 0px 4rem;
     display: flex;
     flex-direction: column;
   }
 
-  .movie-information-content {
+  .movie-profile__content {
     display: flex;
     flex-direction: row;
     margin-bottom: 15px;
     margin-top: 15px; 
 
-    .movie-img {
+    .movie-profile__poster {
       height: 220px;
       width: 140px;
     }
 
-    .description {
+    .movie-profile__description {
       margin-left: 8px;
 
       h3, p {
@@ -65,24 +48,24 @@
 }
 
 @media only screen and (max-width: 768px) {
-  .movie-info {
+  .movie-profile {
     display: flex;
     flex-direction: column;
     margin: 0 2rem;
   }
 
-  .movie-information-content {
+  .movie-profile__content {
     display: flex;
     flex-direction: row;
     margin-bottom: 15px;
     margin-top: 15px; 
 
-    .movie-img {
+    .movie-profile__poster {
       height: 200px;
       width: 130px;
     }
 
-    .description {
+    .movie-profile__description {
       margin-left: 8px;
 
       h3, p {
@@ -97,12 +80,35 @@
   }
 }
 
+@media only screen and (max-width: 420px) {
+  .movie-profile {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .movie-profile__content {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 15px;
+    margin-top: 15px; 
+
+    .movie-profile__poster {
+      height: 200px;
+      width: 130px;
+    }
+
+    .movie-profile__description {
+      display: none;
+    }
+  }
+}
+
 @media only screen and (min-width: 993px) {
-  .movie-info {
+  .movie-profile {
     margin: 0 7rem;
   }
 
-  .movie-information-content {
+  .movie-profile__content {
     width: 35%;
     margin-top:10px;
   
@@ -117,7 +123,7 @@
     }
   }
   
-  .tickets-information-content {
+  .movie-profile__tickets-info {
     margin-top:10px;
     width: 55%;
     
@@ -126,18 +132,18 @@
     }
   }
   
-  .movie-img {
+  .movie-profile__poster {
     height: 400px;
     width: 90%;  
   }
 }
 
 @media only screen and (min-width: 1200px) {
-  .movie-info {
+  .movie-profile {
     margin: 0px 7rem;
   }
 
-  .movie-information-content {
+  .movie-profile__content {
     width: 35%;
     margin-top:10px;
   
@@ -152,7 +158,7 @@
     }
   }
   
-  .tickets-information-content {
+  .movie-profile__tickets-info {
     margin-top:10px;
     width: 55%;
     
@@ -161,7 +167,7 @@
     }
   }
   
-  .movie-img {
+  .movie-profile__poster {
     height: 500px;
     width: 95%;  
   }

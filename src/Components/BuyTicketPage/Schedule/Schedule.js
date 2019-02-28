@@ -7,10 +7,10 @@ class Schedule extends Component {
     const { cinema, time } = this.props;
     return (
       <div className="schedule">
-        <div className="schedule-cinema">{cinema}</div>
-        <div className="schedule-space"></div>
-        <div className="schedule-tickets">
-          {time.map((time) => <a key={time}>{time}</a>)}
+        <div className="schedule__cinema">{cinema}</div>
+        <div className="schedule__space"></div>
+        <div className="schedule__ticket-list">
+          {time.map((time) => <a className="schedule__ticket" key={time}>{time}</a>)}
         </div>
       </div>
     );

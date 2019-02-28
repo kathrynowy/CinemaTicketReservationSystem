@@ -4,7 +4,7 @@
 }
 
  @media only screen and (max-width: 992px) {
-  .cardsContainer {
+  .card-list {
     margin: 0px 4rem;
     justify-content: center;
     display: flex;
@@ -12,14 +12,7 @@
     flex-direction: row;
     flex-wrap: wrap;
   }
-  
-  .film-container {
-    justify-content: flex-start;
-    display: flex;
-    align-items: space-around;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }  
+   
   .hall {
     margin: 0px 30px;
     margin-top: 300px;
@@ -81,7 +74,7 @@
  }
 
  @media only screen and (max-width: 768px) {
-  .cardsContainer {
+  .card-list {
     margin: 0 10px;
     justify-content: center;
     display: flex;
@@ -89,14 +82,7 @@
     flex-direction: row;
     flex-wrap: wrap;
   }
-  
-  .film-container {
-    justify-content: flex-start;
-    display: flex;
-    align-items: space-around;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }  
+   
 
   .hall {
     margin: 0px 10px;
@@ -162,22 +148,15 @@
  }
 
  @media only screen and (max-width: 420px) {
-  .cardsContainer {
-    margin: 0;
+  .card-list {
+    margin: 0 10px;
     justify-content: center;
     display: flex;
     align-items: space-between;
     flex-direction: row;
     flex-wrap: wrap;
   }
-  
-  .film-container {
-    justify-content: flex-start;
-    display: flex;
-    align-items: space-around;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }  
+   
   .hall {
     margin: 0px;
     margin-top: 300px;
@@ -242,7 +221,7 @@
  }
 
  @media only screen and (min-width: 993px) {
-  .cardsContainer {
+  .card-list {
     margin: 0px 30px;
     justify-content: center;
     display: flex;
@@ -250,14 +229,7 @@
     flex-direction: row;
     flex-wrap: wrap;
   }
-  
-  .film-container {
-    justify-content: flex-start;
-    display: flex;
-    align-items: space-around;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }  
+   
   .hall {
     margin: 0px 30px;
     margin-top: 300px;
@@ -320,7 +292,7 @@
  }
  
  @media only screen and (min-width: 1200px) {
-  .cardsContainer {
+  .card-list {
     margin: 0px 7rem;
     justify-content: center;
     display: flex;
@@ -328,14 +300,7 @@
     flex-direction: row;
     flex-wrap: wrap;
   }
-  
-  .film-container {
-    justify-content: flex-start;
-    display: flex;
-    align-items: space-around;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }  
+   
 
   .hall {
     margin: 0px 7rem;
