@@ -6,7 +6,6 @@ import movieData from './movieData.js'
 import FilmProfile from './Components/FilmProfile/FilmProfile.js';
 import SignIn from './Components/SignIn/SignIn.js'
 import SelectSeats from './Components/SelectSeats/SelectSeats.js'
-import './reset.css';
 import './App.scss';
 
 

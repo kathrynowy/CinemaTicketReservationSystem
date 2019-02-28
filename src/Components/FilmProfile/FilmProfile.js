@@ -9,20 +9,23 @@ class FilmProfile extends Component {
   render() {
     const { name, img, description } = this.props;
     return (
-      <div className="movie-profile">
-        <div className="movie-profile__content to-left">
-          <img src={img} className="movie-profile__poster"></img>
-          <div className="movie-profile__description">
-            <h3>Description</h3>
-            <p>{description}</p>
+      <div className="container">
+
+        <div className="movie-profile">
+          <div className="movie-profile__name">{name}</div>
+          <div className="movie-profile__content to-left">
+            <img src={img} className="movie-profile__poster"></img>
+            <div className="movie-profile__description">
+              <span>Description</span>
+              <p>{description}</p>
+            </div>
+          </div>
+          <div className="movie-profile__tickets-info to-left">
+            <Calendar />
+            {tickets.map((ticket) => <Schedule cinema={ticket.cinema} time={ticket.time} key={ticket.id} />)}
           </div>
         </div>
-        <div className="movie-profile__tickets-info to-left">
-          <h2>{name}</h2>
-          <Calendar />
-          {tickets.map((ticket) => <Schedule cinema={ticket.cinema} time={ticket.time} key={ticket.id} />)}
-        </div>
-      </div>
+      </div >
     );
   }
 }
