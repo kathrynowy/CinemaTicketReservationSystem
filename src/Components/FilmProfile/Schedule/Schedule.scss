@@ -2,7 +2,7 @@
   .schedule {
     margin-top: 15px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
 
     .schedule__cinema {
       display: inline-block;
@@ -17,6 +17,7 @@
     .schedule__ticket-list {
       display: inline-block;
       width: 45%;
+      flex-wrap: wrap;
   
       .schedule__ticket {
         display: inline-block;
@@ -42,13 +43,15 @@
   .schedule {
     margin-top: 10px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
 
     .schedule__cinema {
       display: block;
       width: 100%;
       margin-bottom: 10px;
+      font-size: 18px;
+      font-weight: 400;
     }
 
     .schedule__space {
@@ -57,7 +60,7 @@
     
     .schedule__ticket-list {
       display: flex;
-      width: 100%;
+      width: 70%;
       flex-wrap: wrap;
   
       .schedule__ticket {
@@ -91,6 +94,8 @@
       display: block;
       width: 100%;
       margin-bottom: 10px;
+      font-size: 18px;
+      font-weight: 400;
     }
 
     .schedule__space {
@@ -126,11 +131,14 @@
   .schedule {
     margin-top: 15px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
 
     .schedule__cinema {
       display: inline-block;
       width: 20%;
+      align-content: flex-start;
+      font-size: 18px;
+      font-weight: 400;
     }
 
     .schedule__space {
@@ -166,15 +174,17 @@
   .schedule {
     margin-top: 20px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
    
     .schedule__cinema {
       display: inline-block;
       width: 20%;
+      font-size: 18px;
+      font-weight: 500;
     }
     .schedule__space {
       display: inline-block;
-      width: 35%;
+      width: 30%;
     }
     .schedule__ticket-list {
       display: inline-block;

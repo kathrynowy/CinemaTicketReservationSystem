@@ -13,14 +13,14 @@ class FilmProfile extends Component {
 
         <div className="movie-profile">
           <div className="movie-profile__name">{name}</div>
-          <div className="movie-profile__content to-left">
+          <div className="movie-profile__content">
             <img src={img} className="movie-profile__poster"></img>
             <div className="movie-profile__description">
               <span>Description</span>
               <p>{description}</p>
             </div>
           </div>
-          <div className="movie-profile__tickets-info to-left">
+          <div className="movie-profile__tickets-info">
             <Calendar />
             {tickets.map((ticket) => <Schedule cinema={ticket.cinema} time={ticket.time} key={ticket.id} />)}
           </div>

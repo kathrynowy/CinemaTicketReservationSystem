@@ -13,9 +13,9 @@ class MovieCard extends Component {
           src={movie.img}
           title={movie.name}
         />
-        <h3 className="card__title">
+        <div className="card__title">
           {movie.name}
-        </h3>
+        </div>
         <Button variant="contained" fullWidth color='primary' size="large" className="card__button">
           Buy ticket
         </Button>

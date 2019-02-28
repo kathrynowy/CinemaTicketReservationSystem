@@ -1,6 +1,6 @@
 @media only screen and (max-width: 992px) {
   .card {
-    height: 335px;
+    height: 345px;
     width: 180px;
     margin-bottom: 7px;
     margin-left: 12px;
@@ -10,8 +10,9 @@
     text-align: center;
     height: 2.3rem;
     padding: 2px !important;
-    font-size: 1.1rem !important;
+    font-size: 17px !important;
     font-weight: 300;
+    margin: 0;
     margin-bottom: 7px;
   }
   
@@ -26,15 +27,16 @@
     margin-bottom: 4px;
     margin-left: 7px;
     width: 140px;
-    height: 255px;
+    height: 270px;
   }
   
   .card__title {
     text-align: center;
     height: 2.3rem;
-    padding: 2px !important;
-    font-size: 1.1rem !important;
+    padding: 2px 1px !important;
+    font-size: 15px !important;
     font-weight: 300;
+    margin: 0;
     margin-bottom: 7px;
   }
   
@@ -47,16 +49,16 @@
 @media only screen and (max-width: 420px) {
   .card {
     margin-bottom: 4px;
-    margin-left: 7px;
+    margin-left: 0;
     height: 450px;
     width: 260px;
   }
   
   .card__title {
     text-align: center;
-    height: 2.3rem;
+    height: 2.6rem;
     padding: 2px !important;
-    font-size: 1.1rem !important;
+    font-size: 20px !important;
     font-weight: 300;
     margin-bottom: 7px;
   }
@@ -71,21 +73,22 @@
   .card {
     margin-bottom: 6px;
     margin-left: 8px;
-    width: 240px;
-    height: 400px;
+    width: 220px;
+    height: 410px;
   }
   
   .card__title {
     text-align: center;
     height: 2.3rem;
     padding: 2px !important;
-    font-size: 1.2rem !important;
+    font-size: 18px !important;
     font-weight: 300;
+    margin: 0;
     margin-bottom: 10px;
   }
   
   .card__media {
-    width: 240px;
+    width: 220px;
     height: 300px;
   }
 }
@@ -94,7 +97,7 @@
   .card {
     margin-bottom: 5px;
     width: 260px;
-    height: 450px;
+    height: 460px;
   }
   
   .card__title {
@@ -107,7 +110,7 @@
   }
   
   .card__media {
-    width: 250px;
+    width: 260px;
    height: 350px;
   }
 }

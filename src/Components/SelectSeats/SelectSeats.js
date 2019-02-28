@@ -22,9 +22,9 @@ class SelectSeats extends Component {
         const count = seat.amountOfSeats;
         return (
           <div className="row">
-            <div className="row__number">{seat.row}</div>
+            <div className="row__number-left">{seat.row}</div>
             <div className={seat.row + ' row__seats-container'}>{this.handleDrawSeats(count, seat.row, seat.cost)} </div>
-            <div className="row__number">{seat.row}</div>
+            <div className="row__number-right">{seat.row}</div>
           </div>
         );
       })
