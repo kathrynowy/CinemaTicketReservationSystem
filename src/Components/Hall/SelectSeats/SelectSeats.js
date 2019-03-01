@@ -9,7 +9,13 @@ class SelectSeats extends Component {
   handleDrawSeats = (amount, row, cost) => {
     let seats = [];
     for (let i = 0; i < amount; i++) {
-      seats.push(<Seat number={i} row={row} cost={cost} key={i} selectTicket={this.props.selectTicket} />)
+      seats.push(
+        <Seat seat={i + 1} row={row} cost={cost} key={i + 1}
+          isSelected={
+            this.props.selectedSeats.find((seat) => seat === `${row}.${i + 1}`)
+          }
+          selectTicket={this.props.selectTicket}
+          selectedSeats={this.props.selectedSeats} />)
     }
     return seats;
   };

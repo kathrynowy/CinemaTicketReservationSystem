@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import { Link } from "react-router-dom";
-import './card.scss';
+import './Card.scss';
 
 
 class MovieCard extends Component {
@@ -17,12 +17,7 @@ class MovieCard extends Component {
         <div className="card__title">
           {movie.name}
         </div>
-        <Link to={{
-          pathname: "/film-profile",
-          name: movie.name,
-          img: movie.img,
-          description: 'kfghkrsghrkhgrrkgn'
-        }} >
+        <Link to="/film-profile">
           <Button variant="contained" fullWidth color='primary' size="large" className="card__button">
             Buy ticket
           </Button>

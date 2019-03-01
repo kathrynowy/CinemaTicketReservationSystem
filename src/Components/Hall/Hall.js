@@ -7,22 +7,27 @@ class Hall extends Component {
   state = {
     seat: '',
     row: '',
-    cost: ''
+    selectedSeats: ["1.1", "2.2"]
   }
-  selectTicket = (row, seat, cost) => {
+  selectTicket = (row, seat) => {
+    const newSeats = this.state.selectedSeats.includes(`${row}.${seat}`)
+      ? this.state.selectedSeats.filter(seatNumber => seatNumber !== `${row}.${seat}`)
+      : [...this.state.selectedSeats, `${row}.${seat}`]
+
     this.setState({
       row: row,
       seat: seat,
-      cost: cost
+      selectedSeats: newSeats
     })
   }
+
 
   render() {
     return (
       <div className="hall-container">
         <div className="hall">
           <div className="hall__screen"></div>
-          <SelectSeats selectTicket={this.selectTicket} />{/* seatsmap */}
+          <SelectSeats selectTicket={this.selectTicket} selectedSeats={this.state.selectedSeats} />{/* seatsmap */}
           <div className="hall-legend">
             <div className="hall-legend__seat-type_free"><div className="hall-legend__icon_free"></div> <span className="hall-legend__text_free">free</span> </div>
             <div className="hall-legend__seat-type_selected"><div className="hall-legend__icon_selected"></div> <span className="hall-legend__text_selected">selected</span></div>
@@ -30,7 +35,7 @@ class Hall extends Component {
           </div>
         </div>
         <div className="seats-information">
-          <SeatsInfo seat={this.state.seat} cost={this.state.cost} />
+          <SeatsInfo selectedSeats={this.state.selectedSeats} row={this.state.row} />
         </div>
       </div>
     );

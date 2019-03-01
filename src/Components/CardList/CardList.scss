@@ -1,0 +1,42 @@
+.container {
+  font-family: 'Nunito','Helvetica Neue','Helvetica','Arial','sans-serif';
+  background-color:#e8eaf6;
+}
+
+.card-list {
+  justify-content: center;
+  display: flex;
+  align-items: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+@media only screen and (max-width: 992px) {
+  .card-list {
+    margin: 0px 4rem;
+  }
+ }
+
+ @media only screen and (max-width: 768px) {
+  .card-list {
+    margin: 0 10px;
+  }
+ }
+
+ @media only screen and (max-width: 420px) {
+  .card-list {
+    margin: 0 auto;
+  }
+ }
+
+ @media only screen and (min-width: 993px) {
+  .card-list {
+    margin: 0px 30px;
+  }
+ }
+ 
+ @media only screen and (min-width: 1200px) {
+  .card-list {
+    margin: 0px 7rem;
+  }
+ }

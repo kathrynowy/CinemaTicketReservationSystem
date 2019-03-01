@@ -4,11 +4,16 @@ import './SeatsInfo.scss'
 
 class SeatsInfo extends Component {
   render() {
+    const selectedSeats = this.props.selectedSeats;
     return (
       <div className="seats-info">
-        <div className="seats-info__choosed">Выбраны места: {this.props.seat} </div>
+        <div className="seats-info__choosed-tickets-list"> {
+          selectedSeats.map((seat) =>
+            <div key={seat} className="seats-info__choosed-ticket">Ряд {seat.split('.')[0]}, Место {seat.split('.')[1]}</div>
+          )
+        }
+        </div>
         <div className="seats-info__include">Включить в билет: </div>
-        <div className="seats-info__cost">Стоимость: 12$ {this.props.cost}</div>
         <button className="seats-info__btn">Buy ticket</button>
       </div>
     );

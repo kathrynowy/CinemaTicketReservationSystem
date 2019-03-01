@@ -2,20 +2,17 @@ import React, { Component } from 'react';
 
 
 class Seat extends Component {
-  state = {
-    isSelected: false,
-  };
 
   handleSelect = () => {
-    this.setState({
-      isSelected: !this.state.isSelected,
-    });
+    const row = this.props.row;
+    const seat = this.props.seat;
+    this.props.selectTicket(row, seat);
   };
 
   render() {
-    const { number, row, cost } = this.props;
+    const { seat, row, cost } = this.props;
     return (
-      <div className={"row__seat" + ((this.state.isSelected && " row__seat_selected") || '')} data-title={`${row}ряд ${cost}руб`} onClick={this.handleSelect} key={number + 1}>{number + 1}</div >
+      <div className={"row__seat" + ((this.props.isSelected && " row__seat_selected") || '')} data-title={`${row}ряд ${cost}руб`} onClick={this.handleSelect} key={seat}>{seat}</div >
     );
   }
 }
