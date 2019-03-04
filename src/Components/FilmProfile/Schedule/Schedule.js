@@ -11,7 +11,7 @@ class Schedule extends Component {
         <div className="schedule__cinema">{cinema}</div>
         <div className="schedule__space"></div>
         <div className="schedule__ticket-list">
-          {time.map((time) => <Link to="/hall"> <span className="schedule__ticket" key={time}>{time}</span></Link>)}
+          {time.map((time) => <Link to="/hall" key={time}> <span className="schedule__ticket" >{time}</span></Link>)}
         </div>
       </div>
     );

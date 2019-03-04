@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SignIn from './Components/SignIn/SignIn.js'
-import Hall from './Components/Hall/Hall.js'
+import PrimarySearchAppBar from './Components/PrimarySearchAppBar/PrimarySearchAppBar.js'
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import MainPage from './Containers/MainPage/MainPage.js';
@@ -14,9 +14,11 @@ import ConfirmTicket from './Components/Hall/ConfirmTicket/ConfirmTicket.js';
 class App extends Component {
   render() {
     return (
-      <Router>
-        <div className="container">
-          {/* <ul>
+      <div>
+        <PrimarySearchAppBar />
+        <Router>
+          <div className="container">
+            {/* <ul>
             <li>
               <Link to="/">Main Page</Link>
             </li>
@@ -38,14 +40,15 @@ class App extends Component {
           </ul>
           <hr /> */}
 
-          <Route exact path="/" component={MainPage} />
-          <Route path="/film-profile" component={FilmProfilePage} />
-          <Route path="/hall" component={HallPage} />
-          <Route path="/sign-in" component={SignIn} />
-          <Route path="/sign-up" component={SignUp} />
-          <Route path="/confirm-ticket" component={ConfirmTicket} />
-        </div>
-      </Router>
+            <Route exact path="/" component={MainPage} />
+            <Route path="/film-profile" component={FilmProfilePage} />
+            <Route path="/hall" component={HallPage} />
+            <Route path="/sign-in" component={SignIn} />
+            <Route path="/sign-up" component={SignUp} />
+            <Route path="/confirm-ticket" component={ConfirmTicket} />
+          </div>
+        </Router>
+      </div>
     );
   }
 }

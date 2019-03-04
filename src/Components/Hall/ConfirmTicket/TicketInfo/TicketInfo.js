@@ -20,15 +20,15 @@ class TicketInfo extends Component {
           </div>
         </div>
         <div>
-          <div class="inputGroup">
+          <div className="inputGroup">
             <input id={"option" + this.props.number} name="option1" type="checkbox" />
             <label htmlFor={"option" + this.props.number}>Popcorn</label>
           </div>
-          <div class="inputGroup">
+          <div className="inputGroup">
             <input id={"option" + this.props.number + 1} name="option2" type="checkbox" />
             <label htmlFor={"option" + this.props.number + 1}>Coca Cola</label>
           </div>
-          <div class="inputGroup">
+          <div className="inputGroup">
             <input id={"option" + this.props.number + 2} name="option3" type="checkbox" />
             <label htmlFor={"option" + this.props.number + 2}>Sprite</label>
           </div>

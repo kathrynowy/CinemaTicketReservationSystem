@@ -6,7 +6,6 @@ class FilmProfilePage extends Component {
   render() {
     return (
       <div className="movie-profile-page">
-        <PrimarySearchAppBar />
         <FilmProfile />
       </div>
     );

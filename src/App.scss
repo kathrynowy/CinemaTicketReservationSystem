@@ -1,8 +1,11 @@
+ @import 'node_modules/reset-css/sass/_reset.scss'; 
 .container {
   font-family: 'Nunito','Helvetica Neue','Helvetica','Arial','sans-serif';
   background-color: rgb(245, 236, 242);
   color: rgb(38, 38, 41);
-  height: 100%;
+  display: flex;
+  flex: 1 1 0;
+  padding-top: 20px;
 }
 
 

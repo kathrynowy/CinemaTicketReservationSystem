@@ -5,10 +5,7 @@ import Hall from '../../Components/Hall/Hall.js'
 class HallPage extends Component {
   render() {
     return (
-      <div className="hall-page">
-        <PrimarySearchAppBar />
-        <Hall />
-      </div>
+      <Hall />
     )
   }
 }
