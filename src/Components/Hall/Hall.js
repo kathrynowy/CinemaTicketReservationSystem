@@ -1,22 +1,25 @@
 import React, { Component } from 'react';
 import SelectSeats from './SelectSeats/SelectSeats.js'
 import SeatsInfo from './SeatsInfo/SeatsInfo.js'
+import SeatsData from './SelectSeats/SeatsData';
 import './Hall.scss'
 
 class Hall extends Component {
   state = {
     seat: '',
     row: '',
-    selectedSeats: ["1.1", "2.2"]
+    cost: '',
+    selectedSeats: ["1.1.8", "2.2.12"]
   }
-  selectTicket = (row, seat) => {
-    const newSeats = this.state.selectedSeats.includes(`${row}.${seat}`)
-      ? this.state.selectedSeats.filter(seatNumber => seatNumber !== `${row}.${seat}`)
-      : [...this.state.selectedSeats, `${row}.${seat}`]
+  selectTicket = (row, seat, cost) => {
+    const newSeats = this.state.selectedSeats.includes(`${row}.${seat}.${cost}`)
+      ? this.state.selectedSeats.filter(seatNumber => seatNumber !== `${row}.${seat}.${cost}`)
+      : [...this.state.selectedSeats, `${row}.${seat}.${cost}`]
 
     this.setState({
       row: row,
       seat: seat,
+      cost: cost,
       selectedSeats: newSeats
     })
   }
@@ -35,7 +38,7 @@ class Hall extends Component {
           </div>
         </div>
         <div className="seats-information">
-          <SeatsInfo selectedSeats={this.state.selectedSeats} row={this.state.row} />
+          <SeatsInfo selectedSeats={this.state.selectedSeats} SeatsData={SeatsData} />
         </div>
       </div>
     );

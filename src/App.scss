@@ -1,11 +1,21 @@
 .container {
   font-family: 'Nunito','Helvetica Neue','Helvetica','Arial','sans-serif';
-  background-color:#e8eaf6;
+  background-color: rgb(245, 236, 242);
+  color: rgb(38, 38, 41);
+  height: 100%;
 }
 
-.seats-information {
-  margin: 0px 30px;
-  font-size: 24px;
-  font-weight: 500;
+body {
+  margin: 0;
+  display: flex;
+  flex: 1;
+  height: 100%;
 }
+ html {
+   height: 100%;
+ }
+
+ #root {
+   width: 100%;
+ }
 

@@ -18,9 +18,7 @@ class MovieCard extends Component {
           {movie.name}
         </div>
         <Link to="/film-profile">
-          <Button variant="contained" fullWidth color='primary' size="large" className="card__button">
-            Buy ticket
-          </Button>
+          <input type="button" variant="contained" className="card__button" value="Buy ticket" />
         </Link>
       </div>
     );

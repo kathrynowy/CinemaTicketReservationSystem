@@ -79,8 +79,8 @@ const styles = theme => ({
     },
   },
   app: {
-    background: '#7986cb',
-    color: 'black',
+    background: 'rgb(38, 38, 41)',
+    color: 'rgb(236, 186, 197)',
   }
 });
 

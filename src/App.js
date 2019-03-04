@@ -1,20 +1,22 @@
 import React, { Component } from 'react';
 import SignIn from './Components/SignIn/SignIn.js'
 import Hall from './Components/Hall/Hall.js'
-import './App.scss';
-import Main from './Components/Admin/Main/Main.js'
+
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import MainPage from './Containers/MainPage/MainPage.js';
 import FilmProfilePage from './Containers/FilmProfilePage/FilmProfilePage.js';
 import HallPage from './Containers/HallPage/HallPage.js';
+import SignUp from './Components/SignUp/SignUp.js';
+import './App.scss';
+import ConfirmTicket from './Components/Hall/ConfirmTicket/ConfirmTicket.js';
 
 
 class App extends Component {
   render() {
     return (
       <Router>
-        <div>
-          <ul>
+        <div className="container">
+          {/* <ul>
             <li>
               <Link to="/">Main Page</Link>
             </li>
@@ -30,14 +32,18 @@ class App extends Component {
             <li>
               <Link to="/sign-in">Sign in</Link>
             </li>
+            <li>
+              <Link to="/sign-up">Sign up</Link>
+            </li>
           </ul>
-          <hr />
+          <hr /> */}
 
           <Route exact path="/" component={MainPage} />
           <Route path="/film-profile" component={FilmProfilePage} />
           <Route path="/hall" component={HallPage} />
-          <Route path="/main" component={Main} />
           <Route path="/sign-in" component={SignIn} />
+          <Route path="/sign-up" component={SignUp} />
+          <Route path="/confirm-ticket" component={ConfirmTicket} />
         </div>
       </Router>
     );

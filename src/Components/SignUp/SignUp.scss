@@ -1,0 +1,16 @@
+.signup-form {
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 50px;
+  padding: 20px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  input {
+    display: block;
+      text-align: center;
+      background-color: #ECF0F1;
+      color: #ABADB5;
+  }
+  button[type=submit] {
+      margin-left: 10px;
+  }
+}

@@ -12,7 +12,7 @@ class SelectSeats extends Component {
       seats.push(
         <Seat seat={i + 1} row={row} cost={cost} key={i + 1}
           isSelected={
-            this.props.selectedSeats.find((seat) => seat === `${row}.${i + 1}`)
+            this.props.selectedSeats.find((seat) => seat === `${row}.${i + 1}.${cost}`)
           }
           selectTicket={this.props.selectTicket}
           selectedSeats={this.props.selectedSeats} />)

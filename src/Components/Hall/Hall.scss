@@ -2,10 +2,31 @@
   overflow-x: auto;
 }
 
+.hall::-webkit-scrollbar {
+  width: 3px;
+}
+
+.hall::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+  border-radius: 10px;
+}
+
+.hall::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+.seats-information {
+  font-size: 24px;
+  font-weight: 500;
+}
+
 @media only screen and (max-width: 992px) {
-  .hall {
+  .seats-information, .hall {
     margin: 0px 30px;
-    margin-top: 300px;
+  }
+  .hall {
+    margin-top: 30px;
     margin-bottom: 0px;
     display: flex;
     flex-direction: column;
@@ -17,7 +38,7 @@
   .hall__screen {
     margin-top: 15px;
     margin-bottom: 35px;
-    border-top: 40px solid rgb(105, 104, 104);
+    border-top: 40px solid #3c3c3d;
     border-left: 80px solid transparent;
     border-right: 80px solid transparent;
     height: 0;
@@ -64,9 +85,12 @@
 }
 
 @media only screen and (max-width: 768px) {
-  .hall {
+  .seats-information, .hall {
     margin: 0px 10px;
-    margin-top: 300px;
+  }
+
+  .hall {
+    margin-top: 30px;
     margin-bottom: 0px;
     display: flex;
     flex-direction: column;
@@ -78,7 +102,7 @@
   .hall__screen {
     margin-top: 15px;
     margin-bottom: 25px;
-    border-top: 35px solid rgb(105, 104, 104);
+    border-top: 35px solid #3c3c3d;
     border-left: 70px solid transparent;
     border-right: 70px solid transparent;
     width: 450px;
@@ -128,22 +152,24 @@
  }
 
  @media only screen and (max-width: 420px) {
-  .hall {
+  .seats-information, .hall {
     margin: 0px;
-    margin-top: 300px;
+  }
+
+  .hall {
+    margin-top: 30px;
     margin-bottom: 0px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: #898b94 solid 1px;
-    
+    border: #898b94 solid 1px; 
   }
 
   .hall__screen {
     margin-top: 15px;
     margin-bottom: 15px;
-    border-top: 25px solid rgb(105, 104, 104);
+    border-top: 25px solid #3c3c3d;
     border-left: 80px solid transparent;
     border-right: 80px solid transparent;
     width: 350px;
@@ -193,9 +219,12 @@
  }
 
  @media only screen and (min-width: 993px) {
-  .hall {
+  .seats-information, .hall {
     margin: 0px 30px;
-    margin-top: 300px;
+  }
+
+  .hall {
+    margin-top: 30px;
     margin-bottom: 0px;
     display: flex;
     flex-direction: column;
@@ -207,7 +236,7 @@
   .hall__screen {
     margin-top: 15px;
     margin-bottom: 40px;
-    border-top: 50px solid rgb(105, 104, 104);
+    border-top: 50px solid #3c3c3d;
     border-left: 80px solid transparent;
     border-right: 80px solid transparent;
     height: 0;
@@ -255,27 +284,28 @@
 }
 
 @media only screen and (min-width: 1200px) {
-  .hall {
+  .seats-information, .hall {
     margin: 0px 7rem;
-    margin-top: 300px;
+  }
+
+  .hall {
+    margin-top: 30px;
     margin-bottom: 0px;
     display: flex;
     flex-direction: column;
-    
-    /* align-items: center; */
     border: #898b94 solid 1px;
-    
   }
 
   .hall__screen {
     margin-top: 15px;
     margin-bottom: 40px;
-    border-top: 50px solid rgb(105, 104, 104);
+    border-top: 50px solid #3c3c3d;
     border-left: 80px solid transparent;
     border-right: 80px solid transparent;
     height: 0;
     width: 650px;
   }
+
   .hall-legend {
     margin-top: 20px;
   

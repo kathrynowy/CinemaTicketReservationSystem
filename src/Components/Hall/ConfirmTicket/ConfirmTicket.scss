@@ -1,0 +1,50 @@
+.confirm-container {
+  margin: 0 auto;
+  width: 400px;
+  display: flex;
+  background-color: rgb(48, 48, 54); 
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  color:  rgb(236, 186, 197); 
+  -webkit-touch-callout: none; 
+  -webkit-user-select: none; 
+  -khtml-user-select: none; 
+  -moz-user-select: none; 
+  -ms-user-select: none; 
+  user-select: none;
+}
+
+.confirm-title {
+font-size: 30px;
+font-weight: 500;
+}
+
+.confirm-ticket {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} 
+
+.confirm-btn {
+  height: 60px;
+  width: 150px;
+  font-size: 24px !important;
+    border: 1px solid rgb(233, 136, 157); 
+    background-color: rgb(38, 38, 41); 
+    color: rgb(233, 136, 157); 
+    font-size: 17px; 
+    padding: 10px 15px; 
+    border-radius: 60px; 
+    font-weight: 100; 
+    letter-spacing: 0.01em; 
+}
+
+input[type="submit"]:focus { 
+  outline: 0; 
+  outline-offset: 0; 
+  }
+  
+

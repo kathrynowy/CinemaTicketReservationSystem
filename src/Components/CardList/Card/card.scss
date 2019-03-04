@@ -1,3 +1,11 @@
+.card {
+  margin-top:40px;
+}
+
+.card__title {
+  text-align: center;
+}
+
 @media only screen and (max-width: 992px) {
   .card {
     height: 345px;
@@ -7,7 +15,6 @@
   }
   
   .card__title {
-    text-align: center;
     height: 2.3rem;
     padding: 2px !important;
     font-size: 17px !important;
@@ -31,7 +38,6 @@
   }
   
   .card__title {
-    text-align: center;
     height: 2.3rem;
     padding: 2px 1px !important;
     font-size: 15px !important;
@@ -55,7 +61,6 @@
   }
   
   .card__title {
-    text-align: center;
     height: 2.6rem;
     padding: 2px !important;
     font-size: 20px !important;
@@ -78,7 +83,6 @@
   }
   
   .card__title {
-    text-align: center;
     height: 2.3rem;
     padding: 2px !important;
     font-size: 18px !important;
@@ -96,12 +100,13 @@
  @media only screen and (min-width: 1200px) {
   .card {
     margin-bottom: 5px;
+    margin-left: 14px;
+    margin-right: 14px;
     width: 260px;
     height: 460px;
   }
-  
+
   .card__title {
-    text-align: center;
     height: 2.3rem;
     padding: 2px !important;
     font-size: 1.2rem !important;
