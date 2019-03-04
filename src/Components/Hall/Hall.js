@@ -11,6 +11,7 @@ class Hall extends Component {
     cost: '',
     selectedSeats: ["1.1.8", "2.2.12"]
   }
+
   selectTicket = (row, seat, cost) => {
     const newSeats = this.state.selectedSeats.includes(`${row}.${seat}.${cost}`)
       ? this.state.selectedSeats.filter(seatNumber => seatNumber !== `${row}.${seat}.${cost}`)
@@ -23,7 +24,6 @@ class Hall extends Component {
       selectedSeats: newSeats
     })
   }
-
 
   render() {
     return (

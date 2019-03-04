@@ -1,6 +1,6 @@
 .confirm-container {
   margin: 0 auto;
-  width: 400px;
+  width: 800px;
   display: flex;
   background-color: rgb(48, 48, 54); 
   justify-content: flex-start;
@@ -17,18 +17,17 @@
 }
 
 .confirm-title {
-font-size: 30px;
+font-size: 42px;
 font-weight: 500;
 }
 
 .confirm-ticket {
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 } 
 
-.confirm-btn {
+.confirm-btn, .back-btn {
   height: 60px;
   width: 150px;
   font-size: 24px !important;
@@ -42,9 +41,43 @@ font-weight: 500;
     letter-spacing: 0.01em; 
 }
 
+.confirm-btn {
+  margin-right: 10px;
+}
+
 input[type="submit"]:focus { 
   outline: 0; 
   outline-offset: 0; 
   }
   
 
+  @media only screen and (max-width: 992px) {
+    .confirm-container {
+      margin: 0 auto;
+      width: 600px;
+    }
+  } 
+  @media only screen and (max-width: 768px) {
+    .confirm-container {
+      margin: 0 auto;
+      width: 95%;
+    }
+  } 
+  @media only screen and (max-width: 420px) {
+    .confirm-container {
+      margin: 0 auto;
+      width: 100%;
+    }
+  }
+  @media only screen and (min-width: 993px) {
+    .confirm-container {
+      margin: 0 auto;
+      width: 750px;
+    }
+  }
+  @media only screen and (min-width: 1200px) {
+    .confirm-container {
+      margin: 0 auto;
+      width: 800px;
+    }
+  }

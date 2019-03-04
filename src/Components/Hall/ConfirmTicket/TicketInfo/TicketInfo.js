@@ -8,14 +8,14 @@ class TicketInfo extends Component {
       <div className="confirm-ticket-component">
         <div className="confirm-ticket__ticket-info">
           <div className="confirm-ticket__number">
-            N1
+            N1464
           </div>
           <div className="confirm-ticket__info">
             <span>
               Alita: girl
           </span>
             <span>
-              row: 1/seat 3
+              row 1/seat 3
           </span>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './ConfirmTicket.scss'
 import TicketInfo from './TicketInfo/TicketInfo';
+import { Link } from 'react-router-dom';
 
 
 class ConfirmTicket extends Component {
@@ -13,7 +14,10 @@ class ConfirmTicket extends Component {
           <TicketInfo number={4} />
           <TicketInfo number={7} />
         </div>
-        <input type="submit" value="buy" className="confirm-btn" />
+        <div>
+          <input type="submit" value="confirm" className="confirm-btn" />
+          <Link to="/hall"><input type="button" value="back" className="back-btn" /></Link>
+        </div>
       </div>
     );
   }
