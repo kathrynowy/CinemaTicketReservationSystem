@@ -6,7 +6,7 @@ class FilmProfilePage extends Component {
   render() {
     return (
       <div className="movie-profile-page">
-        <FilmProfile />
+        <FilmProfile id={this.props.match.params.id} />
       </div>
     );
   }

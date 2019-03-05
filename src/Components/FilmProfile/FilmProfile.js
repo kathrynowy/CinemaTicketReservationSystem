@@ -2,27 +2,69 @@ import React, { Component } from 'react';
 import Schedule from './Schedule/Schedule'
 import tickets from './Schedule/ScheduleData.js'
 import Calendar from './Calendar/Calendar';
+import queryString from 'query-string'
 import './styles.scss';
+import movieData from '../../movieData.js'
 
 
 class FilmProfile extends Component {
+
+  state = {
+    day: new Date().getTime() + (3 * 60 * 60 * 1000),
+    times: [],
+  }
+
+  getSecondsToday = () => {
+    const date = new Date();
+    return date.getHours() * 3600 + date.getMinutes() * 60 + date.getSeconds();
+  };
+
+  currentTimes = (times) => {
+    return times.filter((time) => +time > this.state.day && +time < (this.state.day + 86400000))
+  }
+
+  selectDay = (day) => {
+    this.setState({
+      day: day.getTime()
+    })
+  }
+
+  createDays = () => {
+    const DAY_IN_MILLISECONDS = 1000 * 60 * 60 * 24;
+    const today = new Date();
+    const days = [];
+    for (let i = 0; i < 14; i++) {
+      days.push(new Date(today.getTime() + (DAY_IN_MILLISECONDS * i) + (3 * 60 * 60 * 1000) - this.getSecondsToday()));
+    }
+    return days;
+  }
+
   render() {
-    const { name, img, description } = this.props;
+    const days = this.createDays();
+    const movieId = this.props.id;
+    const movie = movieData.find((movie) => movie.id === movieId)
     return (
       <div className="container">
 
         <div className="movie-profile">
-          <div className="movie-profile__name">{name} How to train your dragon 3</div>
+
+          <div className="movie-profile__name"> {movie.name}</div>
           <div className="movie-profile__content">
-            <img src="http://kino.bycard.by/public/timthumb.php?src=/public/images/1547642482drakon3.jpg&w=270&h=405&q=80&zc=1&a=c"/* {img} */ className="movie-profile__poster"></img>
+            <img src={movie.img} className="movie-profile__poster" alt="movie"></img>
             <div className="movie-profile__description">
-              <span>Description</span>
-              <p>{description}Когда-то викинги жили в гармонии с драконами. В те времена они делили радость, горе… и последние штаны. Казалось, что так будет всегда, но появление загадочной Дневной Фурии изменило жизнь острова. И теперь Иккинг и Беззубик столкнутся с безжалостным охотником на драконов, жаждущим уничтожить все, что им дорого.</p>
+              <span>Description </span>
+              <p>{movie.description}</p>
             </div>
           </div>
           <div className="movie-profile__tickets-info">
-            <Calendar />
-            {tickets.map((ticket) => <Schedule cinema={ticket.cinema} times={ticket.times} key={ticket.id} />)}
+            <Calendar selectDay={this.selectDay} days={days} />
+            {
+              tickets.map((ticket) =>
+
+                ((this.currentTimes(ticket.times).length != 0) && <Schedule cinema={ticket.cinema} times={this.currentTimes(ticket.times)} key={ticket.id} />)
+
+              )
+            }
           </div>
         </div>
       </div >

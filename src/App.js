@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import SignIn from './Components/SignIn/SignIn.js'
 import PrimarySearchAppBar from './Components/PrimarySearchAppBar/PrimarySearchAppBar.js'
-
+import createBrowseHistory from "history/createBrowserHistory";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import MainPage from './Containers/MainPage/MainPage.js';
 import FilmProfilePage from './Containers/FilmProfilePage/FilmProfilePage.js';
@@ -14,9 +14,9 @@ import ConfirmTicket from './Components/Hall/ConfirmTicket/ConfirmTicket.js';
 class App extends Component {
   render() {
     return (
-      <div>
+      <Fragment>
         <PrimarySearchAppBar />
-        <Router>
+        <Router >
           <div className="container">
             {/* <ul>
             <li>
@@ -41,14 +41,14 @@ class App extends Component {
           <hr /> */}
 
             <Route exact path="/" component={MainPage} />
-            <Route path="/film-profile" component={FilmProfilePage} />
+            <Route path="/film-profile/:id" component={FilmProfilePage} />
             <Route path="/hall" component={HallPage} />
             <Route path="/sign-in" component={SignIn} />
             <Route path="/sign-up" component={SignUp} />
             <Route path="/confirm-ticket" component={ConfirmTicket} />
           </div>
         </Router>
-      </div>
+      </Fragment>
     );
   }
 }
