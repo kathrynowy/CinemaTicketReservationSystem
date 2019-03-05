@@ -22,7 +22,7 @@ class FilmProfile extends Component {
           </div>
           <div className="movie-profile__tickets-info">
             <Calendar />
-            {tickets.map((ticket) => <Schedule cinema={ticket.cinema} time={ticket.time} key={ticket.id} />)}
+            {tickets.map((ticket) => <Schedule cinema={ticket.cinema} times={ticket.times} key={ticket.id} />)}
           </div>
         </div>
       </div >
