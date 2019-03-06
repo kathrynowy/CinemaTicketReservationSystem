@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SeatsData from './SeatsData.js'
+import SeatsData from '../../../SeatsData.js'
 import './SelectSeats.scss';
 import Seat from './Seat/Seat.js'
 
@@ -21,16 +21,21 @@ class SelectSeats extends Component {
   };
 
   render() {
-    const seats = SeatsData;
+    const { idCinema, idMovie, idHall, time } = this.props;
+    const seats = SeatsData.filter((hall) => idCinema == hall.idCinema && idHall == hall.idHall);
     return (
       seats.map((seat) => {
-        const count = seat.amountOfSeats;
         return (
-          <div className="row" key={seat.row}>
-            <div className="row__number">{seat.row}</div>
-            <div className={seat.row + ' row__seats-container'}>{this.handleDrawSeats(count, seat.row, seat.cost)} </div>
-            <div className="row__number">{seat.row}</div>
-          </div>
+          seat.hall.map((seats) => {
+            return (
+              <div className="row" key={seats.row}>
+                <div className="row__number">{seats.row}</div>
+                <div className={seats.row + ' row__seats-container'}>{this.handleDrawSeats(seats.amountOfSeats, seats.row, seats.cost)} </div>
+                <div className="row__number">{seats.row}</div>
+              </div>
+            );
+          })
+
         );
       })
     );

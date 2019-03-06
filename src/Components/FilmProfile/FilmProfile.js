@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import Schedule from './Schedule/Schedule'
-import tickets from './Schedule/ScheduleData.js'
+import Schedule from './Schedule/Schedule.js'
+import tickets from '../../ScheduleData.js'
 import Calendar from './Calendar/Calendar';
-import queryString from 'query-string'
 import './styles.scss';
 import movieData from '../../movieData.js'
 
@@ -19,8 +18,8 @@ class FilmProfile extends Component {
     return date.getHours() * 3600 + date.getMinutes() * 60 + date.getSeconds();
   };
 
-  currentTimes = (times) => {
-    return times.filter((time) => +time > this.state.day && +time < (this.state.day + 86400000))
+  currentTimes = (times, day) => {
+    return times.filter((time) => +time > day && +time < (day + 86400000))
   }
 
   selectDay = (day) => {
@@ -29,20 +28,25 @@ class FilmProfile extends Component {
     })
   }
 
+  currentSessions = (tickets, idMovie, day) => {
+    const newTickets = tickets.filter(ticket => ticket.idMovie == idMovie);
+    return newTickets.map(ticket => (this.currentTimes(ticket.times, day).length !== 0) && <Schedule idCinema={ticket.idCinema} idHall={ticket.idHall} idMovie={ticket.idMovie} times={this.currentTimes(ticket.times, day)} key={Math.random()} />)
+  }
+
   createDays = () => {
     const DAY_IN_MILLISECONDS = 1000 * 60 * 60 * 24;
-    const today = new Date();
+    const today = new Date().getTime() - this.getSecondsToday();
     const days = [];
     for (let i = 0; i < 14; i++) {
-      days.push(new Date(today.getTime() + (DAY_IN_MILLISECONDS * i) + (3 * 60 * 60 * 1000) - this.getSecondsToday()));
+      days.push(new Date(today + (DAY_IN_MILLISECONDS * i) + (3 * 60 * 60 * 1000)));
     }
     return days;
   }
 
   render() {
     const days = this.createDays();
-    const movieId = this.props.id;
-    const movie = movieData.find((movie) => movie.id === movieId)
+    const idMovie = this.props.idMovie;
+    const movie = movieData.find((movie) => movie.id === idMovie)
     return (
       <div className="container">
 
@@ -58,13 +62,7 @@ class FilmProfile extends Component {
           </div>
           <div className="movie-profile__tickets-info">
             <Calendar selectDay={this.selectDay} days={days} />
-            {
-              tickets.map((ticket) =>
-
-                ((this.currentTimes(ticket.times).length != 0) && <Schedule cinema={ticket.cinema} times={this.currentTimes(ticket.times)} key={ticket.id} />)
-
-              )
-            }
+            {this.currentSessions(tickets, idMovie, this.state.day)}
           </div>
         </div>
       </div >
