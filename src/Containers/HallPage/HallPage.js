@@ -3,6 +3,7 @@ import PrimarySearchAppBar from '../../Components/PrimarySearchAppBar/PrimarySea
 import Hall from '../../Components/Hall/Hall.js'
 import store from '../../index.js'
 import { selectTicket } from "../../actions/index.js";
+import { SELECT_TICKET } from '../../constans/actionTypes.js'
 
 import { connect } from 'react-redux';
 
@@ -24,9 +25,14 @@ const mapStateToProps = store => ({
   selectedSeats: store.selectTicket.selectedSeats
 })
 
-const mapDispatchToProps = {
-  onSelectTicket: selectTicket
-}
+const mapDispatchToProps = dispatch => ({
+  onSelectTicket(ticket) {
+    dispatch({
+      type: SELECT_TICKET,
+      payload: ticket
+    });
+  }
+});
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(HallPage);

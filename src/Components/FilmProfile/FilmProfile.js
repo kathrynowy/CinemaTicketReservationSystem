@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import Schedule from './Schedule/Schedule.js'
-import tickets from '../../ScheduleData.js'
 import Calendar from './Calendar/Calendar';
 import './styles.scss';
 import movieData from '../../movieData.js'
 
 
-class FilmProfile extends Component {
+import { connect } from "react-redux";
 
+
+
+class FilmProfile extends Component {
   state = {
-    day: new Date().getTime() + (3 * 60 * 60 * 1000),
-    times: [],
+    day: new Date().getTime(),
   }
 
   getSecondsToday = () => {
@@ -28,17 +29,17 @@ class FilmProfile extends Component {
     })
   }
 
-  currentSessions = (tickets, idMovie, day) => {
-    const newTickets = tickets.filter(ticket => ticket.idMovie == idMovie);
-    return newTickets.map(ticket => (this.currentTimes(ticket.times, day).length !== 0) && <Schedule idCinema={ticket.idCinema} idHall={ticket.idHall} idMovie={ticket.idMovie} times={this.currentTimes(ticket.times, day)} key={Math.random()} />)
+  currentSessions = (sessions, idMovie, day) => {
+    const newSessions = sessions.filter(session => session.idMovie == idMovie);
+    return newSessions.map(session => (this.currentTimes(session.times, day).length !== 0) && <Schedule idCinema={session.idCinema} idHall={session.idHall} idMovie={session.idMovie} times={this.currentTimes(session.times, day)} key={Math.random()} />)
   }
 
   createDays = () => {
     const DAY_IN_MILLISECONDS = 1000 * 60 * 60 * 24;
-    const today = new Date().getTime() - this.getSecondsToday();
+    const today = new Date().getTime() - this.getSecondsToday() * 1000;
     const days = [];
     for (let i = 0; i < 14; i++) {
-      days.push(new Date(today + (DAY_IN_MILLISECONDS * i) + (3 * 60 * 60 * 1000)));
+      days.push(new Date(today + (DAY_IN_MILLISECONDS * i)));
     }
     return days;
   }
@@ -62,12 +63,13 @@ class FilmProfile extends Component {
           </div>
           <div className="movie-profile__tickets-info">
             <Calendar selectDay={this.selectDay} days={days} />
-            {this.currentSessions(tickets, idMovie, this.state.day)}
+            {this.currentSessions(this.props.sessions, idMovie, this.state.day)}
           </div>
         </div>
       </div >
     );
   }
 }
+
 
 export default FilmProfile;
