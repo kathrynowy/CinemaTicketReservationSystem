@@ -4,7 +4,7 @@ import './Calendar.scss';
 
 class Calendar extends Component {
   handleSelect = (day) => {
-    this.props.selectDay(new Date(`${day.split('.')[1]}.${day.split('.')[0]}.${day.split('.')[2]}`));
+    this.props.selectDay(day.getTime());
   }
 
   formatDays = (days) => {
@@ -34,7 +34,7 @@ class Calendar extends Component {
               {formattedDays.map((day) => <td key={day.date} className={(day.weekday === 'вс') || (day.weekday === 'сб') ? "calendar__weekday" : ''} ><span>{day.weekday}</span></td>)}
             </tr>
             <tr>
-              {formattedDays.map((day) => <th key={day.date} onClick={() => this.handleSelect(day.day)}><span className="calendar__day">{(day.day).split('.')[0]}</span></th>)}
+              {formattedDays.map((day) => <th key={day.date} onClick={() => this.handleSelect(day.date)}><span className="calendar__day">{(day.day).split('.')[0]}</span></th>)}
             </tr>
           </tbody>
         </table>

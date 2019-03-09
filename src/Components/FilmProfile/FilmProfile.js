@@ -11,7 +11,7 @@ import { connect } from "react-redux";
 
 class FilmProfile extends Component {
   state = {
-    day: new Date().getTime(),
+    day: new Date().getTime() + 1000 * 60 * 60 * 3,
   }
 
   getSecondsToday = () => {
@@ -25,34 +25,41 @@ class FilmProfile extends Component {
 
   selectDay = (day) => {
     this.setState({
-      day: day.getTime()
+      day
     })
   }
 
-  currentSessions = (sessions, idMovie, day) => {
-    const newSessions = sessions.filter(session => session.idMovie == idMovie);
-    return newSessions.map(session => (this.currentTimes(session.times, day).length !== 0) && <Schedule idCinema={session.idCinema} idHall={session.idHall} idMovie={session.idMovie} times={this.currentTimes(session.times, day)} key={Math.random()} />)
+  currentSessions = (sessions, movieId, day) => {
+    const newSessions = sessions.filter(session => session.movieId == movieId);
+    return newSessions.map(session => 
+      (this.currentTimes(session.times, day).length !== 0) && <Schedule 
+        cinemaId={session.cinemaId} 
+        hallId={session.hallId} 
+        movieId={session.movieId} 
+        times={this.currentTimes(session.times, day)} 
+        key={Math.random()}
+      />
+    )
   }
 
   createDays = () => {
     const DAY_IN_MILLISECONDS = 1000 * 60 * 60 * 24;
-    const today = new Date().getTime() - this.getSecondsToday() * 1000;
+    const secondsToday =  this.getSecondsToday();
+    const today = new Date().getTime();
     const days = [];
     for (let i = 0; i < 14; i++) {
-      days.push(new Date(today + (DAY_IN_MILLISECONDS * i)));
+      days.push(new Date(today -  + (DAY_IN_MILLISECONDS * i)));
     }
     return days;
   }
 
   render() {
     const days = this.createDays();
-    const idMovie = this.props.idMovie;
-    const movie = movieData.find((movie) => movie.id === idMovie)
+
+    const movieId = this.props.movieId;
+    const movie = movieData.find((movie) => movie.id === movieId)
     return (
-      <div className="container">
-
         <div className="movie-profile">
-
           <div className="movie-profile__name"> {movie.name}</div>
           <div className="movie-profile__content">
             <img src={movie.img} className="movie-profile__poster" alt="movie"></img>
@@ -63,10 +70,9 @@ class FilmProfile extends Component {
           </div>
           <div className="movie-profile__tickets-info">
             <Calendar selectDay={this.selectDay} days={days} />
-            {this.currentSessions(this.props.sessions, idMovie, this.state.day)}
+            {this.currentSessions(this.props.sessions, movieId, this.state.day)}
           </div>
         </div>
-      </div >
     );
   }
 }

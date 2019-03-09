@@ -9,12 +9,12 @@ import './Hall.scss'
 
 class Hall extends Component {
   render() {
-    const { idCinema, idMovie, idHall, time } = this.props;
+    const { cinemaId, movieId, hallId, time } = this.props;
     return (
       <div className="hall-container">
         <div className="hall">
           <div className="hall__screen"></div>
-          <SelectSeats selectTicket={this.props.onSelectTicket} selectedSeats={this.props.selectedSeats} idCinema={idCinema} idMovie={idMovie} idHall={idHall} time={time} />{/* seatsmap */}
+          <SelectSeats selectTicket={this.props.onSelectTicket} selectedSeats={this.props.selectedSeats} cinemaId={cinemaId} movieId={movieId} hallId={hallId} time={time} />{/* seatsmap */}
           <div className="hall-legend">
             <div className="hall-legend__seat-type_free"><div className="hall-legend__icon_free"></div> <span className="hall-legend__text_free">free</span> </div>
             <div className="hall-legend__seat-type_selected"><div className="hall-legend__icon_selected"></div> <span className="hall-legend__text_selected">selected</span></div>

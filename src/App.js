@@ -39,8 +39,8 @@ class App extends Component {
                 </ul> 
                 <hr /> */}
             <Route exact path="/" component={MainPage} />
-            <Route path="/film-profile/:idMovie" component={FilmProfilePage} />
-            <Route path="/hall/:idCinema/:idMovie/:idHall/:time" component={HallPage} />
+            <Route path="/film-profile/:movieId" component={FilmProfilePage} />
+            <Route path="/hall/:cinemaId/:movieId/:hallId/:time" component={HallPage} />
             <Route path="/sign-in" component={SignIn} />
             <Route path="/sign-up" component={SignUp} />
             <Route path="/confirm-ticket" component={ConfirmTicket} />

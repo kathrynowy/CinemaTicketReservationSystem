@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import { Link } from "react-router-dom";
-import './Card.scss';
+import './styles.scss';
 
 
 class MovieCard extends Component {
@@ -14,6 +14,7 @@ class MovieCard extends Component {
           className="card__media"
           src={movie.img}
           title={movie.name}
+          alt={movie.name}
         />
         <div className="card__title">
           {movie.name}

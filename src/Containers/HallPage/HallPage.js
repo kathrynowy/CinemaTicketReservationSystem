@@ -11,9 +11,9 @@ class HallPage extends Component {
   render() {
     return (
       <Hall
-        idCinema={this.props.match.params.idCinema}
-        idMovie={this.props.match.params.idMovie}
-        idHall={this.props.match.params.idHall}
+        cinemaId={this.props.match.params.cinemaId}
+        movieId={this.props.match.params.movieId}
+        hallId={this.props.match.params.hallId}
         time={this.props.match.params.time}
         selectedSeats={this.props.selectedSeats}
         onSelectTicket={this.props.onSelectTicket}

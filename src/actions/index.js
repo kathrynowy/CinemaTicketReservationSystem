@@ -2,7 +2,12 @@ import { SELECT_TICKET, GET_SESSIONS_SUCCESS, GET_SESSIONS_FAILURE } from '../co
 
 export const selectTicket = ticket => ({
   type: SELECT_TICKET,
-  payload: ticket
+  payload: {
+    id: ticket.id,
+    cinemaId: ticket.cinemaId,
+    movieId: ticket.movieId,
+    hallId: ticket.hallId
+  }
 })
 
 export const getSessionsSuccess = (sessions) => {

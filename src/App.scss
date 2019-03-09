@@ -22,7 +22,8 @@
   background-color: rgb(245, 236, 242);
   color: rgb(38, 38, 41);
   display: flex;
-  flex: 1 1 0;
+  flex: 1 1 auto;
+  flex-direction: column;
   padding-top: 20px;
 }
 

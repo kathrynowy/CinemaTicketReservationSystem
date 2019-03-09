@@ -6,17 +6,26 @@ import cinemaData from '../../../CinemaData.js';
 
 class Schedule extends Component {
   render() {
-    const { idCinema, times, idHall, idMovie } = this.props;
+    const { cinemaId, times, hallId, movieId } = this.props;
     return (
       <div className="schedule">
 
-        <div className="schedule__cinema">{(cinemaData.find(cinema => cinema.id == idCinema)).name}</div>
+        <div className="schedule__cinema">{(cinemaData.find(cinema => cinema.id == cinemaId)).name}</div>
         <div className="schedule__space"></div>
         <div className="schedule__ticket-list">
-          {times.map((time) => <Link to={{
-            pathname: `/hall/${idCinema}/${idMovie}/${idHall}/${time}`
-          }}
-            key={time} className="schedule__ticket"> <span className="schedule__time">{new Date(+time).getHours() + ':' + new Date(+time).getMinutes()}</span> <div className="schedule_ticket"></div></Link>)}
+          { 
+            times.map((time) => 
+              <Link to={{ pathname: `/hall/${cinemaId}/${movieId}/${hallId}/${time}`}}
+                key={time} 
+                className="schedule__ticket"
+              > 
+                <span className="schedule__time">
+                  {new Date(+time).getHours() + ':' + new Date(+time).getMinutes()}
+                </span> 
+                <div className="schedule_ticket"></div>
+              </Link>
+            )
+          }
         </div>
       </div>
     );

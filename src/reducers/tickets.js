@@ -1,18 +1,28 @@
 const SELECT_TICKET = 'SELECT_TICKET';
 
 const initialState = {
-  selectedSeats: []
+  selectedSeats: [
+    {
+      id: "1.1.8",
+      cinemaId: "1",
+      movieId: "1",
+      hallId: "1"
+    }
+  ]
 }
 
 export default function selectTicket(state = initialState, action) {
   switch (action.type) {
     case SELECT_TICKET:
-      return Object.assign({}, state, {
-        selectedSeats: state.selectedSeats.includes(action.payload)
-          ? state.selectedSeats.filter(seat => seat !== action.payload)
+    {
+      const newSelectedSeats = ( state.selectedSeats.find(seat => action.payload.id == seat.id) 
+          ? state.selectedSeats.filter(selectedSeat => selectedSeat.id !== action.payload.id)
           : [...state.selectedSeats, action.payload]
+          );
+      return Object.assign({}, state, {
+        selectedSeats: newSelectedSeats
       })
-
+    }
     default: return state;
   }
 }
