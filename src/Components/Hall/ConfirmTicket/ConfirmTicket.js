@@ -3,16 +3,20 @@ import './ConfirmTicket.scss'
 import TicketInfo from './TicketInfo/TicketInfo';
 import { Link } from 'react-router-dom';
 
+import movieData from '../../../movieData.js'
 
 class ConfirmTicket extends Component {
   render() {
+    const { additionalServices, selectedSeats } = this.props;
     return (
       <div className="confirm-container">
         <span className="confirm-title">Confirm Ticket</span>
-        <div className="confirm-ticket">
-          <TicketInfo number={1} />
-          <TicketInfo number={4} />
-          <TicketInfo number={7} />
+        <div className="confirm-ticket"> {
+          selectedSeats.map((seat, index) => {
+            const movie = movieData.find(movie => movie.id == seat.movieId);
+            return <TicketInfo key={seat.id} id={index} number={seat.id} cinemaId={seat.cinemaId} additionalServices={additionalServices} movieName={movie.name}/>
+          })
+        }
         </div>
         <div>
           <input type="submit" value="confirm" className="confirm-btn" />
@@ -22,5 +26,6 @@ class ConfirmTicket extends Component {
     );
   }
 }
+
 
 export default ConfirmTicket;

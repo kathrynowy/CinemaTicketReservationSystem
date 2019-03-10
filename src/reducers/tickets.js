@@ -1,14 +1,7 @@
 const SELECT_TICKET = 'SELECT_TICKET';
 
 const initialState = {
-  selectedSeats: [
-    {
-      id: "1.1.8",
-      cinemaId: "1",
-      movieId: "1",
-      hallId: "1"
-    }
-  ]
+  selectedSeats: []
 }
 
 export default function selectTicket(state = initialState, action) {

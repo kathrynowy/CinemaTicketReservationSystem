@@ -5,6 +5,7 @@ import store from '../../index.js'
 import { selectTicket } from "../../actions/index.js";
 import { SELECT_TICKET } from '../../constans/actionTypes.js'
 
+
 import { connect } from 'react-redux';
 
 class HallPage extends Component {
@@ -27,10 +28,7 @@ const mapStateToProps = store => ({
 
 const mapDispatchToProps = dispatch => ({
   onSelectTicket(ticket) {
-    dispatch({
-      type: SELECT_TICKET,
-      payload: ticket
-    });
+    dispatch(selectTicket(ticket));
   }
 });
 

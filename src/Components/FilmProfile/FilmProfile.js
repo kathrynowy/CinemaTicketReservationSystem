@@ -5,10 +5,6 @@ import './styles.scss';
 import movieData from '../../movieData.js'
 
 
-import { connect } from "react-redux";
-
-
-
 class FilmProfile extends Component {
   state = {
     day: new Date().getTime() + 1000 * 60 * 60 * 3,
@@ -44,11 +40,10 @@ class FilmProfile extends Component {
 
   createDays = () => {
     const DAY_IN_MILLISECONDS = 1000 * 60 * 60 * 24;
-    const secondsToday =  this.getSecondsToday();
     const today = new Date().getTime();
     const days = [];
     for (let i = 0; i < 14; i++) {
-      days.push(new Date(today -  + (DAY_IN_MILLISECONDS * i)));
+      days.push(new Date(today + (DAY_IN_MILLISECONDS * i)));
     }
     return days;
   }

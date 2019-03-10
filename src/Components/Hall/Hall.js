@@ -9,7 +9,7 @@ import './Hall.scss'
 
 class Hall extends Component {
   render() {
-    const { cinemaId, movieId, hallId, time } = this.props;
+    const { cinemaId, movieId, hallId, time} = this.props;
     return (
       <div className="hall-container">
         <div className="hall">
@@ -22,7 +22,11 @@ class Hall extends Component {
           </div>
         </div>
         <div className="seats-information">
-          <SeatsInfo selectedSeats={this.props.selectedSeats} SeatsData={SeatsData} />
+          <SeatsInfo 
+            selectedSeats={this.props.selectedSeats} 
+            SeatsData={SeatsData} 
+            cinemaId={cinemaId}
+          />
         </div>
       </div>
     );
