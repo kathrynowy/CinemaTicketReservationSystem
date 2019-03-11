@@ -10,19 +10,19 @@ class SelectSeats extends Component {
     let seats = [];
     for (let i = 0; i < amount; i++) {
       seats.push(
-        <Seat 
-          seat={i + 1} 
-          row={row} 
-          cost={cost} 
-          key={i + 1} 
-          cinemaId={cinemaId} 
-          movieId={movieId} 
-          hallId={hallId} 
+        <Seat
+          seat={i + 1}
+          row={row}
+          cost={cost}
+          key={i + 1}
+          cinemaId={cinemaId}
+          movieId={movieId}
+          hallId={hallId}
           isSelected={
             this.props.selectedSeats.find((seat) => seat.id === `${row}.${i + 1}.${cost}`)
           }
           selectTicket={this.props.selectTicket}
-          selectedSeats={this.props.selectedSeats} 
+          selectedSeats={this.props.selectedSeats}
         />
       )
     }
@@ -40,7 +40,7 @@ class SelectSeats extends Component {
               <div className="row" key={seats.row}>
                 <div className="row__number">{seats.row}</div>
                 <div className={seats.row + ' row__seats-container'}>{this.handleDrawSeats(seats.amountOfSeats, seats.row, seats.cost, cinemaId, movieId, hallId)} </div>
-                <div className="row__number">{seats.row}</div>
+                <div className="row__number"></div>
               </div>
             );
           })

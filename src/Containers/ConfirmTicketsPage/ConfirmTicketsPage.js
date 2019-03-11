@@ -12,7 +12,7 @@ class ConfirmTicketsPage extends Component {
 
   render() {
     return (
-      this.props.additionalServices.length != 0 &&  <ConfirmTicket 
+      this.props.additionalServices.length != 0 && <ConfirmTicket
         additionalServices={this.props.additionalServices}
         selectedSeats={this.props.selectedSeats}
       />

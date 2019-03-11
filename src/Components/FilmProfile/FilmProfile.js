@@ -27,13 +27,14 @@ class FilmProfile extends Component {
 
   currentSessions = (sessions, movieId, day) => {
     const newSessions = sessions.filter(session => session.movieId == movieId);
-    return newSessions.map(session => 
-      (this.currentTimes(session.times, day).length !== 0) && <Schedule 
-        cinemaId={session.cinemaId} 
-        hallId={session.hallId} 
-        movieId={session.movieId} 
-        times={this.currentTimes(session.times, day)} 
+    return newSessions.map(session =>
+      (this.currentTimes(session.times, day).length !== 0) && <Schedule
+        cinemaId={session.cinemaId}
+        hallId={session.hallId}
+        movieId={session.movieId}
+        times={this.currentTimes(session.times, day)}
         key={Math.random()}
+        cinemas={this.props.cinemas}
       />
     )
   }
@@ -56,17 +57,20 @@ class FilmProfile extends Component {
     return (
       <div className="movie-profile">
         <div className="movie-profile__name"> {movie.name}</div>
-        <div className="movie-profile__content">
-          <img src={movie.img} className="movie-profile__poster" alt="movie"></img>
-          <div className="movie-profile__description">
-            <span>Description </span>
-            <p>{movie.description}</p>
+        <div className="movie-profile__info">
+          <div className="movie-profile__content">
+            <img src={movie.img} className="movie-profile__poster" alt="movie"></img>
+            <div className="movie-profile__description">
+              <span>Description </span>
+              <p>{movie.description}</p>
+            </div>
+          </div>
+          <div className="movie-profile__tickets-info">
+            <Calendar selectDay={this.selectDay} days={days} />
+            {this.currentSessions(this.props.sessions, movieId, this.state.day)}
           </div>
         </div>
-        <div className="movie-profile__tickets-info">
-          <Calendar selectDay={this.selectDay} days={days} />
-          {this.currentSessions(this.props.sessions, idMovie, this.state.day)}
-        </div>
+
       </div>
     );
   }
