@@ -19,7 +19,7 @@ class SelectSeats extends Component {
           movieId={movieId}
           hallId={hallId}
           isSelected={
-            this.props.selectedSeats.find((seat) => seat.id === `${row}.${i}.${cost}`)
+            this.props.selectedSeats.find((seat) => seat.id === `${row}.${i}`)
           }
           selectTicket={this.props.selectTicket}
           selectedSeats={this.props.selectedSeats}

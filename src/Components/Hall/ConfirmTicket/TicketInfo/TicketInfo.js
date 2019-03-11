@@ -4,7 +4,7 @@ import './TicketInfo.scss'
 
 class TicketInfo extends Component {
   render() {
-    const { number, additionalServices, movieName, id, cinemaId } = this.props;
+    const {additionalServices, movieName, id, cinemaId, row, seat } = this.props;
     const services = (additionalServices.filter(service => service.cinemaId == cinemaId))[0].services;
     return (
       <div className="confirm-ticket-component">
@@ -17,7 +17,7 @@ class TicketInfo extends Component {
               {movieName}
             </span>
             <span>
-              {`row ${number.split('.')[0]}/seat ${number.split('.')[1]}`}
+              {`row ${row}/seat ${seat}`}
             </span>
           </div>
         </div>
@@ -27,11 +27,11 @@ class TicketInfo extends Component {
               return (
                 <div className="inputGroup" key={this.props.number + service.name}>
                   <input
-                    id={"option" + this.props.number + service.name}
+                    id={"option" + row + seat + service.name}
                     name="option1"
                     type="checkbox"
                   />
-                  <label htmlFor={"option" + this.props.number + service.name}>{service.name}</label>
+                  <label htmlFor={"option" + row + seat + service.name}>{service.name}</label>
                 </div>
               )
             })

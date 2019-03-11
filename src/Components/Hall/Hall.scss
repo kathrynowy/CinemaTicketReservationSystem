@@ -7,7 +7,12 @@
   justify-content: center;
   align-items: center;
   border: $light-brown solid 1px;
-
+  -webkit-touch-callout: none; 
+  -webkit-user-select: none; 
+  -khtml-user-select: none; 
+  -moz-user-select: none; 
+  -ms-user-select: none; 
+  user-select: none;
 
   &__screen { 
     border-top: 40px solid $brown;
@@ -27,17 +32,22 @@
   }
   
   &-legend {
+    display: flex;
+    flex-direction: row; 
+
     &__text {
       font-size: 1.1rem;
+      margin-right: 10px;
     }
 
     &__seat-type {
-      display: inline-block;
+      display: flex;
     }
 
     &__icon {
-      display: inline-block;
       box-shadow: 0 1px 3px 1px #BBB;
+      margin-bottom: 5px;
+      margin-right: 5px;
     
       &_free {
         background-color: #fff;
@@ -129,7 +139,7 @@
 
       &__seat-type_selected,
       &__seat-type_bought {
-        margin-left: 90px;
+        margin-left: 9px;
       }
       
       &__icon {
@@ -163,7 +173,7 @@
 
       &__seat-type_selected,
       &__seat-type_bought {
-        margin-left: 80px;
+        margin-left: 8px;
       }
       
       &__icon {
