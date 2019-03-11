@@ -7,11 +7,10 @@ class MovieCard extends Component {
   render() {
     const { movie } = this.props;
     return (
-
-      <div className="container">
+      <div className="cardContainer">
         <div className="card">
           <img
-            className="media"
+            className="mediaa"
             src={movie.img}
             title="Contemplative Reptile"
           />
@@ -21,16 +20,14 @@ class MovieCard extends Component {
             </h3>
           </div>
           <div className="btn">
-            <Button variant="contained" size="large" className="button">
+            <Button variant="contained" fullWidth color='primary' size="large" className="button">
               Buy ticket
-         </Button>
+            </Button>
           </div>
         </div>
       </div>
     );
   }
 }
-
-
 
 export default MovieCard;

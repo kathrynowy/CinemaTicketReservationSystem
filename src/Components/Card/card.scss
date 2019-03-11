@@ -1,42 +1,193 @@
-.card {
-  margin: 5px 5px;
-  min-width: 250px;
-  display: 'inline-block';
-
-}
-
-.title {
-  text-align: center;
-  height: 2.3rem;
-  padding: 2px !important;
-  font-size: 1.2rem !important;
-  font-weight: 300;
-}
-
-.movie-title {
-  margin: auto;
-  margin-bottom: 0.5rem;
-
-}
-
-.container {
-  margin: 0;
-  padding: 0;
-  margin-bottom: 5px;
+ @media only screen and (max-width: 420px) {} 
  
+ @media only screen and (max-width: 992px) {
+  .card {
+    margin: 5px 5px;
+    display: 'inline-block';
+    background-color: pink;
+    height: 335px;
+    width: 180px;
+  }
+  
+  .title {
+    text-align: center;
+    height: 2.3rem;
+    padding: 2px !important;
+    font-size: 1.1rem !important;
+    font-weight: 300;
+  }
+  
+  .movie-title {
+    margin: auto;
+    margin-bottom: 0.5rem;
+  
+  }
+
+  .cardContainer {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 7px;
+    margin-left: 12px;
+    width: 180px;
+    height: 335px;
+  }
+  
+  .mediaa {
+     width: 180px;
+    height: 240px; 
+  } 
+  
+  .btn {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .button {
+    width: '100%';
+    margin: '0';
+  }
+ }
+
+ @media only screen and (max-width: 768px) {
+  .card {
+    margin: 5px 5px;
+    display: 'inline-block';
+    background-color: lightgreen;
+    height: 255px;
+    width: 140px;
+  }
+  
+  .title {
+    text-align: center;
+    height: 2.3rem;
+    padding: 2px !important;
+    font-size: 1.1rem !important;
+    font-weight: 300;
+  }
+  
+  .movie-title {
+    margin: auto;
+    margin-bottom: 0.5rem;
+  
+  }
+
+  .cardContainer {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 4px;
+    margin-left: 7px;
+    width: 140px;
+    height: 255px;
+  }
+  
+  .mediaa {
+     width: 140px;
+    height: 160px; 
+  } 
+  
+  .btn {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .button {
+    width: '100%';
+    margin: '0';
+  }
+ }
+
+ @media only screen and (min-width: 993px) {
+ 
+  .card {
+    margin: 5px 5px;
+    display: 'inline-block';
+    height: 400px;
+    width: 240px;
+    background-color: burlywood;
+  }
+  
+  .title {
+    text-align: center;
+    height: 2.3rem;
+    padding: 2px !important;
+    font-size: 1.2rem !important;
+    font-weight: 300;
+    margin-bottom: 7px;
+  }
+  
+  .movie-title {
+    margin: auto;
+    margin-bottom: 0.5rem;
+  }
+
+  .cardContainer {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 6px;
+    margin-left: 8px;
+    width: 240px;
+    height: 400px;
+  }
+  
+  .mediaa {
+    width: 240px;
+    height: 300px;
+  }
+  
+  .btn {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .button {
+    width: '100%';
+    margin: '0';
+  }
 }
 
-.media {
-  height: 350px;
-  width: 250px;
-}
+ @media only screen and (min-width: 1200px) {
+  .card {
+    margin: 5px 5px;
+    min-width: 250px;
+    display: 'inline-block';
+    height: 450px;
+    background-color: lightsteelblue;
+  }
+  
+  .title {
+    text-align: center;
+    height: 2.3rem;
+    padding: 2px !important;
+    font-size: 1.2rem !important;
+    font-weight: 300;
+    margin-bottom: 7px;
+  }
+  
+  .movie-title {
+    margin: auto;
+    margin-bottom: 0.5rem;
+  }
 
-.btn {
-  display: flex;
-  justify-content: center;
-}
-
-.button {
-  width: '100%';
-  margin: '0';
-}
+  .cardContainer {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 5px;
+    width: 260px;
+    height: 450px;
+  }
+  
+  .mediaa {
+    width: 250px;
+   height: 350px;
+  }
+  
+  .btn {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .button {
+    width: '100%';
+    margin: '0';
+  }
+ }
