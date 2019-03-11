@@ -8,18 +8,18 @@ import Seat from './Seat/Seat.js'
 class SelectSeats extends Component {
   handleDrawSeats = (amount, row, cost, cinemaId, movieId, hallId) => {
     let seats = [];
-    for (let i = 0; i < amount; i++) {
+    for (let i = 1; i <= amount; i++) {
       seats.push(
         <Seat
-          seat={i + 1}
+          seat={i}
           row={row}
           cost={cost}
-          key={i + 1}
+          key={i}
           cinemaId={cinemaId}
           movieId={movieId}
           hallId={hallId}
           isSelected={
-            this.props.selectedSeats.find((seat) => seat.id === `${row}.${i + 1}.${cost}`)
+            this.props.selectedSeats.find((seat) => seat.id === `${row}.${i}.${cost}`)
           }
           selectTicket={this.props.selectTicket}
           selectedSeats={this.props.selectedSeats}

@@ -3,6 +3,7 @@ import { getAdditionalServicesAsync } from '../../actions/index.js'
 import additionalServices from '../../additionalServices.js'
 import ConfirmTicket from '../../Components/Hall/ConfirmTicket/ConfirmTicket.js';
 import { connect } from 'react-redux';
+import buyTickets from '../../reducers/boughtTickets.js';
 
 
 class ConfirmTicketsPage extends Component {
@@ -15,6 +16,7 @@ class ConfirmTicketsPage extends Component {
       this.props.additionalServices.length != 0 && <ConfirmTicket
         additionalServices={this.props.additionalServices}
         selectedSeats={this.props.selectedSeats}
+        onBuyTickets={this.props.onBuyTickets}
       />
     );
   }
@@ -28,6 +30,9 @@ const mapStateToProps = store => ({
 const mapDispatchToProps = dispatch => ({
   getAdditionalServicesAsync(additionalServices) {
     dispatch(getAdditionalServicesAsync(additionalServices));
+  },
+  onBuyTickets(tickets) {
+    dispatch(buyTickets(tickets));
   }
 });
 

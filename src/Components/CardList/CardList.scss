@@ -1,3 +1,6 @@
+@import '../variables.scss';
+
+
 .container {
   font-family: 'Nunito','Helvetica Neue','Helvetica','Arial','sans-serif';
   background-color:#e8eaf6;
@@ -9,20 +12,19 @@
   align-items: space-between;
   flex-direction: row;
   flex-wrap: wrap;
-  
 }
 
 input[type="button"]:focus { 
   outline: 0; 
   outline-offset: 0; 
-  }
+}
 
 @media only screen and (max-width: 992px) {
   .card-list {
     margin: 0px 4rem;
     padding-left: 40px;
   }
- }
+}
 
  @media only screen and (max-width: 768px) {
   .card-list {
@@ -52,16 +54,13 @@ input[type="button"]:focus {
   }
  }
 
- .card__button {
-    height: 50px;
-    width: 100%;
-    font-size: 24px !important;
-      border: 1px solid rgb(233, 136, 157); 
-      background-color: rgb(38, 38, 41); 
-      color: rgb(233, 136, 157); 
-      font-size: 17px; 
-      padding: 10px 15px; 
-      border-radius: 40px; 
-      font-weight: 100; 
-      letter-spacing: 0.01em; 
+.card__button {
+  height: 45px;
+  width: 100%;
+  border: 1px solid $pink; 
+  background-color: $light-brown; 
+  color: $pink; 
+  font-size: 1.3rem; 
+  padding: 10px 15px; 
+  border-radius: 40px;
 }

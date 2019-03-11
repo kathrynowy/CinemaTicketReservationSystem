@@ -14,7 +14,7 @@
     display: flex;
     flex-wrap: wrap;
     flex: 1 1 auto;
-    background-color: rgb(245, 236, 242); 
+    background-color: #f5ecf2; 
     padding-left: 5px;
 
     &__info {
@@ -49,14 +49,11 @@
     margin: 0px 4rem;
     
     .movie-profile__name {
-      font-size: 22px;
-      font-weight: 600;
       margin-right: 130px;
     }    
   }
 
   .movie-profile__content {
-    flex-direction: column;
     margin-bottom: 15px;
     margin-top: 15px; 
 
@@ -95,13 +92,10 @@
     margin: 0 1rem;
 
     &__name {
-      font-size: 20px;
-      font-weight: 600;
       margin-right: 80px;
     }    
   
     &__content {
-      flex-direction: column;
       margin-bottom: 15px;
       margin-top: 15px; 
     }
@@ -149,8 +143,6 @@
     }
 
     &__content {
-      flex-direction: column;
-    
       margin-bottom: 15px;
       margin-top: 15px; 
     }

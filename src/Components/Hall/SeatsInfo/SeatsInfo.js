@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 class SeatsInfo extends Component {
   render() {
-    const disabledBtn = this.props.selectedSeats.length ? false : true;
+    const isDisabled = !this.props.selectedSeats.length;
     const newCost = this.props.selectedSeats.reduce((cost, seat) => {
       return cost + +seat.id.split('.')[2];
     }, 0)
@@ -19,7 +19,7 @@ class SeatsInfo extends Component {
         </div>
         <div className="seats-info__include">Cost: {(newCost || ' ')}byn
         </div>
-        <Link to="/confirm-ticket"><input type="button" className="seats-info__btn" disabled={disabledBtn} value="buy" disabled={disabledBtn} /></Link>
+        <Link to="/confirm-ticket"><input type="button" className="seats-info__btn" disabled={isDisabled} value="buy" /></Link>
       </div>
     );
   }

@@ -5,42 +5,35 @@ import './styles.scss';
 import movieData from '../../movieData.js'
 
 
+const DAY_IN_MILLISECONDS = 1000 * 60 * 60 * 24;
+
 class FilmProfile extends Component {
   state = {
-    day: new Date().getTime() + 1000 * 60 * 60 * 3,
+    day: new Date().getTime(),
   }
 
-  getSecondsToday = () => {
-    const date = new Date();
-    return date.getHours() * 3600 + date.getMinutes() * 60 + date.getSeconds();
-  };
-
-  currentTimes = (times, day) => {
-    return times.filter((time) => +time > day && +time < (day + 86400000))
+  getCurrentTimes = (times, day) => {
+    return times.filter((time) => +time > day && +time < (day + DAY_IN_MILLISECONDS))
   }
 
-  selectDay = (day) => {
-    this.setState({
-      day
-    })
-  }
+  selectDay = (day) => this.setState({ day })
 
-  currentSessions = (sessions, movieId, day) => {
+  getCurrentSessions = (sessions, movieId, day) => {
     const newSessions = sessions.filter(session => session.movieId == movieId);
     return newSessions.map(session =>
-      (this.currentTimes(session.times, day).length !== 0) && <Schedule
+      this.getCurrentTimes(session.times, day).length && <Schedule
         cinemaId={session.cinemaId}
         hallId={session.hallId}
         movieId={session.movieId}
-        times={this.currentTimes(session.times, day)}
-        key={Math.random()}
+        times={this.getCurrentTimes(session.times, day)}
+        key={session.cinemaId + session.hallId + session.movieId}
         cinemas={this.props.cinemas}
       />
     )
   }
 
   createDays = () => {
-    const DAY_IN_MILLISECONDS = 1000 * 60 * 60 * 24;
+
     const today = new Date().getTime();
     const days = [];
     for (let i = 0; i < 14; i++) {
@@ -67,7 +60,7 @@ class FilmProfile extends Component {
           </div>
           <div className="movie-profile__tickets-info">
             <Calendar selectDay={this.selectDay} days={days} />
-            {this.currentSessions(this.props.sessions, movieId, this.state.day)}
+            {this.getCurrentSessions(this.props.sessions, movieId, this.state.day)}
           </div>
         </div>
 

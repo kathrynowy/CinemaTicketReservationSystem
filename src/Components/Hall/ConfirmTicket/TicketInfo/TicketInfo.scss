@@ -1,3 +1,5 @@
+@import '../../../variables.scss';
+
 .confirm-ticket-component {
   margin-bottom: 30px;
   display: flex;
@@ -9,22 +11,21 @@
   display: flex;
   justify-self: center;
   flex: 1 1 0;
-  justify-content: space-evenly !important;
+  justify-content: space-evenly;
   flex-direction: row;
   justify-content: center;
   text-align: center;
-  border: 1px solid rgb(236, 186, 197); 
-  background-color: rgb(38, 38, 41);
+  border: 1px solid $light-pink; 
+  background-color: $brown;
   border-radius: 15px;
 }
 
 .confirm-ticket__number {
-  border-right:  1px solid black;
-    align-items: center;
-    justify-content: flex-start;
-    display: flex;
+  border-right:  1px solid #000000;
+  align-items: center;
+  justify-content: flex-start;
+  display: flex;
   padding-right: 10px;
-   
 }
 
 .confirm-ticket__info {
@@ -35,7 +36,7 @@
 }
 
 .inputGroup {
-  background: rgb(38, 38, 41);
+  background: $brown;
   display: block;
   margin: 10px 0;
   position: relative;
@@ -45,7 +46,7 @@
     width: 100%;
     display: block;
     text-align: left;
-    color: rgb(236, 186, 197); 
+    color: $light-pink; 
     cursor: pointer;
     position: relative;
     z-index: 2;
@@ -57,7 +58,7 @@
       height: 10px;
       border-radius: 50%;
       content: '';
-      background-color: rgb(236, 186, 197);
+      background-color: $light-pink;
       
       position: absolute;
       left: 50%;
@@ -72,7 +73,7 @@
       width: 32px;
       height: 32px;
       content: '';
-      border: 2px solid rgb(236, 186, 197);
+      border: 2px solid $light-pink;
       background-color: #fff;
       background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.414 11L4 12.414l5.414 5.414L20.828 6.414 19.414 5l-10 10z' fill='%23fff' fill-rule='nonzero'/%3E%3C/svg%3E ");
       background-repeat: no-repeat;
@@ -89,7 +90,7 @@
   }
 
   input:checked ~ label {
-    color: rgb(38, 38, 41);
+    color: $brown;
 
     &:before {
       transform: translate(-50%, -50%) scale3d(56, 56, 1);
@@ -97,8 +98,8 @@
     }
 
     &:after {
-      background-color: rgb(38, 38, 41);
-      border-color: rgb(38, 38, 41);
+      background-color: $brown;
+      border-color: $brown;
     }
   }
 
@@ -115,6 +116,7 @@
     visibility: hidden;
   }
 }
+
 .confirm-ticket__ticket-info {
   width: 300;
   height: 100px;
@@ -130,44 +132,16 @@
   }
 }
 
-@media only screen and (max-width: 992px) {
-  .inputGroup {
-    font-size: 18px;
-  }
-} 
-@media only screen and (max-width: 768px) {
-  .inputGroup {
-    font-size: 18px;
-  }
-} 
-@media only screen and (max-width: 420px) {
-  .inputGroup {
-    width: 300px;
-    font-size: 18px;
-  }
-}
-@media only screen and (min-width: 993px) {
-  .inputGroup {
-    font-size: 18px;
-  }
-}
-
-@media only screen and (min-width: 1200px) {
-  .inputGroup {
-    font-size: 18px;
-  }
-}
-
 body {
-font-family: 'Fira Sans', sans-serif;
+  font-family: 'Fira Sans', sans-serif;
 }
 
 *,
 *::before,
 *::after {
-box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 html {
-box-sizing: border-box;
+  box-sizing: border-box;
 }

@@ -3,201 +3,52 @@
 }
 
 ::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
 }
 
-@media only screen and (max-width: 992px) {
-  td > span, th > span {
-    font-family: 'PT Sans';
-    display: block;
-    width: 35px;
-    height: 30px;
-    text-align: center;
-    line-height: 30px;
-    border-radius: 30px; 
-    font-size: 22px;
-    font-weight: 400;
-  }
-  
-  td {
-    color: #b0b0b0;
-  }
-
-  .calendar__weekday {
-    color: #629ee5;
-  }
-
-  .calendar__day:hover{
-    background-color: rgb(188, 208, 245);
-    color: white;
-    cursor: pointer;
-  }
-
-  .calendar {
-    margin-top: 5px;
-    border-top: 1px solid #ccc;
-    width: 95%;
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-    
-  }
+td > span, th > span {
+  font-family: 'PT Sans';
+  display: block;
+  text-align: center;
+  border-radius: 30px; 
+  line-height: 30px;
+  font-weight: 300;
+  font-size: 24px;
+  width: 35px;
+  height: 30px;
 }
 
-@media only screen and (max-width: 768px) {
-  td > span, th > span {
-    font-family: 'PT Sans';
-    display: block;
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    line-height: 30px;
-    border-radius: 30px; 
-    font-size: 20px;
-    font-weight: 200;
-  }
-
-  td {
-    color: #b0b0b0;
-  }
-
-  .calendar__weekday {
-    color: #629ee5;
-  }
-
-  .calendar__day:hover{
-    background-color: rgb(188, 208, 245);
-    color: white;
-    cursor: pointer;
-  }
-
-  .calendar {
-    margin-top: 5px;
-    border-top: 1px solid #ccc;
-    width:90%;
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-  }
+td {
+  color: #b0b0b0;
 }
 
-@media only screen and (max-width: 420px) {
-  td > span, th > span {
-    font-family: 'PT Sans';
-    display: block;
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    line-height: 30px;
-    border-radius: 30px; 
-    font-size: 20px;
-    font-weight: 200;
-  }
+.calendar {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-top: 1px solid #ccc;
+  margin-top: 5px;
+  width: 90%;
 
-  td {
-    color: #b0b0b0;
-  }
-
-  .calendar__weekday {
+  &__weekday {
     color: #629ee5;
   }
 
-  .calendar__day:hover{
+  &__day:hover{
     background-color: rgb(188, 208, 245);
     color: white;
     cursor: pointer;
-  }
-
-  .calendar {
-    margin-top: 5px;
-    border-top: 1px solid #ccc;
-    width:90%;
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-} 
-
-@media only screen and (min-width: 993px) {
-  td > span, th > span {
-    font-family: 'PT Sans';
-    display: block;
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    line-height: 30px;
-    border-radius: 30px; 
-    font-size: 25px;
-    font-weight: 300;
-  }
-
-  td {
-    color: #b0b0b0;
-  }
-
-  .calendar__weekday {
-    color: #629ee5;
-  }
-
-  .calendar__day:hover{
-    background-color: rgb(188, 208, 245);
-    color: white;
-    cursor: pointer;
-  }
-
-  .calendar {
-    margin-top: 5px;
-    border-top: 1px solid #ccc;
-    width: 95%;
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
   }
 }
 
 @media only screen and (min-width: 1200px) {
   td > span, th > span {
-    font-family: 'PT Sans';
-    display: block;
     width: 40px;
     height: 35px;
-    text-align: center;
-    line-height: 35px;
-    border-radius: 30px;  
-    font-size: 26px;
-    font-weight: 300;
-  }
-
-  td {
-    color: #b0b0b0;
-  }
-
-  .calendar__weekday {
-    color: #629ee5;
-  }
-
-  .calendar__day:hover{
-    background-color: rgb(188, 208, 245);
-    color: white;
-    cursor: pointer;
-  }
-
-  .calendar {
-    margin-top: 5px;
-    border-top: 1px solid #ccc;
-    width: 95%;
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
   }
 }

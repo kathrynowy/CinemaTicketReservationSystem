@@ -13,8 +13,6 @@ export default class SignUp extends Component {
     return (
       <div className="signup-form">
         <form >
-
-
           <input type="text" placeholder="username" required autoFocus={true} />
           <TextField label="Custom CSS" />
           <input type="password" placeholder="password" required />

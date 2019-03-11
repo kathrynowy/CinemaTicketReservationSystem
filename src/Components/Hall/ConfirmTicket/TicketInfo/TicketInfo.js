@@ -10,25 +10,29 @@ class TicketInfo extends Component {
       <div className="confirm-ticket-component">
         <div className="confirm-ticket__ticket-info">
           <div className="confirm-ticket__number">
-            {id+1}
+            {id + 1}
           </div>
           <div className="confirm-ticket__info">
             <span>
               {movieName}
-          </span>
+            </span>
             <span>
               {`row ${number.split('.')[0]}/seat ${number.split('.')[1]}`}
-          </span>
+            </span>
           </div>
         </div>
         <div>
           {
-            services.map(service => {
+            services.map((service, index) => {
               return (
                 <div className="inputGroup" key={this.props.number + service.name}>
-                <input id={"option" + this.props.number + service.name } name="option1" type="checkbox" />
-                <label htmlFor={"option" + this.props.number + service.name}>{service.name}</label>
-              </div>
+                  <input
+                    id={"option" + this.props.number + service.name}
+                    name="option1"
+                    type="checkbox"
+                  />
+                  <label htmlFor={"option" + this.props.number + service.name}>{service.name}</label>
+                </div>
               )
             })
           }

@@ -28,7 +28,7 @@ const mapStateToProps = store => ({
   sessions: store.sessions.sessions,
   sessionsErrored: store.sessions.sessionErrored,
   cinemas: store.cinemas.cinemas,
-  cinemasErorred: store.sessions.cinemasErrored
+  cinemasErorred: store.cinemas.cinemasErrored
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import './ConfirmTicket.scss'
 import TicketInfo from './TicketInfo/TicketInfo';
 import { Link } from 'react-router-dom';
-
 import movieData from '../../../movieData.js'
+
 
 class ConfirmTicket extends Component {
   render() {
@@ -14,13 +14,13 @@ class ConfirmTicket extends Component {
         <div className="confirm-ticket"> {
           selectedSeats.map((seat, index) => {
             const movie = movieData.find(movie => movie.id == seat.movieId);
-            return <TicketInfo key={seat.id} id={index} number={seat.id} cinemaId={seat.cinemaId} additionalServices={additionalServices} movieName={movie.name}/>
+            return <TicketInfo key={seat.id} id={index} selectedSeats={selectedSeats} number={seat.id} cinemaId={seat.cinemaId} additionalServices={additionalServices} movieName={movie.name} />
           })
         }
         </div>
         <div>
-          <input type="submit" value="confirm" className="confirm-btn" />
-          <Link to="/hall"><input type="button" value="back" className="back-btn" /></Link>
+          <input type="submit" value="confirm" className="button button_confirm" />
+          <Link to="/hall"><input type="button" value="back" className="button" /></Link>
         </div>
       </div>
     );

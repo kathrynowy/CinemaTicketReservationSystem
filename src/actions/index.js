@@ -1,4 +1,4 @@
-import { SELECT_TICKET, GET_CINEMAS_SUCCESS, GET_CINEMAS_FAILURE, GET_MOVIES_SUCCESS, GET_MOVIES_FAILURE, GET_SESSIONS_SUCCESS, GET_SESSIONS_FAILURE, GET_ADDITIONAL_SERVICES_SUCCESS, GET_ADDITIONAL_SERVICES_FAILURE } from '../constans/actionTypes.js'
+import { SELECT_TICKET, BUY_TICKET, GET_CINEMAS_SUCCESS, GET_CINEMAS_FAILURE, GET_MOVIES_SUCCESS, GET_MOVIES_FAILURE, GET_SESSIONS_SUCCESS, GET_SESSIONS_FAILURE, GET_ADDITIONAL_SERVICES_SUCCESS, GET_ADDITIONAL_SERVICES_FAILURE } from '../constans/actionTypes.js'
 
 
 export const selectTicket = ticket => ({
@@ -9,6 +9,11 @@ export const selectTicket = ticket => ({
     movieId: ticket.movieId,
     hallId: ticket.hallId
   }
+})
+
+export const buyTickets = tickets => ({
+  type: BUY_TICKET,
+  payload: tickets
 })
 
 export const getMoviesAsync = (movies) => {
