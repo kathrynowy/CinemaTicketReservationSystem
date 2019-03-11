@@ -54,20 +54,20 @@ class FilmProfile extends Component {
     const movieId = this.props.movieId;
     const movie = movieData.find((movie) => movie.id === movieId)
     return (
-        <div className="movie-profile">
-          <div className="movie-profile__name"> {movie.name}</div>
-          <div className="movie-profile__content">
-            <img src={movie.img} className="movie-profile__poster" alt="movie"></img>
-            <div className="movie-profile__description">
-              <span>Description </span>
-              <p>{movie.description}</p>
-            </div>
-          </div>
-          <div className="movie-profile__tickets-info">
-            <Calendar selectDay={this.selectDay} days={days} />
-            {this.currentSessions(this.props.sessions, movieId, this.state.day)}
+      <div className="movie-profile">
+        <div className="movie-profile__name"> {movie.name}</div>
+        <div className="movie-profile__content">
+          <img src={movie.img} className="movie-profile__poster" alt="movie"></img>
+          <div className="movie-profile__description">
+            <span>Description </span>
+            <p>{movie.description}</p>
           </div>
         </div>
+        <div className="movie-profile__tickets-info">
+          <Calendar selectDay={this.selectDay} days={days} />
+          {this.currentSessions(this.props.sessions, idMovie, this.state.day)}
+        </div>
+      </div>
     );
   }
 }

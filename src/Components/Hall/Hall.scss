@@ -1,6 +1,9 @@
 .hall {
   overflow-x: auto;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
 }
 
 .hall::-webkit-scrollbar {
