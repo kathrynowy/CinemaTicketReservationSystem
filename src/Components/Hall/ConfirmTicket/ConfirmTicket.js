@@ -7,6 +7,41 @@ import './ConfirmTicket.scss'
 
 
 class ConfirmTicket extends Component {
+  state = {
+    choosedServices: [
+      {
+        ticketId: 0,
+        service: [0,2]
+      }
+    ]
+  }
+  handleSelect = (ticketId, serviceId) => {
+    const services = this.state.choosedServices;
+
+    if (services.length === 0) {
+      services.push({
+        ticketId: ticketId,
+        service: [serviceId]
+      });
+
+      this.setState({
+        choosedServices: services
+      })
+    }
+
+    services.map((service) => {
+      if (service.ticketId === ticketId) {
+        service.service.includes(serviceId) 
+          ? service.service = service.service.filter(id => id !== serviceId)
+          : service.service.push(serviceId)
+      } 
+    }) 
+    this.setState({
+      choosedServices: services
+    })
+  }
+
+
   render() {
     const { additionalServices, selectedSeats } = this.props;
     return (
@@ -25,6 +60,7 @@ class ConfirmTicket extends Component {
                 cinemaId={seat.cinemaId}
                 additionalServices={additionalServices}
                 movieName={movie.name}
+                handleSelect={this.handleSelect}
               />
             );
           })
