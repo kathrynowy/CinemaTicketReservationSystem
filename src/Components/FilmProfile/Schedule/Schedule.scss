@@ -1,9 +1,11 @@
-a { 
+@import '../../variables.scss';
+
+.schedule__ticket { 
   text-decoration: none; 
-  color: rgb(233, 136, 157); 
+  color: $pink; 
 } 
-a:hover { 
-  color: rgb(236, 186, 197); 
+.schedule__ticket:hover { 
+  color: $light-pink; 
 }
 
 .schedule {
@@ -11,7 +13,11 @@ a:hover {
   display: flex; 
   
   &__cinema { 
-    display: flex; 
+    display: flex;   
+    margin-bottom: 10px; 
+    
+    font-size: 18px; 
+    font-weight: 400; 
   }
 
   &__space { 
@@ -24,33 +30,39 @@ a:hover {
   }
 
   &__time { 
-    color: rgb(48, 48, 54); 
+    color: $light-brown; 
     font-weight: bold; 
-    align-self: center; 
+    align-self: center;
+    font-size: 13px;  
   } 
   
   &__ticket:hover { 
     .schedule__time { 
-      color: rgb(250, 226, 229); 
+      color: $light-pink; 
     } 
-    background-color: rgb(48, 48, 54); 
+    background-color: $light-brown; 
     .schedule_ticket { 
-      border-left: 1px dashed rgb(250, 226, 229); 
+      border-left: 1px dashed $light-pink; 
     } 
   } 
   
   &_ticket { 
     display: flex; 
-    border-left: 1px dashed rgb(38, 38, 41); 
+    border-left: 1px dashed $brown; 
+    width: 13px; 
   } 
   
   &__ticket { 
     display: flex; 
     flex-direction: row; 
-    border: 1px solid rgb(38, 38, 41); 
-    background-color:rgb(250, 226, 229); 
+    border: 1px solid $brown; 
+    background-color: $light-pink; 
     justify-content: space-evenly; 
     border-radius: 3px; 
+    height: 22px; 
+    margin-right: 5px; 
+    margin-bottom: 5px; 
+    width: 62px; 
   } 
 } 
     
@@ -69,20 +81,6 @@ a:hover {
     &__ticket-list { 
       justify-content: flex-end;
     }
-    &__time { 
-      font-size: 13px; 
-    } 
-    
-    &_ticket { 
-      width: 13px; 
-    } 
-    
-    &__ticket { 
-      width: 62px; 
-      height: 22px; 
-      margin-right: 5px; 
-      margin-bottom: 5px; 
-    }  
   } 
 } 
   
@@ -93,10 +91,7 @@ a:hover {
     flex-direction: row; 
   
     &__cinema { 
-      flex-grow: 1; 
-      margin-bottom: 10px; 
-      font-size: 18px; 
-      font-weight: 400; 
+      flex-grow: 1;
     } 
     
     &__space { 
@@ -106,20 +101,6 @@ a:hover {
     &__ticket-list { 
       justify-content: flex-start; 
     }
-    &__time { 
-      font-size: 13px; 
-    } 
-    
-    &_ticket { 
-      width: 13px; 
-    } 
-    
-    &__ticket { 
-      width: 62px; 
-      height: 22px; 
-      margin-right: 5px; 
-      margin-bottom: 5px; 
-    } 
   } 
 } 
     
@@ -130,10 +111,7 @@ a:hover {
     align-items: flex-start; 
     
     &__cinema { 
-    flex-grow: 3; 
-    margin-bottom: 10px; 
-    font-size: 18px; 
-    font-weight: 400; 
+    flex-grow: 3;
     } 
     
     &__space { 
@@ -143,20 +121,6 @@ a:hover {
     &__ticket-list { 
       flex-grow: 1; 
     }  
-    &__time { 
-    font-size: 13px; 
-    } 
-    
-    &_ticket { 
-    width: 13px; 
-    } 
-    
-    &__ticket { 
-      width: 62px; 
-      height: 22px; 
-      margin-right: 5px; 
-      margin-bottom: 5px; 
-    } 
   } 
 } 
 
@@ -166,8 +130,6 @@ a:hover {
     
     &__cinema { 
       flex-grow: 1; 
-      font-size: 18px; 
-      font-weight: 400; 
     } 
     
     &__space { 
@@ -180,21 +142,6 @@ a:hover {
       justify-content: flex-end; 
       width: 200px; 
     }
-
-    &__time { 
-    font-size: 13px; 
-    } 
-    
-    &_ticket { 
-    width: 13px; 
-    } 
-    
-    &__ticket { 
-      width: 62px; 
-      height: 22px; 
-      margin-right: 5px; 
-      margin-bottom: 5px; 
-    } 
   } 
 } 
   
@@ -206,8 +153,6 @@ a:hover {
     &_cinema { 
       display: inline-block; 
       flex-grow: 1; 
-      font-size: 18px; 
-      font-weight: 500; 
     } 
     &__space { 
       display: inline-block; 
@@ -216,19 +161,5 @@ a:hover {
     &__ticket-list { 
       flex-grow: 2; 
     }  
-    &__time { 
-      font-size: 13px; 
-    } 
-    
-    &_ticket { 
-      width: 13px; 
-    } 
-    
-    &__ticket { 
-      width: 62px; 
-      height: 22px; 
-      margin-right: 5px; 
-      margin-bottom: 5px; 
-    } 
   }  
 }

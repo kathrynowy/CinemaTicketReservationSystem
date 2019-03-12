@@ -7,9 +7,17 @@
   justify-content: center;
   align-items: center;
   border: $light-brown solid 1px;
-
+  position: relative;
+  padding-top: 70px;
 
   &__screen { 
+    position: absolute;
+    z-index: 100;
+    left: 50%;
+    margin-right: -30%;
+    transform: translate(0, -50%);
+    top: 3%;
+    width: 100%;
     border-top: 40px solid $brown;
     border-left: 80px solid transparent;
     border-right: 80px solid transparent;
@@ -18,26 +26,27 @@
   &-container {
     display: flex;
     flex-direction: column;
-    flex: 1 1 auto;
     width: 100%;
-  
-    .seats-info {
-      width: 50%;
-    }
   }
   
   &-legend {
+    display: flex;
+    flex-direction: row;
+    
+    
     &__text {
       font-size: 1.1rem;
     }
 
     &__seat-type {
-      display: inline-block;
+      display: flex;
+      margin-left: 8px;
     }
 
     &__icon {
-      display: inline-block;
+      display: flex;
       box-shadow: 0 1px 3px 1px #BBB;
+      margin-right: 5px;
     
       &_free {
         background-color: #fff;
@@ -53,9 +62,6 @@
     }
   }
 }
-
-
-.hall-legend
 
 .hall::-webkit-scrollbar-track {
   box-shadow: inset 0 0 6px #0000004d; 
@@ -84,7 +90,6 @@
       margin-top: 15px;
       margin-bottom: 35px;
       height: 0;
-      width: 550px;
       border-top: 35px solid $brown;
       border-left: 70px solid transparent;
       border-right: 70px solid transparent;
@@ -93,9 +98,9 @@
     &-legend {
       margin-top: 15px;
 
-      &_selected,
-      &_bought {
-        margin-left: 140px;
+      &__seat-type_selected,
+      &__seat-type_bought {
+        margin-left: 40px;
       }
       
       &__icon {
@@ -118,7 +123,6 @@
     &__screen {
       margin-top: 15px;
       margin-bottom: 25px;
-      width: 450px;
       border-top: 30px solid $brown;
       border-left: 80px solid transparent;
       border-right: 80px solid transparent;
@@ -129,7 +133,7 @@
 
       &__seat-type_selected,
       &__seat-type_bought {
-        margin-left: 90px;
+        margin-left: 30px;
       }
       
       &__icon {
@@ -152,10 +156,6 @@
     &__screen {
       margin-top: 15px;
       margin-bottom: 15px;
-      width: 350px;
-      border-top: 20px solid $brown;
-      border-left: 80px solid transparent;
-      border-right: 80px solid transparent;
     }
 
     &-legend {
@@ -163,7 +163,7 @@
 
       &__seat-type_selected,
       &__seat-type_bought {
-        margin-left: 80px;
+        margin-left: 20px;
       }
       
       &__icon {
@@ -187,10 +187,6 @@
       margin-top: 15px;
       margin-bottom: 40px;
       height: 0;
-      width: 650px;
-      border-top: 40px solid #3c3c3d;
-      border-left: 70px solid transparent;
-      border-right: 70px solid transparent;
     }
     &-legend {
       margin-top: 20px;
@@ -221,10 +217,6 @@
       margin-top: 15px;
       margin-bottom: 40px;
       height: 0;
-      width: 650px;
-      border-top: 40px solid $brown;
-      border-left: 60px solid transparent;
-      border-right: 60px solid transparent;
     }
 
     &-legend {
