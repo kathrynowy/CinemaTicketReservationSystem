@@ -8,9 +8,9 @@ const initialState = {
 export default function getAdditionalServices(state = initialState, action) {
   switch (action.type) {
     case GET_ADDITIONAL_SERVICES_SUCCESS:
-    return Object.assign({}, state, {
-      additionalServices: action.payload
-    });
+      return Object.assign({}, state, {
+        additionalServices: action.payload
+      });
     case GET_ADDITIONAL_SERVICES_FAILURE:
       return Object.assign({}, state, {
         isErrored: action.payload

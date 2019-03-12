@@ -15,26 +15,26 @@
   user-select: none;
 
   &__screen { 
+    width: 60%;
+    margin-top: 15px;
     border-top: 40px solid $brown;
     border-left: 80px solid transparent;
     border-right: 80px solid transparent;
+    margin-bottom: 30px;
   }
 
   &-container {
     display: flex;
     flex-direction: column;
-    flex: 1 1 auto;
     width: 100%;
-  
-    .seats-info {
-      width: 50%;
-    }
   }
   
   &-legend {
     display: flex;
-    flex-direction: row; 
-
+    flex-direction: row;
+    margin-top: 15px;
+    justify-content: space-between;
+   
     &__text {
       font-size: 1.1rem;
       margin-right: 10px;
@@ -42,30 +42,30 @@
 
     &__seat-type {
       display: flex;
+      margin: 10px;
     }
 
     &__icon {
-      box-shadow: 0 1px 3px 1px #BBB;
-      margin-bottom: 5px;
+      display: flex;
+      box-shadow: 0 1px 3px 1px $silver;
       margin-right: 5px;
-    
+      width: 25px;
+      height: 25px;
+
       &_free {
-        background-color: #fff;
+        background-color: $white;
       }
     
       &_selected {
-        background-color: #90caf9;
+        background-color: $cornflower-blue;
       }
     
       &_bought {
-        background-color: #e57373;
+        background-color: $bought-tickets;
       }
     }
   }
 }
-
-
-.hall-legend
 
 .hall::-webkit-scrollbar-track {
   box-shadow: inset 0 0 6px #0000004d; 
@@ -82,173 +82,14 @@
   font-weight: 500;
 }
 
-@media only screen and (max-width: 992px) {
-  .seats-information, .hall {
-    margin: 0px 30px;
-  }
+ @media only screen and (max-width: 993px) {
   .hall {
-    margin-top: 30px;
-    margin-bottom: 0px;
-
-    &__screen {
-      margin-top: 15px;
-      margin-bottom: 35px;
-      height: 0;
-      width: 550px;
-      border-top: 35px solid $brown;
-      border-left: 70px solid transparent;
-      border-right: 70px solid transparent;
-    }
-
     &-legend {
-      margin-top: 15px;
-
-      &_selected,
-      &_bought {
-        margin-left: 140px;
-      }
-      
-      &__icon {
-        width: 22px;
-        height: 22px;
-      }  
-    }
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  .seats-information, .hall {
-    margin: 0px 10px;
-  }
-
-  .hall {
-    margin-top: 30px;
-    margin-bottom: 0px;
-
-    &__screen {
-      margin-top: 15px;
-      margin-bottom: 25px;
-      width: 450px;
-      border-top: 30px solid $brown;
-      border-left: 80px solid transparent;
-      border-right: 80px solid transparent;
-    }
-
-    &-legend {
-      margin-top: 15px;
-
-      &__seat-type_selected,
-      &__seat-type_bought {
-        margin-left: 9px;
-      }
-      
       &__icon {
         width: 20px;
         height: 20px;
       }
     }
   }
- }
-
- @media only screen and (max-width: 420px) {
-  .seats-information, .hall {
-    margin: 0px;
-  }
-
-  .hall {
-    margin-top: 30px;
-    margin-bottom: 0px;
-
-    &__screen {
-      margin-top: 15px;
-      margin-bottom: 15px;
-      width: 350px;
-      border-top: 20px solid $brown;
-      border-left: 80px solid transparent;
-      border-right: 80px solid transparent;
-    }
-
-    &-legend {
-      margin-top: 10px;
-
-      &__seat-type_selected,
-      &__seat-type_bought {
-        margin-left: 8px;
-      }
-      
-      &__icon {
-        width: 20px;
-        height: 20px;
-      }
-    }
-  }
- }
-
- @media only screen and (min-width: 993px) {
-  .seats-information, .hall {
-    margin: 0px 30px;
-  }
-
-  .hall {
-    margin-top: 30px;
-    margin-bottom: 0px;
-
-    &__screen {
-      margin-top: 15px;
-      margin-bottom: 40px;
-      height: 0;
-      width: 650px;
-      border-top: 40px solid #3c3c3d;
-      border-left: 70px solid transparent;
-      border-right: 70px solid transparent;
-    }
-    &-legend {
-      margin-top: 20px;
-
-      &__seat-type_selected,
-      &__seat-type_bought {
-        margin-left: 160px;
-      }
-      
-      &__icon {
-        width: 25px;
-        height: 25px;
-      }
-    }
-  }
 }
 
-@media only screen and (min-width: 1200px) {
-  .seats-information, .hall {
-    margin: 0px 7rem;
-  }
-
-  .hall {
-    margin-top: 30px;
-    margin-bottom: 0px;
-
-    &__screen {
-      margin-top: 15px;
-      margin-bottom: 40px;
-      height: 0;
-      width: 650px;
-      border-top: 40px solid $brown;
-      border-left: 60px solid transparent;
-      border-right: 60px solid transparent;
-    }
-
-    &-legend {
-      margin-top: 20px;
-
-        &_selected,
-        &_bought {
-          margin-left: 160px;
-        }
-      
-      &__icon {
-        width: 25px;
-        height: 25px;
-      }
-    }
-  }
-}

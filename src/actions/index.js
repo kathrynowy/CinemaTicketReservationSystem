@@ -34,10 +34,10 @@ export const getMoviesSuccess = (movies) => {
   }
 }
 
-export const getMoviesFailure = (err) => {
+export const getMoviesFailure = (isError) => {
   return {
     type: GET_MOVIES_FAILURE,
-    isErrored: err
+    payload: isError
   }
 }
 
@@ -48,10 +48,10 @@ export const getSessionsSuccess = (sessions) => {
   }
 }
 
-export const getSessionsFailure = (err) => {
+export const getSessionsFailure = (isError) => {
   return {
     type: GET_SESSIONS_FAILURE,
-    isErrored: err
+    payload: isError
   }
 }
 
@@ -70,10 +70,10 @@ export const getCinemasSuccess = (cinemas) => {
   }
 }
 
-export const getCinemasFailure = (err) => {
+export const getCinemasFailure = (isError) => {
   return {
     type: GET_CINEMAS_FAILURE,
-    isErrored: err
+    payload: isError
   }
 }
 

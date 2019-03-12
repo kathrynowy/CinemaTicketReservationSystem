@@ -30,11 +30,31 @@ class Calendar extends Component {
       <div className="calendar">
         <table>
           <tbody>
-            <tr>
-              {formattedDays.map((day) => <td key={day.date} className={(day.weekday === 'вс') || (day.weekday === 'сб') ? "calendar__weekday" : ''} ><span>{day.weekday}</span></td>)}
+            <tr>{
+              formattedDays.map((day) => {
+                return (
+                  <td
+                    key={day.date}
+                    className={(day.weekday === 'вс') || (day.weekday === 'сб')
+                      ? "calendar__weekend"
+                      : 'calendar__weekday'}>
+                    <span className="day">{day.weekday}</span>
+                  </td>
+                );
+              })
+            }
             </tr>
-            <tr>
-              {formattedDays.map((day) => <th key={day.date} onClick={() => this.handleSelect(day.date)}><span className="calendar__day">{(day.day).split('.')[0]}</span></th>)}
+            <tr>{
+              formattedDays.map((day) => {
+                return (
+                  <th key={day.date} onClick={() => this.handleSelect(day.date)} >
+                    <span className="calendar__day day">
+                      {(day.day).split('.')[0]}
+                    </span>
+                  </th>
+                );
+              })
+            }
             </tr>
           </tbody>
         </table>

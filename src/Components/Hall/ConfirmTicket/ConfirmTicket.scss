@@ -1,9 +1,5 @@
 @import '../../variables.scss';
 
-.container {
-  padding-top: 0px;
-}
-
 .confirm-container {
   margin: 0 auto;
   width: 100%;
@@ -12,7 +8,7 @@
   justify-content: flex-start;
   flex-direction: column;
   align-items: center;
-  border: 1px solid #000000;
+  border: 1px solid $black;
   color: $light-pink; 
 }
 

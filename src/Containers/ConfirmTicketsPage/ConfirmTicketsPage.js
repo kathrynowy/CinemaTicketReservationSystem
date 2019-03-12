@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import { getAdditionalServicesAsync } from '../../actions/index.js'
 import additionalServices from '../../additionalServices.js'
 import ConfirmTicket from '../../Components/Hall/ConfirmTicket/ConfirmTicket.js';
-import { connect } from 'react-redux';
 import buyTickets from '../../reducers/boughtTickets.js';
 
 
@@ -13,7 +14,7 @@ class ConfirmTicketsPage extends Component {
 
   render() {
     return (
-      this.props.additionalServices.length != 0 && <ConfirmTicket
+      this.props.additionalServices.length !== 0 && <ConfirmTicket
         additionalServices={this.props.additionalServices}
         selectedSeats={this.props.selectedSeats}
         onBuyTickets={this.props.onBuyTickets}

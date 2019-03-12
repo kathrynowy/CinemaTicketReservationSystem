@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
+
 import './TicketInfo.scss'
 
 
 class TicketInfo extends Component {
   render() {
-    const {additionalServices, movieName, id, cinemaId, row, seat } = this.props;
+    const { row, seat, additionalServices, movieName, ticketId, cinemaId } = this.props;
     const services = (additionalServices.filter(service => service.cinemaId == cinemaId))[0].services;
     return (
       <div className="confirm-ticket-component">
         <div className="confirm-ticket__ticket-info">
           <div className="confirm-ticket__number">
-            {id + 1}
+            {ticketId}
           </div>
           <div className="confirm-ticket__info">
             <span>
@@ -25,13 +26,14 @@ class TicketInfo extends Component {
           {
             services.map((service, index) => {
               return (
-                <div className="inputGroup" key={this.props.number + service.name}>
+                <div className="input-group" key={row + seat + service.name}>
                   <input
+                    className="input-group__service"
                     id={"option" + row + seat + service.name}
                     name="option1"
                     type="checkbox"
                   />
-                  <label htmlFor={"option" + row + seat + service.name}>{service.name}</label>
+                  <label className="input-group__name" htmlFor={"option" + row + seat + service.name}>{service.name}</label>
                 </div>
               )
             })

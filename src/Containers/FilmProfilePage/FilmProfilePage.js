@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
+
+import { getSessionsAsync, getCinemasAsync } from '../../actions/index.js'
 import FilmProfile from '../../Components/FilmProfile/FilmProfile.js';
 import tickets from '../../Sessions.js'
-import { getSessionsAsync, getCinemasAsync } from '../../actions/index.js'
-import { connect } from "react-redux";
 import cinemaData from '../../CinemaData';
 
 
@@ -26,9 +27,9 @@ class FilmProfilePage extends Component {
 
 const mapStateToProps = store => ({
   sessions: store.sessions.sessions,
-  sessionsErrored: store.sessions.sessionErrored,
+  isSessionsErrored: store.sessions.isErrored,
   cinemas: store.cinemas.cinemas,
-  cinemasErorred: store.cinemas.cinemasErrored
+  isCinemasErorred: store.cinemas.isErrored
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -40,6 +41,4 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
-
 export default connect(mapStateToProps, mapDispatchToProps)(FilmProfilePage);
-

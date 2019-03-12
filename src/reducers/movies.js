@@ -2,7 +2,7 @@ import { GET_MOVIES_SUCCESS, GET_MOVIES_FAILURE } from '../constans/actionTypes.
 
 const initialState = {
   movies: [],
-  moviesErrored: false
+  isErrored: false
 }
 
 export default function getMovies(state = initialState, action) {
@@ -13,9 +13,8 @@ export default function getMovies(state = initialState, action) {
       });
     case GET_MOVIES_FAILURE:
       return Object.assign({}, state, {
-        moviesErrored: action.isErrored
+        isErrored: action.isErrored
       });
     default: return state;
   }
 }
-

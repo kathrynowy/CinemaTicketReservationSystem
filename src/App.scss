@@ -1,27 +1,30 @@
  @import 'node_modules/reset-css/sass/_reset.scss'; 
+ @import './Components/variables.scss';
 
  html, body {
   display: flex;
-  flex: 1 1 auto;
-  min-height: 100%;
-  width: 100%;
   flex-direction: column;
   justify-content: center;
-}
+  font-family: 'Nunito','Helvetica Neue','Helvetica','Arial','sans-serif';
+  box-sizing: border-box;
+ }
 
 #root {
   display: flex;
-  flex: 1 1 auto;
   min-height: 100vh;
-  width: 100%;
   flex-direction: column;
 }
 
 .container {
-  font-family: 'Nunito','Helvetica Neue','Helvetica','Arial','sans-serif';
-  background-color: rgb(245, 236, 242);
-  color: rgb(38, 38, 41);
-  padding-top: 20px;
+  background-color: $prim;
+  color: $brown;
+  padding: 0 80px;
   display: flex;
-  flex: 1 1 0;
+  flex: 1 1 auto;
+}
+
+@media only screen and (max-width: 700px) {
+  .container {
+    padding: 0 15px;
+  }
 }

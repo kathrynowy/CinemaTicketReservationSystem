@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+
 import SeatsData from '../../../SeatsData.js'
-import './SelectSeats.scss';
 import Seat from './Seat/Seat.js'
+import './SelectSeats.scss';
 
 
 
@@ -39,12 +40,13 @@ class SelectSeats extends Component {
             return (
               <div className="row" key={seats.row}>
                 <div className="row__number">{seats.row}</div>
-                <div className={seats.row + ' row__seats-container'}>{this.handleDrawSeats(seats.amountOfSeats, seats.row, seats.cost, cinemaId, movieId, hallId)} </div>
+                <div className={seats.row + ' row__seats-container'}>
+                  {this.handleDrawSeats(seats.amountOfSeats, seats.row, seats.cost, cinemaId, movieId, hallId)}
+                </div>
                 <div className="row__number"></div>
               </div>
             );
           })
-
         );
       })
     );
