@@ -1,24 +1,43 @@
+@import '../../variables.scss';
+
 .card {
   margin-top:40px;
   margin: 2px 7px;
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    text-align: center;
+    font-weight: 300;
+    padding: 2px;
+    font-size: 1.2rem;
+    height: 2.2rem;
+    margin-bottom: 7px;
+    flex-wrap: wrap;
+  }
+
+  &__button {
+    height: 45px;
+    width: 100%;
+    border: 1px solid $pink; 
+    background-color: $light-brown; 
+    color: $pink; 
+    font-size: 1.3rem; 
+    padding: 10px 15px; 
+    border-radius: 40px;
+  }
 }
 
-.card__title {
-  text-align: center;
-  font-weight: 300;
-  padding: 2px;
-  font-size: 1.2rem;
-  height: 2.2rem;
-  margin-bottom: 7px;
+input[type="button"]:focus { 
+  outline: 0; 
+  outline-offset: 0; 
 }
 
 @media only screen and (max-width: 992px) {
   .card {
-    width: 180px;
     margin-left: 12px;
   
     &__media {
-      width: 180px;
       height: 240px; 
     } 
   }
@@ -26,10 +45,8 @@
 
 @media only screen and (max-width: 768px) {
   .card {
-    width: 140px;
 
     &__media {
-      width: 140px;
       height: 160px; 
     } 
   }
@@ -38,14 +55,12 @@
 @media only screen and (max-width: 420px) {
   .card {
     margin: 6px 0px;
-    width: 260px;
     
     &__title {
       margin-bottom: 2px;
     }
     
     &__media {
-      width: 260px;
       height: 350px;
     } 
   }
@@ -54,10 +69,8 @@
 @media only screen and (min-width: 993px) {
   .card {
     margin: 6px 8px;
-    width: 220px;
     
     &__media {
-      width: 220px;
       height: 300px;
     }
   }
@@ -65,11 +78,9 @@
 
  @media only screen and (min-width: 1200px) {
   .card {
-    margin: 5px 14px ;
-    width: 260px;
+    margin: 5px 14px;
     
     &__media {
-      width: 260px;
       height: 350px;
     }
   }

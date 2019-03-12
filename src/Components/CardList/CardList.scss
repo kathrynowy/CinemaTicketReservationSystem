@@ -7,22 +7,6 @@
   flex-wrap: wrap;
 }
 
-input[type="button"]:focus { 
-  outline: 0; 
-  outline-offset: 0; 
-}
-
-.card__button {
-  height: 45px;
-  width: 100%;
-  border: 1px solid $pink; 
-  background-color: $light-brown; 
-  color: $pink; 
-  font-size: 1.3rem; 
-  padding: 10px 15px; 
-  border-radius: 40px;
-}
-
 @media only screen and (max-width: 420px) {
   .card-list {
     justify-content: center;

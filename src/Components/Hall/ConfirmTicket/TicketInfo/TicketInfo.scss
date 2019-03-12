@@ -47,7 +47,6 @@
 
   &__name {
     padding: 12px 30px;
-    width: 100%;
     display: block;
     text-align: left;
     color: $light-pink; 
@@ -85,7 +84,7 @@
       border-radius: 50%;
       z-index: 2;
       position: absolute;
-      right: 30px;
+      right: 20px;
       top: 50%;
       transform: translateY(-50%);
       cursor: pointer;
@@ -93,23 +92,9 @@
     }
   }
 
-  .input-group__service:checked ~ .input-group__name {
-    color: $brown;
-
-    &:before {
-      transform: translate(-50%, -50%) scale3d(56, 56, 1);
-      opacity: 1;
-    }
-
-    &:after {
-      background-color: $brown;
-      border-color: $brown;
-    }
-  }
-
-  .input-group__service {
+  &__service {
     width: 32px;
-    height: 320px;
+    height: 32px;
     order: 1;
     z-index: 2;
     position: absolute;
@@ -118,5 +103,19 @@
     transform: translateY(-50%);
     cursor: pointer;
     visibility: hidden;
+
+    &:checked ~ .input-group__name {
+      color: $brown;
+  
+      &:before {
+        transform: translate(-50%, -50%) scale3d(56, 56, 1);
+        opacity: 1;
+      }
+  
+      &:after {
+        background-color: $brown;
+        border-color: $brown;
+      }
+    }
   }
 }
