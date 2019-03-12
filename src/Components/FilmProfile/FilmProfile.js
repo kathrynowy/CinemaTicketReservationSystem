@@ -21,20 +21,19 @@ class FilmProfile extends Component {
 
   getCurrentSessions = (sessions, movieId, day) => {
     const newSessions = sessions.filter(session => session.movieId == movieId);
-    return newSessions.map(session =>
-      this.getCurrentTimes(session.times, day).length && <Schedule
+    return newSessions.map(session => {
+      return (this.getCurrentTimes(session.times, day).length && <Schedule
         cinemaId={session.cinemaId}
         hallId={session.hallId}
         movieId={session.movieId}
         times={this.getCurrentTimes(session.times, day)}
         key={session.cinemaId + session.hallId + session.movieId}
         cinemas={this.props.cinemas}
-      />
-    )
+      />) || ' '
+    })
   }
 
   createDays = () => {
-
     const today = new Date().getTime();
     const days = [];
     for (let i = 0; i < 14; i++) {
@@ -45,7 +44,6 @@ class FilmProfile extends Component {
 
   render() {
     const days = this.createDays();
-
     const movieId = this.props.movieId;
     const movie = movieData.find((movie) => movie.id === movieId)
     return (
