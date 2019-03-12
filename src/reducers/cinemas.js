@@ -18,4 +18,3 @@ export default function getCinemas(state = initialState, action) {
     default: return state;
   }
 }
-

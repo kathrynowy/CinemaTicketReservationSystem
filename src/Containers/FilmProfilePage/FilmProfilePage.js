@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
+
+import { getSessionsAsync, getCinemasAsync } from '../../actions/index.js'
 import FilmProfile from '../../Components/FilmProfile/FilmProfile.js';
 import tickets from '../../Sessions.js'
-import { getSessionsAsync, getCinemasAsync } from '../../actions/index.js'
-import { connect } from "react-redux";
 import cinemaData from '../../CinemaData';
 
 

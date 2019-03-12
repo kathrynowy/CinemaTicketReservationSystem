@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+
 import SelectSeats from './SelectSeats/SelectSeats.js'
 import SeatsInfo from './SeatsInfo/SeatsInfo.js'
 import SeatsData from '../../SeatsData.js';
 import './Hall.scss'
+
 
 class Hall extends Component {
   render() {

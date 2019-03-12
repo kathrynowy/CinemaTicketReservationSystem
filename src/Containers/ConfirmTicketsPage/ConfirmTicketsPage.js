@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import { getAdditionalServicesAsync } from '../../actions/index.js'
 import additionalServices from '../../additionalServices.js'
 import ConfirmTicket from '../../Components/Hall/ConfirmTicket/ConfirmTicket.js';
-import { connect } from 'react-redux';
 import buyTickets from '../../reducers/boughtTickets.js';
 
 

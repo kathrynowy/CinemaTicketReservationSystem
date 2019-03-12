@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+
 import Schedule from './Schedule/Schedule.js'
 import Calendar from './Calendar/Calendar';
-import './styles.scss';
 import movieData from '../../movieData.js'
+import './styles.scss';
 
 
 const DAY_IN_MILLISECONDS = 1000 * 60 * 60 * 24;
@@ -63,11 +64,9 @@ class FilmProfile extends Component {
             {this.getCurrentSessions(this.props.sessions, movieId, this.state.day)}
           </div>
         </div>
-
       </div>
     );
   }
 }
-
 
 export default FilmProfile;

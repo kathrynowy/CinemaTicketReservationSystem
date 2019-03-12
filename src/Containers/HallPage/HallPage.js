@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-import PrimarySearchAppBar from '../../Components/PrimarySearchAppBar/PrimarySearchAppBar.js'
-import Hall from '../../Components/Hall/Hall.js'
-import store from '../../index.js'
-import { selectTicket } from "../../actions/index.js";
-import { SELECT_TICKET } from '../../constans/actionTypes.js'
-
-
 import { connect } from 'react-redux';
+
+import { selectTicket } from "../../actions/index.js";
+import Hall from '../../Components/Hall/Hall.js'
+
 
 class HallPage extends Component {
   render() {
@@ -22,6 +19,7 @@ class HallPage extends Component {
     )
   }
 }
+
 const mapStateToProps = store => ({
   selectedSeats: store.selectTicket.selectedSeats
 })
@@ -32,6 +30,4 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
-
 export default connect(mapStateToProps, mapDispatchToProps)(HallPage);
-

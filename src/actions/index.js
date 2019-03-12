@@ -7,7 +7,10 @@ export const selectTicket = ticket => ({
     id: ticket.id,
     cinemaId: ticket.cinemaId,
     movieId: ticket.movieId,
-    hallId: ticket.hallId
+    hallId: ticket.hallId,
+    row: ticket.row,
+    seat: ticket.seat,
+    cost: ticket.cost
   }
 })
 

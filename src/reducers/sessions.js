@@ -18,4 +18,3 @@ export default function getSessions(state = initialState, action) {
     default: return state;
   }
 }
-

@@ -18,4 +18,3 @@ export default function getMovies(state = initialState, action) {
     default: return state;
   }
 }
-
