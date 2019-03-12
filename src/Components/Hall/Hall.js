@@ -22,9 +22,18 @@ class Hall extends Component {
             time={time}
           />{/* seatsmap */}
           <div className="hall-legend">
-            <div className="hall-legend__seat-type hall-legend__seat-type_free"><div className="hall-legend__icon hall-legend__icon_free"></div> <span className="hall-legend__text">free</span> </div>
-            <div className="hall-legend__seat-type hall-legend__seat-type_selected"><div className="hall-legend__icon hall-legend__icon_selected"></div> <span className="hall-legend__text">selected</span></div>
-            <div className="hall-legend__seat-type hall-legend__seat-type_bought"><div className="hall-legend__icon hall-legend__icon_bought"></div> <span className="hall-legend__text">bought</span> </div>
+            <div className="hall-legend__seat-type hall-legend__seat-type_free">
+              <div className="hall-legend__icon hall-legend__icon_free"></div>
+              <span className="hall-legend__text">free</span>
+            </div>
+            <div className="hall-legend__seat-type hall-legend__seat-type_selected">
+              <div className="hall-legend__icon hall-legend__icon_selected"></div>
+              <span className="hall-legend__text">selected</span>
+            </div>
+            <div className="hall-legend__seat-type hall-legend__seat-type_bought">
+              <div className="hall-legend__icon hall-legend__icon_bought"></div>
+              <span className="hall-legend__text">bought</span>
+            </div>
           </div>
         </div>
         <div className="seats-information">
