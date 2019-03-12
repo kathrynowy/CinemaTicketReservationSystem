@@ -17,7 +17,9 @@ class SeatsInfo extends Component {
           <span className="seats-info__choosed-tickets-title">Choosed seats: </span>
           {
             selectedSeats.map((seat) =>
-              <div key={seat.id} className="seats-info__choosed-ticket">row {seat.row}/seat {seat.seat}</div>
+              <div key={seat.id} className="seats-info__choosed-ticket">
+                row {seat.row}/seat {seat.seat}
+              </div>
             )
           }
         </div>
