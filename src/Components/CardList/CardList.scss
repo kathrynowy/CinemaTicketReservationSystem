@@ -9,7 +9,6 @@
 .card-list {
   justify-content: flex-start;
   display: flex;
-  align-items: space-between;
   flex-direction: row;
   flex-wrap: wrap;
 }
@@ -18,41 +17,6 @@ input[type="button"]:focus {
   outline: 0; 
   outline-offset: 0; 
 }
-
-@media only screen and (max-width: 992px) {
-  .card-list {
-    margin: 0px 4rem;
-    padding-left: 40px;
-  }
-}
-
- @media only screen and (max-width: 768px) {
-  .card-list {
-    margin: 0 10px;
-    padding-left: 45px;
-  }
- }
-
- @media only screen and (max-width: 420px) {
-  .card-list {
-    margin: 0 auto;
-    padding-left: 50px;
-  }
- }
-
- @media only screen and (min-width: 993px) {
-  .card-list {
-    margin: 0px 30px;
-    padding-left: 50px;
-  }
- }
- 
- @media only screen and (min-width: 1200px) {
-  .card-list {
-    margin: 0px 7rem;
-    padding-left: 60px;
-  }
- }
 
 .card__button {
   height: 45px;
@@ -63,4 +27,10 @@ input[type="button"]:focus {
   font-size: 1.3rem; 
   padding: 10px 15px; 
   border-radius: 40px;
+}
+
+@media only screen and (max-width: 420px) {
+  .card-list {
+    justify-content: center;
+  }
 }

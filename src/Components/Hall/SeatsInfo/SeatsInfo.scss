@@ -3,6 +3,7 @@
 .seats-info {
   display: flex;
   flex-direction: row;
+  margin-top: 30px;
 
   &__choosed-tickets-list {
     overflow-y: auto;
@@ -26,8 +27,11 @@
   &__include {
     font-size: 22px;
     padding-top: 7px;
+    padding-left: 10px;
     display: flex;
+    margin-right: 20px;
   }
+
   &__choosed-ticket {
     font-size: 20px;
     display: flex;
@@ -36,54 +40,43 @@
       min-width: 100px;
     }
   }
+
+  &__choosed-tickets-title {
+    padding-bottom: 10px;
+    font-size: 22px;
+    font-weight: 600;
+  }
 }
 
 @media only screen and (max-width: 992px) {
-  .seats-info {  
-    margin-top: 20px;
+  .seats-info {
     justify-content: flex-start;
-    margin-bottom: 20px;
     max-height: 170px;  
   
     &__choosed-tickets-list {
       padding-right: 15px;
       border-right: 1px solid #000000;
     }
-    
-    &__choosed-tickets-title {
-      padding-bottom: 10px;
-      font-size: 21px;
-      font-weight: 600;
-    }
 
     &__include {
-      margin-right: 20px;
       text-align: end;
       align-self: flex-start;
       flex-grow: 2;
     }
   }
 } 
+
 @media only screen and (max-width: 768px) {
   .seats-info {
-    margin-top: 20px;
     justify-content: flex-start;
-    margin-bottom: 20px;
     max-height: 150px;  
     
     &__choosed-tickets-list {
       padding-right: 15px;
       border-right: 1px solid #000000;
     }
-    
-    &__choosed-tickets-title {
-      padding-bottom: 10px;
-      font-size: 19px;
-      font-weight: 600;
-    }
 
     &__include {
-      margin-right: 20px;
       text-align: start;
       align-self: flex-start;
       width: 120px;
@@ -93,25 +86,15 @@
 @media only screen and (max-width: 420px) {
   .seats-info {
     flex-direction: column;
-    margin-top: 20px;
     align-items: flex-start;
-    margin-bottom: 20px;
     max-height: 260px;  
   
     &__choosed-tickets-list {
       border-right: none;
       border-bottom: 1px solid #000000;
-      margin-bottom: 20px;
-    }
-
-    &__choosed-tickets-title {
-      padding-bottom: 10px;
-      font-size: 22px;
-      font-weight: 600;
     }
     
     &__include {
-      margin-right: 20px;
       text-align: end;
       align-self: flex-start;
       width: 120px;
@@ -126,9 +109,7 @@
 
 @media only screen and (min-width: 993px) {
   .seats-info {
-      margin-top: 30px;
       justify-content: flex-end;
-      margin-bottom: 30px;
       max-height: 190px;  
     
     &__choosed-tickets-list {
@@ -136,15 +117,7 @@
       border-right: 1px solid #000000;
     }
     
-    &__choosed-tickets-title {
-      padding-bottom: 10px;
-      font-size: 23px;
-      font-weight: 600;
-    }
-    
     &__include {
-      padding-left: 10px;
-      margin-right: 40px;
       text-align: end;
       align-self: flex-start;
       width: 150px;
@@ -154,25 +127,15 @@
 
 @media only screen and (min-width: 1200px) {
   .seats-info {
-    margin-top: 30px;
     justify-content: flex-end;
-    margin-bottom: 30px;
     max-height: 190px;  
   
     &__choosed-tickets-list {
       padding-right: 15px;
       border-right: 1px solid #000000;
     }
-    
-    &__choosed-tickets-title {
-      padding-bottom: 10px;
-      font-size: 24px;
-      font-weight: 600;
-    }
-    
+
     &__include {
-      padding-left: 10px;
-      margin-right: 40px;
       text-align: end;
       align-self: flex-start;
       width: 150px;

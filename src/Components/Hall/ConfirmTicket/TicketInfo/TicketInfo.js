@@ -26,7 +26,7 @@ class TicketInfo extends Component {
           {
             services.map((service, index) => {
               return (
-                <div className="inputGroup" key={row + seat + service.name}>
+                <div className="input-group" key={row + seat + service.name}>
                   <input
                     id={"option" + row + seat + service.name}
                     name="option1"

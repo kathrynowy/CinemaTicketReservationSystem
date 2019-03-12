@@ -1,5 +1,6 @@
 .card {
   margin-top:40px;
+  margin: 2px 7px;
 }
 
 .card__title {
@@ -7,64 +8,58 @@
   font-weight: 300;
   padding: 2px;
   font-size: 1.2rem;
-  height: 2.3rem;
+  height: 2.2rem;
   margin-bottom: 7px;
 }
 
 @media only screen and (max-width: 992px) {
   .card {
-    height: 345px;
     width: 180px;
-    margin-bottom: 7px;
     margin-left: 12px;
-  }
   
-  .card__media {
-     width: 180px;
-     height: 240px; 
-  } 
+    &__media {
+      width: 180px;
+      height: 240px; 
+    } 
+  }
 }
 
 @media only screen and (max-width: 768px) {
   .card {
-    margin: 2px 7px;
     width: 140px;
-    height: 270px;
+
+    &__media {
+      width: 140px;
+      height: 160px; 
+    } 
   }
-  
-  .card__media {
-     width: 140px;
-    height: 160px; 
-  } 
 }
 
 @media only screen and (max-width: 420px) {
   .card {
     margin: 6px 0px;
-    height: 450px;
     width: 260px;
+    
+    &__title {
+      margin-bottom: 2px;
+    }
+    
+    &__media {
+      width: 260px;
+      height: 350px;
+    } 
   }
-  
-  .card__title {
-    margin-bottom: 2px;
-  }
-  
-  .card__media {
-    width: 260px;
-    height: 350px;
-  } 
 } 
 
 @media only screen and (min-width: 993px) {
   .card {
     margin: 6px 8px;
     width: 220px;
-    height: 410px;
-  }
-  
-  .card__media {
-    width: 220px;
-    height: 300px;
+    
+    &__media {
+      width: 220px;
+      height: 300px;
+    }
   }
 }
 
@@ -72,11 +67,10 @@
   .card {
     margin: 5px 14px ;
     width: 260px;
-    height: 460px;
-  }
-  
-  .card__media {
-    width: 260px;
-   height: 350px;
+    
+    &__media {
+      width: 260px;
+      height: 350px;
+    }
   }
 }

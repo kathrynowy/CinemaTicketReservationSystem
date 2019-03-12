@@ -7,6 +7,15 @@
   width: 100%;
   flex-direction: column;
   justify-content: center;
+  font-family: 'Fira Sans', sans-serif;
+  box-sizing: border-box;
+ }
+
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 
 #root {
@@ -21,7 +30,13 @@
   font-family: 'Nunito','Helvetica Neue','Helvetica','Arial','sans-serif';
   background-color: rgb(245, 236, 242);
   color: rgb(38, 38, 41);
-  padding-top: 20px;
+  padding: 0 80px;
   display: flex;
   flex: 1 1 0;
+}
+
+@media only screen and (max-width: 420px) {
+  .container {
+    padding: 0 15px;
+  }
 }

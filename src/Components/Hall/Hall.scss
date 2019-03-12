@@ -7,20 +7,14 @@
   justify-content: center;
   align-items: center;
   border: $light-brown solid 1px;
-  position: relative;
-  padding-top: 70px;
 
   &__screen { 
-    position: absolute;
-    z-index: 100;
-    left: 50%;
-    margin-right: -30%;
-    transform: translate(0, -50%);
-    top: 3%;
-    width: 100%;
+    width: 60%;
+    margin-top: 15px;
     border-top: 40px solid $brown;
     border-left: 80px solid transparent;
     border-right: 80px solid transparent;
+    margin-bottom: 30px;
   }
 
   &-container {
@@ -32,7 +26,9 @@
   &-legend {
     display: flex;
     flex-direction: row;
-    
+    margin-top: 15px;
+    justify-content: space-between;
+   
     
     &__text {
       font-size: 1.1rem;
@@ -40,14 +36,16 @@
 
     &__seat-type {
       display: flex;
-      margin-left: 8px;
+      margin: 10px;
     }
 
     &__icon {
       display: flex;
       box-shadow: 0 1px 3px 1px #BBB;
       margin-right: 5px;
-    
+      width: 25px;
+      height: 25px;
+
       &_free {
         background-color: #fff;
       }
@@ -78,159 +76,14 @@
   font-weight: 500;
 }
 
-@media only screen and (max-width: 992px) {
-  .seats-information, .hall {
-    margin: 0px 30px;
-  }
+ @media only screen and (max-width: 993px) {
   .hall {
-    margin-top: 30px;
-    margin-bottom: 0px;
-
-    &__screen {
-      margin-top: 15px;
-      margin-bottom: 35px;
-      height: 0;
-      border-top: 35px solid $brown;
-      border-left: 70px solid transparent;
-      border-right: 70px solid transparent;
-    }
-
     &-legend {
-      margin-top: 15px;
-
-      &__seat-type_selected,
-      &__seat-type_bought {
-        margin-left: 40px;
-      }
-      
-      &__icon {
-        width: 22px;
-        height: 22px;
-      }  
-    }
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  .seats-information, .hall {
-    margin: 0px 10px;
-  }
-
-  .hall {
-    margin-top: 30px;
-    margin-bottom: 0px;
-
-    &__screen {
-      margin-top: 15px;
-      margin-bottom: 25px;
-      border-top: 30px solid $brown;
-      border-left: 80px solid transparent;
-      border-right: 80px solid transparent;
-    }
-
-    &-legend {
-      margin-top: 15px;
-
-      &__seat-type_selected,
-      &__seat-type_bought {
-        margin-left: 30px;
-      }
-      
       &__icon {
         width: 20px;
         height: 20px;
       }
     }
   }
- }
-
- @media only screen and (max-width: 420px) {
-  .seats-information, .hall {
-    margin: 0px;
-  }
-
-  .hall {
-    margin-top: 30px;
-    margin-bottom: 0px;
-
-    &__screen {
-      margin-top: 15px;
-      margin-bottom: 15px;
-    }
-
-    &-legend {
-      margin-top: 10px;
-
-      &__seat-type_selected,
-      &__seat-type_bought {
-        margin-left: 20px;
-      }
-      
-      &__icon {
-        width: 20px;
-        height: 20px;
-      }
-    }
-  }
- }
-
- @media only screen and (min-width: 993px) {
-  .seats-information, .hall {
-    margin: 0px 30px;
-  }
-
-  .hall {
-    margin-top: 30px;
-    margin-bottom: 0px;
-
-    &__screen {
-      margin-top: 15px;
-      margin-bottom: 40px;
-      height: 0;
-    }
-    &-legend {
-      margin-top: 20px;
-
-      &__seat-type_selected,
-      &__seat-type_bought {
-        margin-left: 160px;
-      }
-      
-      &__icon {
-        width: 25px;
-        height: 25px;
-      }
-    }
-  }
 }
 
-@media only screen and (min-width: 1200px) {
-  .seats-information, .hall {
-    margin: 0px 7rem;
-  }
-
-  .hall {
-    margin-top: 30px;
-    margin-bottom: 0px;
-
-    &__screen {
-      margin-top: 15px;
-      margin-bottom: 40px;
-      height: 0;
-    }
-
-    &-legend {
-      margin-top: 20px;
-
-        &_selected,
-        &_bought {
-          margin-left: 160px;
-        }
-      
-      &__icon {
-        width: 25px;
-        height: 25px;
-      }
-    }
-  }
-}

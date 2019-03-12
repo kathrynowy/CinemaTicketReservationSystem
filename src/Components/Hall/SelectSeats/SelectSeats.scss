@@ -3,23 +3,29 @@
   flex-wrap: nowrap;
   justify-content: space-between;
   width: 100%;
+  margin-bottom: 5px;
+  font-size: 14px;
+
   &__number {
     display:  flex;
     padding: 0 18px;
     text-align: center;
     font-weight: 600;
+    width: 10px;
+      font-size: 18px;
   }
 
   &__seat {
     display: inline-block;
-    color: white;
+    color: #ffffff;
     background-color: #fff;
     box-shadow: 0 1px 3px 1px #BBB;
     position: relative;
     align-content: center; 
     margin-left: 5px;
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
+    line-height: 20px;
 
     &:hover {
       color:black;
@@ -30,14 +36,20 @@
       content: attr(data-title); 
       position: absolute; 
       z-index: 1;
-      background: rgba(75, 75, 75, 0.6); 
-      color: rgb(255, 255, 255);
+      background: #4b4b4b99; 
+      color: #ffffff;
       border: none;
+      letter-spacing: 1px;
+      font-weight: 400; 
+      padding: 2px 4px;
+      font-size: 12px; 
+      left: -10%; top: -140%; 
+      line-height: 15px;
     }
 
     &_selected {
-      background-color: lightblue !important; 
-      color: black !important;
+      background-color: #90caf9;
+      color: #000000;
     }
   }
 
@@ -48,157 +60,16 @@
     flex-wrap: nowrap;
   }
 }
-  
- @media only screen and (max-width: 992px) {
+ 
+@media only screen and (max-width: 992px) {
   .row {
-    margin-bottom: 10px;
-    
-    .row__seat {
-      font-size: 14px;
-      line-height: 22px;
-      width: 25px;
-      height: 25px;
-    }
-    
-    .row__seat:hover {
-      font-size: 14px;
-      font-weight: 500;
-    }
-    
-    .row__seat:hover::after {
-      left: -10%; top: -150%; 
-      font-weight: 400; 
-      font-size: 13px; 
-      padding: 2px 4px;
-      line-height: 14px;
-      letter-spacing: 1px;
-    }
-    
-    .row__number {
-      width: 23px;
-      font-size: 15px;
-    }
-  }
- }
-
- @media only screen and (max-width: 768px) {
-  .row {
-    margin-bottom: 5px;
-
     &__seat {
-      line-height: 14px;
-      font-size: 16px;
-    
-    
-      &:hover {
-        font-size: 14px;
-        font-weight: 500;
-      }
-      
-      &:hover::after {
-        left: -10%; top: -165%; 
-        font-weight: 400; 
-        font-size: 12px; 
-        padding: 2px 3px;
-        line-height: 12px;
-        letter-spacing: 1px;
-      }
-    }
-     
-    &__number { 
       width: 20px;
-      font-size: 16px;
-    }
-  }
-}
+      height: 20px;  
 
- @media only screen and (max-width: 420px) {
-  .row {
-    margin-bottom: 2px;
-
-    &__seat {
-      font-size: 15px;
-      line-height: 13px;
-    
-      &:hover {
-        font-size: 12px;
-        font-weight: 400;
-      }
-      
       &:hover::after {
-        left: -10%; top: -185%; 
-        font-weight: 400; 
-        font-size: 10px; 
-        padding: 1px 2px;
-        line-height: 10px;
-        letter-spacing: 1px;
+        left: -10%; top: -170%; 
       }
-    }
-    &__number {
-      width: 20px;
-      font-size: 15px;
-    }
-  }
-}
-
- @media only screen and (min-width: 993px) {
-  .row {
-    margin-bottom: 10px;
-
-    &__seat {
-      width: 25px;
-      height: 25px;
-      line-height: 25px;
-      
-      &:hover {
-        font-size: 16px;
-        font-weight: 600;
-      }
-      
-      &:hover::after {
-        left: -10%; top: -140%; 
-        font-weight: 400; 
-        font-size: 14px; 
-        padding: 2px 4px;
-        line-height: 15px;
-        letter-spacing: 1px;
-      }
-    }
-
-    &__number {
-      width: 25px;
-      font-size: 18px;
-    }
-  }
-}
-
- @media only screen and (min-width: 1200px) {
-  .row {
-    margin-bottom: 10px;
-
-    &__seat {
-      width: 25px;
-      height: 25px;
-      line-height: 30px;
-    
-      &:hover {
-        font-size: 16px;
-        font-weight: 600;
-      }
-      
-      &:hover::after {
-        left: -10%; top: -140%; 
-        font-weight: 400; 
-        font-size: 16px; 
-        padding: 2px 4px;
-        line-height: 15px;
-        letter-spacing: 1px;
-      }
-    }
-
-    &__number {
-      width: 10px;
-      font-size: 18px;
     }
   }
 }

@@ -35,7 +35,7 @@
   justify-content: center;
 }
 
-.inputGroup {
+.input-group {
   background: $brown;
   display: block;
   margin: 10px 0;
@@ -123,25 +123,11 @@
   font-size: 22px;
 }
 
-.inputGroup {
+.input-group {
   width: 300px;
   font-size: 18px;
 
   label {
     padding: 12px 30px;
   }
-}
-
-body {
-  font-family: 'Fira Sans', sans-serif;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-
-html {
-  box-sizing: border-box;
 }
