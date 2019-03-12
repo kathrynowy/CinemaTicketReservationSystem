@@ -52,9 +52,9 @@ class FilmProfile extends Component {
         <div className="movie-profile__info">
           <div className="movie-profile__content">
             <img src={movie.img} className="movie-profile__poster" alt="movie"></img>
-            <div className="movie-profile__description">
-              <span>Description </span>
-              <p>{movie.description}</p>
+            <div className="movie-profile__description-container">
+              <span className="movie-profile__title">Description </span>
+              <p className="movie-profile__description">{movie.description}</p>
             </div>
           </div>
           <div className="movie-profile__tickets-info">

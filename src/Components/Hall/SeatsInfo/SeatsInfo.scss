@@ -10,6 +10,8 @@
     text-align: start;
     display: flex;
     flex-direction: column;
+    padding-right: 15px;
+    border-right: 1px solid $black;
   }
 
   &__btn {
@@ -26,10 +28,7 @@
 
   &__include {
     font-size: 22px;
-    padding-top: 7px;
-    padding-left: 10px;
     display: flex;
-    margin-right: 20px;
   }
 
   &__choosed-ticket {
@@ -52,11 +51,6 @@
   .seats-info {
     justify-content: flex-start;
     max-height: 170px;  
-  
-    &__choosed-tickets-list {
-      padding-right: 15px;
-      border-right: 1px solid #000000;
-    }
 
     &__include {
       text-align: end;
@@ -70,15 +64,9 @@
   .seats-info {
     justify-content: flex-start;
     max-height: 150px;  
-    
-    &__choosed-tickets-list {
-      padding-right: 15px;
-      border-right: 1px solid #000000;
-    }
 
     &__include {
       text-align: start;
-      align-self: flex-start;
       width: 120px;
     }
   }
@@ -91,13 +79,12 @@
   
     &__choosed-tickets-list {
       border-right: none;
-      border-bottom: 1px solid #000000;
+      margin-bottom: 10px;
+      border-bottom: 1px solid $black;
     }
     
     &__include {
       text-align: end;
-      align-self: flex-start;
-      width: 120px;
       margin-bottom: 15px;
     }
     
@@ -112,11 +99,6 @@
       justify-content: flex-end;
       max-height: 190px;  
     
-    &__choosed-tickets-list {
-      padding-right: 15px;
-      border-right: 1px solid #000000;
-    }
-    
     &__include {
       text-align: end;
       align-self: flex-start;
@@ -129,16 +111,5 @@
   .seats-info {
     justify-content: flex-end;
     max-height: 190px;  
-  
-    &__choosed-tickets-list {
-      padding-right: 15px;
-      border-right: 1px solid #000000;
-    }
-
-    &__include {
-      text-align: end;
-      align-self: flex-start;
-      width: 150px;
-    }
   }
 }

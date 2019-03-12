@@ -4,15 +4,7 @@ import React, { Component } from 'react';
 class Seat extends Component {
   handleSelect = () => {
     const { row, seat, cost, cinemaId, movieId, hallId } = this.props;
-    const ticket = {
-      id: `${row}.${seat}`,
-      cinemaId: cinemaId,
-      movieId: movieId,
-      hallId: hallId,
-      row: row,
-      seat: seat,
-      cost: cost
-    }
+    const ticket = { id: `${row}.${seat}`, cinemaId, movieId, hallId, row, seat, cost }
     this.props.selectTicket(ticket);
   };
 

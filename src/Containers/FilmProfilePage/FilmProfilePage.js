@@ -27,9 +27,9 @@ class FilmProfilePage extends Component {
 
 const mapStateToProps = store => ({
   sessions: store.sessions.sessions,
-  sessionsErrored: store.sessions.sessionErrored,
+  isSessionsErrored: store.sessions.isErrored,
   cinemas: store.cinemas.cinemas,
-  cinemasErorred: store.cinemas.cinemasErrored
+  isCinemasErorred: store.cinemas.isErrored
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -41,6 +41,4 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
-
 export default connect(mapStateToProps, mapDispatchToProps)(FilmProfilePage);
-

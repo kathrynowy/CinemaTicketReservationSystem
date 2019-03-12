@@ -16,7 +16,7 @@ class App extends Component {
     return (
       <Fragment>
         <PrimarySearchAppBar />
-        <Router >
+        <Router>
           <div className="container">
             <Route exact path="/" component={MainPage} />
             <Route path="/film-profile/:movieId" component={FilmProfilePage} />

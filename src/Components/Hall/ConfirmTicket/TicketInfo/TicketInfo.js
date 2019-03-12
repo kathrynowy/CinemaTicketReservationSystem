@@ -28,11 +28,12 @@ class TicketInfo extends Component {
               return (
                 <div className="input-group" key={row + seat + service.name}>
                   <input
+                    className="input-group__service"
                     id={"option" + row + seat + service.name}
                     name="option1"
                     type="checkbox"
                   />
-                  <label htmlFor={"option" + row + seat + service.name}>{service.name}</label>
+                  <label className="input-group__name" htmlFor={"option" + row + seat + service.name}>{service.name}</label>
                 </div>
               )
             })

@@ -10,7 +10,6 @@ class Schedule extends Component {
       <div className="schedule">
 
         <div className="schedule__cinema">{(cinemas.find(cinema => cinema.id == cinemaId)).name}</div>
-        <div className="schedule__space"></div>
         <div className="schedule__ticket-list">
           {
             times.map((time) =>

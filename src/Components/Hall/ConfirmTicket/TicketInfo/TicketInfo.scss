@@ -8,6 +8,8 @@
 
 .confirm-ticket__ticket-info {
   margin-top: 20px;
+  height: 100px;
+  font-size: 1.3rem;
   display: flex;
   justify-self: center;
   flex: 1 1 0;
@@ -21,7 +23,7 @@
 }
 
 .confirm-ticket__number {
-  border-right:  1px solid #000000;
+  border-right:  1px solid $black;
   align-items: center;
   justify-content: flex-start;
   display: flex;
@@ -40,8 +42,10 @@
   display: block;
   margin: 10px 0;
   position: relative;
+  width: 300px;
+  font-size: 18px;
 
-  label {
+  &__name {
     padding: 12px 30px;
     width: 100%;
     display: block;
@@ -74,7 +78,7 @@
       height: 32px;
       content: '';
       border: 2px solid $light-pink;
-      background-color: #fff;
+      background-color: $white;
       background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.414 11L4 12.414l5.414 5.414L20.828 6.414 19.414 5l-10 10z' fill='%23fff' fill-rule='nonzero'/%3E%3C/svg%3E ");
       background-repeat: no-repeat;
       background-position: 2px 3px;
@@ -89,7 +93,7 @@
     }
   }
 
-  input:checked ~ label {
+  .input-group__service:checked ~ .input-group__name {
     color: $brown;
 
     &:before {
@@ -103,7 +107,7 @@
     }
   }
 
-  input {
+  .input-group__service {
     width: 32px;
     height: 320px;
     order: 1;
@@ -114,20 +118,5 @@
     transform: translateY(-50%);
     cursor: pointer;
     visibility: hidden;
-  }
-}
-
-.confirm-ticket__ticket-info {
-  width: 300;
-  height: 100px;
-  font-size: 22px;
-}
-
-.input-group {
-  width: 300px;
-  font-size: 18px;
-
-  label {
-    padding: 12px 30px;
   }
 }

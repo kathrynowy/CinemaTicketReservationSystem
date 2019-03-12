@@ -1,3 +1,5 @@
+@import '../../variables.scss';
+
 .row {
   display: flex;
   flex-wrap: nowrap;
@@ -17,9 +19,9 @@
 
   &__seat {
     display: inline-block;
-    color: #ffffff;
-    background-color: #fff;
-    box-shadow: 0 1px 3px 1px #BBB;
+    color: $white;
+    background-color: $white;
+    box-shadow: 0 1px 3px 1px $silver;
     position: relative;
     align-content: center; 
     margin-left: 5px;
@@ -28,7 +30,7 @@
     line-height: 20px;
 
     &:hover {
-      color:black;
+      color:$black;
       cursor: pointer;
     }
 
@@ -36,8 +38,8 @@
       content: attr(data-title); 
       position: absolute; 
       z-index: 1;
-      background: #4b4b4b99; 
-      color: #ffffff;
+      background: $light-brown; 
+      color: $white;
       border: none;
       letter-spacing: 1px;
       font-weight: 400; 
@@ -48,8 +50,8 @@
     }
 
     &_selected {
-      background-color: #90caf9;
-      color: #000000;
+      background-color: $cornflower-blue;
+      color: $black;
     }
   }
 

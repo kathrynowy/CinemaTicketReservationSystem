@@ -2,7 +2,7 @@ import { GET_SESSIONS_SUCCESS, GET_SESSIONS_FAILURE } from '../constans/actionTy
 
 const initialState = {
   sessions: [],
-  sessionErrored: false
+  isErrored: false
 }
 
 export default function getSessions(state = initialState, action) {
@@ -13,7 +13,7 @@ export default function getSessions(state = initialState, action) {
       });
     case GET_SESSIONS_FAILURE:
       return Object.assign({}, state, {
-        sessionErrored: action.payload
+        isErrored: action.payload
       });
     default: return state;
   }

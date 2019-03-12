@@ -1,24 +1,25 @@
 .movie-profile {
-  margin-top: 55px;
-  font-family: 'Nunito','Helvetica Neue','Helvetica','Arial','sans-serif';
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   display: flex;
   flex-wrap: wrap;
   flex: 1 1 auto;
-  background-color: #f5ecf2; 
-  padding-left: 5px;
 
   &__info {
     display: flex;
     flex-direction: row;
   }
 
+  &__title {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
   &__name {
     padding-top: 10px;
     display: flex;
     justify-content: center;
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: 600;
   }
 
@@ -26,11 +27,18 @@
     display: flex;
     flex-direction: column;
     flex-grow: 2;
+    margin: 15px 15px;
   }
 
-  &__description {
+  &__description-container {
     display: flex;
     flex-direction: column;
+
+    &__description {
+      font-size: 14px;
+      line-height: 18px;
+      margin-top: 6px;
+    }
   }
 
   &__tickets-info {
@@ -44,15 +52,7 @@
 
 @media only screen and (max-width: 992px) {
   .movie-profile {
-    margin: 0px 4rem;
-    
-    &__name {
-      margin-right: 130px;
-    }    
-
     &__content {
-      margin: 15px 15px;
-      margin-left: 0;
       flex: 1 1 0;
     }
 
@@ -60,32 +60,11 @@
       height: 240px;
       margin-bottom: 10px;
     }
-
-    &__description {
-      margin-top: 0px;
-      margin-left: 7px;
-      span, p {
-        margin-left: 5px;
-      }
-    
-      span {
-        font-size: 16px;
-        font-weight: 600;
-      }
-      
-      p {
-        margin: 0;
-        font-size: 14px;
-        line-height: 20px;
-        margin-top: 6px;
-      }
-    }
   }
 }
 
 @media only screen and (max-width: 768px) {
   .movie-profile {
-    margin: 0 1rem;
     justify-content: end;
 
     &__content {
@@ -96,13 +75,7 @@
       flex-direction: column;
     }
 
-    &__name {
-      margin-right: 80px;
-    }    
-  
     &__content {
-      margin-bottom: 15px;
-      margin-top: 15px; 
       flex-direction: row;
       flex: 1 1 auto;
     }
@@ -111,107 +84,38 @@
       height: 200px;
     }
 
-    &__description {
-      margin-top: 0px;
-      margin-left: 7px;
-      span, p {
-        margin-left: 5px;
-      }
-    
-      span {
-        font-size: 15px;
-        font-weight: 600;
-      }
-      
-      p {
-        margin: 0;
-        font-size: 14px;
-        line-height: 16px;
-        margin-top: 2px;
-      }
+    &__description-container {
+      margin-left: 5px;
     }
   }
 }
 
 @media only screen and (max-width: 420px) {
   .movie-profile {
-    margin: 0;
-    &__name {
-      font-size: 22px;
-      font-weight: 600;
-      margin-right: 15px;
-    }    
-  
     &__info {
       flex-direction: column;
     }
 
     &__content {
-      margin-bottom: 15px;
-      margin-top: 15px; 
+      flex-direction: column;
+      flex: 1 1 auto;
     }
 
     &__poster {
       order: 1;
     }
 
-    &__description {
-      align-items: center;
-      margin-top: 10px;
-      margin-left: 15px;
+    &__description-container {
       order: 2;
-      span, p {
-        margin-left: 5px;
-      }
-    
-      span {
-        font-size: 17px;
-        font-weight: 600;
-      }
-      
-      p {
-        margin: 0;
-        font-size: 16px;
-        line-height: 16px;
-        margin-top: 2px;
-      }
     }
   }
 }
 
 @media only screen and (min-width: 993px) {
   .movie-profile {
-    margin: 0 7rem;
-
     &__content {
       flex: 1 1 0;
-      margin: 15px 15px;
-      margin-left: 0;
-    }
-
-    &__name {
-      font-size: 22px;
-      font-weight: 600;
-    }    
-    
-    &__description {
-      margin-top: 10px;
-      span, p {
-        margin-left: 0px;
-      }
-    
-      span {
-        font-size: 20px;
-        font-weight: 600;
-      }
-      
-      p {
-        margin: 0;
-        font-size: 16px;
-        line-height: 22px;
-        margin-top: 10px;
-      }
-    }
+    } 
   
     &__poster {
       height: 400px; 
@@ -220,37 +124,7 @@
 }
 
 @media only screen and (min-width: 1200px) {
-  .movie-profile {
-    margin: 0px 7rem;
-
-    &__content {
-      flex: 1 1 0;
-    }
-
-    &__name {
-      font-size: 26px;
-      font-weight: 600;
-      margin-top: 20px;
-    }    
-  
-    &__description {
-      margin-top: 10px;
-      span, p {
-        margin-left: 0px;
-      }
-    
-      span {
-        font-size: 20px;
-        font-weight: 600;
-      }
-      
-      p {
-        font-size: 16px;
-        line-height: 22px;
-        margin-top: 10px;
-      }
-    }
-  
+  .movie-profile { 
     &__poster {
       height: 500px; 
     }
