@@ -14,6 +14,7 @@ class HallPage extends Component {
         hallId={this.props.match.params.hallId}
         time={this.props.match.params.time}
         selectedSeats={this.props.selectedSeats}
+        boughtSeats={this.props.boughtSeats}
         onSelectTicket={this.props.onSelectTicket}
       />
     )
@@ -21,8 +22,9 @@ class HallPage extends Component {
 }
 
 const mapStateToProps = store => ({
-  selectedSeats: store.selectTicket.selectedSeats
-})
+  selectedSeats: store.ticketsList.selectedSeats,
+  boughtSeats: store.ticketsList.boughtTickets
+});
 
 const mapDispatchToProps = dispatch => ({
   onSelectTicket(ticket) {

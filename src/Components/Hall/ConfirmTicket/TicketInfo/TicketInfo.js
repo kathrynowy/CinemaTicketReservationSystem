@@ -4,30 +4,29 @@ import './TicketInfo.scss'
 
 
 class TicketInfo extends Component {
-  constructor(props) { 
-    super(props); 
-    const services = (props.additionalServices.filter(service => service.cinemaId == props.cinemaId))[0].services; 
-    this.state = { 
-      form: services.map((service, index) => { 
-        return ({ 
-          id: index, 
-          value: false, 
-          name: service.name, 
-          cost: service.cost 
+  constructor(props) {
+    super(props);
+    const services = (props.additionalServices.filter(service => service.cinemaId == props.cinemaId))[0].services;
+    this.state = {
+      form: services.map((service, index) => {
+        return ({
+          id: index,
+          value: false,
+          name: service.name,
+          cost: service.cost
         });
-      }) 
-    } 
+      })
+    }
   }
-  
-  handleSelect = (ticketId, serviceName, cost, index) => { 
-    const newForm = this.state.form; 
-    newForm[index].value = !newForm[index].value; 
-    this.setState({ 
-      form: this.state.form 
-    }) 
-    this.props.handleSelect(ticketId, index); 
-    alert('ticketId: ' + ticketId + ' name: ' + serviceName + ' cost: ' + cost + ' index: ' + index); 
-  } 
+
+  handleSelect = (ticketId, serviceName, cost, index) => {
+    const newForm = this.state.form;
+    newForm[index].value = !newForm[index].value;
+    this.setState({
+      form: this.state.form
+    })
+    this.props.handleSelect(ticketId, index, cost);
+  }
 
   render() {
     const { row, seat, additionalServices, movieName, ticketId, cinemaId } = this.props;
@@ -58,8 +57,8 @@ class TicketInfo extends Component {
                     name="option1"
                     type="checkbox"
                     checked={this.state.form[index].value}
-                    onChange={() => { 
-                      return this.handleSelect(ticketId-1, service.name, service.cost, index); 
+                    onChange={() => {
+                      return this.handleSelect(ticketId - 1, service.name, service.cost, index);
                     }}
                   />
                   <label className="input-group__name" htmlFor={"option" + row + seat + service.name}>

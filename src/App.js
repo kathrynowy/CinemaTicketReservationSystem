@@ -23,7 +23,7 @@ class App extends Component {
             <Route path="/hall/:cinemaId/:movieId/:hallId/:time" component={HallPage} />
             <Route path="/sign-in" component={SignIn} />
             <Route path="/sign-up" component={SignUp} />
-            <Route path="/confirm-ticket" component={ConfirmTicketsPage} />
+            <Route path="/confirm-ticket/:cinemaId/:movieId/:hallId/:time" component={ConfirmTicketsPage} />
           </div>
         </Router>
       </Fragment>

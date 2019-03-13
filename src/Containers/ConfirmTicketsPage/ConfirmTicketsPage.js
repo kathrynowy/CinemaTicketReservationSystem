@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { getAdditionalServicesAsync } from '../../actions/index.js'
 import additionalServices from '../../additionalServices.js'
 import ConfirmTicket from '../../Components/Hall/ConfirmTicket/ConfirmTicket.js';
-import buyTickets from '../../reducers/boughtTickets.js';
+import { buyTickets, clearSelectedTickets } from '../../actions/index.js';
 
 
 class ConfirmTicketsPage extends Component {
@@ -17,14 +17,18 @@ class ConfirmTicketsPage extends Component {
       this.props.additionalServices.length !== 0 && <ConfirmTicket
         additionalServices={this.props.additionalServices}
         selectedSeats={this.props.selectedSeats}
-        onBuyTickets={this.props.onBuyTickets}
+        buyTickets={this.props.onBuyTickets}
+        cinemaId={this.props.match.params.cinemaId}
+        movieId={this.props.match.params.movieId}
+        hallId={this.props.match.params.hallId}
+        time={this.props.match.params.time}
       />
     );
   }
 }
 
 const mapStateToProps = store => ({
-  selectedSeats: store.selectTicket.selectedSeats,
+  selectedSeats: store.ticketsList.selectedSeats,
   additionalServices: store.additionalServices.additionalServices
 })
 
@@ -34,6 +38,7 @@ const mapDispatchToProps = dispatch => ({
   },
   onBuyTickets(tickets) {
     dispatch(buyTickets(tickets));
+    dispatch(clearSelectedTickets())
   }
 });
 

@@ -1,4 +1,4 @@
-import { SELECT_TICKET, BUY_TICKET, GET_CINEMAS_SUCCESS, GET_CINEMAS_FAILURE, GET_MOVIES_SUCCESS, GET_MOVIES_FAILURE, GET_SESSIONS_SUCCESS, GET_SESSIONS_FAILURE, GET_ADDITIONAL_SERVICES_SUCCESS, GET_ADDITIONAL_SERVICES_FAILURE } from '../constans/actionTypes.js'
+import { SELECT_TICKET, CLEAR_SELECTED_LIST, BUY_TICKET, GET_CINEMAS_SUCCESS, GET_CINEMAS_FAILURE, GET_MOVIES_SUCCESS, GET_MOVIES_FAILURE, GET_SESSIONS_SUCCESS, GET_SESSIONS_FAILURE, GET_ADDITIONAL_SERVICES_SUCCESS, GET_ADDITIONAL_SERVICES_FAILURE } from '../constans/actionTypes.js'
 
 
 export const selectTicket = ticket => ({
@@ -12,6 +12,10 @@ export const selectTicket = ticket => ({
     seat: ticket.seat,
     cost: ticket.cost
   }
+})
+
+export const clearSelectedTickets = () => ({
+  type: CLEAR_SELECTED_LIST
 })
 
 export const buyTickets = tickets => ({

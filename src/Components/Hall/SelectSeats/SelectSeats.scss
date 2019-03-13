@@ -53,6 +53,10 @@
       background-color: $cornflower-blue;
       color: $black;
     }
+    &_bought {
+      background-color: rgb(231, 108, 108);
+      color: $black;
+    }
   }
 
   &__seats-container {
@@ -61,6 +65,11 @@
     justify-content: center;
     flex-wrap: nowrap;
   }
+}
+
+.row__seat_bought {
+  background-color: rgb(231, 108, 108);
+  color: $black;
 }
  
 @media only screen and (max-width: 992px) {

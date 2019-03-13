@@ -6,6 +6,7 @@ import './SeatsInfo.scss'
 
 class SeatsInfo extends Component {
   render() {
+    const { cinemaId, movieId, hallId, time } = this.props;
     const isDisabled = !this.props.selectedSeats.length;
     const newCost = this.props.selectedSeats.reduce((cost, seat) => {
       return cost + +seat.cost;
@@ -24,7 +25,8 @@ class SeatsInfo extends Component {
           }
         </div>
         <div className="seats-info__include">Cost: {(newCost || ' ')}byn </div>
-        <Link to="/confirm-ticket"><input type="button" className="seats-info__btn" disabled={isDisabled} value="buy" /></Link>
+        <Link to={{ pathname: `/confirm-ticket/${cinemaId}/${movieId}/${hallId}/${time}` }}>
+          <input type="button" className="seats-info__btn" disabled={isDisabled} value="buy" /></Link>
       </div>
     );
   }

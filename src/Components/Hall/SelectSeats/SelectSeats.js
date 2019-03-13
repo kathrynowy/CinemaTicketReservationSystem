@@ -7,7 +7,7 @@ import './SelectSeats.scss';
 
 
 class SelectSeats extends Component {
-  handleDrawSeats = (amount, row, cost, cinemaId, movieId, hallId) => {
+  handleDrawSeats = (boughtSeats, amount, row, cost, cinemaId, movieId, hallId) => {
     let seats = [];
     for (let i = 1; i <= amount; i++) {
       seats.push(
@@ -18,10 +18,20 @@ class SelectSeats extends Component {
           key={i}
           cinemaId={cinemaId}
           movieId={movieId}
+          boughtSeats={boughtSeats}
           hallId={hallId}
-          isSelected={
-            this.props.selectedSeats.find((seat) => seat.id === `${row}.${i}`)
+
+          isBought={
+            boughtSeats.find(seat => {
+              return (seat.row === row && seat.seat === i)
+            })
           }
+          isSelected={
+            this.props.selectedSeats.find(seat => {
+              return seat.id === (row + "." + i)
+            })
+          }
+
           selectTicket={this.props.selectTicket}
           selectedSeats={this.props.selectedSeats}
         />
@@ -31,7 +41,7 @@ class SelectSeats extends Component {
   };
 
   render() {
-    const { cinemaId, movieId, hallId, time } = this.props;
+    const { cinemaId, movieId, hallId, time, boughtSeats } = this.props;
     const seats = SeatsData.filter((hall) => cinemaId == hall.cinemaId && hallId == hall.hallId);
     return (
       seats.map((seat) => {
@@ -41,7 +51,7 @@ class SelectSeats extends Component {
               <div className="row" key={seats.row}>
                 <div className="row__number">{seats.row}</div>
                 <div className={seats.row + ' row__seats-container'}>
-                  {this.handleDrawSeats(seats.amountOfSeats, seats.row, seats.cost, cinemaId, movieId, hallId)}
+                  {this.handleDrawSeats(boughtSeats, seats.amountOfSeats, seats.row, seats.cost, cinemaId, movieId, hallId)}
                 </div>
                 <div className="row__number"></div>
               </div>

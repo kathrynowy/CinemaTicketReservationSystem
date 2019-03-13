@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -11,36 +12,56 @@ class ConfirmTicket extends Component {
     choosedServices: [
       {
         ticketId: 0,
-        service: [0,2]
+        service: [],
+        cost: 0
       }
     ]
   }
-  handleSelect = (ticketId, serviceId) => {
-    const services = this.state.choosedServices;
 
-    if (services.length === 0) {
-      services.push({
+  handleSelect = (ticketId, serviceId, cost) => {
+    const services = this.state.choosedServices;
+    services.find(service => +service.ticketId === +ticketId)
+      ? (services.map((service) => {
+        if (service.ticketId === ticketId) {
+          service.service.includes(serviceId)
+            ? (
+              service.service = service.service.filter(id => id !== serviceId),
+              service.cost -= cost
+            )
+            : (
+              service.service.push(serviceId),
+              service.cost += cost
+            );
+        }
+      }))
+      : services.push({
         ticketId: ticketId,
-        service: [serviceId]
+        service: [serviceId],
+        cost: cost
       });
 
-      this.setState({
-        choosedServices: services
-      })
-    }
-
-    services.map((service) => {
-      if (service.ticketId === ticketId) {
-        service.service.includes(serviceId) 
-          ? service.service = service.service.filter(id => id !== serviceId)
-          : service.service.push(serviceId)
-      } 
-    }) 
     this.setState({
       choosedServices: services
     })
   }
 
+  handleSubmit = () => {
+    const confirmedTickets = this.props.selectedSeats.map((seat, index) => {
+      const services = this.state.choosedServices.find(service => service.ticketId === index);
+      return {
+        cinemaId: this.props.cinemaId,
+        movieId: this.props.movieId,
+        hallId: this.props.hallId,
+        time: this.props.time,
+        row: seat.row,
+        seat: seat.seat,
+        cost: services ? +seat.cost + services.cost : seat.cost,
+        choosedServices: services ? this.state.choosedServices[index].service : []
+      }
+    });
+
+    this.props.buyTickets(confirmedTickets);
+  }
 
   render() {
     const { additionalServices, selectedSeats } = this.props;
@@ -49,7 +70,7 @@ class ConfirmTicket extends Component {
         <span className="confirm-title">Confirm Ticket</span>
         <div className="confirm-ticket"> {
           selectedSeats.map((seat, index) => {
-            const movie = movieData.find(movie => movie.id == seat.movieId);
+            const movie = movieData.find(movie => +movie.id === +seat.movieId);
             return (
               <TicketInfo
                 key={seat.id}
@@ -67,8 +88,12 @@ class ConfirmTicket extends Component {
         }
         </div>
         <div>
-          <input type="submit" value="confirm" className="button button_confirm" />
-          <Link to="/hall"><input type="button" value="back" className="button" /></Link>
+          <Link to={{ pathname: `/hall/${this.props.cinemaId}/${this.props.movieId}/${this.props.hallId}/${this.props.time}` }}>
+            <input type="submit" value="confirm" onClick={this.handleSubmit} className="button button_confirm" />
+          </Link>
+          <Link to={{ pathname: `/hall/${this.props.cinemaId}/${this.props.movieId}/${this.props.hallId}/${this.props.time}` }}>
+            <input type="button" value="back" className="button" />
+          </Link>
         </div>
       </div>
     );

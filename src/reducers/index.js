@@ -1,13 +1,13 @@
 import { combineReducers } from "redux";
 
-import selectTicket from './tickets';
+import ticketsList from './tickets';
 import sessions from './sessions'
 import additionalServices from './additionalServices'
 import movies from './movies'
 import cinemas from './cinemas'
 
 const rootReducer = combineReducers({
-  selectTicket,
+  ticketsList,
   sessions,
   additionalServices,
   movies,
