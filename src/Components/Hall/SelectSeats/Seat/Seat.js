@@ -6,7 +6,7 @@ class Seat extends Component {
   handleSelect = () => {
     const { row, seat, cost, cinemaId, movieId, hallId } = this.props;
     const ticket = { id: `${row}.${seat}`, cinemaId, movieId, hallId, row, seat, cost }
-    this.props.selectTicket(ticket);
+    this.props.toggleSeat(ticket);
   };
 
   render() {

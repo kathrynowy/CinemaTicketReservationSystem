@@ -32,7 +32,7 @@ class SelectSeats extends Component {
             })
           }
 
-          selectTicket={this.props.selectTicket}
+          toggleSeat={this.props.toggleSeat}
           selectedSeats={this.props.selectedSeats}
         />
       )
@@ -41,7 +41,7 @@ class SelectSeats extends Component {
   };
 
   render() {
-    const { cinemaId, movieId, hallId, time, boughtSeats } = this.props;
+    const { cinemaId, movieId, hallId, boughtSeats } = this.props;
     const seats = SeatsData.filter((hall) => cinemaId == hall.cinemaId && hallId == hall.hallId);
     return (
       seats.map((seat) => {

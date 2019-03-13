@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { selectTicket } from "../../actions/index.js";
+import { toggleSeat } from "../../actions/index.js";
 import Hall from '../../Components/Hall/Hall.js'
 
 
@@ -15,20 +15,20 @@ class HallPage extends Component {
         time={this.props.match.params.time}
         selectedSeats={this.props.selectedSeats}
         boughtSeats={this.props.boughtSeats}
-        onSelectTicket={this.props.onSelectTicket}
+        onToggleSeat={this.props.onToggleSeat}
       />
     )
   }
 }
 
 const mapStateToProps = store => ({
-  selectedSeats: store.ticketsList.selectedSeats,
+  selectedSeats: store.seats.selectedSeats,
   boughtSeats: store.ticketsList.boughtTickets
 });
 
 const mapDispatchToProps = dispatch => ({
-  onSelectTicket(ticket) {
-    dispatch(selectTicket(ticket));
+  onToggleSeat(ticket) {
+    dispatch(toggleSeat(ticket));
   }
 });
 

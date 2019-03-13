@@ -1,8 +1,20 @@
-import { SELECT_TICKET, CLEAR_SELECTED_LIST, BUY_TICKET, GET_CINEMAS_SUCCESS, GET_CINEMAS_FAILURE, GET_MOVIES_SUCCESS, GET_MOVIES_FAILURE, GET_SESSIONS_SUCCESS, GET_SESSIONS_FAILURE, GET_ADDITIONAL_SERVICES_SUCCESS, GET_ADDITIONAL_SERVICES_FAILURE } from '../constans/actionTypes.js'
+import {
+  TOGGLE_SEAT,
+  CLEAR_SELECTED_LIST,
+  BUY_TICKET,
+  GET_CINEMAS_SUCCESS,
+  GET_CINEMAS_FAILURE,
+  GET_MOVIES_SUCCESS,
+  GET_MOVIES_FAILURE,
+  GET_SESSIONS_SUCCESS,
+  GET_SESSIONS_FAILURE,
+  GET_ADDITIONAL_SERVICES_SUCCESS,
+  GET_ADDITIONAL_SERVICES_FAILURE
+} from '../constans/actionTypes.js';
 
 
-export const selectTicket = ticket => ({
-  type: SELECT_TICKET,
+export const toggleSeat = ticket => ({
+  type: TOGGLE_SEAT,
   payload: {
     id: ticket.id,
     cinemaId: ticket.cinemaId,
@@ -14,7 +26,7 @@ export const selectTicket = ticket => ({
   }
 })
 
-export const clearSelectedTickets = () => ({
+export const clearSelectedSeats = () => ({
   type: CLEAR_SELECTED_LIST
 })
 
