@@ -12,7 +12,6 @@ import ConfirmTicketsPage from './Containers/ConfirmTicketsPage/ConfirmTicketsPa
 import './App.scss';
 
 
-
 export const history = createBrowseHistory();
 
 class App extends Component {

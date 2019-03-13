@@ -1,12 +1,9 @@
-/* eslint-disable no-unused-expressions */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Redirect } from 'react-router';
 
 import TicketInfo from './TicketInfo/TicketInfo';
 import movieData from '../../../movieData.js'
 import './ConfirmTicket.scss'
-
 
 
 class ConfirmTicket extends Component {
@@ -19,15 +16,13 @@ class ConfirmTicket extends Component {
     if (services.find(service => +service.seatId === +seatId)) {
       services.map((service) => {
         if (service.seatId === seatId) {
-          service.service.includes(serviceId)
-            ? (
-              service.service = service.service.filter(id => id !== serviceId),
-              service.cost -= cost
-            )
-            : (
-              service.service.push(serviceId),
-              service.cost += cost
-            );
+          if (service.service.includes(serviceId)) {
+            service.service = service.service.filter(id => id !== serviceId);
+            service.cost -= cost;
+          } else {
+            service.service.push(serviceId);
+            service.cost += cost;
+          }
         }
       })
     } else {
