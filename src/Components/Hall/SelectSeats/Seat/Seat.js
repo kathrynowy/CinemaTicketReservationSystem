@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import { relativeTimeRounding } from 'moment';
 
 
 class Seat extends Component {
   handleSelect = () => {
     const { row, seat, cost, cinemaId, movieId, hallId } = this.props;
-    const ticket = { id: `${row}.${seat}`, cinemaId, movieId, hallId, row, seat, cost }
-    this.props.toggleSeat(ticket);
+      const ticket = { id: `${row}.${seat}`, cinemaId, movieId, hallId, row, seat, cost }
+      const isForbid = this.props.selectedSeats.find(seat => seat.id == ticket.id);
+    if ((this.props.selectedSeats.length < 6) || (this.props.selectedSeats.length >= 6 && isForbid) ) 
+      this.props.toggleSeat(ticket);
+     
   };
 
   render() {
