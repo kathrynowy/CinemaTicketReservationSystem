@@ -1,0 +1,95 @@
+@import '../variables.scss';
+
+.hall {
+  overflow-x: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: $light-brown solid 1px;
+  -webkit-touch-callout: none; 
+  -webkit-user-select: none; 
+  -khtml-user-select: none; 
+  -moz-user-select: none; 
+  -ms-user-select: none; 
+  user-select: none;
+
+  &__screen { 
+    width: 60%;
+    margin-top: 15px;
+    border-top: 40px solid $brown;
+    border-left: 80px solid transparent;
+    border-right: 80px solid transparent;
+    margin-bottom: 30px;
+  }
+
+  &-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  &-legend {
+    display: flex;
+    flex-direction: row;
+    margin-top: 15px;
+    justify-content: space-between;
+   
+    &__text {
+      font-size: 1.1rem;
+      margin-right: 10px;
+    }
+
+    &__seat-type {
+      display: flex;
+      margin: 10px;
+    }
+
+    &__icon {
+      display: flex;
+      box-shadow: 0 1px 3px 1px $silver;
+      margin-right: 5px;
+      width: 25px;
+      height: 25px;
+
+      &_free {
+        background-color: $white;
+      }
+    
+      &_selected {
+        background-color: $cornflower-blue;
+      }
+    
+      &_bought {
+        background-color: $bought-tickets;
+      }
+    }
+  }
+}
+
+.hall::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px #0000004d; 
+  border-radius: 10px;
+}
+
+.hall::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px #00000080; 
+}
+
+.seats-information {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+ @media only screen and (max-width: 993px) {
+  .hall {
+    &-legend {
+      &__icon {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+}
+

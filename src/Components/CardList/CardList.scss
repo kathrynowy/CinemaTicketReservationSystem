@@ -1,0 +1,14 @@
+@import '../variables.scss';
+
+.card-list {
+  justify-content: flex-start;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+@media only screen and (max-width: 420px) {
+  .card-list {
+    justify-content: center;
+  }
+}

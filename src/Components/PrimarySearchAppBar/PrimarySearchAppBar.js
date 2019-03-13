@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import { AppBar, Toolbar, IconButton, Typography, InputBase, MenuItem, Menu } from '@material-ui/core';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
@@ -79,8 +80,8 @@ const styles = theme => ({
     },
   },
   app: {
-    background: '#7986cb',
-    color: 'black',
+    background: 'rgb(38, 38, 41)',
+    color: 'rgb(236, 186, 197)',
   }
 });
 

@@ -1,100 +1,30 @@
-.container {
+ @import 'node_modules/reset-css/sass/_reset.scss'; 
+ @import './Components/variables.scss';
+
+ html, body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   font-family: 'Nunito','Helvetica Neue','Helvetica','Arial','sans-serif';
-  background-color:#e8eaf6;
+  box-sizing: border-box;
+ }
+
+#root {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
-@media only screen and (max-width: 420px) {
-  .cardsContainer {
-    margin: 0;
-    justify-content: center;
-    display: flex;
-    align-items: space-between;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-  
-  .film-container {
-    justify-content: flex-start;
-    display: flex;
-    align-items: space-around;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }  
- }
+.container {
+  background-color: $prim;
+  color: $brown;
+  padding: 0 80px;
+  display: flex;
+  flex: 1 1 auto;
+}
 
- @media only screen and (max-width: 992px) {
-  .cardsContainer {
-    margin: 0px 4rem;
-    justify-content: center;
-    display: flex;
-    align-items: space-between;
-    flex-direction: row;
-    flex-wrap: wrap;
+@media only screen and (max-width: 700px) {
+  .container {
+    padding: 0 15px;
   }
-  
-  .film-container {
-    justify-content: flex-start;
-    display: flex;
-    align-items: space-around;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }  
- }
-
- @media only screen and (max-width: 768px) {
-  .cardsContainer {
-    margin: 0 2rem;
-    justify-content: center;
-    display: flex;
-    align-items: space-between;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-  
-  .film-container {
-    justify-content: flex-start;
-    display: flex;
-    align-items: space-around;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }  
- }
-
- @media only screen and (min-width: 993px) {
-  .cardsContainer {
-    margin: 0px 7rem;
-    justify-content: center;
-    display: flex;
-    align-items: space-between;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-  
-  .film-container {
-    justify-content: flex-start;
-    display: flex;
-    align-items: space-around;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }  
- }
- 
- @media only screen and (min-width: 1200px) {
-  .cardsContainer {
-    margin: 0px 7rem;
-    justify-content: center;
-    display: flex;
-    align-items: space-between;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-  
-  .film-container {
-    justify-content: flex-start;
-    display: flex;
-    align-items: space-around;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }  
- }
- 
+}

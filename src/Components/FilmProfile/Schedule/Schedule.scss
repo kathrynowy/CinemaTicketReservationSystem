@@ -1,0 +1,113 @@
+@import '../../variables.scss';
+
+.schedule__ticket { 
+  text-decoration: none; 
+  color: $pink; 
+} 
+.schedule__ticket:hover { 
+  color: $light-pink; 
+}
+
+.schedule {
+  flex-direction: row;
+  display: flex; 
+  margin-top: 15px; 
+  
+  &__cinema { 
+    display: flex;   
+    margin-bottom: 10px;   
+    font-size: 18px; 
+    font-weight: 400; 
+  }
+
+  &__ticket-list { 
+    display: flex; 
+    flex-wrap: wrap; 
+  }
+
+  &__time { 
+    color: $light-brown; 
+    font-weight: bold; 
+    align-self: center;
+    font-size: 13px;  
+  } 
+  
+  &__ticket:hover { 
+    .schedule__time { 
+      color: $light-pink; 
+    } 
+    background-color: $light-brown; 
+    .schedule_ticket { 
+      border-left: 1px dashed $light-pink; 
+    } 
+  } 
+  
+  &_ticket { 
+    display: flex; 
+    border-left: 1px dashed $brown; 
+    width: 13px; 
+  } 
+  
+  &__ticket { 
+    display: flex; 
+    flex-direction: row; 
+    border: 1px solid $brown; 
+    background-color: $light-pink; 
+    justify-content: space-evenly; 
+    border-radius: 3px; 
+    height: 22px; 
+    margin-right: 5px; 
+    margin-bottom: 5px; 
+    width: 62px; 
+  } 
+} 
+    
+@media only screen and (max-width: 992px) { 
+  .schedule__cinema { 
+    flex-grow: 2; 
+  }
+} 
+  
+@media only screen and (max-width: 768px) { 
+  .schedule { 
+    align-items: flex-start; 
+    flex-direction: row; 
+  
+    &__cinema { 
+      flex-grow: 1;
+    } 
+  } 
+} 
+    
+@media only screen and (max-width: 420px) { 
+  .schedule { 
+    flex-direction: column; 
+    align-items: flex-start; 
+    
+    &__cinema { 
+    flex-grow: 3;
+    } 
+    
+    &__ticket-list { 
+      flex-grow: 1; 
+    }  
+  } 
+} 
+
+@media only screen and (min-width: 993px) { 
+  .schedule { 
+    &__cinema { 
+      flex-grow: 1; 
+    } 
+
+    &__ticket-list { 
+      flex-grow: 1; 
+    }  
+  } 
+} 
+  
+@media only screen and (min-width: 1200px) { 
+  .schedule { 
+    align-items: flex-start; 
+  }  
+}

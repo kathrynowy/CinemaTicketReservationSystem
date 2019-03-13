@@ -1,0 +1,51 @@
+@import '../../variables.scss';
+
+.confirm-container {
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  background-color: $light-brown; 
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid $black;
+  color: $light-pink; 
+}
+
+.confirm-title {
+  font-size: 42px;
+  font-weight: 500;
+}
+
+.confirm-ticket {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} 
+
+.button {
+  height: 60px;
+  width: 150px;
+  border: 1px solid $pink; 
+  background-color: $brown; 
+  color: $pink; 
+  font-size: 24px; 
+  padding: 10px 15px; 
+  border-radius: 60px; 
+  
+  &_confirm {
+    margin-right: 10px;
+  }
+}
+
+input[type="submit"]:focus { 
+  outline: 0; 
+  outline-offset: 0; 
+}
+  
+@media only screen and (max-width: 420px) {
+  .confirm-container {
+    margin: 0 auto;
+    width: 100%;
+  }
+}
