@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Router, Route } from "react-router-dom";
+import createBrowseHistory from "history/createBrowserHistory";
 
 import SignIn from './Components/SignIn/SignIn.js'
 import PrimarySearchAppBar from './Components/PrimarySearchAppBar/PrimarySearchAppBar.js'
@@ -11,12 +12,15 @@ import ConfirmTicketsPage from './Containers/ConfirmTicketsPage/ConfirmTicketsPa
 import './App.scss';
 
 
+
+export const history = createBrowseHistory();
+
 class App extends Component {
   render() {
     return (
       <Fragment>
         <PrimarySearchAppBar />
-        <Router>
+        <Router history={history}>
           <div className="container">
             <Route exact path="/" component={MainPage} />
             <Route path="/film-profile/:movieId" component={FilmProfilePage} />

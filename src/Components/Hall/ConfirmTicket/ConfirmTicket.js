@@ -1,28 +1,24 @@
 /* eslint-disable no-unused-expressions */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router';
 
 import TicketInfo from './TicketInfo/TicketInfo';
 import movieData from '../../../movieData.js'
 import './ConfirmTicket.scss'
 
 
+
 class ConfirmTicket extends Component {
   state = {
-    choosedServices: [
-      {
-        ticketId: 0,
-        service: [],
-        cost: 0
-      }
-    ]
+    selectedServices: []
   }
 
-  handleSelect = (ticketId, serviceId, cost) => {
-    const services = this.state.choosedServices;
-    services.find(service => +service.ticketId === +ticketId)
-      ? (services.map((service) => {
-        if (service.ticketId === ticketId) {
+  handleSelect = (seatId, serviceId, cost) => {
+    const services = this.state.selectedServices;
+    if (services.find(service => +service.seatId === +seatId)) {
+      services.map((service) => {
+        if (service.seatId === seatId) {
           service.service.includes(serviceId)
             ? (
               service.service = service.service.filter(id => id !== serviceId),
@@ -33,22 +29,25 @@ class ConfirmTicket extends Component {
               service.cost += cost
             );
         }
-      }))
-      : services.push({
-        ticketId: ticketId,
+      })
+    } else {
+      services.push({
+        seatId: seatId,
         service: [serviceId],
         cost: cost
       });
+    }
 
     this.setState({
-      choosedServices: services
+      selectedServices: services
     })
   }
 
   handleSubmit = () => {
     const confirmedTickets = this.props.selectedSeats.map((seat, index) => {
-      const services = this.state.choosedServices.find(service => service.ticketId === index);
+      const services = this.state.selectedServices.find(service => service.seatId === seat.id);
       return {
+        id: seat.id,
         cinemaId: this.props.cinemaId,
         movieId: this.props.movieId,
         hallId: this.props.hallId,
@@ -56,10 +55,9 @@ class ConfirmTicket extends Component {
         row: seat.row,
         seat: seat.seat,
         cost: services ? +seat.cost + services.cost : seat.cost,
-        choosedServices: services ? this.state.choosedServices[index].service : []
+        selectedServices: services ? this.state.selectedServices.find(service => service.seatId === seat.id).service : []
       }
     });
-
     this.props.buyTickets(confirmedTickets);
   }
 
@@ -77,6 +75,7 @@ class ConfirmTicket extends Component {
                 row={seat.row}
                 seat={seat.seat}
                 ticketId={index + 1}
+                seatId={seat.id}
                 selectedSeats={selectedSeats}
                 cinemaId={seat.cinemaId}
                 additionalServices={additionalServices}
@@ -88,10 +87,16 @@ class ConfirmTicket extends Component {
         }
         </div>
         <div>
-          <Link to={{ pathname: `/hall/${this.props.cinemaId}/${this.props.movieId}/${this.props.hallId}/${this.props.time}` }}>
-            <input type="submit" value="confirm" onClick={this.handleSubmit} className="button button_confirm" />
-          </Link>
-          <Link to={{ pathname: `/hall/${this.props.cinemaId}/${this.props.movieId}/${this.props.hallId}/${this.props.time}` }}>
+          <input
+            type="submit"
+            value="confirm"
+            onClick={() => {
+              this.handleSubmit();
+              this.props.history.push(`/hall/${this.props.cinemaId}/${this.props.movieId}/${this.props.hallId}/${this.props.time}}`)
+            }}
+            className="button button_confirm"
+          />
+          <Link to={{ pathname: `/ hall / ${this.props.cinemaId} /${this.props.movieId} /${this.props.hallId}/${this.props.time} ` }}>
             <input type="button" value="back" className="button" />
           </Link>
         </div>

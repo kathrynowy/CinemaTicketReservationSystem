@@ -19,17 +19,17 @@ class TicketInfo extends Component {
     }
   }
 
-  handleSelect = (ticketId, serviceName, cost, index) => {
+  handleSelect = (seatId, cost, index) => {
     const newForm = this.state.form;
     newForm[index].value = !newForm[index].value;
     this.setState({
       form: this.state.form
     })
-    this.props.handleSelect(ticketId, index, cost);
+    this.props.handleSelect(seatId, index, cost);
   }
 
   render() {
-    const { row, seat, additionalServices, movieName, ticketId, cinemaId } = this.props;
+    const { row, seat, additionalServices, movieName, ticketId, cinemaId, seatId } = this.props;
     const services = (additionalServices.filter(service => service.cinemaId == cinemaId))[0].services;
     return (
       <div className="confirm-ticket-component">
@@ -57,9 +57,7 @@ class TicketInfo extends Component {
                     name="option1"
                     type="checkbox"
                     checked={this.state.form[index].value}
-                    onChange={() => {
-                      return this.handleSelect(ticketId - 1, service.name, service.cost, index);
-                    }}
+                    onChange={() => this.handleSelect(seatId, service.cost, index)}
                   />
                   <label className="input-group__name" htmlFor={"option" + row + seat + service.name}>
                     {service.name}

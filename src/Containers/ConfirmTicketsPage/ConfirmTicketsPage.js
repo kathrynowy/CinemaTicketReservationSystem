@@ -22,6 +22,7 @@ class ConfirmTicketsPage extends Component {
         movieId={this.props.match.params.movieId}
         hallId={this.props.match.params.hallId}
         time={this.props.match.params.time}
+        history={this.props.history}
       />
     );
   }
