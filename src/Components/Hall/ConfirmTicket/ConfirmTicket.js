@@ -91,7 +91,7 @@ class ConfirmTicket extends Component {
             }}
             className="button button_confirm"
           />
-          <Link to={{ pathname: `/ hall / ${this.props.cinemaId} /${this.props.movieId} /${this.props.hallId}/${this.props.time} ` }}>
+          <Link to={{ pathname: `/hall/${this.props.cinemaId}/${this.props.movieId}/${this.props.hallId}/${this.props.time}` }}>
             <input type="button" value="back" className="button" />
           </Link>
         </div>
