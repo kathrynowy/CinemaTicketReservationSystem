@@ -39,7 +39,7 @@ class ConfirmTicket extends Component {
   }
 
   handleSubmit = () => {
-    const confirmedTickets = this.props.selectedSeats.map((seat, index) => {
+    const confirmedTickets = this.props.selectedSeats.map((seat) => {
       const services = this.state.selectedServices.find(service => service.seatId === seat.id);
       return {
         id: seat.id,
@@ -87,7 +87,7 @@ class ConfirmTicket extends Component {
             value="confirm"
             onClick={() => {
               this.handleSubmit();
-              this.props.history.push(`/hall/${this.props.cinemaId}/${this.props.movieId}/${this.props.hallId}/${this.props.time}}`)
+              this.props.redirectToHall(`/hall/${this.props.cinemaId}/${this.props.movieId}/${this.props.hallId}/${this.props.time}`);
             }}
             className="button button_confirm"
           />

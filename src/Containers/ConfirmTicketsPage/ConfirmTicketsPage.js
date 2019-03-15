@@ -7,7 +7,12 @@ import ConfirmTicket from '../../Components/Hall/ConfirmTicket/ConfirmTicket.js'
 import { buyTickets, clearSelectedSeats } from '../../actions/index.js';
 
 
+
 class ConfirmTicketsPage extends Component {
+  redirectToHall(url) {
+    this.history.push(url);
+  }
+
   componentDidMount() {
     this.props.getAdditionalServicesAsync(additionalServices);
   }
@@ -22,7 +27,7 @@ class ConfirmTicketsPage extends Component {
         movieId={this.props.match.params.movieId}
         hallId={this.props.match.params.hallId}
         time={this.props.match.params.time}
-        history={this.props.history}
+        redirectToHall={this.redirectToHall}
       />
     );
   }
