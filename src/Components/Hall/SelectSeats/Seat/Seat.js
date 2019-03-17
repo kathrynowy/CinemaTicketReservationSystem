@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { relativeTimeRounding } from 'moment';
 
 
 class Seat extends Component {

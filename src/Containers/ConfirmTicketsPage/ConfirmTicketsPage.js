@@ -7,10 +7,9 @@ import ConfirmTicket from '../../Components/Hall/ConfirmTicket/ConfirmTicket.js'
 import { buyTickets, clearSelectedSeats } from '../../actions/index.js';
 
 
-
 class ConfirmTicketsPage extends Component {
-  redirectToHall(url) {
-    this.history.push(url);
+  redirectToHall = (url) => {
+    this.props.history.push(url);
   }
 
   componentDidMount() {
