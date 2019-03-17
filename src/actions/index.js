@@ -61,9 +61,9 @@ export const getMoviesFailure = (isError) => {
 
 export const getSeatsAsync = (movies) => {
   return (dispatch) => {
-    if (movies !== null)
-      return dispatch(getSeatsSuccess(movies))
-    return dispatch(getSeatsFailure(true))
+    movies !== null 
+      ? dispatch(getSeatsSuccess(movies))
+      : dispatch(getSeatsFailure(true))
   }
 }
 
