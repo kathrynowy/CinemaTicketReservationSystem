@@ -5,8 +5,9 @@ import Seat from './Seat/Seat.js'
 import './SelectSeats.scss';
 
 
-
 class SelectSeats extends Component {
+  handleCompare = (array, id) => array.find(element => element.id === id);
+  
   handleDrawSeats = (boughtSeats, amount, row, cost, cinemaId, movieId, hallId) => {
     let seats = [];
     for (let i = 1; i <= amount; i++) {
@@ -20,18 +21,8 @@ class SelectSeats extends Component {
           movieId={movieId}
           boughtSeats={boughtSeats}
           hallId={hallId}
-
-          isBought={
-            boughtSeats.find(seat => {
-              return (seat.row === row && seat.seat === i)
-            })
-          }
-          isSelected={
-            this.props.selectedSeats.find(seat => {
-              return seat.id === (row + "." + i)
-            })
-          }
-
+          isBought={this.handleCompare(boughtSeats,(row + "." + i))}
+          isSelected={ this.handleCompare(this.props.selectedSeats,(row + "." + i))}
           toggleSeat={this.props.toggleSeat}
           selectedSeats={this.props.selectedSeats}
         />
