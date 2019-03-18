@@ -12,18 +12,15 @@ class ConfirmTicket extends Component {
 
   handleSelect = (seatId, serviceId, cost) => {
     const services = this.state.selectedServices;
-    if (services.find(service => +service.seatId === +seatId)) {
-      services.map((service) => {
-        if (service.seatId === seatId) {
-          if (service.service.includes(serviceId)) {
-            service.service = service.service.filter(id => id !== serviceId);
-            service.cost -= cost;
-          } else {
-            service.service.push(serviceId);
-            service.cost += cost;
-          }
-        }
-      })
+    const service = services.find(service => +service.seatId === +seatId);
+    if (service) {
+      if (service.service.includes(serviceId)) {
+        service.service = service.service.filter(id => id !== serviceId);
+        service.cost -= cost;
+      } else {
+        service.service.push(serviceId);
+        service.cost += cost;
+      }
     } else {
       services.push({
         seatId: seatId,
@@ -49,7 +46,7 @@ class ConfirmTicket extends Component {
         row: seat.row,
         seat: seat.seat,
         cost: services ? +seat.cost + services.cost : seat.cost,
-        selectedServices: services ? this.state.selectedServices.find(service => service.seatId === seat.id).service : []
+        selectedServices: services ? services.service : []
       }
     });
     this.props.buyTickets(confirmedTickets);
@@ -91,8 +88,8 @@ class ConfirmTicket extends Component {
             }}
             className="button button_confirm"
           />
-          <button 
-            className="button" 
+          <button
+            className="button"
             onClick={() => {
               this.props.redirectToHall(url)
             }}
