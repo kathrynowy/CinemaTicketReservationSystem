@@ -7,7 +7,7 @@ import './styles.scss';
 class MovieCard extends Component {
   render() {
     const { movie } = this.props;
-    const id = movie.id;
+    const id = movie._id;
     return (
       <div className="card">
         <img

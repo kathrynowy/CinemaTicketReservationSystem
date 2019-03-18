@@ -11,13 +11,13 @@ import movieData from '../../movieData.js';
 class FilmProfilePage extends Component {
   componentDidMount() {
     this.props.getSessionsAsync(tickets);
-    this.props.getCinemasAsync(cinemaData);
-    this.props.getMoviesAsync(movieData);
+    this.props.getCinemasAsync();
+    this.props.getMoviesAsync();
   }
 
   render() {
     return (
-      this.props.sessions.length &&
+      this.props.sessions.length && this.props.movies.length &&
       <FilmProfile
         movieId={this.props.match.params.movieId}
         sessions={this.props.sessions}
@@ -38,11 +38,11 @@ const mapDispatchToProps = dispatch => ({
   getSessionsAsync(sessions) {
     dispatch(getSessionsAsync(sessions));
   },
-  getCinemasAsync(cinemas) {
-    dispatch(getCinemasAsync(cinemas));
+  getCinemasAsync() {
+    dispatch(getCinemasAsync());
   },
-  getMoviesAsync(movies) {
-    dispatch(getMoviesAsync(movies));
+  getMoviesAsync() {
+    dispatch(getMoviesAsync());
   }
 });
 

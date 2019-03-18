@@ -13,6 +13,7 @@ import {
   GET_SEATS_SUCCESS,
   GET_SEATS_FAILURE
 } from '../constans/actionTypes.js';
+import axios from 'axios';
 
 
 export const toggleSeat = ticket => ({
@@ -39,9 +40,15 @@ export const buyTickets = tickets => ({
 
 export const getMoviesAsync = (movies) => {
   return (dispatch) => {
-    if (movies !== null)
-      return dispatch(getMoviesSuccess(movies))
-    return dispatch(getMoviesFailure(true))
+    axios.get(`http://localhost:8080/movies`)
+      .then(res => {
+        dispatch(getMoviesSuccess(res.data)
+        )
+      })
+      .catch(err => {
+        dispatch(getMoviesFailure(err)
+        )
+      })
   }
 }
 
@@ -61,7 +68,7 @@ export const getMoviesFailure = (isError) => {
 
 export const getSeatsAsync = (movies) => {
   return (dispatch) => {
-    movies !== null 
+    movies !== null
       ? dispatch(getSeatsSuccess(movies))
       : dispatch(getSeatsFailure(true))
   }
@@ -117,11 +124,17 @@ export const getCinemasFailure = (isError) => {
   }
 }
 
-export const getCinemasAsync = (cinemas) => {
+export const getCinemasAsync = () => {
   return (dispatch) => {
-    if (cinemas !== null)
-      return dispatch(getCinemasSuccess(cinemas))
-    return dispatch(getCinemasFailure(true))
+    axios.get(`http://localhost:8080/cinemas`)
+      .then(res => {
+        dispatch(getCinemasSuccess(res.data)
+        )
+      })
+      .catch(err => {
+        dispatch(getCinemasFailure(err)
+        )
+      })
   }
 }
 
