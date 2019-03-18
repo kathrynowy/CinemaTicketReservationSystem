@@ -14,6 +14,7 @@ import {
   GET_SEATS_FAILURE
 } from '../constans/actionTypes.js';
 import axios from 'axios';
+const url = "http://localhost:8080/";
 
 
 export const toggleSeat = ticket => ({
@@ -41,7 +42,7 @@ export const buyTickets = tickets => ({
 export function getMoviesAsync() {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get(`http://localhost:8080/movies`);
+      const { data } = await axios.get(`${url}movies`);
       dispatch(getMoviesSuccess(data));
     } catch (error) {
       dispatch(getMoviesFailure(error));
@@ -66,7 +67,7 @@ export const getMoviesFailure = (isError) => {
 export const getSeatsAsync = () => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get(`http://localhost:8080/halls`);
+      const { data } = await axios.get(`${url}halls`);
       dispatch(getSeatsSuccess(data));
     } catch (error) {
       dispatch(getSeatsFailure(error));
@@ -105,7 +106,7 @@ export const getSessionsFailure = (isError) => {
 export function getSessionsAsync() {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get(`http://localhost:8080/sessions`);
+      const { data } = await axios.get(`${url}sessions`);
       dispatch(getSessionsSuccess(data));
     } catch (error) {
       dispatch(getSessionsFailure(error));
@@ -130,7 +131,7 @@ export const getCinemasFailure = (isError) => {
 export function getCinemasAsync() {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get(`http://localhost:8080/cinemas`);
+      const { data } = await axios.get(`${url}cinemas`);
       dispatch(getCinemasSuccess(data));
     } catch (error) {
       dispatch(getCinemasFailure(error));
