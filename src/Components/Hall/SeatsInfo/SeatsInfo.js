@@ -13,20 +13,20 @@ class SeatsInfo extends Component {
     }, 0)
     const selectedSeats = this.props.selectedSeats;
     return (
-      <div className="seats-info">
-        <div className="seats-info__chosen-tickets-list">
-          <span className="seats-info__chosen-tickets-title">Chosen seats: </span>
+      <div className="chosen-seats-info">
+        <div className="chosen-seats-info__tickets-list">
+          <span className="chosen-seats-info__tickets-title">Chosen seats: </span>
           {
             selectedSeats.map((seat) =>
-              <div key={seat.id} className="seats-info__chosen-ticket">
+              <div key={seat.id} className="chosen-seats-info__ticket">
                 row {seat.row}/seat {seat.seat}
               </div>
             )
           }
         </div>
-        <div className="seats-info__include">Cost: {(newCost || ' ')}byn </div>
+        <div className="chosen-seats-info__include">Cost: {(newCost || ' ')}byn </div>
         <Link to={{ pathname: `/confirm-ticket/${cinemaId}/${movieId}/${hallId}/${time}` }}>
-          <button className="seats-info__btn" disabled={isDisabled}>Buy</button></Link>
+          <button className="chosen-seats-info__btn" disabled={isDisabled}>Buy</button></Link>
       </div>
     );
   }
