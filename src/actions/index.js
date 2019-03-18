@@ -63,11 +63,14 @@ export const getMoviesFailure = (isError) => {
   }
 }
 
-export const getSeatsAsync = (movies) => {
-  return (dispatch) => {
-    movies !== null
-      ? dispatch(getSeatsSuccess(movies))
-      : dispatch(getSeatsFailure(true))
+export const getSeatsAsync = () => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.get(`http://localhost:8080/halls`);
+      dispatch(getSeatsSuccess(data));
+    } catch (error) {
+      dispatch(getSeatsFailure(error));
+    }
   }
 }
 
