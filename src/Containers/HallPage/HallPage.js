@@ -8,8 +8,8 @@ import SeatsData from '../../SeatsData.js';
 
 class HallPage extends Component {
   onToggleSeat = (ticket) => {
-    const isForbid = this.props.selectedSeats.find(seat => seat.id == ticket.id);
-    if (this.props.selectedSeats.length < 6 || (this.props.selectedSeats.length >= 6 && isForbid)) {
+    const isSelected = this.props.selectedSeats.find(seat => seat.id === ticket.id);
+    if (this.props.selectedSeats.length < 6 || isSelected) {
       this.props.onToggleSeat(ticket);
     }
   }
