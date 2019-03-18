@@ -38,17 +38,14 @@ export const buyTickets = tickets => ({
   payload: tickets
 })
 
-export const getMoviesAsync = (movies) => {
-  return (dispatch) => {
-    axios.get(`http://localhost:8080/movies`)
-      .then(res => {
-        dispatch(getMoviesSuccess(res.data)
-        )
-      })
-      .catch(err => {
-        dispatch(getMoviesFailure(err)
-        )
-      })
+export function getMoviesAsync() {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.get(`http://localhost:8080/movies`);
+      dispatch(getMoviesSuccess(data));
+    } catch (error) {
+      dispatch(getMoviesFailure(error));
+    }
   }
 }
 
@@ -102,11 +99,14 @@ export const getSessionsFailure = (isError) => {
   }
 }
 
-export const getSessionsAsync = (sessions) => {
-  return (dispatch) => {
-    if (sessions !== null)
-      return dispatch(getSessionsSuccess(sessions))
-    return dispatch(getSessionsFailure(true))
+export function getSessionsAsync() {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.get(`http://localhost:8080/sessions`);
+      dispatch(getSessionsSuccess(data));
+    } catch (error) {
+      dispatch(getSessionsFailure(error));
+    }
   }
 }
 
@@ -124,20 +124,16 @@ export const getCinemasFailure = (isError) => {
   }
 }
 
-export const getCinemasAsync = () => {
-  return (dispatch) => {
-    axios.get(`http://localhost:8080/cinemas`)
-      .then(res => {
-        dispatch(getCinemasSuccess(res.data)
-        )
-      })
-      .catch(err => {
-        dispatch(getCinemasFailure(err)
-        )
-      })
+export function getCinemasAsync() {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.get(`http://localhost:8080/cinemas`);
+      dispatch(getCinemasSuccess(data));
+    } catch (error) {
+      dispatch(getCinemasFailure(error));
+    }
   }
 }
-
 
 export const getAdditionalServicesSuccessful = (additionalServices) => {
   return {

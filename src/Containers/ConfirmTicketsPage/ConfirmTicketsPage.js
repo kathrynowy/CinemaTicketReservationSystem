@@ -5,7 +5,6 @@ import { getAdditionalServicesAsync } from '../../actions/index.js'
 import additionalServices from '../../additionalServices.js'
 import ConfirmTicket from '../../Components/Hall/ConfirmTicket/ConfirmTicket.js';
 import { buyTickets, clearSelectedSeats, getMoviesAsync } from '../../actions/index.js';
-import movieData from '../../movieData.js';
 
 
 class ConfirmTicketsPage extends Component {
@@ -15,7 +14,7 @@ class ConfirmTicketsPage extends Component {
 
   componentDidMount() {
     this.props.getAdditionalServicesAsync(additionalServices);
-    this.props.getMoviesAsync(movieData);
+    this.props.getMoviesAsync();
   }
 
   render() {
@@ -49,8 +48,8 @@ const mapDispatchToProps = dispatch => ({
     dispatch(buyTickets(tickets));
     dispatch(clearSelectedSeats())
   },
-  getMoviesAsync(movies) {
-    dispatch(getMoviesAsync(movies));
+  getMoviesAsync() {
+    dispatch(getMoviesAsync());
   }
 });
 
