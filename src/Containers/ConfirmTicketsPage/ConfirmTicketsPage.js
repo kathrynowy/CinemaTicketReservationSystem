@@ -29,6 +29,7 @@ class ConfirmTicketsPage extends Component {
         hallId={this.props.match.params.hallId}
         time={this.props.match.params.time}
         redirectToHall={this.redirectToHall}
+        movies={this.props.movies}
       />
     );
   }

@@ -7,6 +7,13 @@ import SeatsData from '../../SeatsData.js';
 
 
 class HallPage extends Component {
+  onToggleSeat = (ticket) => {
+    const isSelected = this.props.selectedSeats.find(seat => seat.id === ticket.id);
+    if (this.props.selectedSeats.length < 6 || isSelected) {
+      this.props.onToggleSeat(ticket);
+    }
+  }
+
   componentDidMount() {
     this.props.getSeatsAsync(SeatsData);
   }
@@ -20,7 +27,7 @@ class HallPage extends Component {
         time={this.props.match.params.time}
         selectedSeats={this.props.selectedSeats}
         boughtSeats={this.props.boughtSeats}
-        onToggleSeat={this.props.onToggleSeat}
+        onToggleSeat={this.onToggleSeat}
         seats={this.props.seats}
       />
     )
