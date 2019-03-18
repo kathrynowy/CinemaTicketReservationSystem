@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import Schedule from './Schedule/Schedule.js'
 import Calendar from './Calendar/Calendar';
-import movieData from '../../movieData.js'
 import './styles.scss';
 
 
@@ -45,7 +44,7 @@ class FilmProfile extends Component {
   render() {
     const days = this.createDays();
     const movieId = this.props.movieId;
-    const movie = movieData.find((movie) => movie.id === movieId)
+    const movie = this.props.movies.find((movie) => movie.id === movieId)
     return (
       <div className="movie-profile">
         <div className="movie-profile__name"> {movie.name}</div>

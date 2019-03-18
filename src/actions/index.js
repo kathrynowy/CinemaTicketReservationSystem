@@ -9,7 +9,9 @@ import {
   GET_SESSIONS_SUCCESS,
   GET_SESSIONS_FAILURE,
   GET_ADDITIONAL_SERVICES_SUCCESS,
-  GET_ADDITIONAL_SERVICES_FAILURE
+  GET_ADDITIONAL_SERVICES_FAILURE,
+  GET_SEATS_SUCCESS,
+  GET_SEATS_FAILURE
 } from '../constans/actionTypes.js';
 
 
@@ -53,6 +55,28 @@ export const getMoviesSuccess = (movies) => {
 export const getMoviesFailure = (isError) => {
   return {
     type: GET_MOVIES_FAILURE,
+    payload: isError
+  }
+}
+
+export const getSeatsAsync = (movies) => {
+  return (dispatch) => {
+    movies !== null 
+      ? dispatch(getSeatsSuccess(movies))
+      : dispatch(getSeatsFailure(true))
+  }
+}
+
+export const getSeatsSuccess = (movies) => {
+  return {
+    type: GET_SEATS_SUCCESS,
+    payload: movies
+  }
+}
+
+export const getSeatsFailure = (isError) => {
+  return {
+    type: GET_SEATS_FAILURE,
     payload: isError
   }
 }

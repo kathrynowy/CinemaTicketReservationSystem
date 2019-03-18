@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import SeatsData from '../../../SeatsData.js'
 import Seat from './Seat/Seat.js'
 import './SelectSeats.scss';
 
@@ -33,7 +32,7 @@ class SelectSeats extends Component {
 
   render() {
     const { cinemaId, movieId, hallId, boughtSeats } = this.props;
-    const seats = SeatsData.filter((hall) => cinemaId == hall.cinemaId && hallId == hall.hallId);
+    const seats = this.props.seats.filter((hall) => cinemaId == hall.cinemaId && hallId == hall.hallId);
     return (
       seats.map((seat) => {
         return (

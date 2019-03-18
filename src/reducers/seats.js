@@ -1,7 +1,14 @@
-import { CLEAR_SELECTED_LIST, TOGGLE_SEAT } from '../constans/actionTypes.js';
+import {
+  CLEAR_SELECTED_LIST,
+  TOGGLE_SEAT,
+  GET_SEATS_SUCCESS,
+  GET_SEATS_FAILURE
+} from '../constans/actionTypes.js';
 
 const initialState = {
-  selectedSeats: []
+  selectedSeats: [],
+  seats: [],
+  isErrored: false
 }
 
 export default function seatsList(state = initialState, action) {
@@ -20,6 +27,16 @@ export default function seatsList(state = initialState, action) {
       return Object.assign({}, state, {
         selectedSeats: []
       })
+
+    case GET_SEATS_SUCCESS:
+      return Object.assign({}, state, {
+        seats: action.payload
+      });
+
+    case GET_SEATS_FAILURE:
+      return Object.assign({}, state, {
+        isErrored: action.payload
+      });
 
     default: return state;
   }

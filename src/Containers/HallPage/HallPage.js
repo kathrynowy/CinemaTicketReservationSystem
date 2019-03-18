@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { toggleSeat } from "../../actions/index.js";
+import { toggleSeat, getSeatsAsync } from "../../actions/index.js";
 import Hall from '../../Components/Hall/Hall.js'
+import SeatsData from '../../SeatsData.js';
 
 
 class HallPage extends Component {
+  componentDidMount() {
+    this.props.getSeatsAsync(SeatsData);
+  }
+
   render() {
     return (
       <Hall
@@ -16,6 +21,7 @@ class HallPage extends Component {
         selectedSeats={this.props.selectedSeats}
         boughtSeats={this.props.boughtSeats}
         onToggleSeat={this.props.onToggleSeat}
+        seats={this.props.seats}
       />
     )
   }
@@ -23,12 +29,16 @@ class HallPage extends Component {
 
 const mapStateToProps = store => ({
   selectedSeats: store.seats.selectedSeats,
-  boughtSeats: store.ticketsList.boughtTickets
+  boughtSeats: store.ticketsList.boughtTickets,
+  seats: store.seats.seats
 });
 
 const mapDispatchToProps = dispatch => ({
   onToggleSeat(ticket) {
     dispatch(toggleSeat(ticket));
+  },
+  getSeatsAsync(movies) {
+    dispatch(getSeatsAsync(movies));
   }
 });
 

@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import { getAdditionalServicesAsync } from '../../actions/index.js'
 import additionalServices from '../../additionalServices.js'
 import ConfirmTicket from '../../Components/Hall/ConfirmTicket/ConfirmTicket.js';
-import { buyTickets, clearSelectedSeats } from '../../actions/index.js';
+import { buyTickets, clearSelectedSeats, getMoviesAsync } from '../../actions/index.js';
+import movieData from '../../movieData.js';
 
 
 class ConfirmTicketsPage extends Component {
@@ -14,11 +15,12 @@ class ConfirmTicketsPage extends Component {
 
   componentDidMount() {
     this.props.getAdditionalServicesAsync(additionalServices);
+    this.props.getMoviesAsync(movieData);
   }
 
   render() {
     return (
-      this.props.additionalServices.length !== 0 && <ConfirmTicket
+      this.props.additionalServices.length && this.props.movies.length && <ConfirmTicket
         additionalServices={this.props.additionalServices}
         selectedSeats={this.props.selectedSeats}
         buyTickets={this.props.onBuyTickets}
@@ -34,6 +36,7 @@ class ConfirmTicketsPage extends Component {
 
 const mapStateToProps = store => ({
   selectedSeats: store.seats.selectedSeats,
+  movies: store.movies.movies,
   additionalServices: store.additionalServices.additionalServices
 })
 
@@ -44,6 +47,9 @@ const mapDispatchToProps = dispatch => ({
   onBuyTickets(tickets) {
     dispatch(buyTickets(tickets));
     dispatch(clearSelectedSeats())
+  },
+  getMoviesAsync(movies) {
+    dispatch(getMoviesAsync(movies));
   }
 });
 

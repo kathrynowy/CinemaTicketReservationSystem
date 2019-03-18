@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import SelectSeats from './SelectSeats/SelectSeats.js'
 import SeatsInfo from './SeatsInfo/SeatsInfo.js'
-import SeatsData from '../../SeatsData.js';
 import './Hall.scss'
 
 
@@ -21,6 +20,7 @@ class Hall extends Component {
             movieId={movieId}
             hallId={hallId}
             time={time}
+            seats={this.props.seats}
           />{/* seatsmap */}
           <div className="hall-legend">
             <div className="hall-legend__seat-type hall-legend__seat-type_free">
@@ -40,7 +40,6 @@ class Hall extends Component {
         <div className="seats-information">
           <SeatsInfo
             selectedSeats={this.props.selectedSeats}
-            SeatsData={SeatsData}
             cinemaId={cinemaId}
             movieId={movieId}
             hallId={hallId}

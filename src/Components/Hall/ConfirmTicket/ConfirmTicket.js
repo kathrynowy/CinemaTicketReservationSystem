@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 
 import TicketInfo from './TicketInfo/TicketInfo';
-import movieData from '../../../movieData.js'
-import './ConfirmTicket.scss'
+import './ConfirmTicket.scss';
 
 
 class ConfirmTicket extends Component {
@@ -60,7 +59,7 @@ class ConfirmTicket extends Component {
         <span className="confirm-title">Confirm Ticket</span>
         <div className="confirm-ticket"> {
           selectedSeats.map((seat, index) => {
-            const movie = movieData.find(movie => +movie.id === +seat.movieId);
+            const movie = this.props.movies.find(movie => +movie.id === +seat.movieId);
             return (
               <TicketInfo
                 key={seat.id}
