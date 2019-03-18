@@ -9,6 +9,10 @@ import movieData from '../../movieData.js';
 
 
 class ConfirmTicketsPage extends Component {
+  redirectToHall = (url) => {
+    this.props.history.push(url);
+  }
+
   componentDidMount() {
     this.props.getAdditionalServicesAsync(additionalServices);
     this.props.getMoviesAsync(movieData);
@@ -24,8 +28,7 @@ class ConfirmTicketsPage extends Component {
         movieId={this.props.match.params.movieId}
         hallId={this.props.match.params.hallId}
         time={this.props.match.params.time}
-        history={this.props.history}
-        movies={this.props.movies}
+        redirectToHall={this.redirectToHall}
       />
     );
   }

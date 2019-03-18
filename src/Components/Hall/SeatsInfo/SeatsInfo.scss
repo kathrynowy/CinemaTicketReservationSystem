@@ -1,11 +1,11 @@
 @import '../../variables.scss';
 
-.seats-info {
+.chosen-seats-info {
   display: flex;
   flex-direction: row;
   margin-top: 30px;
 
-  &__chosen-tickets-list {
+  &__tickets-list {
     overflow-y: auto;
     text-align: start;
     display: flex;
@@ -31,7 +31,7 @@
     display: flex;
   }
 
-  &__chosen-ticket {
+  &__ticket {
     font-size: 20px;
     display: flex;
 
@@ -40,7 +40,7 @@
     }
   }
 
-  &__chosen-tickets-title {
+  &__tickets-title {
     padding-bottom: 10px;
     font-size: 22px;
     font-weight: 600;
@@ -48,7 +48,7 @@
 }
 
 @media only screen and (max-width: 992px) {
-  .seats-info {
+  .chosen-seats-info {
     justify-content: flex-start;
     max-height: 170px;  
 
@@ -61,7 +61,7 @@
 } 
 
 @media only screen and (max-width: 768px) {
-  .seats-info {
+  .chosen-seats-info {
     justify-content: flex-start;
     max-height: 150px;  
 
@@ -72,12 +72,12 @@
   }
 } 
 @media only screen and (max-width: 420px) {
-  .seats-info {
+  .chosen-seats-info {
     flex-direction: column;
     align-items: flex-start;
     max-height: 260px;  
   
-    &__chosen-tickets-list {
+    &__tickets-list {
       border-right: none;
       margin-bottom: 10px;
       border-bottom: 1px solid $black;
@@ -95,7 +95,7 @@
 }
 
 @media only screen and (min-width: 993px) {
-  .seats-info {
+  .chosen-seats-info {
       justify-content: flex-end;
       max-height: 190px;  
     
@@ -108,7 +108,7 @@
 }
 
 @media only screen and (min-width: 1200px) {
-  .seats-info {
+  .chosen-seats-info {
     justify-content: flex-end;
     max-height: 190px;  
   }

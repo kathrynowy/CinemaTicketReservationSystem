@@ -7,6 +7,12 @@
   justify-content: center;
   align-items: center;
   border: $light-brown solid 1px;
+  -webkit-touch-callout: none; 
+  -webkit-user-select: none; 
+  -khtml-user-select: none; 
+  -moz-user-select: none; 
+  -ms-user-select: none; 
+  user-select: none;
 
   &__screen { 
     width: 60%;
@@ -31,6 +37,7 @@
    
     &__text {
       font-size: 1.1rem;
+      margin-right: 10px;
     }
 
     &__seat-type {
