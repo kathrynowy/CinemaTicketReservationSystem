@@ -4,8 +4,32 @@ import './TicketInfo.scss'
 
 
 class TicketInfo extends Component {
+  constructor(props) {
+    super(props);
+    const services = (props.additionalServices.filter(service => service.cinemaId == props.cinemaId))[0].services;
+    this.state = {
+      form: services.map((service, index) => {
+        return ({
+          id: index,
+          value: false,
+          name: service.name,
+          cost: service.cost
+        });
+      })
+    }
+  }
+
+  handleSelect = (seatId, cost, index) => {
+    const newForm = this.state.form;
+    newForm[index].value = !newForm[index].value;
+    this.setState({
+      form: this.state.form
+    })
+    this.props.handleSelect(seatId, index, cost);
+  }
+
   render() {
-    const { row, seat, additionalServices, movieName, ticketId, cinemaId } = this.props;
+    const { row, seat, additionalServices, movieName, ticketId, cinemaId, seatId } = this.props;
     const services = (additionalServices.filter(service => service.cinemaId == cinemaId))[0].services;
     return (
       <div className="confirm-ticket-component">
@@ -32,10 +56,14 @@ class TicketInfo extends Component {
                     id={"option" + row + seat + service.name}
                     name="option1"
                     type="checkbox"
+                    checked={this.state.form[index].value}
+                    onChange={() => this.handleSelect(seatId, service.cost, index)}
                   />
-                  <label className="input-group__name" htmlFor={"option" + row + seat + service.name}>{service.name}</label>
+                  <label className="input-group__name" htmlFor={"option" + row + seat + service.name}>
+                    {service.name}
+                  </label>
                 </div>
-              )
+              );
             })
           }
         </div>

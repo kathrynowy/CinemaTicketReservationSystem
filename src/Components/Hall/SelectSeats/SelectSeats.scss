@@ -53,6 +53,10 @@
       background-color: $cornflower-blue;
       color: $black;
     }
+    &_bought {
+      background-color: $bought-tickets;
+      color: $black;
+    }
   }
 
   &__seats-container {

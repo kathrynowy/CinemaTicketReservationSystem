@@ -14,8 +14,9 @@ class Hall extends Component {
         <div className="hall">
           <div className="hall__screen"></div>
           <SelectSeats
-            selectTicket={this.props.onSelectTicket}
+            toggleSeat={this.props.onToggleSeat}
             selectedSeats={this.props.selectedSeats}
+            boughtSeats={this.props.boughtSeats}
             cinemaId={cinemaId}
             movieId={movieId}
             hallId={hallId}
@@ -41,6 +42,9 @@ class Hall extends Component {
             selectedSeats={this.props.selectedSeats}
             SeatsData={SeatsData}
             cinemaId={cinemaId}
+            movieId={movieId}
+            hallId={hallId}
+            time={time}
           />
         </div>
       </div>

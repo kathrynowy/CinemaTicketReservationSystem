@@ -1,4 +1,7 @@
-import { GET_ADDITIONAL_SERVICES_SUCCESS, GET_ADDITIONAL_SERVICES_FAILURE } from '../constans/actionTypes.js'
+import {
+  GET_ADDITIONAL_SERVICES_SUCCESS,
+  GET_ADDITIONAL_SERVICES_FAILURE
+} from '../constans/actionTypes.js'
 
 const initialState = {
   additionalServices: [],

@@ -26,8 +26,8 @@ const SeatsData = [
     ]
   },
   {
-    cinemaId: 1,
-    hallId: 2,
+    cinemaId: 2,
+    hallId: 1,
     hall: [
       {
         row: 1,
