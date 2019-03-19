@@ -139,7 +139,7 @@ export function getCinemasAsync() {
   }
 }
 
-export const getAdditionalServicesSuccessful = (additionalServices) => {
+export const getAdditionalServicesSuccess = (additionalServices) => {
   return {
     type: GET_ADDITIONAL_SERVICES_SUCCESS,
     payload: additionalServices
@@ -153,10 +153,13 @@ export const getAdditionalServicesFailure = (additionalServices) => {
   }
 }
 
-export const getAdditionalServicesAsync = (additionalServices) => {
-  return (dispatch) => {
-    if (additionalServices.length !== 0)
-      return dispatch(getAdditionalServicesSuccessful(additionalServices))
-    return dispatch(getAdditionalServicesFailure(true))
+export const getAdditionalServicesAsync = () => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.get(`${url}additionalServices`);
+      dispatch(getAdditionalServicesSuccess(data));
+    } catch (error) {
+      dispatch(getAdditionalServicesFailure(error));
+    }
   }
 }
