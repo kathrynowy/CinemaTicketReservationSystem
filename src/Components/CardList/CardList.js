@@ -8,7 +8,7 @@ class CardList extends Component {
   render() {
     return (
       <div className='card-list'>
-        {this.props.movies.map((movie) => <Card movie={movie} key={movie._id} />)}
+        {this.props.movies.map((movie) => <Card movie={movie} key={movie.id} />)}
       </div>
     );
   }
