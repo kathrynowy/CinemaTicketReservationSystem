@@ -59,7 +59,7 @@ class ConfirmTicket extends Component {
         <span className="confirm-title">Confirm Ticket</span>
         <div className="confirm-ticket"> {
           selectedSeats.map((seat, index) => {
-            const movie = this.props.movies.find(movie => +movie.id === +seat.movieId);
+            const movie = this.props.movies.find(movie => movie.id === seat.movieId);
             return (
               <TicketInfo
                 key={seat.id}
