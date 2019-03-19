@@ -7,8 +7,6 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import rootReducer from "./reducers/index";
 import App from './App';
-
-
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
 ReactDOM.render(

@@ -19,7 +19,7 @@ class FilmProfile extends Component {
   selectDay = (day) => this.setState({ day })
 
   getCurrentSessions = (sessions, movieId, day) => {
-    const newSessions = sessions.filter(session => session.movieId == movieId);
+    const newSessions = sessions.filter(session => session.movieId === movieId);
     return newSessions.map(session => {
       return (this.getCurrentTimes(session.times, day).length && <Schedule
         cinemaId={session.cinemaId}

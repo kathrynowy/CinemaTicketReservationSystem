@@ -3,21 +3,18 @@ import { connect } from "react-redux";
 
 import { getSessionsAsync, getCinemasAsync, getMoviesAsync } from '../../actions/index.js'
 import FilmProfile from '../../Components/FilmProfile/FilmProfile.js';
-import tickets from '../../Sessions.js'
-import cinemaData from '../../CinemaData';
-import movieData from '../../movieData.js';
 
 
 class FilmProfilePage extends Component {
   componentDidMount() {
-    this.props.getSessionsAsync(tickets);
-    this.props.getCinemasAsync(cinemaData);
-    this.props.getMoviesAsync(movieData);
+    this.props.getSessionsAsync();
+    this.props.getCinemasAsync();
+    this.props.getMoviesAsync();
   }
 
   render() {
     return (
-      this.props.sessions.length &&
+      this.props.sessions.length && this.props.movies.length &&
       <FilmProfile
         movieId={this.props.match.params.movieId}
         sessions={this.props.sessions}
@@ -35,14 +32,14 @@ const mapStateToProps = store => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  getSessionsAsync(sessions) {
-    dispatch(getSessionsAsync(sessions));
+  getSessionsAsync() {
+    dispatch(getSessionsAsync());
   },
-  getCinemasAsync(cinemas) {
-    dispatch(getCinemasAsync(cinemas));
+  getCinemasAsync() {
+    dispatch(getCinemasAsync());
   },
-  getMoviesAsync(movies) {
-    dispatch(getMoviesAsync(movies));
+  getMoviesAsync() {
+    dispatch(getMoviesAsync());
   }
 });
 

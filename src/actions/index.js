@@ -13,6 +13,8 @@ import {
   GET_SEATS_SUCCESS,
   GET_SEATS_FAILURE
 } from '../constans/actionTypes.js';
+import axios from 'axios';
+const url = "http://localhost:8080/";
 
 
 export const toggleSeat = ticket => ({
@@ -37,11 +39,14 @@ export const buyTickets = tickets => ({
   payload: tickets
 })
 
-export const getMoviesAsync = (movies) => {
-  return (dispatch) => {
-    if (movies !== null)
-      return dispatch(getMoviesSuccess(movies))
-    return dispatch(getMoviesFailure(true))
+export function getMoviesAsync() {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.get(`${url}movies`);
+      dispatch(getMoviesSuccess(data));
+    } catch (error) {
+      dispatch(getMoviesFailure(error));
+    }
   }
 }
 
@@ -59,11 +64,14 @@ export const getMoviesFailure = (isError) => {
   }
 }
 
-export const getSeatsAsync = (movies) => {
-  return (dispatch) => {
-    movies !== null 
-      ? dispatch(getSeatsSuccess(movies))
-      : dispatch(getSeatsFailure(true))
+export const getSeatsAsync = () => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.get(`${url}halls`);
+      dispatch(getSeatsSuccess(data));
+    } catch (error) {
+      dispatch(getSeatsFailure(error));
+    }
   }
 }
 
@@ -95,11 +103,14 @@ export const getSessionsFailure = (isError) => {
   }
 }
 
-export const getSessionsAsync = (sessions) => {
-  return (dispatch) => {
-    if (sessions !== null)
-      return dispatch(getSessionsSuccess(sessions))
-    return dispatch(getSessionsFailure(true))
+export function getSessionsAsync() {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.get(`${url}sessions`);
+      dispatch(getSessionsSuccess(data));
+    } catch (error) {
+      dispatch(getSessionsFailure(error));
+    }
   }
 }
 
@@ -117,14 +128,16 @@ export const getCinemasFailure = (isError) => {
   }
 }
 
-export const getCinemasAsync = (cinemas) => {
-  return (dispatch) => {
-    if (cinemas !== null)
-      return dispatch(getCinemasSuccess(cinemas))
-    return dispatch(getCinemasFailure(true))
+export function getCinemasAsync() {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.get(`${url}cinemas`);
+      dispatch(getCinemasSuccess(data));
+    } catch (error) {
+      dispatch(getCinemasFailure(error));
+    }
   }
 }
-
 
 export const getAdditionalServicesSuccessful = (additionalServices) => {
   return {

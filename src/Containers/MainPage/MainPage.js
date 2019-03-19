@@ -9,7 +9,7 @@ import movieData from '../../movieData.js'
 
 class MainPage extends Component {
   componentDidMount() {
-    this.props.getMoviesAsync(movieData)
+    this.props.getMoviesAsync()
   }
 
   render() {
