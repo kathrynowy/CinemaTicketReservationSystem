@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { toggleSeat, getSeatsAsync } from "../../actions/index.js";
+import { toggleSeat, getSeatsAsync, getBoughtTicketsAsync } from "../../actions/index.js";
 import Hall from '../../Components/Hall/Hall.js'
-import SeatsData from '../../SeatsData.js';
 
 
 class HallPage extends Component {
@@ -14,8 +13,13 @@ class HallPage extends Component {
     }
   }
 
+  componentWillUpdate() {
+    this.props.getBoughtTicketsAsync();
+  }
+
   componentDidMount() {
     this.props.getSeatsAsync();
+    this.props.getBoughtTicketsAsync()
   }
 
   render() {
@@ -46,6 +50,9 @@ const mapDispatchToProps = dispatch => ({
   },
   getSeatsAsync() {
     dispatch(getSeatsAsync());
+  },
+  getBoughtTicketsAsync() {
+    dispatch(getBoughtTicketsAsync());
   }
 });
 

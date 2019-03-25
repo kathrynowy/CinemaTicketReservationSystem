@@ -5,7 +5,9 @@ import './SelectSeats.scss';
 
 
 class SelectSeats extends Component {
-  handleCompare = (array, id) => array.find(element => element.id === id);
+  handleCompare = (array, id) => array.find(element => {
+    return element.row + "." + element.seat === id
+  });
 
   handleDrawSeats = (boughtSeats, amount, row, cost, cinemaId, movieId, hallId) => {
     let seats = [];

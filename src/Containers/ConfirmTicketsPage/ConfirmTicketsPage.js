@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { getAdditionalServicesAsync } from '../../actions/index.js'
 import ConfirmTicket from '../../Components/Hall/ConfirmTicket/ConfirmTicket.js';
-import { buyTickets, clearSelectedSeats, getMoviesAsync } from '../../actions/index.js';
+import { buyTicketsAsync, clearSelectedSeats, getMoviesAsync } from '../../actions/index.js';
 
 
 class ConfirmTicketsPage extends Component {
@@ -44,7 +44,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(getAdditionalServicesAsync());
   },
   onBuyTickets(tickets) {
-    dispatch(buyTickets(tickets));
+    dispatch(buyTicketsAsync(tickets));
     dispatch(clearSelectedSeats())
   },
   getMoviesAsync() {

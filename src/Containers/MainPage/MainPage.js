@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { getMoviesAsync } from '../../actions/index.js'
 import Select from '../../Components/Select/Select.js'
 import CardList from '../../Components/CardList/CardList.js';
-import movieData from '../../movieData.js'
 
 
 class MainPage extends Component {
@@ -13,7 +12,6 @@ class MainPage extends Component {
   }
 
   render() {
-    console.log(this.props.movies);
     return (
       <div className="main-page">
         <Select />

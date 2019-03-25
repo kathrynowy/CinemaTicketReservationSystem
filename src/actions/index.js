@@ -11,7 +11,8 @@ import {
   GET_ADDITIONAL_SERVICES_SUCCESS,
   GET_ADDITIONAL_SERVICES_FAILURE,
   GET_SEATS_SUCCESS,
-  GET_SEATS_FAILURE
+  GET_SEATS_FAILURE,
+  GET_BOUGHT_TICKETS
 } from '../constans/actionTypes.js';
 import axios from 'axios';
 const url = "http://localhost:8080/";
@@ -30,11 +31,38 @@ export const toggleSeat = ticket => ({
   }
 })
 
+export function getBoughtTicketsAsync() {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.get(`${url}buyTickets`);
+      dispatch(getBoughtTicketsSuccess(data[0].boughtTickets));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+}
+
+export const getBoughtTicketsSuccess = (tickets) => ({
+  type: GET_BOUGHT_TICKETS,
+  payload: tickets
+})
+
 export const clearSelectedSeats = () => ({
   type: CLEAR_SELECTED_LIST
 })
 
-export const buyTickets = tickets => ({
+export function buyTicketsAsync(tickets) {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.put(`${url}buyTickets`, { tickets });
+      dispatch(buyTicketsSuccess(data.boughtTickets));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+}
+
+export const buyTicketsSuccess = tickets => ({
   type: BUY_TICKET,
   payload: tickets
 })
@@ -64,7 +92,7 @@ export const getMoviesFailure = (isError) => {
   }
 }
 
-export const getSeatsAsync = () => {
+export function getSeatsAsync() {
   return async (dispatch) => {
     try {
       const { data } = await axios.get(`${url}halls`);

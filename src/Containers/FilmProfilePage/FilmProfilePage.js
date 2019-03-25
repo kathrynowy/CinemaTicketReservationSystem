@@ -15,6 +15,7 @@ class FilmProfilePage extends Component {
   render() {
     return (
       this.props.sessions.length && this.props.movies.length &&
+      this.props.cinemas.length &&
       <FilmProfile
         movieId={this.props.match.params.movieId}
         sessions={this.props.sessions}
