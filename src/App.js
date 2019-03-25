@@ -10,15 +10,39 @@ import HallPage from './Containers/HallPage/HallPage.js';
 import SignUp from './Components/SignUp/SignUp.js';
 import ConfirmTicketsPage from './Containers/ConfirmTicketsPage/ConfirmTicketsPage.js';
 import './App.scss';
+import SideDrawer from './Components/SideDrawer/SideDrawer'
+import Backdrop from './Components/Backdrop/Backdrop';
 
 
 export const history = createBrowseHistory();
 
 class App extends Component {
+  state = {
+    sideDrawerOpen: false
+  };
+
+  drawToggleClickHandler = () => {
+    this.setState((prevState) => {
+      return { sideDrawerOpen: !prevState.sideDrawerOpen };
+    });
+  };
+
+  backdropClickHandler = () => {
+    this.setState({ sideDrawerOpen: false });
+  };
+
   render() {
+    let backdrop;
+
+    if (this.state.sideDrawerOpen) {
+      backdrop = <Backdrop click={this.backdropClickHandler} />;
+    }
+
     return (
       <Fragment>
-        <PrimarySearchAppBar />
+        <PrimarySearchAppBar click={this.drawToggleClickHandler} />
+        <SideDrawer show={this.state.sideDrawerOpen} />
+        {backdrop}
         <Router history={history}>
           <div className="container">
             <Route exact path="/" component={MainPage} />

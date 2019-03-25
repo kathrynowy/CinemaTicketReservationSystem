@@ -18,9 +18,7 @@ class MovieCard extends Component {
         <div className="card__title">
           {movie.name}
         </div>
-        <Link to={{
-          pathname: `/film-profile/${movie.id}`,
-        }}>
+        <Link to={{ pathname: `/film-profile/${movie.id}`, }} className="card__link">
           <input type="button" className="card__button" value="Buy ticket" />
         </Link>
       </div>

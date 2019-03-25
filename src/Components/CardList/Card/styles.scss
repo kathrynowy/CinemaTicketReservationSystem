@@ -2,9 +2,21 @@
 
 .card {
   margin-top:40px;
-  margin: 2px 7px;
+  margin: 5px 7px;
   display: flex;
   flex-direction: column;
+  width: 230px;
+
+  &__media {
+    height: 160px; 
+    width: 230px; 
+    border-radius: 10px;
+    opacity: 0.7;
+  } 
+
+  &__media:hover {
+    opacity: 1;
+  } 
 
   &__title {
     text-align: center;
@@ -18,13 +30,25 @@
 
   &__button {
     height: 45px;
-    width: 100%;
-    border: 1px solid $pink; 
-    background-color: $light-brown; 
-    color: $pink; 
+    align-self: center;
+    width: 70%;
+    background-color: $transparent; 
+    color: $white; 
     font-size: 1.3rem; 
     padding: 10px 15px; 
     border-radius: 40px;
+    border-color:$bright-pink;
+
+    &:hover {
+      background-color: $bright-pink;
+    }
+  }
+
+
+  &__link {
+    display: flex;
+    text-decoration: none;
+    justify-content: center;
   }
 }
 
@@ -36,18 +60,23 @@ input[type="button"]:focus {
 @media only screen and (max-width: 992px) {
   .card {
     margin-left: 12px;
-  
+    width: 180px;
+
     &__media {
-      height: 240px; 
+      height: 220px; 
+      width: 180px; 
     } 
   }
 }
 
 @media only screen and (max-width: 768px) {
   .card {
+    margin-left: 17px;
+    width: 190px;
 
     &__media {
-      height: 160px; 
+      height: 240px; 
+      width: 190px; 
     } 
   }
 }
@@ -55,13 +84,15 @@ input[type="button"]:focus {
 @media only screen and (max-width: 420px) {
   .card {
     margin: 6px 0px;
+    width: 250px;
     
     &__title {
       margin-bottom: 2px;
     }
     
     &__media {
-      height: 350px;
+      height: 330px; 
+      width: 250px; 
     } 
   }
 } 

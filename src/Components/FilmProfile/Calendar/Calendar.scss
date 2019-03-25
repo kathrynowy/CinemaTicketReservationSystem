@@ -31,13 +31,14 @@
   -webkit-overflow-scrolling: touch;
   border-top: 1px solid $silver;
   margin-top: 5px;
-
+  width: 70%;
+  
   &__weekend {
     color: $cornflower-blue;
   }
 
   &__day:hover{
-    background-color: $perano;
+    background-color: $bright-pink;
     color: $white;
     cursor: pointer;
   }

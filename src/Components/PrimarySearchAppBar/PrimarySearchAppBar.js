@@ -9,6 +9,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
 
+
 const styles = theme => ({
   root: {
     width: '100%',
@@ -42,6 +43,7 @@ const styles = theme => ({
       marginLeft: theme.spacing.unit * 3,
       width: 'auto',
     },
+    color: 'white'
   },
   searchIcon: {
     width: theme.spacing.unit * 9,
@@ -51,6 +53,8 @@ const styles = theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    color: 'white',
+    opacity: '0.8'
   },
   inputRoot: {
     color: 'inherit',
@@ -80,8 +84,30 @@ const styles = theme => ({
     },
   },
   app: {
-    background: 'rgb(38, 38, 41)',
-    color: 'rgb(236, 186, 197)',
+    background: 'linear-gradient(15deg,#000,#51102b 90%,#51102b)',
+    color: '#880e4f'
+  },
+  sectionDesctopLinks: {
+    listStyle: 'none',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center'
+  },
+  sectionDesctopLinksItem: {
+    textAlign: 'center',
+    margin: '0 0.5rem',
+    alignSelf: 'center',
+
+  },
+  sectionDesctopLink: {
+    color: 'white',
+    opacity: '0.8',
+    textDecoration: 'none',
+    fontSize: '1.1rem',
+  },
+  moreIcon: {
+    color: 'white',
+    opacity: '0.8'
   }
 });
 
@@ -148,7 +174,7 @@ class PrimarySearchAppBar extends React.Component {
       <div className={classes.root}>
         <AppBar position="static" className={classes.app}>
           <Toolbar>
-            <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
+            <IconButton className={classes.menuButton && classes.sectionMobile} onClick={this.props.click} color="inherit" aria-label="Open drawer">
               <MenuIcon />
             </IconButton>
             <Typography className={classes.title} variant="h6" color="inherit" noWrap>
@@ -167,17 +193,29 @@ class PrimarySearchAppBar extends React.Component {
             </div>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
+              <ul className={classes.sectionDesctopLinks}>
+                <li className={classes.sectionDesctopLinksItem}>
+                  <a href="/" className={classes.sectionDesctopLink}> Main Page </a>
+                </li>
+                <li className={classes.sectionDesctopLinksItem}>
+                  <a href="/" className={classes.sectionDesctopLink}> Sign In </a>
+                </li>
+                <li className={classes.sectionDesctopLinksItem}>
+                  <a href="/" className={classes.sectionDesctopLink}> Sign Up </a>
+                </li>
+              </ul>
               <IconButton
                 aria-owns={isMenuOpen ? 'material-appbar' : undefined}
                 aria-haspopup="true"
                 onClick={this.handleProfileMenuOpen}
                 color="inherit"
+                className={classes.moreIcon}
               >
                 <AccountCircle />
               </IconButton>
             </div>
             <div className={classes.sectionMobile}>
-              <IconButton aria-haspopup="true" onClick={this.handleMobileMenuOpen} color="inherit">
+              <IconButton aria-haspopup="true" onClick={this.handleMobileMenuOpen} color="inherit" className={classes.moreIcon}>
                 <MoreIcon />
               </IconButton>
             </div>

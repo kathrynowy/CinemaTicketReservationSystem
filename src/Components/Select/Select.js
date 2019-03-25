@@ -1,30 +1,58 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { Input, InputLabel, MenuItem, FormHelperText, FormControl, Select } from '@material-ui/core';
+import { Input, InputLabel, MenuItem, FormControl, Select } from '@material-ui/core';
 
 
 const styles = theme => ({
   root: {
     display: 'flex',
     flexWrap: 'wrap',
+    color: 'white'
   },
   formControl: {
+    [theme.breakpoints.up('xs')]: {
+      minWidth: 300,
+    },
+    [theme.breakpoints.up('sm')]: {
+      minWidth: 150,
+    },
+    [theme.breakpoints.up('md')]: {
+      minWidth: 200,
+    },
+    [theme.breakpoints.up('lg')]: {
+      minWidth: 250,
+    },
     margin: theme.spacing.unit,
-    minWidth: 120,
-    marginBottom: '15px',
+
+    marginTop: '5px',
+    color: 'white',
   },
   selectEmpty: {
     marginTop: theme.spacing.unit * 2,
   },
+  select: {
+    height: 40,
+    borderRadius: '10px',
+    backgroundColor: 'white',
+    opacity: '0.4',
+    color: 'white',
+    '&:after': {
+      border: 'none',
+    },
+  },
+  input: {
+    color: 'white',
+    fontSize: '20px',
+    textAlign: 'center'
+  }
 });
 
 class SimpleSelect extends React.Component {
   state = {
     city: '',
     cinema: '',
-    film: '',
+    movie: '',
     date: ''
   };
 
@@ -38,8 +66,9 @@ class SimpleSelect extends React.Component {
     return (
       <form className={classes.root} autoComplete="off" style={{ display: 'flex', justifyContent: 'center' }}>
         <FormControl className={classes.formControl}>
-          <InputLabel htmlFor="select-city">City</InputLabel>
+          <InputLabel htmlFor="select-city" className={classes.input}>City</InputLabel>
           <Select
+            className={classes.select}
             value={this.state.city}
             onChange={this.handleChange}
             inputProps={{
@@ -54,12 +83,12 @@ class SimpleSelect extends React.Component {
             <MenuItem value={20}>Twenty</MenuItem>
             <MenuItem value={30}>Thirty</MenuItem>
           </Select>
-          <FormHelperText>Some important helper text</FormHelperText>
         </FormControl>
 
         <FormControl className={classes.formControl}>
-          <InputLabel htmlFor="select-cinema">Cinema</InputLabel>
+          <InputLabel htmlFor="select-cinema" className={classes.input}>Cinema</InputLabel>
           <Select
+            className={classes.select}
             value={this.state.cinema}
             onChange={this.handleChange}
             inputProps={{
@@ -70,25 +99,6 @@ class SimpleSelect extends React.Component {
             <MenuItem value="">
               <em>choose cinema</em>
             </MenuItem>
-            <MenuItem value={10}>Октябрь</MenuItem>
-            <MenuItem value={20}>Аврора</MenuItem>
-            <MenuItem value={30}>Дом кино</MenuItem>
-          </Select>
-        </FormControl>
-
-        <FormControl className={classes.formControl}>
-          <InputLabel htmlFor="select-film">Film</InputLabel>
-          <Select
-            value={this.state.film}
-            onChange={this.handleChange}
-            inputProps={{
-              name: 'film',
-              id: 'select-film',
-            }}
-          >
-            <MenuItem value="">
-              <em>choose date</em>
-            </MenuItem>
             <MenuItem value={10}>Ten</MenuItem>
             <MenuItem value={20}>Twenty</MenuItem>
             <MenuItem value={30}>Thirty</MenuItem>
@@ -96,7 +106,23 @@ class SimpleSelect extends React.Component {
         </FormControl>
 
         <FormControl className={classes.formControl}>
-          {/* <DatePickers /> */}
+          <InputLabel htmlFor="select-movie" className={classes.input}>Movie</InputLabel>
+          <Select
+            className={classes.select}
+            value={this.state.movie}
+            onChange={this.handleChange}
+            inputProps={{
+              name: 'movie',
+              id: 'select-movie',
+            }}
+          >
+            <MenuItem value="">
+              <em>choose movie</em>
+            </MenuItem>
+            <MenuItem value={10}>Ten</MenuItem>
+            <MenuItem value={20}>Twenty</MenuItem>
+            <MenuItem value={30}>Thirty</MenuItem>
+          </Select>
         </FormControl>
       </form>
     );

@@ -1,0 +1,53 @@
+@import '../variables.scss';
+
+.side-drawer {
+  height: 100%;
+  background-color:  $light-brown;
+  background: linear-gradient(15deg,#51102b,#000 66%,#000);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 60%;
+  max-width: 400px;
+  z-index: 200;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-out;
+
+  &.open {
+    transform: translateX(0);
+    box-shadow: 1px 0px 7px rgba($color: #000000, $alpha: 0.5);
+  }
+}
+
+
+.side-drawer ul {
+  height: 100%;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  padding-top: 60px;
+  justify-content: flex-start;
+}
+
+.side-drawer li {
+  text-align: center;
+  margin: 0.2rem 0;
+  height: 40px;
+  width: 50%;
+  align-self: center;
+  
+}
+
+.side-drawer a {
+  color: white;
+  opacity: 0.8;
+  text-decoration: none;
+  font-size: 1.4rem;
+}
+
+.side-drawer a:hover,
+.side-drawer a:active {
+  color: white;
+  opacity: 1;
+}
