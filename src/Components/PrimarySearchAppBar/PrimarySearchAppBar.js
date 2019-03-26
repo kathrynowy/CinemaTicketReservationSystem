@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 
 import { AppBar, Toolbar, IconButton, Typography, InputBase, MenuItem, Menu } from '@material-ui/core';
@@ -195,13 +196,13 @@ class PrimarySearchAppBar extends React.Component {
             <div className={classes.sectionDesktop}>
               <ul className={classes.sectionDesctopLinks}>
                 <li className={classes.sectionDesctopLinksItem}>
-                  <a href="/" className={classes.sectionDesctopLink}> Main Page </a>
+                  <Link to={{ pathname: "/" }} className={classes.sectionDesctopLink}> Main Page </Link>
                 </li>
                 <li className={classes.sectionDesctopLinksItem}>
-                  <a href="/" className={classes.sectionDesctopLink}> Sign In </a>
+                  <Link to={{ pathname: "/sign-in" }} className={classes.sectionDesctopLink}> Sign In </Link>
                 </li>
                 <li className={classes.sectionDesctopLinksItem}>
-                  <a href="/" className={classes.sectionDesctopLink}> Sign Up </a>
+                  <Link to={{ pathname: "/sign-up" }} className={classes.sectionDesctopLink}> Sign Up </Link>
                 </li>
               </ul>
               <IconButton

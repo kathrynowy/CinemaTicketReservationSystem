@@ -1,27 +1,90 @@
-import React, { Component } from 'react';
-import { Link } from "react-router-dom";
-import './SignUp.scss'
-import Input from '@material-ui/core/Input';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Avatar, Button, CssBaseline, FormControl, FormControlLabel, Checkbox, Input, InputLabel, Paper, Typography } from '@material-ui/core';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import withStyles from '@material-ui/core/styles/withStyles';
 
-import TextField from '@material-ui/core/TextField';
 
-import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
+const styles = theme => ({
+  main: {
+    width: 'auto',
+    display: 'block',
+    marginLeft: theme.spacing.unit * 3,
+    marginRight: theme.spacing.unit * 3,
+    [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
+      width: 400,
+      marginLeft: 'auto',
+      marginRight: 'auto',
+    },
 
-export default class SignUp extends Component {
-  render() {
-    return (
-      <div className="signup-form">
-        <form >
-          <input type="text" placeholder="username" required autoFocus={true} />
-          <TextField label="Custom CSS" />
-          <input type="password" placeholder="password" required />
-          <input type="password" placeholder="password repeat" required />
-          <Link to="/"><button>Home</button></Link>
-          <button type="submit">Sign Up</button>
+  },
+  paper: {
+    marginTop: theme.spacing.unit * 8,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px`,
+    backgroundColor: "rgb(255, 255, 255)"
+  },
+  avatar: {
+    margin: theme.spacing.unit,
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: '100%',
+    marginTop: theme.spacing.unit,
+  },
+  submit: {
+    marginTop: theme.spacing.unit * 3,
+    border: "3px solid rgb(245, 0, 87)",
+    borderRadius: 10,
+    backgroundColor: "transparent"
+  },
+});
+
+function SignIn(props) {
+  const { classes } = props;
+
+  return (
+    <main className={classes.main}>
+      <CssBaseline />
+      <Paper className={classes.paper}>
+        <Avatar className={classes.avatar}>
+          <LockOutlinedIcon />
+        </Avatar>
+        <Typography component="h1" variant="h5">
+          Sign up
+        </Typography>
+        <form className={classes.form}>
+          <FormControl margin="normal" required fullWidth>
+            <InputLabel htmlFor="email">Name</InputLabel>
+            <Input id="name" name="name" autoComplete="name" autoFocus />
+          </FormControl>
+          <FormControl margin="normal" required fullWidth>
+            <InputLabel htmlFor="email">Email Address</InputLabel>
+            <Input id="email" name="email" autoComplete="email" />
+          </FormControl>
+          <FormControl margin="normal" required fullWidth>
+            <InputLabel htmlFor="password">Password</InputLabel>
+            <Input name="password" type="password" id="password" autoComplete="current-password" />
+          </FormControl>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            className={classes.submit}
+
+          >
+            Sign up
+          </Button>
         </form>
-      </div>
-    );
-  }
+      </Paper>
+    </main>
+  );
 }
 
+SignIn.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(SignIn);

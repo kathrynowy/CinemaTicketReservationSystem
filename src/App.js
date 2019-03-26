@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Router, Route } from "react-router-dom";
+import { Router, Route, Link } from "react-router-dom";
 import createBrowseHistory from "history/createBrowserHistory";
 
 import SignIn from './Components/SignIn/SignIn.js'
@@ -40,11 +40,11 @@ class App extends Component {
 
     return (
       <Fragment>
-        <PrimarySearchAppBar click={this.drawToggleClickHandler} />
-        <SideDrawer show={this.state.sideDrawerOpen} />
-        {backdrop}
         <Router history={history}>
           <div className="container">
+            <PrimarySearchAppBar click={this.drawToggleClickHandler} />
+            <SideDrawer show={this.state.sideDrawerOpen} />
+            {backdrop}
             <Route exact path="/" component={MainPage} />
             <Route path="/film-profile/:movieId" component={FilmProfilePage} />
             <Route path="/hall/:cinemaId/:movieId/:hallId/:time" component={HallPage} />

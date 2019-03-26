@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 import './SideDrawer.scss';
 
@@ -8,9 +9,9 @@ const sideDrawer = props => {
   return (
     <nav className={drawerClasses}>
       <ul>
-        <li><a href="/">Main Page</a></li>
-        <li><a href="/">Sign Up</a></li>
-        <li><a href="/">Sign In</a></li>
+        <li><Link to={{ pathname: "/" }}>Main Page</Link></li>
+        <li><Link to={{ pathname: "/sign-in" }}>Sign In</Link></li>
+        <li><Link to={{ pathname: "/sign-up" }}>Sign Up</Link></li>
         <li><a href="/">Profile</a></li>
       </ul>
     </nav>
