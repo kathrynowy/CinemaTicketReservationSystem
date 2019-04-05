@@ -7,9 +7,20 @@ import './styles.scss';
 
 const DAY_IN_MILLISECONDS = 1000 * 60 * 60 * 24;
 
+
 class FilmProfile extends Component {
   state = {
     day: new Date().getTime(),
+  }
+
+  getSecondsSinceMidnight = () => {
+    const now = new Date(),
+      then = new Date(
+        now.getFullYear(),
+        now.getMonth(),
+        now.getDate(),
+        0, 0, 0);
+    return now.getTime() - then.getTime();
   }
 
   getCurrentTimes = (times, day) => {
@@ -19,24 +30,29 @@ class FilmProfile extends Component {
   selectDay = (day) => this.setState({ day })
 
   getCurrentSessions = (sessions, movieId, day) => {
-    const newSessions = sessions.filter(session => session.movieId === movieId);
+    const newSessions = sessions.filter(session => session.movieId.id === movieId);
     return newSessions.map(session => {
       return (this.getCurrentTimes(session.times, day).length && <Schedule
-        cinemaId={session.cinemaId}
-        hallId={session.hallId}
-        movieId={session.movieId}
+        cinemaId={session.cinemaId.id}
+        hallId={session.hallId.id}
+        movieId={session.movieId.id}
         times={this.getCurrentTimes(session.times, day)}
-        key={session.cinemaId + session.hallId + session.movieId}
+        key={session.cinemaId.id + session.hallId.id + session.movieId.id}
         cinemas={this.props.cinemas}
       />) || ' '
     })
   }
 
   createDays = () => {
-    const today = new Date().getTime();
+    const now = new Date();
+    const t = new Date(
+      now.getFullYear(),
+      now.getMonth(),
+      now.getDate(),
+      0, 0, 0).getTime();
     const days = [];
     for (let i = 0; i < 14; i++) {
-      days.push(new Date(today + (DAY_IN_MILLISECONDS * i)));
+      days.push(new Date(t + (DAY_IN_MILLISECONDS * i)));
     }
     return days;
   }

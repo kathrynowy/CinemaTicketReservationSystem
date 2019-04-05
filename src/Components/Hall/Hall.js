@@ -20,7 +20,7 @@ class Hall extends Component {
             movieId={movieId}
             hallId={hallId}
             time={time}
-            seats={this.props.seats}
+            seats={this.props.seats.hall}
           />{/* seatsmap */}
           <div className="hall-legend">
             <div className="hall-legend__seat-type hall-legend__seat-type_free">

@@ -57,7 +57,7 @@ function SignIn(props) {
         </Typography>
         <form className={classes.form}>
           <FormControl margin="normal" required fullWidth>
-            <InputLabel htmlFor="email">Name</InputLabel>
+            <InputLabel htmlFor="name">Name</InputLabel>
             <Input id="name" name="name" autoComplete="name" autoFocus />
           </FormControl>
           <FormControl margin="normal" required fullWidth>
@@ -73,7 +73,6 @@ function SignIn(props) {
             fullWidth
             variant="contained"
             className={classes.submit}
-
           >
             Sign up
           </Button>

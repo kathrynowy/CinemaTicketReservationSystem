@@ -1,9 +1,10 @@
 @import '../variables.scss';
 
 .side-drawer {
+  visibility: hidden;
   height: 100%;
   background-color:  $light-brown;
-  background: linear-gradient(15deg,#51102b,#000 66%,#000);
+  background: linear-gradient(15deg,#51102b,#000 66%,#000); 
 
   position: fixed;
   top: 0;
@@ -13,16 +14,19 @@
   z-index: 200;
   transform: translateX(-100%);
   transition: transform 0.3s ease-out;
+  
 
-  &.open {
+  &_open {
     transform: translateX(0);
     box-shadow: 1px 0px 7px rgba($color: #000000, $alpha: 0.5);
+    visibility: visible;
   }
 }
 
 
 .side-drawer ul {
   height: 100%;
+  width: 100%;
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -36,7 +40,6 @@
   height: 40px;
   width: 50%;
   align-self: center;
-  
 }
 
 .side-drawer a {

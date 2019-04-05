@@ -8,7 +8,7 @@ export default function ticketsList(state = initialState, action) {
   switch (action.type) {
     case BUY_TICKET:
       return Object.assign({}, state, {
-        boughtTickets: [...state.boughtTickets, ...action.payload]
+        boughtTickets: action.payload
       })
 
     case GET_BOUGHT_TICKETS:

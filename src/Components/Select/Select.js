@@ -44,7 +44,8 @@ const styles = theme => ({
   input: {
     color: 'white',
     fontSize: '20px',
-    textAlign: 'center'
+    textAlign: 'center',
+    paddingLeft: '10px'
   }
 });
 

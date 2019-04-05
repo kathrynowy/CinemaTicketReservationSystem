@@ -12,7 +12,7 @@ class ConfirmTicketsPage extends Component {
   }
 
   componentDidMount() {
-    this.props.getAdditionalServicesAsync();
+    this.props.getAdditionalServicesAsync(this.props.match.params.cinemaId);
     this.props.getMoviesAsync();
   }
 
@@ -40,8 +40,8 @@ const mapStateToProps = store => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  getAdditionalServicesAsync() {
-    dispatch(getAdditionalServicesAsync());
+  getAdditionalServicesAsync(id) {
+    dispatch(getAdditionalServicesAsync(id));
   },
   onBuyTickets(tickets) {
     dispatch(buyTicketsAsync(tickets));

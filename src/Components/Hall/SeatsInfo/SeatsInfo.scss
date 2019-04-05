@@ -12,18 +12,34 @@
     flex-direction: column;
     padding-right: 15px;
     border-right: 1px solid $black;
+
+    &::-webkit-scrollbar {
+      width: 20px;
+      height: 20px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: -webkit-gradient(linear,left top,left bottom,from($transparent),to($transparent));
+      border-radius: 30px;
+      box-shadow: inset 2px 2px 2px $bright-pink, inset -2px -2px 2px $bright-pink;
+    }
   }
 
   &__btn {
-    border: 1px solid $pink; 
-    background-color: $light-brown; 
-    color: $pink; 
-    font-size: 17px; 
-    border-radius: 60px; 
-    font-weight: 100; 
-    padding: 10px 15px; 
-    height: 40px;
+    height: 45px;
+    align-self: flex-end;
+    width: 70%;
     width: 120px;
+    background-color: $transparent; 
+    color: $white; 
+    font-size: 1.3rem; 
+    padding: 10px 15px; 
+    border-radius: 40px;
+    border-color:$bright-pink;
+
+    &:hover {
+      background-color: $bright-pink;
+    }
   }
 
   &__include {
@@ -34,6 +50,7 @@
   &__ticket {
     font-size: 20px;
     display: flex;
+    height: 30px;
 
     &-list {
       min-width: 100px;

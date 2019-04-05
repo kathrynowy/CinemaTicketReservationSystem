@@ -13,12 +13,8 @@ class HallPage extends Component {
     }
   }
 
-  componentWillUpdate() {
-    this.props.getBoughtTicketsAsync();
-  }
-
-  componentDidMount() {
-    this.props.getSeatsAsync();
+  async componentDidMount() {
+    await this.props.getSeatsAsync(this.props.match.params.hallId);
     this.props.getBoughtTicketsAsync()
   }
 
@@ -48,8 +44,8 @@ const mapDispatchToProps = dispatch => ({
   onToggleSeat(ticket) {
     dispatch(toggleSeat(ticket));
   },
-  getSeatsAsync() {
-    dispatch(getSeatsAsync());
+  getSeatsAsync(hallId) {
+    return dispatch(getSeatsAsync(hallId));
   },
   getBoughtTicketsAsync() {
     dispatch(getBoughtTicketsAsync());

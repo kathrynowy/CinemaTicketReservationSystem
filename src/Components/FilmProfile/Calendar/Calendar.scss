@@ -31,7 +31,7 @@
   -webkit-overflow-scrolling: touch;
   border-top: 1px solid $silver;
   margin-top: 5px;
-  width: 70%;
+  width: 80%;
   
   &__weekend {
     color: $cornflower-blue;
@@ -45,6 +45,12 @@
 
   &__weekday {
     color: $silver;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .calendar {
+    width: 100%;
   }
 }
 

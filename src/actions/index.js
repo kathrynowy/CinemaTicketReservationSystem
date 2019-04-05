@@ -92,10 +92,10 @@ export const getMoviesFailure = (isError) => {
   }
 }
 
-export function getSeatsAsync() {
+export function getSeatsAsync(hallId) {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get(`${url}halls`);
+      const { data } = await axios.get(`${url}halls/${hallId}`);
       dispatch(getSeatsSuccess(data));
     } catch (error) {
       dispatch(getSeatsFailure(error));
@@ -181,11 +181,11 @@ export const getAdditionalServicesFailure = (additionalServices) => {
   }
 }
 
-export const getAdditionalServicesAsync = () => {
+export const getAdditionalServicesAsync = (id) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get(`${url}additionalServices`);
-      dispatch(getAdditionalServicesSuccess(data));
+      const { data } = await axios.get(`${url}cinemas/${id}`);
+      dispatch(getAdditionalServicesSuccess(data.additionalServices));
     } catch (error) {
       dispatch(getAdditionalServicesFailure(error));
     }

@@ -24,7 +24,7 @@ const styles = theme => ({
     flexDirection: 'column',
     alignItems: 'center',
     padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px`,
-    backgroundColor: "rgba(255, 255, 255, 0.9)"
+    backgroundColor: "#ffffff"
   },
   avatar: {
     margin: theme.spacing.unit,
@@ -36,7 +36,7 @@ const styles = theme => ({
   },
   submit: {
     marginTop: theme.spacing.unit * 3,
-    border: "3px solid rgba(245, 0, 87, 1)",
+    border: "3px solid #f50057",
     borderRadius: 10,
     backgroundColor: "transparent"
   },
