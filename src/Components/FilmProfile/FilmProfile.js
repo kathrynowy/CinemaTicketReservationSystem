@@ -32,7 +32,7 @@ class FilmProfile extends Component {
   getCurrentSessions = (sessions, movieId, day) => {
     const newSessions = sessions.filter(session => session.movieId.id === movieId);
     return newSessions.map(session => {
-      return (this.getCurrentTimes(session.times, day).length && <Schedule
+      return (<Schedule
         cinemaId={session.cinemaId.id}
         hallId={session.hallId.id}
         movieId={session.movieId.id}
