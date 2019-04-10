@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import { AppBar, Toolbar, IconButton, Typography, InputBase, MenuItem, Menu } from '@material-ui/core';
 import { fade } from '@material-ui/core/styles/colorManipulator';
@@ -9,7 +10,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
-
+import { findMovies } from '../../actions/index';
 
 const styles = theme => ({
   root: {
@@ -135,6 +136,10 @@ class PrimarySearchAppBar extends React.Component {
     this.setState({ mobileMoreAnchorEl: null });
   };
 
+  findMovies = (event) => {
+    this.props.onFindMovies(event.target.value);
+  }
+
   render() {
     const { anchorEl, mobileMoreAnchorEl } = this.state;
     const { classes } = this.props;
@@ -190,7 +195,8 @@ class PrimarySearchAppBar extends React.Component {
                 classes={{
                   root: classes.inputRoot,
                   input: classes.inputInput,
-                }} />
+                }}
+                onChange={this.findMovies} />
             </div>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
@@ -233,4 +239,10 @@ PrimarySearchAppBar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(PrimarySearchAppBar);
+const mapDispatchToProps = dispatch => ({
+  onFindMovies(value) {
+    dispatch(findMovies(value));
+  }
+});
+
+export default withStyles(styles)(connect(null, mapDispatchToProps)(PrimarySearchAppBar));

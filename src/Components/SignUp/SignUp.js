@@ -67,6 +67,7 @@ class SignIn extends Component {
     this.setState({
       errors: {}
     })
+
     const data = this.state;
     const rules = {
       name: 'required|string',

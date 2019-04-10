@@ -65,6 +65,7 @@ class SignIn extends Component {
     this.setState({
       errors: {}
     })
+    
     const data = this.state;
     const rules = {
       email: 'required|email',

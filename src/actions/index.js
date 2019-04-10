@@ -12,7 +12,8 @@ import {
   GET_ADDITIONAL_SERVICES_FAILURE,
   GET_SEATS_SUCCESS,
   GET_SEATS_FAILURE,
-  GET_BOUGHT_TICKETS
+  GET_BOUGHT_TICKETS,
+  FIND_MOVIES_SUCCESS
 } from '../constans/actionTypes.js';
 import axios from 'axios';
 const url = "http://localhost:8080/";
@@ -30,6 +31,13 @@ export const toggleSeat = ticket => ({
     cost: ticket.cost
   }
 })
+
+export const findMovies = value => {
+  return {
+    type: FIND_MOVIES_SUCCESS,
+    payload: value
+  }
+}
 
 export function getBoughtTicketsAsync() {
   return async (dispatch) => {

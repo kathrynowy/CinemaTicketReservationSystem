@@ -15,14 +15,15 @@ class MainPage extends Component {
     return (
       <div className="main-page">
         <Select />
-        <CardList movies={this.props.movies} />
+        <CardList movies={this.props.filteredMovies ? this.props.filteredMovies : this.props.movies} />
       </div>
     )
   }
 }
 
 const mapStateToProps = store => ({
-  movies: store.movies.movies
+  movies: store.movies.movies,
+  filteredMovies: store.movies.filteredMovies
 })
 
 const mapDispatchToProps = dispatch => ({
