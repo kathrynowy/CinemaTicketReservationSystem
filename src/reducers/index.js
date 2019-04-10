@@ -6,6 +6,7 @@ import additionalServices from './additionalServices'
 import movies from './movies'
 import cinemas from './cinemas'
 import seats from './seats'
+import users from './users'
 
 const rootReducer = combineReducers({
   ticketsList,
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
   sessions,
   additionalServices,
   movies,
-  cinemas
+  cinemas,
+  users
 });
 
 export default rootReducer;

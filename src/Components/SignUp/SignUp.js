@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from "react-redux";
+
+import { signUp } from '../../actions/users';
 import { Avatar, Button, CssBaseline, FormControl, Input, InputLabel, Paper, Typography } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -50,7 +53,7 @@ const styles = theme => ({
 
 class SignIn extends Component {
   state = {
-    name: '',
+    username: '',
     email: '',
     password: '',
     password_confirmation: ''
@@ -70,7 +73,7 @@ class SignIn extends Component {
 
     const data = this.state;
     const rules = {
-      name: 'required|string',
+      username: 'required|string',
       email: 'required|email',
       password: 'required|string|min:6|confirmed'
     }
@@ -83,8 +86,7 @@ class SignIn extends Component {
     }
 
     validateAll(data, rules, messages)
-      .then(() => {
-      })
+      .then(() => this.props.signUp(data))
       .catch(errors => {
         const formattesErrors = {};
         errors.forEach(error => formattesErrors[error.field] = error.message)
@@ -107,8 +109,8 @@ class SignIn extends Component {
         </Typography>
           <form className={classes.form} onSubmit={this.handleSubmit}>
             <FormControl margin="normal" fullWidth>
-              <InputLabel htmlFor="name">Name</InputLabel>
-              <Input id="name" name="name" autoComplete="name" autoFocus onChange={this.handleInputChange} />
+              <InputLabel htmlFor="username">Name</InputLabel>
+              <Input id="username" name="username" autoComplete="name" autoFocus onChange={this.handleInputChange} />
               <span className={classes.errorLabel}>{this.state.errors ? this.state.errors.name : ''}</span>
             </FormControl>
             <FormControl margin="normal" fullWidth>
@@ -141,8 +143,14 @@ class SignIn extends Component {
   }
 }
 
+const mapDispatchToProps = dispatch => ({
+  signUp(user) {
+    dispatch(signUp(user));
+  }
+})
+
 SignIn.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(SignIn);
+export default withStyles(styles)(connect(null, mapDispatchToProps)(SignIn));

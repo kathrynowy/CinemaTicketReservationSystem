@@ -62,7 +62,6 @@ class ConfirmTicket extends Component {
             const movie = this.props.movies.find(movie => movie.id === seat.movieId);
             return (
               <TicketInfo
-                key={seat.id}
                 row={seat.row}
                 seat={seat.seat}
                 ticketId={index + 1}

@@ -10,7 +10,9 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import { findMovies } from '../../actions/index';
+import { logOut } from '../../actions/users';
+import { findMovies } from '../../actions/movies';
+
 
 const styles = theme => ({
   root: {
@@ -140,6 +142,11 @@ class PrimarySearchAppBar extends React.Component {
     this.props.onFindMovies(event.target.value);
   }
 
+  handleLogOut = () => {
+    this.props.logOut();
+    this.handleMenuClose();
+  }
+
   render() {
     const { anchorEl, mobileMoreAnchorEl } = this.state;
     const { classes } = this.props;
@@ -155,7 +162,7 @@ class PrimarySearchAppBar extends React.Component {
         onClose={this.handleMenuClose}
       >
         <MenuItem onClick={this.handleMenuClose}>Profile</MenuItem>
-        <MenuItem onClick={this.handleMenuClose}>My account</MenuItem>
+        <MenuItem onClick={this.handleLogOut}>Log out</MenuItem>
       </Menu>
     );
 
@@ -242,6 +249,9 @@ PrimarySearchAppBar.propTypes = {
 const mapDispatchToProps = dispatch => ({
   onFindMovies(value) {
     dispatch(findMovies(value));
+  },
+  logOut() {
+    dispatch(logOut());
   }
 });
 

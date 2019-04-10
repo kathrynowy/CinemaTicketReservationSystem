@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { getAdditionalServicesAsync } from '../../actions/index.js'
+import { checkAuth } from '../../actions/users'
+import { getAdditionalServicesAsync } from '../../actions/additionalServices'
 import ConfirmTicket from '../../Components/Hall/ConfirmTicket/ConfirmTicket.js';
-import { buyTicketsAsync, clearSelectedSeats, getMoviesAsync } from '../../actions/index.js';
-
+import { getMoviesAsync } from '../../actions/movies';
+import { clearSelectedSeats } from '../../actions/seats';
+import { buyTicketsAsync } from '../../actions/tickets';
 
 class ConfirmTicketsPage extends Component {
   redirectToHall = (url) => {
@@ -42,6 +44,9 @@ const mapStateToProps = store => ({
 const mapDispatchToProps = dispatch => ({
   getAdditionalServicesAsync(id) {
     dispatch(getAdditionalServicesAsync(id));
+  },
+  checkAuth() {
+    return dispatch(checkAuth());
   },
   onBuyTickets(tickets) {
     dispatch(buyTicketsAsync(tickets));

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 
-import { getMoviesAsync } from '../../actions/index.js'
+import { getMoviesAsync } from '../../actions/movies'
 import Select from '../../Components/Select/Select.js'
 import CardList from '../../Components/CardList/CardList.js';
 

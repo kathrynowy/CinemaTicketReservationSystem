@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 
-import { getSessionsAsync, getCinemasAsync, getMoviesAsync } from '../../actions/index.js'
+import { getMoviesAsync } from '../../actions/movies'
+import { getSessionsAsync } from '../../actions/sessions'
 import FilmProfile from '../../Components/FilmProfile/FilmProfile.js';
-
+import { getCinemasAsync } from '../../actions/cinemas'
 
 class FilmProfilePage extends Component {
   componentDidMount() {

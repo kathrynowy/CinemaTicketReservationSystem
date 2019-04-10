@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Router, Route, Link } from "react-router-dom";
 import createBrowseHistory from "history/createBrowserHistory";
+import { connect } from "react-redux";
 
 import SignIn from './Components/SignIn/SignIn.js'
 import PrimarySearchAppBar from './Components/PrimarySearchAppBar/PrimarySearchAppBar.js'
@@ -13,12 +14,15 @@ import './App.scss';
 import SideDrawer from './Components/SideDrawer/SideDrawer'
 import Backdrop from './Components/Backdrop/Backdrop';
 
+import { checkAuth } from './actions/users';
+
 
 export const history = createBrowseHistory();
 
 class App extends Component {
   state = {
-    sideDrawerOpen: false
+    sideDrawerOpen: false,
+    isTokenExist: localStorage.getItem('token')
   };
 
   drawToggleClickHandler = () => {
@@ -47,10 +51,10 @@ class App extends Component {
             {backdrop}
             <Route exact path="/" component={MainPage} />
             <Route path="/film-profile/:movieId" component={FilmProfilePage} />
-            <Route path="/hall/:cinemaId/:movieId/:hallId/:time" component={HallPage} />
+            <Route path="/hall/:cinemaId/:movieId/:hallId/:time" component={this.state.isTokenExist ? HallPage : SignIn} />
             <Route path="/sign-in" component={SignIn} />
             <Route path="/sign-up" component={SignUp} />
-            <Route path="/confirm-ticket/:cinemaId/:movieId/:hallId/:time" component={ConfirmTicketsPage} />
+            <Route path="/confirm-ticket/:cinemaId/:movieId/:hallId/:time" component={this.state.isTokenExist ? ConfirmTicketsPage : SignIn} />
           </div>
         </Router>
       </Fragment>
@@ -58,4 +62,14 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = store => ({
+  isUserLoggedIn: store.users.isUserLoggedIn
+})
+
+const mapDispatchToProps = dispatch => ({
+  checkAuth() {
+    dispatch(checkAuth());
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

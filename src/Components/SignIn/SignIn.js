@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from "react-redux";
+
+import { signIn } from '../../actions/users';
 import { Avatar, Button, CssBaseline, FormControl, Input, InputLabel, Paper, Typography } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -65,7 +68,6 @@ class SignIn extends Component {
     this.setState({
       errors: {}
     })
-    
     const data = this.state;
     const rules = {
       email: 'required|email',
@@ -79,8 +81,7 @@ class SignIn extends Component {
     }
 
     validateAll(data, rules, messages)
-      .then(() => {
-      })
+      .then(() => this.props.signIn(data))
       .catch(errors => {
         const formattesErrors = {};
         errors.forEach(error => formattesErrors[error.field] = error.message)
@@ -127,8 +128,14 @@ class SignIn extends Component {
   }
 }
 
+const mapDispatchToProps = dispatch => ({
+  signIn(user) {
+    dispatch(signIn(user));
+  }
+})
+
 SignIn.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(SignIn);
+export default withStyles(styles)(connect(null, mapDispatchToProps)(SignIn));

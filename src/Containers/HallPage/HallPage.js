@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { toggleSeat, getSeatsAsync, getBoughtTicketsAsync } from "../../actions/index.js";
+import { getBoughtTicketsAsync } from "../../actions/tickets";
+import {
+  toggleSeat,
+  getSeatsAsync,
+  clearSelectedSeats
+} from "../../actions/seats";
+
 import Hall from '../../Components/Hall/Hall.js'
 
 
@@ -15,7 +21,8 @@ class HallPage extends Component {
 
   async componentDidMount() {
     await this.props.getSeatsAsync(this.props.match.params.hallId);
-    this.props.getBoughtTicketsAsync()
+    this.props.getBoughtTicketsAsync();
+    this.props.clearSeats();
   }
 
   render() {
@@ -49,6 +56,9 @@ const mapDispatchToProps = dispatch => ({
   },
   getBoughtTicketsAsync() {
     dispatch(getBoughtTicketsAsync());
+  },
+  clearSeats() {
+    dispatch(clearSelectedSeats());
   }
 });
 
