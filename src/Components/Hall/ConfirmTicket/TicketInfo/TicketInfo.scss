@@ -17,7 +17,7 @@
   flex-direction: row;
   justify-content: center;
   text-align: center;
-  border: 1px solid $light-pink; 
+  border: 1px solid $bright-pink; 
   background-color: $brown;
   border-radius: 15px;
 }
@@ -45,25 +45,26 @@
   position: relative;
   width: 300px;
   font-size: 18px;
+  border-radius: 10px;
 
   &__name {
     padding: 12px 30px;
     display: block;
     text-align: left;
-    color: $light-pink; 
+    color: $white; 
     cursor: pointer;
     position: relative;
     z-index: 2;
     transition: color 200ms ease-in;
     overflow: hidden;
+    border-radius: 10px;
 
     &:before {
       width: 10px;
       height: 10px;
       border-radius: 50%;
       content: '';
-      background-color: $light-pink;
-      
+      background-color: $bright-pink;
       position: absolute;
       left: 50%;
       top: 50%;
@@ -77,7 +78,7 @@
       width: 32px;
       height: 32px;
       content: '';
-      border: 2px solid $light-pink;
+      border: 2px solid $bright-pink;
       background-color: $white;
       background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.414 11L4 12.414l5.414 5.414L20.828 6.414 19.414 5l-10 10z' fill='%23fff' fill-rule='nonzero'/%3E%3C/svg%3E ");
       background-repeat: no-repeat;

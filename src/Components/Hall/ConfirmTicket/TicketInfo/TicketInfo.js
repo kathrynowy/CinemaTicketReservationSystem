@@ -50,16 +50,16 @@ class TicketInfo extends Component {
           {
             services.map((service, index) => {
               return (
-                <div className="input-group" key={row + seat + service.name}>
+                <div className="input-group" key={service.id + service.cost + index + service.name}>
                   <input
                     className="input-group__service"
-                    id={"option" + row + seat + service._id}
+                    id={"option" + row + seat + service.id}
                     name="option1"
                     type="checkbox"
                     checked={this.state.form[index].value}
                     onChange={() => this.handleSelect(seatId, service.cost, index)}
                   />
-                  <label className="input-group__name" htmlFor={"option" + row + seat + service._id}>
+                  <label className="input-group__name" htmlFor={"option" + row + seat + service.id}>
                     {service.name}
                   </label>
                 </div>
