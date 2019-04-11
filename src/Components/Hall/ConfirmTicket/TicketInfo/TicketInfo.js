@@ -13,23 +13,36 @@ class TicketInfo extends Component {
           id: index,
           value: false,
           name: service.name,
-          cost: service.cost
+          cost: +service.cost
         });
       })
     }
   }
 
+  componentDidMount() {
+    this.setState({
+      form: this.props.additionalServices.map((service, index) => {
+        return ({
+          id: index,
+          value: false,
+          name: service.name,
+          cost: +service.cost
+        });
+      })
+    })
+  }
+
   handleSelect = (seatId, cost, index) => {
-    const newForm = this.state.form;
+    const newForm = [...this.state.form];
     newForm[index].value = !newForm[index].value;
     this.setState({
-      form: this.state.form
+      form: newForm
     })
-    this.props.handleSelect(seatId, index, cost);
+    this.props.handleSelect(seatId, index, +cost);
   }
 
   render() {
-    const { row, seat, additionalServices, movieName, ticketId, cinemaId, seatId } = this.props;
+    const { row, seat, additionalServices, movieName, ticketId, cost, seatId } = this.props;
     const services = additionalServices;
     return (
       <div className="confirm-ticket-component">
@@ -39,7 +52,7 @@ class TicketInfo extends Component {
           </div>
           <div className="confirm-ticket__info">
             <span>
-              {movieName}
+              {movieName}, {cost} BYN
             </span>
             <span>
               {`row ${row}/seat ${seat}`}
@@ -48,7 +61,7 @@ class TicketInfo extends Component {
         </div>
         <div>
           {
-            services.map((service, index) => {
+            this.props.additionalServices.length && this.state.form.length && services.map((service, index) => {
               return (
                 <div className="input-group" key={service.id + service.cost + index + service.name}>
                   <input
@@ -56,11 +69,11 @@ class TicketInfo extends Component {
                     id={"option" + row + seat + service.id}
                     name="option1"
                     type="checkbox"
-                    checked={this.state.form[index].value}
+                    checked={this.state.form[index] ? this.state.form[index].value : false}
                     onChange={() => this.handleSelect(seatId, service.cost, index)}
                   />
                   <label className="input-group__name" htmlFor={"option" + row + seat + service.id}>
-                    {service.name}
+                    {service.name}, {service.cost} BYN
                   </label>
                 </div>
               );

@@ -28,9 +28,6 @@ class SeatsInfo extends Component {
         <Link to={{ pathname: `/confirm-ticket/${cinemaId}/${movieId}/${hallId}/${time}` }} onClick={this.props.clearInterval()}>
           <button className="chosen-seats-info__btn" disabled={isDisabled}>Buy</button>
         </Link>
-        <Link to={{ pathname: `/film-profile/${movieId}` }}>
-          <button className="chosen-seats-info__btn">Back</button>
-        </Link>
       </div>
     );
   }

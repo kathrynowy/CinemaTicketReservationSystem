@@ -16,10 +16,10 @@ class ConfirmTicketsPage extends Component {
     this.props.history.push(url);
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     this.props.showSpinner();
-    this.props.getAdditionalServicesAsync(this.props.match.params.cinemaId);
-    this.props.getMoviesAsync();
+    await this.props.getAdditionalServicesAsync(this.props.match.params.cinemaId);
+    await this.props.getMoviesAsync();
     this.props.hideSpinner();
   }
 
@@ -34,7 +34,7 @@ class ConfirmTicketsPage extends Component {
     return (
       this.props.show
         ? <Spinner />
-        : <ConfirmTicket
+        : this.props.additionalServices.length && <ConfirmTicket
           additionalServices={this.props.additionalServices}
           selectedSeats={this.props.selectedSeats}
           buyTickets={(tickets) => this.buyTickets(tickets)}
@@ -59,7 +59,7 @@ const mapStateToProps = store => ({
 
 const mapDispatchToProps = dispatch => ({
   getAdditionalServicesAsync(id) {
-    dispatch(getAdditionalServicesAsync(id));
+    return dispatch(getAdditionalServicesAsync(id));
   },
   checkAuth() {
     return dispatch(checkAuth());
@@ -72,7 +72,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(clearSelectedSeats())
   },
   getMoviesAsync() {
-    dispatch(getMoviesAsync());
+    return dispatch(getMoviesAsync());
   },
   showSpinner() {
     dispatch(showSpinner());

@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import './Schedule.scss';
 import { Link } from "react-router-dom";
 
+const OPTIONS_TIME = {
+  hour: 'numeric',
+  minute: 'numeric',
+  hour12: false
+};
 
 class Schedule extends Component {
   render() {
@@ -17,7 +22,7 @@ class Schedule extends Component {
                 className="schedule__ticket"
               >
                 <span className="schedule__time">
-                  {new Date(+time).getHours() + ':' + new Date(+time).getMinutes()}
+                  {new Date(+time).toLocaleString('en', OPTIONS_TIME)}
                 </span>
                 <div className="schedule_ticket"></div>
               </Link>

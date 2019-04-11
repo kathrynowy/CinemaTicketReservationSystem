@@ -21,7 +21,7 @@ class FilmProfilePage extends Component {
     return (
       this.props.show
         ? <Spinner />
-        : <FilmProfile
+        : this.props.movies.length && <FilmProfile
           movieId={this.props.match.params.movieId}
           sessions={this.props.sessions}
           cinemas={this.props.cinemas}

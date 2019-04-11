@@ -4,6 +4,7 @@
   margin-bottom: 30px;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .confirm-ticket__ticket-info {
@@ -20,6 +21,7 @@
   border: 1px solid $bright-pink; 
   background-color: $brown;
   border-radius: 15px;
+  padding: 0px 10px;
 }
 
 .confirm-ticket__number {

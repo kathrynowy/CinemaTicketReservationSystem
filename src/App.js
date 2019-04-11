@@ -50,12 +50,13 @@ class App extends Component {
     return (
       <Fragment>
         <Router history={history}>
-          <Switch>
-            <div className="container">
-              <PrimarySearchAppBar click={this.drawToggleClickHandler} />
-              <CustomSnackbar isSnackbarOpen={this.props.isSnackbarOpen} message={this.props.message} />
-              <SideDrawer show={this.state.sideDrawerOpen} />
-              {backdrop}
+
+          <div className="container">
+            <PrimarySearchAppBar click={this.drawToggleClickHandler} />
+            <CustomSnackbar isSnackbarOpen={this.props.isSnackbarOpen} message={this.props.message} />
+            <SideDrawer show={this.state.sideDrawerOpen} />
+            {backdrop}
+            <Switch>
               <Route exact path="/" component={MainPage} />
               <Route path="/film-profile/:movieId" component={FilmProfilePage} />
               <Route path="/hall/:cinemaId/:movieId/:hallId/:time" component={this.checkAuth() ? HallPage : SignIn} />
@@ -63,8 +64,9 @@ class App extends Component {
               <Route path="/sign-up" component={SignUp} />
               <Route path="/confirm-ticket/:cinemaId/:movieId/:hallId/:time" component={this.checkAuth() ? ConfirmTicketsPage : SignIn} />
               <Route path="/profile" component={this.checkAuth() ? UserPage : SignIn} />
-            </div>
-          </Switch>
+            </Switch>
+          </div>
+
         </Router>
       </Fragment>
     );

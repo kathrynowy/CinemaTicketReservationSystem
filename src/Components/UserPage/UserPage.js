@@ -102,7 +102,7 @@ class SimpleBottomNavigation extends React.Component {
             this.state.tickets.map(ticket => {
               return (
                 <div className="user-profile__ticket ticket" key={ticket.id}>
-                  <span className="ticket__movie">{ticket.movieId.name}</span>
+                  <span className="ticket__movie">{ticket.movieId.name}, {ticket.cost} BYN</span>
 
                   <div className="ticket__info">
                     <div className="ticket__place">

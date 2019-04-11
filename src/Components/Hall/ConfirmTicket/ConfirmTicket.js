@@ -15,16 +15,16 @@ class ConfirmTicket extends Component {
     if (service) {
       if (service.service.includes(serviceId)) {
         service.service = service.service.filter(id => id !== serviceId);
-        service.cost -= cost;
+        service.cost -= +cost;
       } else {
         service.service.push(serviceId);
-        service.cost += cost;
+        service.cost += +cost;
       }
     } else {
       services.push({
         seatId: seatId,
         service: [serviceId],
-        cost: cost
+        cost: +cost
       });
     }
 
@@ -62,11 +62,11 @@ class ConfirmTicket extends Component {
           selectedSeats.map((seat, index) => {
             const movie = this.props.movies.find(movie => movie.id === seat.movieId);
             return (
-              <TicketInfo
-                key={seat.row + seat.seat + index}
+              this.props.additionalServices.length && movie && <TicketInfo
+                key={seat.row + "" + seat.seat + index}
                 row={seat.row}
-                key={seat.id}
                 seat={seat.seat}
+                cost={seat.cost}
                 ticketId={index + 1}
                 seatId={seat.id}
                 selectedSeats={selectedSeats}

@@ -14,6 +14,7 @@ import { checkAuth } from "../../actions/users"
 import { addBoughtTicket } from "../../actions/tickets"
 import Hall from '../../Components/Hall/Hall.js'
 import Spinner from '../../Components/Spinner/Spinner';
+import { showSpinner, hideSpinner } from '../../actions/spinner'
 
 let timer = '';
 class HallPage extends Component {
@@ -36,6 +37,7 @@ class HallPage extends Component {
   }
 
   async componentDidMount() {
+    this.props.showSpinner();
     const { cinemaId, hallId, movieId, time } = this.props.match.params;
     await this.props.getSeatsAsync(hallId);
     this.props.checkAuth();
@@ -51,11 +53,12 @@ class HallPage extends Component {
         this.props.addBoughtTicket(this.props.bookingSeats[i]);
       }
     }
+    this.props.hideSpinner();
   }
 
   render() {
     return (
-      this.props.showSpinner
+      this.props.show
         ? <Spinner />
         : <Hall
           cinemaId={this.props.match.params.cinemaId}
@@ -79,7 +82,7 @@ const mapStateToProps = store => ({
   seats: store.seats.seats,
   bookingSeats: store.seats.bookingSeats,
   currentUser: store.users.currentUser,
-  showSpinner: store.spinner.showSpinner
+  show: store.spinner.showSpinner
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -106,6 +109,12 @@ const mapDispatchToProps = dispatch => ({
   },
   addBoughtTicket(ticket) {
     dispatch(addBoughtTicket(ticket));
+  },
+  showSpinner() {
+    dispatch(showSpinner());
+  },
+  hideSpinner() {
+    dispatch(hideSpinner());
   }
 });
 

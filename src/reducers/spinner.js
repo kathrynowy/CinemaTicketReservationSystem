@@ -2,7 +2,7 @@ import { SHOW_SPINNER, HIDE_SPINNER } from '../constans/actionTypes.js';
 
 
 const initialState = {
-  showSpinner: true
+  showSpinner: false
 }
 
 export default function spinner(state = initialState, action) {
