@@ -8,8 +8,7 @@ class Schedule extends Component {
     const { cinemaId, times, hallId, movieId, cinemas } = this.props;
     return (
       <div className="schedule">
-
-        <div className="schedule__cinema">{(cinemas.find(cinema => cinema.id === cinemaId)).name}</div>
+        <div className="schedule__cinema">{times.length ? (cinemas.find(cinema => cinema.id === cinemaId)).name : ''}</div>
         <div className="schedule__ticket-list">
           {
             times.map((time) =>

@@ -2,6 +2,9 @@ import {
   GET_SESSIONS_SUCCESS,
   GET_SESSIONS_FAILURE,
 } from '../constans/actionTypes.js';
+
+import { showSpinner, hideSpinner } from './spinner';
+
 import axios from 'axios';
 
 axios.defaults.baseURL = 'http://localhost:8080/';

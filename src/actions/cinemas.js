@@ -2,6 +2,8 @@ import {
   GET_CINEMAS_SUCCESS,
   GET_CINEMAS_FAILURE
 } from '../constans/actionTypes.js';
+import { showSpinner, hideSpinner } from './spinner';
+
 import axios from 'axios';
 axios.defaults.baseURL = 'http://localhost:8080/';
 

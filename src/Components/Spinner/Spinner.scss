@@ -1,0 +1,77 @@
+/*  .lds-hourglass {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+.lds-hourglass:after {
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  width: 0;
+  height: 0;
+  margin: 6px;
+  box-sizing: border-box;
+  border: 26px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: lds-hourglass 1.2s infinite;
+}
+@keyframes lds-hourglass {
+  0% {
+    transform: rotate(0);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  50% {
+    transform: rotate(900deg);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  100% {
+    transform: rotate(1800deg);
+  } 
+}  */
+
+
+#main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.spinner {
+  position: relative;
+}
+.spinner:before, .spinner:after {
+  content: "";
+  position: relative;
+  display: block;
+}
+.spinner:before {
+  animation: spinner 2.5s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+  width: 1em;
+  height: 1em;
+  background-color: #fff;
+}
+.spinner:after {
+  animation: shadow 2.5s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+  bottom: -.5em;
+  height: .25em;
+  border-radius: 50%;
+  background-color: rgba(#000,0.2);
+}
+
+@keyframes spinner {
+  50% {
+    border-radius: 50%;
+    transform: scale(0.5) rotate(360deg);
+  }
+  100% {
+    transform: scale(1) rotate(720deg);
+  }
+}
+@keyframes shadow {
+  50% {
+    transform: scale(0.5);
+    background-color: rgba(#000,0.1);
+  }
+}

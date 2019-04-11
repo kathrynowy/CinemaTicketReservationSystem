@@ -25,7 +25,7 @@ class SeatsInfo extends Component {
           }
         </div>
         <div className="chosen-seats-info__include">Cost: {(newCost || ' ')}byn </div>
-        <Link to={{ pathname: `/confirm-ticket/${cinemaId}/${movieId}/${hallId}/${time}` }}>
+        <Link to={{ pathname: `/confirm-ticket/${cinemaId}/${movieId}/${hallId}/${time}` }} onClick={this.props.clearInterval()}>
           <button className="chosen-seats-info__btn" disabled={isDisabled}>Buy</button>
         </Link>
         <Link to={{ pathname: `/film-profile/${movieId}` }}>

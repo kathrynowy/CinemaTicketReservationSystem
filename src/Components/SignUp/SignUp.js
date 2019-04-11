@@ -86,7 +86,7 @@ class SignIn extends Component {
     }
 
     validateAll(data, rules, messages)
-      .then(() => this.props.signUp(data))
+      .then(() =>  this.props.signUp(data))
       .catch(errors => {
         const formattesErrors = {};
         errors.forEach(error => formattesErrors[error.field] = error.message)

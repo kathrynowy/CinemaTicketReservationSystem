@@ -1,0 +1,6 @@
+@mixin scroll() {
+  background: $bright-pink;
+  border-radius: 30px;
+  -webkit-box-shadow: inset 2px 2px 2px $greyScroll, inset -2px -2px 2px $blackScroll;
+  box-shadow: inset 2px 2px 2px $greyScroll, inset -2px -2px 2px $blackScroll;
+}

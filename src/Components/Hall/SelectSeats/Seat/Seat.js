@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 
 class Seat extends Component {
   handleSelect = () => {
-    const { row, seat, cost, cinemaId, movieId, hallId } = this.props;
-    const ticket = { id: `${row}.${seat}`, cinemaId, movieId, hallId, row, seat, cost }
+    const { row, seat, cost, cinemaId, movieId, hallId, time } = this.props;
+    const ticket = { cinemaId, movieId, hallId, row, seat, cost, time }
     this.props.toggleSeat(ticket);
   };
 

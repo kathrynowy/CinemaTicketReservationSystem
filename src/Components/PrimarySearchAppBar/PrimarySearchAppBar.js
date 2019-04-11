@@ -10,8 +10,10 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import { logOut } from '../../actions/users';
+import ExitIcon from '@material-ui/icons/ExitToApp';
+import { logOut, checkAuth } from '../../actions/users';
 import { findMovies } from '../../actions/movies';
+import { history } from '../../App';
 
 
 const styles = theme => ({
@@ -147,6 +149,15 @@ class PrimarySearchAppBar extends React.Component {
     this.handleMenuClose();
   }
 
+  handleRedirect = () => {
+    history.push('/profile');
+    this.handleMenuClose();
+  }
+
+  componentDidMount() {
+    this.props.checkAuth();
+  }
+
   render() {
     const { anchorEl, mobileMoreAnchorEl } = this.state;
     const { classes } = this.props;
@@ -161,7 +172,7 @@ class PrimarySearchAppBar extends React.Component {
         open={isMenuOpen}
         onClose={this.handleMenuClose}
       >
-        <MenuItem onClick={this.handleMenuClose}>Profile</MenuItem>
+        <MenuItem onClick={this.handleRedirect}>Profile</MenuItem>}
         <MenuItem onClick={this.handleLogOut}>Log out</MenuItem>
       </Menu>
     );
@@ -178,7 +189,7 @@ class PrimarySearchAppBar extends React.Component {
           <IconButton color="inherit">
             <AccountCircle />
           </IconButton>
-          <p>Profile</p>
+          <p >Profile</p>
         </MenuItem>
       </Menu>
     );
@@ -211,14 +222,18 @@ class PrimarySearchAppBar extends React.Component {
                 <li className={classes.sectionDesctopLinksItem}>
                   <Link to={{ pathname: "/" }} className={classes.sectionDesctopLink}> Main Page </Link>
                 </li>
-                <li className={classes.sectionDesctopLinksItem}>
-                  <Link to={{ pathname: "/sign-in" }} className={classes.sectionDesctopLink}> Sign In </Link>
-                </li>
-                <li className={classes.sectionDesctopLinksItem}>
-                  <Link to={{ pathname: "/sign-up" }} className={classes.sectionDesctopLink}> Sign Up </Link>
-                </li>
+                {
+                  !this.props.currentUser.id && <li className={classes.sectionDesctopLinksItem}>
+                    <Link to={{ pathname: "/sign-in" }} className={classes.sectionDesctopLink}> Sign In </Link>
+                  </li>
+                }
+                {
+                  !this.props.currentUser.id && <li className={classes.sectionDesctopLinksItem}>
+                    <Link to={{ pathname: "/sign-up" }} className={classes.sectionDesctopLink}> Sign Up </Link>
+                  </li>
+                }
               </ul>
-              <IconButton
+              {this.props.currentUser.username && <IconButton
                 aria-owns={isMenuOpen ? 'material-appbar' : undefined}
                 aria-haspopup="true"
                 onClick={this.handleProfileMenuOpen}
@@ -227,6 +242,7 @@ class PrimarySearchAppBar extends React.Component {
               >
                 <AccountCircle />
               </IconButton>
+              }
             </div>
             <div className={classes.sectionMobile}>
               <IconButton aria-haspopup="true" onClick={this.handleMobileMenuOpen} color="inherit" className={classes.moreIcon}>
@@ -235,8 +251,8 @@ class PrimarySearchAppBar extends React.Component {
             </div>
           </Toolbar>
         </AppBar>
-        {renderMenu}
-        {renderMobileMenu}
+        {this.props.currentUser.username && renderMenu}
+        {this.props.currentUser.username && renderMobileMenu}
       </div>
     );
   }
@@ -246,13 +262,20 @@ PrimarySearchAppBar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
+const mapStateToProps = store => ({
+  currentUser: store.users.currentUser
+})
+
 const mapDispatchToProps = dispatch => ({
   onFindMovies(value) {
     dispatch(findMovies(value));
   },
   logOut() {
     dispatch(logOut());
+  },
+  checkAuth() {
+    dispatch(checkAuth())
   }
 });
 
-export default withStyles(styles)(connect(null, mapDispatchToProps)(PrimarySearchAppBar));
+export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(PrimarySearchAppBar));

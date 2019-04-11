@@ -44,6 +44,7 @@ class Hall extends Component {
             movieId={movieId}
             hallId={hallId}
             time={time}
+            clearInterval={this.props.clearInterval}
           />
         </div>
       </div>

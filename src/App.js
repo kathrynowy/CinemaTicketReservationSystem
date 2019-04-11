@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Router, Route, Link } from "react-router-dom";
+import { Router, Route, Link, Switch, Redirect } from "react-router-dom";
 import createBrowseHistory from "history/createBrowserHistory";
 import { connect } from "react-redux";
 
@@ -13,16 +13,17 @@ import ConfirmTicketsPage from './Containers/ConfirmTicketsPage/ConfirmTicketsPa
 import './App.scss';
 import SideDrawer from './Components/SideDrawer/SideDrawer'
 import Backdrop from './Components/Backdrop/Backdrop';
-
 import { checkAuth } from './actions/users';
+import CustomSnackbar from './Components/Snackbar/Snackbar.js';
+import UserPage from './Components/UserPage/UserPage.js';
+
 
 
 export const history = createBrowseHistory();
 
 class App extends Component {
   state = {
-    sideDrawerOpen: false,
-    isTokenExist: localStorage.getItem('token')
+    sideDrawerOpen: false
   };
 
   drawToggleClickHandler = () => {
@@ -35,6 +36,10 @@ class App extends Component {
     this.setState({ sideDrawerOpen: false });
   };
 
+  checkAuth = () => {
+    return localStorage.getItem('token');
+  }
+
   render() {
     let backdrop;
 
@@ -45,17 +50,21 @@ class App extends Component {
     return (
       <Fragment>
         <Router history={history}>
-          <div className="container">
-            <PrimarySearchAppBar click={this.drawToggleClickHandler} />
-            <SideDrawer show={this.state.sideDrawerOpen} />
-            {backdrop}
-            <Route exact path="/" component={MainPage} />
-            <Route path="/film-profile/:movieId" component={FilmProfilePage} />
-            <Route path="/hall/:cinemaId/:movieId/:hallId/:time" component={this.state.isTokenExist ? HallPage : SignIn} />
-            <Route path="/sign-in" component={SignIn} />
-            <Route path="/sign-up" component={SignUp} />
-            <Route path="/confirm-ticket/:cinemaId/:movieId/:hallId/:time" component={this.state.isTokenExist ? ConfirmTicketsPage : SignIn} />
-          </div>
+          <Switch>
+            <div className="container">
+              <PrimarySearchAppBar click={this.drawToggleClickHandler} />
+              <CustomSnackbar isSnackbarOpen={this.props.isSnackbarOpen} message={this.props.message} />
+              <SideDrawer show={this.state.sideDrawerOpen} />
+              {backdrop}
+              <Route exact path="/" component={MainPage} />
+              <Route path="/film-profile/:movieId" component={FilmProfilePage} />
+              <Route path="/hall/:cinemaId/:movieId/:hallId/:time" component={this.checkAuth() ? HallPage : SignIn} />
+              <Route path="/sign-in" component={SignIn} />
+              <Route path="/sign-up" component={SignUp} />
+              <Route path="/confirm-ticket/:cinemaId/:movieId/:hallId/:time" component={this.checkAuth() ? ConfirmTicketsPage : SignIn} />
+              <Route path="/profile" component={this.checkAuth() ? UserPage : SignIn} />
+            </div>
+          </Switch>
         </Router>
       </Fragment>
     );
@@ -63,12 +72,15 @@ class App extends Component {
 }
 
 const mapStateToProps = store => ({
-  isUserLoggedIn: store.users.isUserLoggedIn
+  isUserLoggedIn: store.users.isUserLoggedIn,
+  currentUser: store.users.currentUser,
+  isSnackbarOpen: store.snackbar.isSnackbarOpen,
+  message: store.snackbar.message
 })
 
 const mapDispatchToProps = dispatch => ({
   checkAuth() {
-    dispatch(checkAuth());
+    return dispatch(checkAuth());
   }
 });
 

@@ -1,30 +1,41 @@
 import {
-  SIGN_IN_SUCCESS
+  SIGN_IN_SUCCESS,
+  CHECK_AUTH_SUCCESS,
+  LOGOUT_SUCCESS
 } from '../constans/actionTypes.js';
 import axios from 'axios';
 import { history } from '../App';
+import { showSnackbar } from './snackbar'
 
 axios.defaults.baseURL = 'http://localhost:8080/';
 
 
 export const checkAuth = () => {
+  const token = localStorage.getItem('token');
+  axios.defaults.headers.common['Authorization'] = token;
   return async (dispatch) => {
     try {
-      const userId = localStorage.getItem('userId');
-      await axios.post(`user/${userId}`);
-      dispatch(signInSuccess());
-
+      const user = await axios.post(`user`);
+      dispatch(checkAuthSuccess(user.data));
     } catch (error) {
       console.log(error);
     }
   }
 }
 
+export const checkAuthSuccess = user => ({
+  type: CHECK_AUTH_SUCCESS,
+  payload: user
+})
+
+
 export const signUp = userData => {
+  const newUser = { ...userData, isAdmin: false }
   return async (dispatch) => {
     try {
-      await axios.post(`signup`, userData);
+      await axios.post(`signup`, newUser);
       history.push('/sign-in');
+      dispatch(showSnackbar("Sign up successfully!"));
     } catch (error) {
       console.log(error);
     }
@@ -39,15 +50,19 @@ export const logOut = () => {
   return async dispatch => {
     try {
       await axios.get(`logout`);
-
-      localStorage.setItem('token', '');
-      localStorage.setItem('userId', '');
-
+      localStorage.removeItem('token');
+      dispatch(logOutSuccess());
       history.push('/');
-
+      dispatch(showSnackbar("You have successfully logged out!"));
     } catch (error) {
       console.log(error);
     }
+  }
+}
+
+export const logOutSuccess = () => {
+  return {
+    type: LOGOUT_SUCCESS
   }
 }
 
@@ -56,21 +71,16 @@ export const signIn = userData => {
     try {
       const { data } = await axios.post(`login`, { ...userData });
       let token = data.token;
-      let userId = data.id;
-      let email = data.email;
 
       token
         ? localStorage.setItem('token', token)
         : console.log('token not found');
 
-      userId
-        ? localStorage.setItem('userId', userId)
-        : console.log('user id not found');
-
       history.push('/');
       dispatch(signInSuccess());
+      dispatch(showSnackbar("You have successfully logged in!"));
     } catch (error) {
-      console.log(error);
+      dispatch(showSnackbar("Please, enter correct data!"));
     }
   }
 }

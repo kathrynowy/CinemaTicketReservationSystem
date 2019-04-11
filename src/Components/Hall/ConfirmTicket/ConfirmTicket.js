@@ -37,17 +37,18 @@ class ConfirmTicket extends Component {
     const confirmedTickets = this.props.selectedSeats.map((seat) => {
       const services = this.state.selectedServices.find(service => service.seatId === seat.id);
       return {
-        id: seat.id,
         cinemaId: this.props.cinemaId,
         movieId: this.props.movieId,
         hallId: this.props.hallId,
         time: this.props.time,
         row: seat.row,
         seat: seat.seat,
+        userId: seat.userId,
         cost: services ? +seat.cost + services.cost : seat.cost,
         selectedServices: services ? services.service : []
       }
     });
+
     this.props.buyTickets(confirmedTickets);
   }
 

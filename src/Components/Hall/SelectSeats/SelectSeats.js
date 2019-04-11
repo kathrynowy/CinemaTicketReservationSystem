@@ -5,18 +5,19 @@ import './SelectSeats.scss';
 
 
 class SelectSeats extends Component {
-  handleCompare = (array, id) => array.find(element => {
-    return element.row + "." + element.seat === id
+  handleCompare = (array, row, seat) => array.find(element => {
+    return element.row === row && element.seat === seat
   });
 
-  handleIsSelected = (boughtTickets, cinemaId, hallId, movieId, time, id) => {
-    return boughtTickets.find(ticket => {
+  handleIsSelected = (boughtTickets, cinemaId, hallId, movieId, time, row, seat) => {
+    return boughtTickets && boughtTickets.find(ticket => {
       return (
         ticket.cinemaId === cinemaId &&
         ticket.hallId === hallId &&
         ticket.movieId === movieId &&
         ticket.time === +time &&
-        ticket.row + "." + ticket.seat === id
+        ticket.row === +row &&
+        ticket.seat === +seat
       )
     })
   }
@@ -30,11 +31,12 @@ class SelectSeats extends Component {
           row={row}
           cost={cost}
           key={i}
+          time={time}
           cinemaId={cinemaId}
           movieId={movieId}
           hallId={hallId}
-          isBought={this.handleIsSelected(boughtSeats, cinemaId, hallId, movieId, time, (row + "." + i))}
-          isSelected={this.handleCompare(this.props.selectedSeats, (row + "." + i))}
+          isBought={this.handleIsSelected(boughtSeats, cinemaId, hallId, movieId, time, row, i)}
+          isSelected={this.handleCompare(this.props.selectedSeats, row, i)}
           toggleSeat={this.props.toggleSeat}
         />
       )
