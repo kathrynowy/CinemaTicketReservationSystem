@@ -65,6 +65,7 @@ class ConfirmTicket extends Component {
               <TicketInfo
                 key={seat.row + seat.seat + index}
                 row={seat.row}
+                key={seat.id}
                 seat={seat.seat}
                 ticketId={index + 1}
                 seatId={seat.id}

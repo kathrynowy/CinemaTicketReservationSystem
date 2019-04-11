@@ -11,7 +11,7 @@
     height: 160px; 
     width: 230px; 
     border-radius: 10px;
-    opacity: 0.7;
+    opacity: 0.8;
   } 
 
   &__media:hover {
@@ -64,8 +64,9 @@ input[type="button"]:focus {
     width: 180px;
 
     &__media {
-      height: 220px; 
-      width: 180px; 
+      height: 220px;
+      width: 180px;
+      opacity: 1;
     } 
   }
 }
@@ -77,7 +78,7 @@ input[type="button"]:focus {
 
     &__media {
       height: 240px; 
-      width: 190px; 
+      width: 190px;
     } 
   }
 }
