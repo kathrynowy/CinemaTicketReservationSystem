@@ -10,7 +10,6 @@ import {
 import { showSnackbar } from './snackbar'
 import { history } from '../App';
 import axios from 'axios';
-axios.defaults.baseURL = 'http://localhost:8080/';
 
 
 export function getSeatsAsync(hallId) {

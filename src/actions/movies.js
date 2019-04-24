@@ -4,10 +4,7 @@ import {
   FIND_MOVIES_SUCCESS
 } from '../constans/actionTypes.js';
 
-import { showSpinner, hideSpinner } from './spinner';
-
 import axios from 'axios';
-axios.defaults.baseURL = 'http://localhost:8080/';
 
 
 export const findMovies = value => {

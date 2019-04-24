@@ -2,10 +2,9 @@ import {
   GET_ADDITIONAL_SERVICES_SUCCESS,
   GET_ADDITIONAL_SERVICES_FAILURE
 } from '../constans/actionTypes.js';
+
 import axios from 'axios';
 import { history } from '../App';
-
-axios.defaults.baseURL = 'http://localhost:8080/';
 
 
 export const getAdditionalServicesSuccess = (additionalServices) => {

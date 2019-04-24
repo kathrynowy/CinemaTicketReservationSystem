@@ -3,14 +3,10 @@ import {
   GET_SESSIONS_FAILURE,
 } from '../constans/actionTypes.js';
 
-import { showSpinner, hideSpinner } from './spinner';
-
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:8080/';
 
-
-export const getSessionsSuccess = (sessions) => {
+export const getSessionsSuccess = sessions => {
   return {
     type: GET_SESSIONS_SUCCESS,
     payload: sessions

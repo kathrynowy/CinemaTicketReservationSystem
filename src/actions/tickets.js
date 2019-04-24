@@ -3,11 +3,10 @@ import {
   GET_BOUGHT_TICKETS,
   ADD_BOUGHT_TICKET
 } from '../constans/actionTypes.js';
-import axios from 'axios';
+
 import { history } from '../App';
 import { showSnackbar } from './snackbar'
-
-axios.defaults.baseURL = 'http://localhost:8080/';
+import axios from 'axios';
 
 
 export function getBoughtTicketsAsync(info) {
