@@ -1,3 +1,5 @@
+@import '../variables.scss';
+
 .movie-profile {
   justify-content: flex-start;
   flex-direction: column;
@@ -45,6 +47,17 @@
   &__description-container {
     display: flex;
     flex-direction: column;
+    &::-webkit-scrollbar {
+      width: 20px;
+      height: 20px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: -webkit-gradient(linear,left top,left bottom,from($transparent),to($transparent));
+      border-radius: 30px;
+      -webkit-box-shadow: inset 2px 2px 2px $greyScroll, inset -2px -2px 2px $blackScroll;
+      box-shadow: inset 2px 2px 2px $greyScroll, inset -2px -2px 2px $blackScroll;
+    }
 
     &__description {
       font-size: 14px;
@@ -80,7 +93,7 @@
       margin-left: 5px;
       margin-top: 10px;
       max-height: 500px;
-      overflow: hidden;
+      overflow-y: auto;
     }
 
     &__title {
@@ -119,12 +132,11 @@
     &__description-container {
       margin-left: 5px;
       max-height: 237px;
-      overflow: hidden;
+      overflow-y: auto;
       width: 90%;
     }
 
     &__description {
-      overflow: hidden;
       width: 90%;
     }
 
@@ -159,7 +171,7 @@
       margin: 5px 0px;
       padding-left: 15px;
       max-height: 260px;
-      overflow: hidden;
+      overflow-y: auto;
       width: 100%;
     }
     
@@ -177,7 +189,9 @@
     &__description-container {
       margin-top: 15px;
       max-height: 500px;
-      overflow: hidden;
+      overflow-y: auto;
+
+      
     }
 
     &__title {
@@ -219,6 +233,7 @@
 
     &__description-container {
       width: 380px;
+      overflow: hidden;
     }
   }
 }

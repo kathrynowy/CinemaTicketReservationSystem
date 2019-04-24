@@ -10,7 +10,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import ExitIcon from '@material-ui/icons/ExitToApp';
 import { logOut, checkAuth } from '../../actions/users';
 import { findMovies } from '../../actions/movies';
 import { history } from '../../App';
@@ -34,6 +33,7 @@ const styles = theme => ({
     },
     lineHeight: '1.35',
     fontSize: '30px',
+    cursor: 'pointer'
   },
   search: {
     position: 'relative',
@@ -201,7 +201,7 @@ class PrimarySearchAppBar extends React.Component {
             <IconButton className={classes.menuButton && classes.sectionMobile} onClick={this.props.click} color="inherit" aria-label="Open drawer">
               <MenuIcon />
             </IconButton>
-            <Typography className={classes.title} variant="h6" color="inherit" noWrap>
+            <Typography className={classes.title} onClick={() => history.push('/')} variant="h6" color="inherit" noWrap>
               Treatley
             </Typography>
             <div className={classes.search}>

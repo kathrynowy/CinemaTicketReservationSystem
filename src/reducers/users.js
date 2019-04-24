@@ -24,7 +24,8 @@ export default function users(state = initialState, action) {
 
     case LOGOUT_SUCCESS:
       return Object.assign({}, state, {
-        currentUser: {}
+        currentUser: {},
+        isUserLoggedIn: false
       });
 
     default: return state;

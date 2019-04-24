@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from 'react';
-import { Router, Route, Link, Switch, Redirect } from "react-router-dom";
+import { Router, Route, Switch } from "react-router-dom";
 import createBrowseHistory from "history/createBrowserHistory";
 import { connect } from "react-redux";
 
+import { checkAuth, logOutSuccess, signInSuccess } from './actions/users';
 import SignIn from './Components/SignIn/SignIn.js'
 import PrimarySearchAppBar from './Components/PrimarySearchAppBar/PrimarySearchAppBar.js'
 import MainPage from './Containers/MainPage/MainPage.js';
@@ -11,12 +12,11 @@ import HallPage from './Containers/HallPage/HallPage.js';
 import SignUp from './Components/SignUp/SignUp.js';
 import ConfirmTicketsPage from './Containers/ConfirmTicketsPage/ConfirmTicketsPage.js';
 import './App.scss';
-import SideDrawer from './Components/SideDrawer/SideDrawer'
+import SideDrawer from './Components/SideDrawer/SideDrawer';
 import Backdrop from './Components/Backdrop/Backdrop';
-import { checkAuth } from './actions/users';
+import { showSnackbar } from './actions/snackbar';
 import CustomSnackbar from './Components/Snackbar/Snackbar.js';
 import UserPage from './Components/UserPage/UserPage.js';
-
 
 
 export const history = createBrowseHistory();
@@ -32,17 +32,30 @@ class App extends Component {
     });
   };
 
+  componentDidMount() {
+    window.addEventListener('storage', event => {
+      if (event.key === "token") {
+        if (event.newValue === null) {
+          history.push('/');
+          this.props.logOutSuccess();
+        } else {
+          this.props.signInSuccess();
+          history.push('/');
+        }
+      }
+    })
+  }
+
   backdropClickHandler = () => {
     this.setState({ sideDrawerOpen: false });
   };
 
   checkAuth = () => {
-    return localStorage.getItem('token');
+    return this.props.isUserLoggedIn || localStorage.getItem('token');
   }
 
   render() {
     let backdrop;
-
     if (this.state.sideDrawerOpen) {
       backdrop = <Backdrop click={this.backdropClickHandler} />;
     }
@@ -50,7 +63,6 @@ class App extends Component {
     return (
       <Fragment>
         <Router history={history}>
-
           <div className="container">
             <PrimarySearchAppBar click={this.drawToggleClickHandler} />
             <CustomSnackbar isSnackbarOpen={this.props.isSnackbarOpen} message={this.props.message} />
@@ -66,7 +78,6 @@ class App extends Component {
               <Route path="/profile" component={this.checkAuth() ? UserPage : SignIn} />
             </Switch>
           </div>
-
         </Router>
       </Fragment>
     );
@@ -74,15 +85,23 @@ class App extends Component {
 }
 
 const mapStateToProps = store => ({
-  isUserLoggedIn: store.users.isUserLoggedIn,
   currentUser: store.users.currentUser,
   isSnackbarOpen: store.snackbar.isSnackbarOpen,
-  message: store.snackbar.message
+  message: store.snackbar.message,
+  isUserLoggedIn: store.users.isUserLoggedIn
 })
 
 const mapDispatchToProps = dispatch => ({
   checkAuth() {
     return dispatch(checkAuth());
+  },
+  logOutSuccess() {
+    dispatch(logOutSuccess());
+    dispatch(showSnackbar("You have successfully logged out!"));
+  },
+  signInSuccess() {
+    dispatch(signInSuccess());
+    dispatch(showSnackbar("You have successfully logged in!"));
   }
 });
 
