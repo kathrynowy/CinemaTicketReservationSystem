@@ -14,7 +14,7 @@
   }
 
   &__title {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: 600;
   }
 
@@ -53,17 +53,18 @@
     }
 
     &::-webkit-scrollbar-thumb {
-      background: -webkit-gradient(linear,left top,left bottom,from($transparent),to($transparent));
+      background: $transparent;
       border-radius: 30px;
       -webkit-box-shadow: inset 2px 2px 2px $greyScroll, inset -2px -2px 2px $blackScroll;
       box-shadow: inset 2px 2px 2px $greyScroll, inset -2px -2px 2px $blackScroll;
     }
+  }
 
-    &__description {
-      font-size: 14px;
-      line-height: 18px;
-      margin-top: 6px;
-    }
+  &__description {
+    font-size: 18px;
+    margin-top: 6px;
+    line-height: 1.5;
+    overflow-wrap: break-word;
   }
 
   &__tickets-info {
@@ -190,8 +191,6 @@
       margin-top: 15px;
       max-height: 500px;
       overflow-y: auto;
-
-      
     }
 
     &__title {

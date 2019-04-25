@@ -6,7 +6,9 @@ import './styles.scss';
 
 
 const DAY_IN_MILLISECONDS = 1000 * 60 * 60 * 24;
-
+const MILLISECONDS_IN_HOUR = 1000 * 3600;
+const MILLISECONDS_IN_MINUTE = 1000 * 60;
+const MINUTES_IN_HOUR = 60;
 
 class FilmProfile extends Component {
   state = {
@@ -57,13 +59,26 @@ class FilmProfile extends Component {
     return days;
   }
 
+  getHours(milliseconds) {
+    return Math.floor(milliseconds / MILLISECONDS_IN_HOUR);
+  }
+
+  getMinutes(milliseconds, hours) {
+    return (milliseconds / MILLISECONDS_IN_MINUTE) - hours * MINUTES_IN_HOUR;
+  }
+
   render() {
     const days = this.createDays();
     const movieId = this.props.movieId;
     const movie = this.props.movies.find((movie) => movie.id === movieId)
     return (
       <div className="movie-profile">
-        <div className="movie-profile__name"> {movie.name}</div>
+        <div className="movie-profile__name">
+          {`${movie.name}, 
+            ${this.getHours(movie.runningTime)}h
+           ${this.getMinutes(movie.runningTime, this.getHours(movie.runningTime))}m`
+          }
+        </div>
         <div className="movie-profile__info">
           <div className="movie-profile__content">
             <img src={movie.img} className="movie-profile__poster" alt="movie"></img>
