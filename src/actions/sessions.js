@@ -5,7 +5,6 @@ import {
 
 import axios from 'axios';
 
-
 export const getSessionsSuccess = sessions => {
   return {
     type: GET_SESSIONS_SUCCESS,
@@ -13,10 +12,10 @@ export const getSessionsSuccess = sessions => {
   }
 }
 
-export const getSessionsFailure = (isError) => {
+export const getSessionsFailure = error => {
   return {
     type: GET_SESSIONS_FAILURE,
-    payload: isError
+    payload: error
   }
 }
 

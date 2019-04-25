@@ -6,17 +6,17 @@ import {
 import axios from 'axios';
 
 
-export const getCinemasSuccess = (cinemas) => {
+export const getCinemasSuccess = cinemas => {
   return {
     type: GET_CINEMAS_SUCCESS,
     payload: cinemas
   }
 }
 
-export const getCinemasFailure = (isError) => {
+export const getCinemasFailure = error => {
   return {
     type: GET_CINEMAS_FAILURE,
-    payload: isError
+    payload: error
   }
 }
 

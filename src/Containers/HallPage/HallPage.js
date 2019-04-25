@@ -16,19 +16,23 @@ import Hall from '../../Components/Hall/Hall.js'
 import Spinner from '../../Components/Spinner/Spinner';
 import { showSpinner, hideSpinner } from '../../actions/spinner'
 
+import {
+  sendToggledSeatToServer
+} from '../../socket';
+
 let timer = '';
 class HallPage extends Component {
   state = {
     timer: ''
   }
 
-  onToggleSeat = (ticket) => {
+  onToggleSeat = (seat) => {
     if (!timer) {
       timer = setTimeout(() => this.props.history.push('/'), 900000);
     }
-    const isSelected = this.props.selectedSeats.find(seat => seat.row === ticket.row && seat.seat === ticket.seat);
+    const isSelected = this.props.selectedSeats.find(selectedSeat => selectedSeat.row === seat.row && selectedSeat.seat === seat.seat);
     if (this.props.selectedSeats.length < 6 || isSelected) {
-      this.props.onToggleSeat(ticket);
+      sendToggledSeatToServer(seat, this.props.currentUser.id);
     }
   }
 
@@ -58,7 +62,7 @@ class HallPage extends Component {
 
   render() {
     return (
-      this.props.show
+      this.props.isLoading
         ? <Spinner />
         : <Hall
           cinemaId={this.props.match.params.cinemaId}
@@ -79,10 +83,10 @@ class HallPage extends Component {
 const mapStateToProps = store => ({
   selectedSeats: store.seats.selectedSeats,
   boughtSeats: store.ticketsList.boughtTickets,
-  seats: store.seats.seats,
+  seats: store.seats.allSeats,
   bookingSeats: store.seats.bookingSeats,
   currentUser: store.users.currentUser,
-  show: store.spinner.showSpinner
+  isLoading: store.spinner.isLoading
 });
 
 const mapDispatchToProps = dispatch => ({

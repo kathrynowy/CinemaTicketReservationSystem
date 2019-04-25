@@ -2,18 +2,19 @@ import { SHOW_SPINNER, HIDE_SPINNER } from '../constans/actionTypes.js';
 
 
 const initialState = {
-  showSpinner: false
+  isLoading: true
 }
 
 export default function spinner(state = initialState, action) {
   switch (action.type) {
     case SHOW_SPINNER:
       return Object.assign({}, state, {
-        showSpinner: true
+        isLoading: true
       })
+
     case HIDE_SPINNER:
       return Object.assign({}, state, {
-        showSpinner: false
+        isLoading: false
       })
 
     default: return state;

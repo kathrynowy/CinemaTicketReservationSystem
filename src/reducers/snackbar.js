@@ -12,6 +12,7 @@ export default function snackbar(state = initialState, action) {
         isSnackbarOpen: true,
         message: action.message
       })
+
     case HIDE_SNACKBAR:
       return Object.assign({}, state, {
         isSnackbarOpen: false

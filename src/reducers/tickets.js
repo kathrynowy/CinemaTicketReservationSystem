@@ -20,10 +20,23 @@ export default function ticketsList(state = initialState, action) {
         boughtTickets: action.payload
       })
 
-    case ADD_BOUGHT_TICKET:
+    case ADD_BOUGHT_TICKET: {
+      const currentTicket = state.boughtTickets.find(ticket =>
+        action.payload.cinemaId === ticket.cinemaId &&
+        action.payload.hallId === ticket.hallId &&
+        action.payload.movieId === ticket.movieId &&
+        action.payload.time === ticket.time &&
+        action.payload.row === ticket.row &&
+        action.payload.seat === ticket.seat
+      );
+      const newBoughtTickets = currentTicket
+        ? state.boughtTickets.filter(boughtTicket => boughtTicket !== currentTicket)
+        : [...state.boughtTickets, action.payload]
+
       return Object.assign({}, state, {
-        boughtTickets: [...state.boughtTickets, action.payload]
+        boughtTickets: newBoughtTickets
       })
+    }
 
     default: return state;
   }

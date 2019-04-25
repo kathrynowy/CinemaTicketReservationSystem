@@ -11,7 +11,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import { logOut, checkAuth } from '../../actions/users';
-import { findMovies } from '../../actions/movies';
+import { filterMovies } from '../../actions/movies';
 import { history } from '../../App';
 
 
@@ -140,8 +140,8 @@ class PrimarySearchAppBar extends React.Component {
     this.setState({ mobileMoreAnchorEl: null });
   };
 
-  findMovies = (event) => {
-    this.props.onFindMovies(event.target.value);
+  filterMovies = (event) => {
+    this.props.onFilterMovies(event.target.value);
   }
 
   handleLogOut = () => {
@@ -214,7 +214,7 @@ class PrimarySearchAppBar extends React.Component {
                   root: classes.inputRoot,
                   input: classes.inputInput,
                 }}
-                onChange={this.findMovies} />
+                onChange={this.filterMovies} />
             </div>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
@@ -267,8 +267,8 @@ const mapStateToProps = store => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  onFindMovies(value) {
-    dispatch(findMovies(value));
+  onFilterMovies(value) {
+    dispatch(filterMovies(value));
   },
   logOut() {
     dispatch(logOut());

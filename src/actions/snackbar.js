@@ -1,7 +1,7 @@
 import { SHOW_SNACKBAR, HIDE_SNACKBAR } from '../constans/actionTypes.js';
 
 
-export const showSnackbar = (message) => {
+export const showSnackbar = message => {
   return {
     type: SHOW_SNACKBAR,
     message

@@ -14,12 +14,12 @@ import ConfirmTicketsPage from './Containers/ConfirmTicketsPage/ConfirmTicketsPa
 import './App.scss';
 import SideDrawer from './Components/SideDrawer/SideDrawer';
 import Backdrop from './Components/Backdrop/Backdrop';
-import { showSnackbar } from './actions/snackbar';
 import CustomSnackbar from './Components/Snackbar/Snackbar.js';
 import UserPage from './Components/UserPage/UserPage.js';
-
+import { showSnackbar } from './actions/snackbar';
 
 export const history = createBrowseHistory();
+
 
 class App extends Component {
   state = {

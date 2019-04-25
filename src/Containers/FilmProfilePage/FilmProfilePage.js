@@ -11,17 +11,17 @@ import { showSpinner, hideSpinner } from '../../actions/spinner'
 class FilmProfilePage extends Component {
   async componentDidMount() {
     this.props.showSpinner();
+    await this.props.getMoviesAsync();
     await this.props.getSessionsAsync();
     await this.props.getCinemasAsync();
-    await this.props.getMoviesAsync();
     this.props.hideSpinner();
   }
 
   render() {
     return (
-      this.props.show
+      this.props.isLoading
         ? <Spinner />
-        : this.props.movies.length && <FilmProfile
+        : <FilmProfile
           movieId={this.props.match.params.movieId}
           sessions={this.props.sessions}
           cinemas={this.props.cinemas}
@@ -32,10 +32,10 @@ class FilmProfilePage extends Component {
 }
 
 const mapStateToProps = store => ({
-  sessions: store.sessions.sessions,
-  cinemas: store.cinemas.cinemas,
-  movies: store.movies.movies,
-  show: store.spinner.showSpinner
+  sessions: store.sessions.allSessions,
+  cinemas: store.cinemas.allCinemas,
+  movies: store.movies.allMovies,
+  isLoading: store.spinner.isLoading
 })
 
 const mapDispatchToProps = dispatch => ({

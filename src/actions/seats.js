@@ -9,6 +9,7 @@ import {
 
 import { showSnackbar } from './snackbar'
 import { history } from '../App';
+
 import axios from 'axios';
 
 
@@ -26,17 +27,17 @@ export function getSeatsAsync(hallId) {
   }
 }
 
-export const getSeatsSuccess = (movies) => {
+export const getSeatsSuccess = movies => {
   return {
     type: GET_SEATS_SUCCESS,
     payload: movies
   }
 }
 
-export const getSeatsFailure = (isError) => {
+export const getSeatsFailure = error => {
   return {
     type: GET_SEATS_FAILURE,
-    payload: isError
+    payload: error
   }
 }
 
@@ -58,40 +59,31 @@ export const getSelectedSeatsSuccess = selectedSeats => {
   }
 }
 
-export const getSelectedSeatsFailure = isError => {
+export const getSelectedSeatsFailure = error => {
   return {
     type: GET_SEATS_FAILURE,
-    payload: isError
+    payload: error
   }
 }
 
 export const toggleSeat = seat => {
-  const token = localStorage.getItem('token');
-  axios.defaults.headers.common['Authorization'] = token;
   return async (dispatch) => {
     try {
-      const user = await axios.post(`user`);
-      const newSeat = {
-        ...seat,
-        userId: user.data.id
-      }
-      const { data } = await axios.post(`seats`, newSeat);
-      dispatch(toggleSeatSuccess(data || newSeat));
+      dispatch(toggleSeatSuccess(seat));
     } catch (error) {
-      console.log(error);
-      dispatch(showSnackbar("Please reload the page, this place most likely is already taken"));
+      dispatch(showSnackbar("Please reload the page"));
     }
   }
 }
 
-export const toggleSeatSuccess = (seat) => {
+export const toggleSeatSuccess = seat => {
   return {
     type: TOGGLE_SEAT,
     payload: seat
   }
 }
 
-export const addSelectedSeat = (seat) => {
+export const addSelectedSeat = seat => {
   return {
     type: ADD_SELECTED_SEAT,
     payload: seat

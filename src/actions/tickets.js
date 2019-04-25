@@ -6,6 +6,7 @@ import {
 
 import { history } from '../App';
 import { showSnackbar } from './snackbar'
+
 import axios from 'axios';
 
 
@@ -22,7 +23,7 @@ export function getBoughtTicketsAsync(info) {
   }
 }
 
-export const getBoughtTicketsSuccess = (tickets) => ({
+export const getBoughtTicketsSuccess = tickets => ({
   type: GET_BOUGHT_TICKETS,
   payload: tickets
 })

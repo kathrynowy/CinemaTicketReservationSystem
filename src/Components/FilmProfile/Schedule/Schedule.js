@@ -12,24 +12,28 @@ class Schedule extends Component {
   render() {
     const { cinemaId, times, hallId, movieId, cinemas } = this.props;
     return (
-      <div className="schedule">
-        <div className="schedule__cinema">{times.length ? (cinemas.find(cinema => cinema.id === cinemaId)).name : ''}</div>
-        <div className="schedule__ticket-list">
-          {
-            times.map((time) =>
-              <Link to={{ pathname: `/hall/${cinemaId}/${movieId}/${hallId}/${time}` }}
-                key={time}
-                className="schedule__ticket"
-              >
-                <span className="schedule__time">
-                  {new Date(+time).toLocaleString('en', OPTIONS_TIME)}
-                </span>
-                <div className="schedule_ticket"></div>
-              </Link>
-            )
-          }
-        </div>
-      </div>
+      times.length
+        ? (
+          <div className="schedule">
+            <div className="schedule__cinema">{(cinemas.find(cinema => cinema.id === cinemaId)).name}</div>
+            <div className="schedule__ticket-list">
+              {
+                times.map((time) =>
+                  <Link to={{ pathname: `/hall/${cinemaId}/${movieId}/${hallId}/${time}` }}
+                    key={time}
+                    className="schedule__ticket"
+                  >
+                    <span className="schedule__time">
+                      {new Date(+time).toLocaleString('en', OPTIONS_TIME)}
+                    </span>
+                    <div className="schedule_ticket"></div>
+                  </Link>
+                )
+              }
+            </div>
+          </div>
+        )
+        : ''
     );
   }
 }

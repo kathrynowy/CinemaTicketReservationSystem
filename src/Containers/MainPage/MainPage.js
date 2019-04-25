@@ -1,27 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 
-import { getMoviesAsync } from '../../actions/movies'
-import Select from '../../Components/Select/Select.js'
 import CardList from '../../Components/CardList/CardList.js';
 import Spinner from '../../Components/Spinner/Spinner';
 import { showSpinner, hideSpinner } from '../../actions/spinner'
+import { getMoviesAsync } from '../../actions/movies'
 
 
 class MainPage extends Component {
-  componentDidMount() {
+  async componentDidMount() {
     this.props.showSpinner();
-    this.props.getMoviesAsync()
+    await this.props.getMoviesAsync()
     this.props.hideSpinner();
   }
 
   render() {
     return (
       <div className="main-page">
-        <Select />
-        {this.props.show
+        {this.props.isLoading
           ? <Spinner />
-          : <CardList movies={this.props.filteredMovies ? this.props.filteredMovies : this.props.movies} />
+          : <CardList movies={this.props.filteredMovies.length ? this.props.filteredMovies : this.props.allMovies} />
         }
       </div>
     )
@@ -29,14 +27,14 @@ class MainPage extends Component {
 }
 
 const mapStateToProps = store => ({
-  movies: store.movies.movies,
+  allMovies: store.movies.allMovies,
   filteredMovies: store.movies.filteredMovies,
-  show: store.spinner.showSpinner
+  isLoading: store.spinner.isLoading
 })
 
 const mapDispatchToProps = dispatch => ({
   getMoviesAsync(movieData) {
-    dispatch(getMoviesAsync(movieData));
+    return dispatch(getMoviesAsync(movieData));
   },
   showSpinner() {
     dispatch(showSpinner());

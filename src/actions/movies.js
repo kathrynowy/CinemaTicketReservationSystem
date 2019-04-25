@@ -1,15 +1,14 @@
 import {
   GET_MOVIES_SUCCESS,
   GET_MOVIES_FAILURE,
-  FIND_MOVIES_SUCCESS
+  FILTER_MOVIES_SUCCESS
 } from '../constans/actionTypes.js';
 
 import axios from 'axios';
 
-
-export const findMovies = value => {
+export const filterMovies = value => {
   return {
-    type: FIND_MOVIES_SUCCESS,
+    type: FILTER_MOVIES_SUCCESS,
     payload: value
   }
 }
@@ -25,16 +24,16 @@ export function getMoviesAsync() {
   }
 }
 
-export const getMoviesSuccess = (movies) => {
+export const getMoviesSuccess = movies => {
   return {
     type: GET_MOVIES_SUCCESS,
     payload: movies
   }
 }
 
-export const getMoviesFailure = (isError) => {
+export const getMoviesFailure = error => {
   return {
     type: GET_MOVIES_FAILURE,
-    payload: isError
+    payload: error
   }
 }

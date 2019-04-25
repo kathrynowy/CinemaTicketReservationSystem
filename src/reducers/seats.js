@@ -9,15 +9,15 @@ import {
 
 const initialState = {
   selectedSeats: [],
-  seats: [],
+  allSeats: [],
   bookingSeats: [],
-  isErrored: false
+  error: {}
 }
 
 export default function seatsList(state = initialState, action) {
   switch (action.type) {
     case TOGGLE_SEAT: {
-      const newSelectedSeats = (state.selectedSeats.find(seat => action.payload.id == seat.id)
+      const newSelectedSeats = (state.selectedSeats.find(seat => action.payload.id === seat.id)
         ? state.selectedSeats.filter(selectedSeat => selectedSeat.id !== action.payload.id)
         : [...state.selectedSeats, action.payload]
       );
@@ -43,12 +43,12 @@ export default function seatsList(state = initialState, action) {
 
     case GET_SEATS_SUCCESS:
       return Object.assign({}, state, {
-        seats: action.payload
+        allSeats: action.payload
       });
 
     case GET_SEATS_FAILURE:
       return Object.assign({}, state, {
-        isErrored: action.payload
+        error: action.payload
       });
 
     default: return state;

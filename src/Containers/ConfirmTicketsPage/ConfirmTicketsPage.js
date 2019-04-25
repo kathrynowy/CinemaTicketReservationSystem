@@ -32,9 +32,9 @@ class ConfirmTicketsPage extends Component {
 
   render() {
     return (
-      this.props.show
+      this.props.isLoading
         ? <Spinner />
-        : this.props.additionalServices.length && <ConfirmTicket
+        : <ConfirmTicket
           additionalServices={this.props.additionalServices}
           selectedSeats={this.props.selectedSeats}
           buyTickets={(tickets) => this.buyTickets(tickets)}
@@ -51,10 +51,10 @@ class ConfirmTicketsPage extends Component {
 
 const mapStateToProps = store => ({
   selectedSeats: store.seats.selectedSeats,
-  movies: store.movies.movies,
-  additionalServices: store.additionalServices.additionalServices,
+  movies: store.movies.allMovies,
+  additionalServices: store.additionalServices.allAdditionalServices,
   currentUser: store.users.currentUser,
-  show: store.spinner.showSpinner
+  isLoading: store.spinner.isLoading
 })
 
 const mapDispatchToProps = dispatch => ({
