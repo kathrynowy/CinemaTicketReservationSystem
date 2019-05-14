@@ -4,6 +4,7 @@ import createBrowseHistory from "history/createBrowserHistory";
 import { connect } from "react-redux";
 
 import { checkAuth, logOutSuccess, signInSuccess } from './actions/users';
+import { showSnackbar } from './actions/snackbar';
 import SignIn from './Components/SignIn/SignIn.js'
 import PrimarySearchAppBar from './Components/PrimarySearchAppBar/PrimarySearchAppBar.js'
 import MainPage from './Containers/MainPage/MainPage.js';
@@ -11,12 +12,12 @@ import FilmProfilePage from './Containers/FilmProfilePage/FilmProfilePage.js';
 import HallPage from './Containers/HallPage/HallPage.js';
 import SignUp from './Components/SignUp/SignUp.js';
 import ConfirmTicketsPage from './Containers/ConfirmTicketsPage/ConfirmTicketsPage.js';
-import './App.scss';
 import SideDrawer from './Components/SideDrawer/SideDrawer';
 import Backdrop from './Components/Backdrop/Backdrop';
 import CustomSnackbar from './Components/Snackbar/Snackbar.js';
 import UserPage from './Components/UserPage/UserPage.js';
-import { showSnackbar } from './actions/snackbar';
+import './App.scss';
+import FormDialog from './Components/PaymentModal/PaymentModal';
 
 export const history = createBrowseHistory();
 
