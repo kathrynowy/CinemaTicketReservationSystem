@@ -3,6 +3,18 @@ import './Calendar.scss';
 
 
 class Calendar extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      day: new Date(
+        new Date().getFullYear(),
+        new Date().getMonth(),
+        new Date().getDate(),
+        0, 0, 0).getTime()
+    }
+  }
+
   handleSelect = (day) => {
     this.props.selectDay(day.getTime());
   }
@@ -21,7 +33,6 @@ class Calendar extends Component {
       day: DayFormatter.format(date),
       date
     }));
-
     return formattedDays;
   }
   render() {
@@ -45,10 +56,16 @@ class Calendar extends Component {
             }
             </tr>
             <tr>{
-              formattedDays.map((day) => {
+              formattedDays.map((day, index) => {
                 return (
                   <th key={day.date} onClick={() => this.handleSelect(day.date)} >
-                    <span className="calendar__day day">
+                    <span
+                      className={
+                        (new Date(this.state.day).getTime() === new Date(day.date).getTime())
+                          ? "calendar__day day day_click"
+                          : "calendar__day day"
+                      }
+                      onClick={() => this.setState({ day: day.date })}>
                       {(day.day).split('.')[0]}
                     </span>
                   </th>

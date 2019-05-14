@@ -1,4 +1,77 @@
 @import '../variables.scss';
+@keyframes hall {
+  from {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes session {
+  from {
+    position: relative;
+    margin-left: -200px;
+    margin-right: 200px;
+    
+  }
+  to {
+    position: static;
+    margin-right: 30px;
+    margin-left: 30px;
+  }
+}
+
+.hall-info {
+  display: flex;
+  padding-top: 20px;
+  flex-direction: row;
+
+  .session-info {
+    display: flex;
+    flex-direction: column;
+    animation: session 2s;
+    margin: 20px 30px;
+
+    &__poster {
+      width: 210px;
+      height: 320px;
+      box-shadow: 0 20px 50px $black;
+      margin-bottom: 15px;
+    }
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      font-size: 16px;
+      width: 200px;
+  
+      &__icon {
+        width: 30px !important;
+        height: 30px !important;
+        margin-right: 5px;
+        color: $grey-icon;
+      }
+  
+      &__movie, &__date, &__time, &__location, &__hall {
+        display: flex;
+        align-items: flex-end;
+        color: $white;
+        font-weight: 400;
+        line-height: 2.2rem;
+        font-size: 20px;
+      }
+  
+      &__movie {
+        margin-bottom: 5px;
+        font-weight: 600;
+        font-size: 22px;
+      }
+    }
+  }
+}
 
 .hall {
   overflow-x: auto;
@@ -6,27 +79,41 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: $light-brown solid 1px;
-  -webkit-touch-callout: none; 
-  -webkit-user-select: none; 
-  -khtml-user-select: none; 
-  -moz-user-select: none; 
-  -ms-user-select: none; 
   user-select: none;
+  width: 80%;
+  animation: hall 2s;
 
   &__screen { 
-    width: 60%;
-    margin-top: 15px;
-    border-top: 40px solid $brown;
-    border-left: 80px solid transparent;
-    border-right: 80px solid transparent;
-    margin-bottom: 30px;
+    border: 5px solid $bright-pink;
+    display: inline-block;
+    min-width: 400px;
+    min-height: 20px;
+    padding: 0.5em;
+    border-radius: 50%;
+    margin-top: -45px;
+    border-left-color: transparent; 
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+
+    &-shadow {
+      border: 5px solid $bright-pink;
+      display: inline-block;
+      min-width: 390px;
+      min-height: 10px;
+      padding: 0.5em;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      margin-top: -45px;
+      box-shadow: inset 0px 10px 150px -80px $bright-pink; 
+      border-color: transparent;
+      filter: blur(8px);
+    }
   }
 
   &-container {
     display: flex;
     flex-direction: column;
-    padding: 20px 30px;
+    padding: 20px 120px;
   }
   
   &-legend {
@@ -47,49 +134,198 @@
 
     &__icon {
       display: flex;
-      box-shadow: 0 1px 3px 1px $silver;
       margin-right: 5px;
-      width: 25px;
-      height: 25px;
+      width: 30px;
+      height: 30px;
+      border-radius: 3px;
 
       &_free {
-        background-color: $white;
+        background-color: $free-tickets;
       }
     
       &_selected {
-        background-color: $cornflower-blue;
+        background-color: $bright-pink;
       }
     
       &_bought {
-        background-color: $bought-tickets;
+        background-color: $dark-pink;
       }
     }
   }
-}
 
-.hall::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px #0000004d; 
-  border-radius: 10px;
-}
+  &::-webkit-scrollbar {
+    width: 20px;
+    height: 20px;
+  }
 
-.hall::-webkit-scrollbar-thumb {
-  border-radius: 10px;
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
   box-shadow: inset 0 0 6px #00000080; 
+  }
 }
+
 
 .seats-information {
   font-size: 24px;
   font-weight: 500;
 }
 
- @media only screen and (max-width: 993px) {
+ @media only screen and (max-width: 992px) {
   .hall {
-    &-legend {
-      &__icon {
-        width: 20px;
-        height: 20px;
+    width:100%;
+
+    &-container {
+      padding: 0px 60px;
+    }
+
+    &-info {
+      .session-info {
+        &__poster {
+          width: 150px;
+          height: 200px;
+          margin-bottom: 10px;
+        }
+        
+        .info {
+          font-size: 14px;
+          width: 200px;
+
+          &__icon {
+            width: 25px !important;
+            height: 25px !important;
+          }
+
+          &__movie, &__date, &__time, &__location, &__hall {
+            line-height: 2rem;
+            font-size: 18px;
+          }
+      
+          &__movie {
+            margin-bottom: 5px;
+            font-weight: 600;
+            font-size: 20px;
+          }
+        }
+      }
+    }
+
+    &-legend__icon {
+      width: 25px;
+      height: 25px;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .hall {
+    &-container {
+      padding: 0px 50px;
+    }
+
+    &-info {
+      flex-direction: column;
+
+      .session-info {
+        flex-direction: row;
+        margin-bottom: 20px;
+
+
+        &__poster {
+          width: 150px;
+          height: 200px;
+        }
+        
+        .info {
+          margin-left: 15px;
+          font-size: 14px;
+
+          &__icon {
+            width: 30px !important;
+            height: 30px !important;
+          }
+
+          &__movie, &__date, &__time, &__location, &__hall {
+            line-height: 2.2rem;
+            font-size: 20px;
+          }
+      
+          &__movie {
+            font-size: 22px;
+          }
+        }
       }
     }
   }
 }
 
+@media only screen and (max-width: 500px) {
+  .hall {
+    overflow-x: auto;
+    margin: 5px;
+
+    &-container {
+      padding: 0px 10px;
+    }
+
+    &-info {
+      flex-direction: column;
+      padding-top: 5px;
+
+      .session-info {
+        flex-direction: row;
+        margin: 5px;
+        margin-bottom: 15px;
+
+        &__poster {
+          width: 150px;
+          height: 200px;
+        }
+        
+        .info {
+          margin-left: 15px;
+          font-size: 14px;
+
+          &__icon {
+            width: 30px !important;
+            height: 30px !important;
+          }
+
+          &__movie, &__date, &__time, &__location, &__hall {
+            line-height: 2.2rem;
+            font-size: 20px;
+          }
+      
+          &__movie {
+            font-size: 22px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1050px) {
+  .hall {
+    &-container {
+      padding: 0px 100px;
+    }
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .hall {
+
+    &-container {
+      padding: 0px 200px;
+    }
+    
+  }
+}
+@media only screen and (min-width: 1500px) {
+  .hall {
+
+    &-container {
+      padding: 0px 300px;
+    }
+    
+  }
+}

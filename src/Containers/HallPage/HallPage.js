@@ -10,11 +10,14 @@ import {
   addSelectedSeat
 } from "../../actions/seats";
 
-import { checkAuth } from "../../actions/users"
-import { addBoughtTicket } from "../../actions/tickets"
-import Hall from '../../Components/Hall/Hall.js'
+import { checkAuth } from '../../actions/users';
+import { addBoughtTicket } from '../../actions/tickets';
+import Hall from '../../Components/Hall/Hall.js';
 import Spinner from '../../Components/Spinner/Spinner';
-import { showSpinner, hideSpinner } from '../../actions/spinner'
+import { showSpinner, hideSpinner } from '../../actions/spinner';
+import { getMovieAsync } from '../../actions/movies';
+import { getCinemaAsync } from '../../actions/cinemas';
+import { getHallAsync } from '../../actions/halls';
 
 import {
   sendToggledSeatToServer
@@ -47,6 +50,9 @@ class HallPage extends Component {
     this.props.checkAuth();
     await this.props.getSelectedSeatsAsync(cinemaId, hallId, movieId, time);
     await this.props.getBoughtTicketsAsync();
+    await this.props.getMovieAsync(this.props.match.params.movieId);
+    await this.props.getCinemaAsync(this.props.match.params.cinemaId);
+    await this.props.getHallAsync(this.props.match.params.hallId);
     this.props.clearSeats();
 
     for (let i = 0; i < this.props.bookingSeats.length; i++) {
@@ -65,9 +71,6 @@ class HallPage extends Component {
       this.props.isLoading
         ? <Spinner />
         : <Hall
-          cinemaId={this.props.match.params.cinemaId}
-          movieId={this.props.match.params.movieId}
-          hallId={this.props.match.params.hallId}
           time={this.props.match.params.time}
           selectedSeats={this.props.selectedSeats}
           bookingSeats={this.props.bookingSeats}
@@ -75,6 +78,9 @@ class HallPage extends Component {
           onToggleSeat={this.onToggleSeat}
           seats={this.props.seats}
           clearInterval={this.clearInterval}
+          movie={this.props.movie}
+          cinema={this.props.cinema}
+          hall={this.props.hall}
         />
     )
   }
@@ -86,10 +92,22 @@ const mapStateToProps = store => ({
   seats: store.seats.allSeats,
   bookingSeats: store.seats.bookingSeats,
   currentUser: store.users.currentUser,
-  isLoading: store.spinner.isLoading
+  isLoading: store.spinner.isLoading,
+  movie: store.movies.movieById,
+  cinema: store.cinemas.cinemaById,
+  hall: store.halls.hallById
 });
 
 const mapDispatchToProps = dispatch => ({
+  getHallAsync(id) {
+    return dispatch(getHallAsync(id));
+  },
+  getMovieAsync(id) {
+    return dispatch(getMovieAsync(id));
+  },
+  getCinemaAsync(id) {
+    return dispatch(getCinemaAsync(id));
+  },
   onToggleSeat(ticket) {
     dispatch(toggleSeat(ticket));
   },

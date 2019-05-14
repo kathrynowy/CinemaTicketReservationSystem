@@ -55,7 +55,6 @@ class SelectSeats extends Component {
             <div className={seats.row + ' row__seats-container'}>
               {this.handleDrawSeats(boughtSeats, seats.amountOfSeats, seats.row, seats.cost, cinemaId, movieId, hallId, time)}
             </div>
-            <div className="row__number"></div>
           </div>
         );
       })

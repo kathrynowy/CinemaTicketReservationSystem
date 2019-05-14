@@ -12,7 +12,11 @@ const MINUTES_IN_HOUR = 60;
 
 class FilmProfile extends Component {
   state = {
-    day: new Date().getTime(),
+    day: new Date(
+      new Date().getFullYear(),
+      new Date().getMonth(),
+      new Date().getDate(),
+      0, 0, 0).getTime(),
   }
 
   getSecondsSinceMidnight = () => {
@@ -21,7 +25,10 @@ class FilmProfile extends Component {
         now.getFullYear(),
         now.getMonth(),
         now.getDate(),
-        0, 0, 0);
+        0,
+        0,
+        0
+      );
     return now.getTime() - then.getTime();
   }
 
@@ -51,7 +58,10 @@ class FilmProfile extends Component {
       now.getFullYear(),
       now.getMonth(),
       now.getDate(),
-      0, 0, 0).getTime();
+      0,
+      0,
+      0
+    ).getTime();
     const days = [];
     for (let i = 0; i < 14; i++) {
       days.push(new Date(t + (DAY_IN_MILLISECONDS * i)));

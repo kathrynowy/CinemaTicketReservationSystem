@@ -45,10 +45,10 @@ class Ticket extends Component {
       <div className="ticket">
         <div className="ticket__movie">
           <div className="ticket__movie-info">
-            <img
-              className="ticket__poster"
+            <img 
+              className="ticket__poster" 
               src={this.props.movie.img}
-              alt={"no movie"}
+              alt={this.props.movie.name}
             />
             <span className="ticket__movie-name">{this.props.movie.name}</span>
           </div>
@@ -84,7 +84,7 @@ class Ticket extends Component {
             <div className="cinema__date_label">Date and Time</div>
 
             <div className="cinema__location">
-              <LocationIcon className="cinema__icon" />
+              <LocationIcon className="cinema__icon"/>
               <div className="cinema__city">{this.props.cinema.city}</div>
             </div>
           </div>
@@ -96,8 +96,8 @@ class Ticket extends Component {
                   this.props.ticket.selectedServices.map(index => {
                     return (
                       <div className="ticket__service service">
-                        <div className="service__name">{services[index].name}</div>
-                        <div className="service__cost">{services[index].cost}$</div>
+                        <div className="service__name">{services[index].name}</div> 
+                        <div className="service__cost">{services[index].cost}$</div> 
                       </div>
                     )
                   })
