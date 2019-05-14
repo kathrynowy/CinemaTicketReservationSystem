@@ -90,7 +90,7 @@ const styles = theme => ({
     },
   },
   app: {
-    background: 'linear-gradient(15deg,#000,#51102b 90%,#51102b)',
+    background: 'linear-gradient(15deg,#000,#51102b 100%,#51102b)',
     color: '#880e4f'
   },
   sectionDesctopLinks: {

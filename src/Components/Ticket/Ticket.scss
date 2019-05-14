@@ -1,0 +1,176 @@
+@import '../../Components/variables.scss';
+
+
+.ticket {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  color: $black;
+  margin: 20px 100px;
+  
+  &__movie {
+    background-color: $prim;
+    display: flex;
+    flex-direction: column;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom: 1px dashed $black;
+    padding: 10px 15px;
+    position: relative;
+    padding: 10px 25px;
+    font-size: 16px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 20px;
+      bottom: -10px;
+      right: 0px;
+      border-radius: 100% 0 0 100% / 50% 0 0 50%;
+      background: $dark-burgundy;
+      z-index: 100;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 20px;
+      bottom: -10px;
+      left: 0px;
+      border-radius: 0 100% 100% 0 / 0 50% 50% 0;
+      background: $dark-burgundy;
+      z-index: 100;
+    }
+
+    &-info {
+      display: flex;
+      flex-direction: row;
+      height: 80px;
+    }
+
+    &-name {
+      height: 50px;
+    }
+  }
+
+  &__poster {
+    border: 1px solid $dark-grayish-red;
+    border-radius: 5%;
+    width: 80px;
+    height: 90px;
+    top: -20px;
+    margin-right: 20px;
+    position: relative;
+  }
+
+  .cinema {
+    background-color: $prim;
+    padding: 10px 15px;
+
+    &__info {
+      font-size: 16px;
+      margin-bottom: 3px;
+      display: flex;
+      flex-direction: row;
+    }
+
+    &__icon {
+      width: 20px !important;
+      height: 20px !important;
+      margin-right: 5px;
+    }
+
+    &__location {
+      display: flex;
+      flex-direction: row;
+    }
+
+    &__labels {
+      color: $dark-grayish-red;
+      font-size: 12px;
+      margin-bottom: 25px;
+      display: flex;
+      flex-direction: row;
+    }
+
+    &__name {
+      width: 35%;
+    }
+
+    &__hall {
+      width: 35%;
+    }
+
+    &__seat {
+      width: 15%;
+    }
+
+    &__row {
+      width: 15%;
+    }
+
+    &__date {
+      font-size: 16px;
+      margin-bottom: 3px;
+
+      &_label {
+        color: $dark-grayish-red;
+        font-size: 12px;
+        margin-bottom: 25px;
+      }
+    }
+  }
+
+  &__services {
+    padding-top: 20px;
+    background-color: $prim;
+    padding: 0px 15px;
+    display: flex;
+    flex-direction: column;
+
+    &-label {
+      display: flex;
+      font-size: 12px;
+      color: $dark-grayish-red; 
+      margin-bottom: 10px;
+    }
+
+    .service {
+      display: flex;
+      flex-direction: row;
+      font-size: 16px;
+      margin-bottom: 8px;
+      margin-right: 20px;
+      justify-content: space-between;
+    }
+  }
+
+  .total-amount {
+    background-color: $prim;
+    padding: 10px 15px;
+    display: flex;
+    font-size: 18px;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top: 1px dashed $black;
+
+    &__cost {
+      margin-right: 20px;
+    }
+  }
+
+  &__icon {
+    width: 20px !important;
+    height: 20px !important;
+    margin-right: 5px;
+  }
+
+  &__movie-duration {
+    display: flex;
+    flex-direction: row;
+  }
+}

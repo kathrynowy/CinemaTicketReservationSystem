@@ -17,7 +17,6 @@ import Backdrop from './Components/Backdrop/Backdrop';
 import CustomSnackbar from './Components/Snackbar/Snackbar.js';
 import UserPage from './Components/UserPage/UserPage.js';
 import './App.scss';
-import FormDialog from './Components/PaymentModal/PaymentModal';
 
 export const history = createBrowseHistory();
 

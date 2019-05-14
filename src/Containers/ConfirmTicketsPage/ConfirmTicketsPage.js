@@ -9,12 +9,25 @@ import { clearSelectedSeats } from '../../actions/seats';
 import { buyTicketsAsync, clearBooking } from '../../actions/tickets';
 import Spinner from '../../Components/Spinner/Spinner';
 import { showSpinner, hideSpinner } from '../../actions/spinner'
-
+import BoughtTickets from '../../Components/BoughtTickets/BoughtTickets'
 
 class ConfirmTicketsPage extends Component {
-  redirectToHall = (url) => {
-    this.props.history.push(url);
+  constructor(props) {
+    super(props);
+    this.state = {
+      boughtTickets: [],
+      url: ''
+    };
   }
+
+  displayBoughtTickets = (boughtTickets, url) => {
+      this.setState({
+        boughtTickets,
+        url
+      });
+  }
+
+  redirectByUrl= url => this.props.history.push(url);
 
   async componentDidMount() {
     this.props.showSpinner();
@@ -34,17 +47,20 @@ class ConfirmTicketsPage extends Component {
     return (
       this.props.isLoading
         ? <Spinner />
-        : <ConfirmTicket
-          additionalServices={this.props.additionalServices}
-          selectedSeats={this.props.selectedSeats}
-          buyTickets={(tickets) => this.buyTickets(tickets)}
-          cinemaId={this.props.match.params.cinemaId}
-          movieId={this.props.match.params.movieId}
-          hallId={this.props.match.params.hallId}
-          time={this.props.match.params.time}
-          redirectToHall={this.redirectToHall}
-          movies={this.props.movies}
-        />
+        : this.state.boughtTickets.length
+          ? <BoughtTickets boughtTickets={this.state.boughtTickets} redirectByUrl={this.redirectByUrl}/>
+          : <ConfirmTicket
+              additionalServices={this.props.additionalServices}
+              selectedSeats={this.props.selectedSeats}
+              buyTickets={(tickets) => this.buyTickets(tickets)}
+              cinemaId={this.props.match.params.cinemaId}
+              movieId={this.props.match.params.movieId}
+              hallId={this.props.match.params.hallId}
+              time={this.props.match.params.time}
+              redirectByUrl={this.redirectByUrl}
+              displayBoughtTickets={this.displayBoughtTickets}
+              movies={this.props.movies}
+            />
     );
   }
 }

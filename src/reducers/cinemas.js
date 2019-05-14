@@ -1,8 +1,9 @@
-import { GET_CINEMAS_SUCCESS, GET_CINEMAS_FAILURE } from '../constans/actionTypes.js'
+import { GET_CINEMA_SUCCESS, GET_CINEMAS_SUCCESS, GET_CINEMAS_FAILURE } from '../constans/actionTypes.js'
 
 const initialState = {
   allCinemas: [],
-  error: {}
+  error: {},
+  cinema: {}
 }
 
 export default function getCinemas(state = initialState, action) {
@@ -10,6 +11,11 @@ export default function getCinemas(state = initialState, action) {
     case GET_CINEMAS_SUCCESS:
       return Object.assign({}, state, {
         allCinemas: action.payload
+      });
+
+    case GET_CINEMA_SUCCESS:
+      return Object.assign({}, state, {
+        cinema: action.payload
       });
 
     case GET_CINEMAS_FAILURE:

@@ -55,8 +55,8 @@
     &::-webkit-scrollbar-thumb {
       background: $transparent;
       border-radius: 30px;
-      -webkit-box-shadow: inset 2px 2px 2px $greyScroll, inset -2px -2px 2px $blackScroll;
-      box-shadow: inset 2px 2px 2px $greyScroll, inset -2px -2px 2px $blackScroll;
+      -webkit-box-shadow: inset 2px 2px 2px $grey, inset -2px -2px 2px $black-scroll;
+      box-shadow: inset 2px 2px 2px $grey, inset -2px -2px 2px $black-scroll;
     }
   }
 

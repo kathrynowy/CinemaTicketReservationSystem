@@ -1,9 +1,10 @@
-import { GET_MOVIES_SUCCESS, GET_MOVIES_FAILURE, FILTER_MOVIES_SUCCESS } from '../constans/actionTypes.js'
+import { GET_MOVIE_SUCCESS, GET_MOVIES_SUCCESS, GET_MOVIES_FAILURE, FILTER_MOVIES_SUCCESS } from '../constans/actionTypes.js'
 
 const initialState = {
   allMovies: [],
   filteredMovies: [],
-  error: {}
+  error: {},
+  movie: {}
 }
 
 export default function getMovies(state = initialState, action) {
@@ -11,6 +12,11 @@ export default function getMovies(state = initialState, action) {
     case GET_MOVIES_SUCCESS:
       return Object.assign({}, state, {
         allMovies: action.payload
+      });
+
+    case GET_MOVIE_SUCCESS:
+      return Object.assign({}, state, {
+        movie: action.payload
       });
 
     case GET_MOVIES_FAILURE:

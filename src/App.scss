@@ -16,12 +16,13 @@
 }
 
 .container {
-  background: linear-gradient(15deg,$burgundy,$light-black 66%,$dark-burgundy);
+  background: linear-gradient(15deg,$light-black 60%,$dark-burgundy);
+   background: no-repeat url(./posters-bg.svg) center top/100% auto,linear-gradient(to bottom,$dark-burgundy,$dark-burgundy); 
   color: $white;
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
   padding-bottom: 30px;
   min-width: 350px;
-  color: $whiteForFont;
+  color: $light-grayish-red;
 }

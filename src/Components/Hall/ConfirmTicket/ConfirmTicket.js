@@ -4,7 +4,7 @@ import TicketInfo from './TicketInfo/TicketInfo';
 import PaymentModal from '../../PaymentModal/PaymentModal';
 import './ConfirmTicket.scss';
 import axios from 'axios';
-import { apiBaseUrl } from '../../../configs/config';
+
 
 class ConfirmTicket extends Component {
   constructor(props) {
@@ -50,7 +50,7 @@ class ConfirmTicket extends Component {
     })
   }
 
-  handleSubmit = () => {
+  handleSubmit = (url) => {
     const confirmedTickets = this.props.selectedSeats.map((seat) => {
       const services = this.state.selectedServices.find(service => service.seatId === seat.id);
       return {
@@ -67,13 +67,13 @@ class ConfirmTicket extends Component {
     });
 
     this.props.buyTickets(confirmedTickets);
+    this.props.displayBoughtTickets(confirmedTickets, url);
   }
 
   async buyConfirmedTickets(token, url, totalCost) {
-    let { data } = await axios.post(`${apiBaseUrl}payment`, { token, totalCost });
+    let { data } = await axios.post("payment", { token, totalCost });
     if (data) {
-      this.handleSubmit();
-      this.props.redirectToHall(url);
+      this.handleSubmit(url);
     }
   }
 
@@ -112,7 +112,7 @@ class ConfirmTicket extends Component {
           />
           <button
             className="button"
-            onClick={() => this.props.redirectToHall(url)}
+            onClick={() => this.props.redirectByUrl(url)}
           >
             Back
           </button>
