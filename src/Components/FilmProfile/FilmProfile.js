@@ -16,7 +16,10 @@ class FilmProfile extends Component {
       new Date().getFullYear(),
       new Date().getMonth(),
       new Date().getDate(),
-      0, 0, 0).getTime(),
+      0,
+      0,
+      0
+    ).getTime(),
   }
 
   getSecondsSinceMidnight = () => {
@@ -89,6 +92,7 @@ class FilmProfile extends Component {
            ${this.getMinutes(movie.runningTime, this.getHours(movie.runningTime))}m`
           }
         </div>
+
         <div className="movie-profile__info">
           <div className="movie-profile__content">
             <img src={movie.img} className="movie-profile__poster" alt="movie"></img>
@@ -97,6 +101,7 @@ class FilmProfile extends Component {
               <p className="movie-profile__description">{movie.description}</p>
             </div>
           </div>
+
           <div className="movie-profile__tickets-info">
             <Calendar selectDay={this.selectDay} days={days} />
             {this.getCurrentSessions(this.props.sessions, movieId, this.state.day)}

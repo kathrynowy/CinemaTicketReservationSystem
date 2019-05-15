@@ -5,7 +5,6 @@ import PaymentModal from '../../PaymentModal/PaymentModal';
 import './ConfirmTicket.scss';
 import axios from 'axios';
 
-
 class ConfirmTicket extends Component {
   constructor(props) {
     super(props);

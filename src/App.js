@@ -32,6 +32,13 @@ class App extends Component {
     });
   };
 
+  componentWillMount() {
+    history.listen((location) => {
+      this.setState({ isSearchInputShown: location.pathname === "/" });
+    });
+  }
+
+
   componentDidMount() {
     window.addEventListener('storage', event => {
       if (event.key === "token") {
@@ -59,12 +66,11 @@ class App extends Component {
     if (this.state.sideDrawerOpen) {
       backdrop = <Backdrop click={this.backdropClickHandler} />;
     }
-
     return (
       <Fragment>
         <Router history={history}>
           <div className="container">
-            <PrimarySearchAppBar click={this.drawToggleClickHandler} />
+            <PrimarySearchAppBar click={this.drawToggleClickHandler} isSearchInputShown={this.state.isSearchInputShown} />
             <CustomSnackbar isSnackbarOpen={this.props.isSnackbarOpen} message={this.props.message} />
             <SideDrawer show={this.state.sideDrawerOpen} />
             {backdrop}

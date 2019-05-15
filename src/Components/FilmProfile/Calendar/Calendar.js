@@ -11,7 +11,10 @@ class Calendar extends Component {
         new Date().getFullYear(),
         new Date().getMonth(),
         new Date().getDate(),
-        0, 0, 0).getTime()
+        0,
+        0,
+        0
+      ).getTime()
     }
   }
 
@@ -35,25 +38,27 @@ class Calendar extends Component {
     }));
     return formattedDays;
   }
+
   render() {
     const formattedDays = this.formatDays(this.props.days);
     return (
       <div className="calendar">
         <table>
           <tbody>
-            <tr>{
-              formattedDays.map((day) => {
-                return (
-                  <td
-                    key={day.date}
-                    className={(day.weekday === 'вс') || (day.weekday === 'сб')
-                      ? "calendar__weekend"
-                      : 'calendar__weekday'}>
-                    <span className="day">{day.weekday}</span>
-                  </td>
-                );
-              })
-            }
+            <tr>
+              {
+                formattedDays.map((day) => {
+                  return (
+                    <td
+                      key={day.date}
+                      className={(day.weekday === 'вс') || (day.weekday === 'сб')
+                        ? "calendar__weekend"
+                        : 'calendar__weekday'}>
+                      <span className="day">{day.weekday}</span>
+                    </td>
+                  );
+                })
+              }
             </tr>
             <tr>{
               formattedDays.map((day, index) => {

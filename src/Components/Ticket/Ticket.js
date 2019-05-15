@@ -12,6 +12,7 @@ import './Ticket.scss';
 const MILLISECONDS_IN_HOUR = 1000 * 3600;
 const MILLISECONDS_IN_MINUTE = 1000 * 60;
 const MINUTES_IN_HOUR = 60;
+
 const OPTIONS_DATE = {
   weekday: 'short',
   day: '2-digit',
@@ -56,7 +57,7 @@ class Ticket extends Component {
             <ScheduleIcon className="ticket__icon" />
             <span className="ticket__time">
               {`${this.getHours(this.props.movie.runningTime)}h 
-            ${this.getMinutes(this.props.movie.runningTime, this.getHours(this.props.movie.runningTime))}m`}
+              ${this.getMinutes(this.props.movie.runningTime, this.getHours(this.props.movie.runningTime))}m`}
             </span>
           </div>
         </div>
@@ -78,13 +79,13 @@ class Ticket extends Component {
             </div>
 
             <div className="cinema__date"> {`
-              ${new Date(+this.props.ticket.time).toLocaleString('en', OPTIONS_DATE)},  
-              ${new Date(+this.props.ticket.time).toLocaleString('en', OPTIONS_TIME)} 
+              ${new Date(+this.props.ticket.time).toLocaleString('en', OPTIONS_DATE)},
+              ${new Date(+this.props.ticket.time).toLocaleString('en', OPTIONS_TIME)}
             `} </div>
             <div className="cinema__date_label">Date and Time</div>
 
             <div className="cinema__location">
-              <LocationIcon className="cinema__icon"/>
+              <LocationIcon className="cinema__icon" />
               <div className="cinema__city">{this.props.cinema.city}</div>
             </div>
           </div>
@@ -96,8 +97,8 @@ class Ticket extends Component {
                   this.props.ticket.selectedServices.map(index => {
                     return (
                       <div className="ticket__service service">
-                        <div className="service__name">{services[index].name}</div> 
-                        <div className="service__cost">{services[index].cost}$</div> 
+                        <div className="service__name">{services[index].name}</div>
+                        <div className="service__cost">{services[index].cost}$</div>
                       </div>
                     )
                   })

@@ -21,13 +21,13 @@ class ConfirmTicketsPage extends Component {
   }
 
   displayBoughtTickets = (boughtTickets, url) => {
-      this.setState({
-        boughtTickets,
-        url
-      });
+    this.setState({
+      boughtTickets,
+      url
+    });
   }
 
-  redirectByUrl= url => this.props.history.push(url);
+  redirectByUrl = url => this.props.history.push(url);
 
   async componentDidMount() {
     this.props.showSpinner();

@@ -120,7 +120,7 @@ const styles = theme => ({
 class PrimarySearchAppBar extends React.Component {
   state = {
     anchorEl: null,
-    mobileMoreAnchorEl: null,
+    mobileMoreAnchorEl: null
   };
 
   handleProfileMenuOpen = event => {
@@ -204,20 +204,25 @@ class PrimarySearchAppBar extends React.Component {
             <Typography className={classes.title} onClick={() => history.push('/')} variant="h6" color="inherit" noWrap>
               Treatley
             </Typography>
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
-              <InputBase
-                placeholder="Search…"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-                onChange={this.filterMovies} />
-            </div>
+            {
+              this.props.isSearchInputShown
+                ? <div className={classes.search}>
+                  <div className={classes.searchIcon}>
+                    <SearchIcon />
+                  </div>
+                  <InputBase
+                    placeholder="Search…"
+                    classes={{
+                      root: classes.inputRoot,
+                      input: classes.inputInput,
+                    }}
+                    onChange={this.filterMovies} />
+                </div>
+                : ''
+            }
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
+
               <ul className={classes.sectionDesctopLinks}>
                 <li className={classes.sectionDesctopLinksItem}>
                   <Link to={{ pathname: "/" }} className={classes.sectionDesctopLink}> Main Page </Link>
@@ -233,6 +238,7 @@ class PrimarySearchAppBar extends React.Component {
                   </li>
                 }
               </ul>
+
               {this.props.currentUser.username && <IconButton
                 aria-owns={isMenuOpen ? 'material-appbar' : undefined}
                 aria-haspopup="true"
@@ -257,6 +263,7 @@ class PrimarySearchAppBar extends React.Component {
     );
   }
 }
+
 
 PrimarySearchAppBar.propTypes = {
   classes: PropTypes.object.isRequired,

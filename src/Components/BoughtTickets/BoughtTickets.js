@@ -8,16 +8,15 @@ class BoughtTickets extends Component {
     const boughtTickets = this.props.boughtTickets;
     return (
       <div className="bought-tickets"> {
-        boughtTickets.map(ticket => <Ticket key={ticket.time + ticket.row + ticket.seat} ticket={ticket}/>)
-      } 
+        boughtTickets.map(ticket => <Ticket key={ticket.time + ticket.row + ticket.seat} ticket={ticket} />)
+      }
         <button
-              className="button"
-              onClick={() => this.props.redirectByUrl('/')}
-            >
-              Back
+          className="button"
+          onClick={() => this.props.redirectByUrl('/')}
+        >
+          Back
         </button>
-      </div> 
-       
+      </div>
     );
   }
 }

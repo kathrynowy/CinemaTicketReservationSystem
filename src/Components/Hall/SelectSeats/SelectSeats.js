@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Seat from './Seat/Seat.js'
+import Seat from './Seat/Seat.js';
 import './SelectSeats.scss';
 
 
