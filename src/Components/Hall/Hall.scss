@@ -160,15 +160,14 @@
 
   &::-webkit-scrollbar-thumb {
     border-radius: 10px;
-  box-shadow: inset 0 0 6px #00000080; 
+    box-shadow: inset 0 0 6px #00000080; 
+    }
   }
-}
 
-
-.seats-information {
-  font-size: 24px;
-  font-weight: 500;
-}
+  .seats-information {
+    font-size: 24px;
+    font-weight: 500;
+  }
 
  @media only screen and (max-width: 992px) {
   .hall {
@@ -314,19 +313,16 @@
 
 @media only screen and (min-width: 1200px) {
   .hall {
-
     &-container {
       padding: 0px 200px;
     }
-    
   }
 }
 
 @media only screen and (min-width: 1500px) {
   .hall {
-
     &-container {
       padding: 0px 300px;
     }
-    
   }
+}
