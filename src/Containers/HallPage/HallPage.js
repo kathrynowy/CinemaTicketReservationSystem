@@ -93,9 +93,9 @@ const mapStateToProps = store => ({
   bookingSeats: store.seats.bookingSeats,
   currentUser: store.users.currentUser,
   isLoading: store.spinner.isLoading,
-  movie: store.movies.movieById,
-  cinema: store.cinemas.cinemaById,
-  hall: store.halls.hallById
+  movie: store.movies.movie,
+  cinema: store.cinemas.cinema,
+  hall: store.halls.hall
 });
 
 const mapDispatchToProps = dispatch => ({

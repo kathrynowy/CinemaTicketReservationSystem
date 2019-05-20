@@ -23,7 +23,7 @@ class Calendar extends Component {
   }
 
   formatDays = (days) => {
-    const WeekdayFormatter = new Intl.DateTimeFormat("ru-BY", {
+    const WeekdayFormatter = new Intl.DateTimeFormat("en-US", {
       weekday: "short"
     });
     const DayFormatter = new Intl.DateTimeFormat("ru-BY", {
@@ -43,7 +43,7 @@ class Calendar extends Component {
     const formattedDays = this.formatDays(this.props.days);
     return (
       <div className="calendar">
-        <table>
+        <table className="calendar__table">
           <tbody>
             <tr>
               {
@@ -51,7 +51,7 @@ class Calendar extends Component {
                   return (
                     <td
                       key={day.date}
-                      className={(day.weekday === 'вс') || (day.weekday === 'сб')
+                      className={day.weekday === 'Sat' || day.weekday === 'Sun'
                         ? "calendar__weekend"
                         : 'calendar__weekday'}>
                       <span className="day">{day.weekday}</span>
