@@ -8,10 +8,8 @@
   &__tickets-list {
     overflow-y: auto;
     text-align: start;
-    display: flex;
-    flex-direction: column;
-    padding-right: 15px;
-    border-right: 1px solid $black;
+    margin-right: 10px;
+    width: 230px;
 
     &::-webkit-scrollbar {
       width: 20px;
@@ -30,12 +28,12 @@
     align-self: flex-end;
     width: 70%;
     width: 120px;
-    background-color: $transparent; 
-    color: $white; 
-    font-size: 1.3rem; 
-    padding: 10px 15px; 
+    background-color: $transparent;
+    color: $white;
+    font-size: 1.3rem;
+    padding: 10px 15px;
     border-radius: 40px;
-    border-color:$bright-pink;
+    border-color: $bright-pink;
 
     &:hover {
       background-color: $bright-pink;
@@ -50,7 +48,15 @@
   &__ticket {
     font-size: 18px;
     display: flex;
-    height: 30px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    width: 190px;
+    background-color: $bright-pink;
+    color: white;
+    opacity: 0.9;
+    margin: 10px;
+    border-radius: 5px;
 
     &-list {
       min-width: 100px;
@@ -97,7 +103,7 @@
     &__tickets-list {
       border-right: none;
       margin-bottom: 10px;
-      border-bottom: 1px solid $black;
+      min-height: 40px;
     }
     
     &__include {

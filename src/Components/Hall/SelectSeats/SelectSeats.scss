@@ -14,6 +14,7 @@
     font-weight: 600;
     width: 10px;
     font-size: 14px;
+    align-items: center;
   }
 
   &__seat {
@@ -52,19 +53,19 @@
 
     &_selected {
       background-color: $bright-pink;
-      color: $black;
+      color: $white;
 
       &:hover {
-        color:$black;
+        color:$white;
       }
     }
     &_bought {
       background-color: $dark-pink;
-      color: $black;
+      color: $dark-pink;
       cursor: not-allowed;
 
       &:hover {
-        color:$black;
+        color:$white;
       }
     }
   }

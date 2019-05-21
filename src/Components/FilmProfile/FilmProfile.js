@@ -43,6 +43,7 @@ class FilmProfile extends Component {
 
   getCurrentSessions = (sessions, movieId, day) => {
     const newSessions = sessions.filter(session => session.movieId.id === movieId);
+    if (newSessions.length === 0) { return <span className="schedule_empty">No sessions</span> }
     return newSessions.map(session => {
       return (<Schedule
         cinemaId={session.cinemaId.id}

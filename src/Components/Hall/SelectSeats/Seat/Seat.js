@@ -14,7 +14,7 @@ class Seat extends Component {
     return (
       <div
         className={"row__seat" + ((this.props.isBought && " row__seat_bought") || (this.props.isSelected && " row__seat_selected") || '')}
-        data-title={`${row}row ${cost}byn`}
+        data-title={`${row}row ${cost}$`}
         onClick={(isDisabled && this.handleSelect) || undefined}
         key={seat}
       >

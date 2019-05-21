@@ -101,23 +101,23 @@ class SimpleBottomNavigation extends React.Component {
           {
             this.state.tickets.map(ticket => {
               return (
-                <div className="user-profile__ticket ticket" key={ticket.id}>
-                  <span className="ticket__movie">{ticket.movieId.name}, {ticket.cost} BYN</span>
+                <div className="user-profile__ticket bought-ticket" key={ticket.id}>
+                  <span className="bought-ticket__movie">{ticket.movieId.name}, {ticket.cost} BYN</span>
 
-                  <div className="ticket__info">
-                    <div className="ticket__place">
-                      <span className="ticket__city">{ticket.cinemaId.city},</span>
-                      <span className="ticket__cinema">{ticket.cinemaId.name}</span>
+                  <div className="bought-ticket__info">
+                    <div className="bought-ticket__place">
+                      <span className="bought-ticket__city">{ticket.cinemaId.city},</span>
+                      <span className="bought-ticket__cinema">{ticket.cinemaId.name}</span>
                     </div>
 
-                    <div className="ticket__hall-info">
+                    <div className="bought-ticket__hall-info">
                       <span>hall: {ticket.hallId.name}</span>
                       <span>row {ticket.row} seat {ticket.seat}</span>
                     </div>
 
-                    <div className="ticket__date-info">
-                      <span className="ticket__time">{new Date(+(ticket.time)).toLocaleString('en', OPTIONS_TIME)}</span>
-                      <span className="ticket__date">{new Date(+(ticket.time)).toLocaleString('en', OPTIONS_DATE)}</span>
+                    <div className="bought-ticket__date-info">
+                      <span className="bought-ticket__time">{new Date(+(ticket.time)).toLocaleString('en', OPTIONS_TIME)}</span>
+                      <span className="bought-ticket__date">{new Date(+(ticket.time)).toLocaleString('en', OPTIONS_DATE)}</span>
                     </div>
                   </div>
                 </div>

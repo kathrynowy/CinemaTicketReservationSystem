@@ -19,12 +19,12 @@ class SeatsInfo extends Component {
           {
             selectedSeats.map((seat) =>
               <div key={seat.id} className="chosen-seats-info__ticket">
-                row {seat.row}/seat {seat.seat}
+                {seat.row} series {seat.seat}th place, {seat.cost}$
               </div>
             )
           }
         </div>
-        <div className="chosen-seats-info__include">Cost: {(newCost || ' ')}byn </div>
+        <div className="chosen-seats-info__include">Cost: {(newCost || ' ')}$ </div>
         <Link to={{ pathname: `/confirm-ticket/${cinemaId}/${movieId}/${hallId}/${time}` }} onClick={this.props.clearInterval()}>
           <button className="chosen-seats-info__btn" disabled={isDisabled}>Buy</button>
         </Link>
