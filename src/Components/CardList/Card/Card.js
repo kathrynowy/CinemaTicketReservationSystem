@@ -9,15 +9,19 @@ class MovieCard extends Component {
     const { movie } = this.props;
     return (
       <div className="card">
-        <img
-          className="card__media"
-          src={movie.img}
-          title={movie.name}
-          alt={movie.name}
-        />
+        <Link to={{ pathname: `/film-profile/${movie.id}` }} className="card__link">
+          <img
+            className="card__media"
+            src={movie.img}
+            title={movie.name}
+            alt={movie.name}
+          />
+        </Link>
+
         <div className="card__title">
           {movie.name}
         </div>
+
         <Link to={{ pathname: `/film-profile/${movie.id}` }} className="card__link">
           <button type="button" className="card__button">Buy ticket</button>
         </Link>
