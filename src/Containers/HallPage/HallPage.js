@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import Hall from '../../Components/Hall/Hall.js';
+import Spinner from '../../Components/Spinner/Spinner';
 import { getBoughtTicketsAsync } from "../../actions/tickets";
 import {
   toggleSeat,
@@ -9,20 +11,17 @@ import {
   getSelectedSeats,
   addSelectedSeat
 } from "../../actions/seats";
-
 import { checkAuth } from '../../actions/users';
 import { addBoughtTicket } from '../../actions/tickets';
-import Hall from '../../Components/Hall/Hall.js';
-import Spinner from '../../Components/Spinner/Spinner';
 import { showSpinner, hideSpinner } from '../../actions/spinner';
 import { getMovieAsync } from '../../actions/movies';
 import { getCinemaAsync } from '../../actions/cinemas';
 import { getHallAsync } from '../../actions/halls';
+import { showSnackbar } from '../../actions/snackbar';
+import { sendToggledSeatToServer } from '../../socket';
 
-import {
-  sendToggledSeatToServer
-} from '../../socket';
-
+const MAX_AMOUNT_OF_SEATS = 6;
+const TIMER_FOR_BOOKING = 900000;
 let timer = '';
 class HallPage extends Component {
   state = {
@@ -31,12 +30,14 @@ class HallPage extends Component {
 
   onToggleSeat = (seat) => {
     if (!timer) {
-      timer = setTimeout(() => this.props.history.push('/'), 900000);
+      timer = setTimeout(() => this.props.history.push('/'), TIMER_FOR_BOOKING);
     }
+
     const isSelected = this.props.selectedSeats.find(selectedSeat => selectedSeat.row === seat.row && selectedSeat.seat === seat.seat);
-    if (this.props.selectedSeats.length < 6 || isSelected) {
-      sendToggledSeatToServer(seat, this.props.currentUser.id);
-    }
+
+    this.props.selectedSeats.length < MAX_AMOUNT_OF_SEATS || isSelected
+      ? sendToggledSeatToServer(seat, this.props.currentUser.id)
+      : this.props.showSnackbar('You cannot choose more than 6 seats at the same time');
   }
 
   clearInterval = () => {
@@ -50,9 +51,9 @@ class HallPage extends Component {
     this.props.checkAuth();
     await this.props.getSelectedSeatsAsync(cinemaId, hallId, movieId, time);
     await this.props.getBoughtTicketsAsync();
-    await this.props.getMovieAsync(this.props.match.params.movieId);
-    await this.props.getCinemaAsync(this.props.match.params.cinemaId);
-    await this.props.getHallAsync(this.props.match.params.hallId);
+    await this.props.getMovieAsync(movieId);
+    await this.props.getCinemaAsync(cinemaId);
+    await this.props.getHallAsync(hallId);
     this.props.clearSeats();
 
     for (let i = 0; i < this.props.bookingSeats.length; i++) {
@@ -101,6 +102,9 @@ const mapStateToProps = store => ({
 const mapDispatchToProps = dispatch => ({
   getHallAsync(id) {
     return dispatch(getHallAsync(id));
+  },
+  showSnackbar(message) {
+    dispatch(showSnackbar(message));
   },
   getMovieAsync(id) {
     return dispatch(getMovieAsync(id));

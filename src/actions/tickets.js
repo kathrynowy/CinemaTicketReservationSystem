@@ -5,7 +5,7 @@ import {
 } from '../constans/actionTypes.js';
 
 import { history } from '../App';
-import { showSnackbar } from './snackbar'
+import { showSnackbar } from './snackbar';
 
 import axios from 'axios';
 
