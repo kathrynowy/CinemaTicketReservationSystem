@@ -35,25 +35,34 @@ class FilmProfile extends Component {
     return now.getTime() - then.getTime();
   }
 
-  getCurrentTimes = (times, day) => {
-    return times.filter((time) => +time > day && +time < (day + DAY_IN_MILLISECONDS))
-  }
+  getCurrentTimes = (sessions, day) => sessions.filter(session =>
+    session.time > day && session.time < (day + DAY_IN_MILLISECONDS)
+  );
 
-  selectDay = (day) => this.setState({ day })
+  selectDay = day => this.setState({ day })
 
   getCurrentSessions = (sessions, movieId, day) => {
     const newSessions = sessions.filter(session => session.movieId.id === movieId);
-    if (newSessions.length === 0) { return <span className="schedule_empty">No sessions</span> }
-    return newSessions.map(session => {
-      return (<Schedule
-        cinemaId={session.cinemaId.id}
-        hallId={session.hallId.id}
-        movieId={session.movieId.id}
-        times={this.getCurrentTimes(session.times, day)}
-        key={session.cinemaId.id + session.hallId.id + session.movieId.id}
-        cinemas={this.props.cinemas}
-      />) || ' '
-    })
+    if (!newSessions.length) { return <span className="schedule_empty">No sessions</span> }
+
+    let sessionsByCinema = {};
+    newSessions.forEach(session => sessionsByCinema[session.cinemaId.id] = [
+      ...sessionsByCinema[session.cinemaId.id] || [],
+      ...session.times
+        .filter(time => time > day && time < (day + DAY_IN_MILLISECONDS))
+        .map(time => ({
+          cinemaId: session.cinemaId,
+          hallId: session.hallId,
+          movieId: session.movieId,
+          time
+        })
+        )
+    ]);
+
+    return Object.keys(sessionsByCinema).every(cinemaId => !sessionsByCinema[cinemaId].length)
+      ? <span className="schedule_empty">No sessions</span>
+      : Object.keys(sessionsByCinema)
+        .map(session => <Schedule movieId={movieId} sessions={sessionsByCinema[session]} key={session} cinemas={this.props.cinemas} />);
   }
 
   createDays = () => {
