@@ -1,4 +1,4 @@
-import { GET_SESSIONS_SUCCESS, GET_SESSIONS_FAILURE } from '../constans/actionTypes.js'
+import { GET_SESSIONS, GET_SESSIONS_SUCCESS, GET_SESSIONS_FAILURE } from '../constans/actionTypes.js'
 
 const initialState = {
   allSessions: [],
@@ -7,6 +7,11 @@ const initialState = {
 
 export default function getSessions(state = initialState, action) {
   switch (action.type) {
+    case GET_SESSIONS:
+      return Object.assign({}, state, {
+        error: {}
+      });
+
     case GET_SESSIONS_SUCCESS:
       return Object.assign({}, state, {
         allSessions: action.payload

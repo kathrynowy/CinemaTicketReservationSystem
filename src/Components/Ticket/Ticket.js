@@ -3,10 +3,8 @@ import ScheduleIcon from '@material-ui/icons/Schedule';
 import LocationIcon from '@material-ui/icons/LocationOn';
 import { connect } from 'react-redux';
 
-import { showSpinner, hideSpinner } from '../../actions/spinner';
-import { getMovieAsync } from '../../actions/movies';
-import { getCinemaAsync } from '../../actions/cinemas';
-import { getHallAsync } from '../../actions/halls';
+import { showSpinner, hideSpinner } from '../../sagas/spinner';
+import { GET_MOVIE, GET_CINEMA, GET_HALL } from '../../constans/actionTypes';
 import './Ticket.scss';
 
 const MILLISECONDS_IN_HOUR = 1000 * 3600;
@@ -46,8 +44,8 @@ class Ticket extends Component {
       <div className="ticket">
         <div className="ticket__movie">
           <div className="ticket__movie-info">
-            <img 
-              className="ticket__poster" 
+            <img
+              className="ticket__poster"
               src={this.props.movie.img}
               alt={this.props.movie.name}
             />
@@ -96,7 +94,7 @@ class Ticket extends Component {
                 {
                   this.props.ticket.selectedServices.map(index => {
                     return (
-                      <div className="ticket__service service">
+                      <div className="ticket__service service" key={this.props.ticket.row + this.props.ticket.cost + this.props.ticket.seat}>
                         <div className="service__name">{services[index].name}</div>
                         <div className="service__cost">{services[index].cost}$</div>
                       </div>
@@ -125,14 +123,14 @@ const mapStateToProps = store => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  getHallAsync(id) {
-    return dispatch(getHallAsync(id));
+  getHallAsync(hallId) {
+    return dispatch({ type: GET_HALL, hallId });
   },
-  getMovieAsync(id) {
-    return dispatch(getMovieAsync(id));
+  getMovieAsync(movieId) {
+    return dispatch({ type: GET_MOVIE, movieId });
   },
-  getCinemaAsync(id) {
-    return dispatch(getCinemaAsync(id));
+  getCinemaAsync(cinemaId) {
+    return dispatch({ type: GET_CINEMA, cinemaId });
   },
   showSpinner() {
     dispatch(showSpinner());

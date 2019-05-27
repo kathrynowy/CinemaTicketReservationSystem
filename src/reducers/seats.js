@@ -1,10 +1,13 @@
 import {
   CLEAR_SELECTED_LIST,
   TOGGLE_SEAT,
+  TOGGLE_SEAT_SUCCESS,
   GET_SEATS_SUCCESS,
   GET_SEATS_FAILURE,
   GET_SELECTED_SEATS_SUCCESS,
-  ADD_SELECTED_SEAT
+  ADD_SELECTED_SEAT,
+  GET_SEATS,
+  GET_SELECTED_SEATS
 } from '../constans/actionTypes.js';
 
 const initialState = {
@@ -16,7 +19,22 @@ const initialState = {
 
 export default function seatsList(state = initialState, action) {
   switch (action.type) {
-    case TOGGLE_SEAT: {
+    case GET_SEATS:
+      return Object.assign({}, state, {
+        error: {}
+      });
+
+    case GET_SELECTED_SEATS:
+      return Object.assign({}, state, {
+        error: {}
+      });
+
+    case TOGGLE_SEAT:
+      return Object.assign({}, state, {
+        error: {}
+      });
+
+    case TOGGLE_SEAT_SUCCESS: {
       const newSelectedSeats = (state.selectedSeats.find(seat => action.payload.id === seat.id)
         ? state.selectedSeats.filter(selectedSeat => selectedSeat.id !== action.payload.id)
         : [...state.selectedSeats, action.payload]

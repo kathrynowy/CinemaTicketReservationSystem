@@ -93,7 +93,7 @@ class FilmProfile extends Component {
   render() {
     const days = this.createDays();
     const movieId = this.props.movieId;
-    const movie = this.props.movies.find((movie) => movie.id === movieId)
+    const movie = this.props.movie;
     return (
       <div className="movie-profile">
         <div className="movie-profile__name">

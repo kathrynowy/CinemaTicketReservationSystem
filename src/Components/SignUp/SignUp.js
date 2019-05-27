@@ -7,6 +7,7 @@ import { Avatar, Button, CssBaseline, FormControl, Input, InputLabel, Paper, Typ
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import withStyles from '@material-ui/core/styles/withStyles';
 import { validateAll } from 'indicative';
+import { SIGN_UP } from '../../constans/actionTypes';
 
 
 const styles = theme => ({
@@ -86,7 +87,7 @@ class SignIn extends Component {
     }
 
     validateAll(data, rules, messages)
-      .then(() =>  this.props.signUp(data))
+      .then(() => this.props.signUp(data))
       .catch(errors => {
         const formattesErrors = {};
         errors.forEach(error => formattesErrors[error.field] = error.message)
@@ -144,8 +145,8 @@ class SignIn extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  signUp(user) {
-    dispatch(signUp(user));
+  signUp(userData) {
+    dispatch({ type: SIGN_UP, userData });
   }
 })
 

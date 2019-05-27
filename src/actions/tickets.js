@@ -1,7 +1,8 @@
 import {
-  BUY_TICKET,
+  BUY_TICKETS_SUCCESS,
   GET_BOUGHT_TICKETS,
-  ADD_BOUGHT_TICKET
+  ADD_BOUGHT_TICKET,
+  GET_BOUGHT_TICKETS_SUCCESS
 } from '../constans/actionTypes.js';
 
 import { history } from '../App';
@@ -24,7 +25,7 @@ export function getBoughtTicketsAsync(info) {
 }
 
 export const getBoughtTicketsSuccess = tickets => ({
-  type: GET_BOUGHT_TICKETS,
+  type: GET_BOUGHT_TICKETS_SUCCESS,
   payload: tickets
 })
 
@@ -63,6 +64,6 @@ export function clearBooking(userId) {
 }
 
 export const buyTicketsSuccess = tickets => ({
-  type: BUY_TICKET,
+  type: BUY_TICKETS_SUCCESS,
   payload: tickets
 })

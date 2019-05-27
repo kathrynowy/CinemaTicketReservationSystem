@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 
-import { getMoviesAsync } from '../../actions/movies'
-import { getSessionsAsync } from '../../actions/sessions'
 import FilmProfile from '../../Components/FilmProfile/FilmProfile.js';
-import { getCinemasAsync } from '../../actions/cinemas'
 import Spinner from '../../Components/Spinner/Spinner';
-import { showSpinner, hideSpinner } from '../../actions/spinner'
+import { showSpinner, hideSpinner } from '../../sagas/spinner';
+import { GET_SESSIONS, GET_MOVIE, GET_CINEMAS } from '../../constans/actionTypes';
+
 
 class FilmProfilePage extends Component {
   async componentDidMount() {
     this.props.showSpinner();
-    await this.props.getMoviesAsync();
+    await this.props.getMovieAsync(this.props.match.params.movieId);
     await this.props.getSessionsAsync();
     await this.props.getCinemasAsync();
     this.props.hideSpinner();
@@ -25,7 +24,7 @@ class FilmProfilePage extends Component {
           movieId={this.props.match.params.movieId}
           sessions={this.props.sessions}
           cinemas={this.props.cinemas}
-          movies={this.props.movies}
+          movie={this.props.movie}
         />
     );
   }
@@ -34,19 +33,19 @@ class FilmProfilePage extends Component {
 const mapStateToProps = store => ({
   sessions: store.sessions.allSessions,
   cinemas: store.cinemas.allCinemas,
-  movies: store.movies.allMovies,
+  movie: store.movies.movie,
   isLoading: store.spinner.isLoading
 })
 
 const mapDispatchToProps = dispatch => ({
   getSessionsAsync() {
-    return dispatch(getSessionsAsync());
+    return dispatch({ type: GET_SESSIONS });
   },
   getCinemasAsync() {
-    return dispatch(getCinemasAsync());
+    return dispatch({ type: GET_CINEMAS });
   },
-  getMoviesAsync() {
-    return dispatch(getMoviesAsync());
+  getMovieAsync(movieId) {
+    return dispatch({ type: GET_MOVIE, movieId });
   },
   showSpinner() {
     dispatch(showSpinner());

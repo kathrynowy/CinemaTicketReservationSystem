@@ -3,26 +3,30 @@ import { connect } from 'react-redux';
 
 import Hall from '../../Components/Hall/Hall.js';
 import Spinner from '../../Components/Spinner/Spinner';
-import { getBoughtTicketsAsync } from "../../actions/tickets";
-import {
-  toggleSeat,
-  getSeatsAsync,
-  clearSelectedSeats,
-  getSelectedSeats,
-  addSelectedSeat
-} from "../../actions/seats";
 import { checkAuth } from '../../actions/users';
-import { addBoughtTicket } from '../../actions/tickets';
-import { showSpinner, hideSpinner } from '../../actions/spinner';
-import { getMovieAsync } from '../../actions/movies';
-import { getCinemaAsync } from '../../actions/cinemas';
-import { getHallAsync } from '../../actions/halls';
-import { showSnackbar } from '../../actions/snackbar';
+import { addBoughtTicket } from '../../sagas/tickets';
+import { showSpinner, hideSpinner } from '../../sagas/spinner';
+import { showSnackbar } from '../../sagas/snackbar';
 import { sendToggledSeatToServer } from '../../socket';
+import { addSelectedSeat } from '../../sagas/seats';
+
+import {
+  GET_SEATS,
+  GET_SELECTED_SEATS,
+  TOGGLE_SEAT,
+  GET_MOVIE,
+  GET_CINEMA,
+  GET_HALL,
+  GET_BOUGHT_TICKETS,
+  CLEAR_SELECTED_LIST,
+  CHECK_AUTH
+} from '../../constans/actionTypes';
 
 const MAX_AMOUNT_OF_SEATS = 6;
 const TIMER_FOR_BOOKING = 900000;
+
 let timer = '';
+
 class HallPage extends Component {
   state = {
     timer: ''
@@ -54,7 +58,7 @@ class HallPage extends Component {
     await this.props.getMovieAsync(movieId);
     await this.props.getCinemaAsync(cinemaId);
     await this.props.getHallAsync(hallId);
-    this.props.clearSeats();
+    await this.props.clearSeats();
 
     for (let i = 0; i < this.props.bookingSeats.length; i++) {
       if (this.props.bookingSeats[i].userId === this.props.currentUser.id) {
@@ -100,35 +104,35 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getHallAsync(id) {
-    return dispatch(getHallAsync(id));
+  getHallAsync(hallId) {
+    return dispatch({ type: GET_HALL, hallId });
+  },
+  getMovieAsync(movieId) {
+    return dispatch({ type: GET_MOVIE, movieId });
   },
   showSnackbar(message) {
     dispatch(showSnackbar(message));
   },
-  getMovieAsync(id) {
-    return dispatch(getMovieAsync(id));
+  getCinemaAsync(cinemaId) {
+    return dispatch({ type: GET_CINEMA, cinemaId });
   },
-  getCinemaAsync(id) {
-    return dispatch(getCinemaAsync(id));
-  },
-  onToggleSeat(ticket) {
-    dispatch(toggleSeat(ticket));
+  onToggleSeat(seat) {
+    return dispatch({ type: TOGGLE_SEAT, seat });
   },
   checkAuth() {
-    return dispatch(checkAuth());
+    return dispatch({ type: CHECK_AUTH });
   },
   getSeatsAsync(hallId) {
-    return dispatch(getSeatsAsync(hallId));
+    return dispatch({ type: GET_SEATS, hallId });
   },
   getSelectedSeatsAsync(cinemaId, hallId, movieId, time) {
-    return dispatch(getSelectedSeats(cinemaId, hallId, movieId, time));
+    return dispatch({ type: GET_SELECTED_SEATS, cinemaId, hallId, movieId, time });
   },
   getBoughtTicketsAsync() {
-    return dispatch(getBoughtTicketsAsync());
+    return dispatch({ type: GET_BOUGHT_TICKETS });
   },
   clearSeats() {
-    dispatch(clearSelectedSeats());
+    return dispatch({ type: CLEAR_SELECTED_LIST });
   },
   addSelectedSeat(seat) {
     dispatch(addSelectedSeat(seat));

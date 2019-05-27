@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { checkAuth } from '../../actions/users'
-import { getAdditionalServicesAsync } from '../../actions/additionalServices'
-import ConfirmTicket from '../../Components/Hall/ConfirmTicket/ConfirmTicket.js';
-import { getMoviesAsync } from '../../actions/movies';
-import { clearSelectedSeats } from '../../actions/seats';
-import { buyTicketsAsync, clearBooking } from '../../actions/tickets';
+import { GET_ADDITIONAL_SERVICES, BUY_TICKETS, CLEAR_BOOKING, CLEAR_SELECTED_LIST, CHECK_AUTH } from '../../constans/actionTypes';
+import { checkAuth } from '../../actions/users';
+import { showSpinner, hideSpinner } from '../../sagas/spinner'
 import Spinner from '../../Components/Spinner/Spinner';
-import { showSpinner, hideSpinner } from '../../actions/spinner'
-import BoughtTickets from '../../Components/BoughtTickets/BoughtTickets'
+import BoughtTickets from '../../Components/BoughtTickets/BoughtTickets';
+import ConfirmTicket from '../../Components/Hall/ConfirmTicket/ConfirmTicket.js';
+import { GET_MOVIES } from '../../constans/actionTypes';
 
 class ConfirmTicketsPage extends Component {
   constructor(props) {
@@ -48,19 +46,19 @@ class ConfirmTicketsPage extends Component {
       this.props.isLoading
         ? <Spinner />
         : this.state.boughtTickets.length
-          ? <BoughtTickets boughtTickets={this.state.boughtTickets} redirectByUrl={this.redirectByUrl}/>
+          ? <BoughtTickets boughtTickets={this.state.boughtTickets} redirectByUrl={this.redirectByUrl} />
           : <ConfirmTicket
-              additionalServices={this.props.additionalServices}
-              selectedSeats={this.props.selectedSeats}
-              buyTickets={(tickets) => this.buyTickets(tickets)}
-              cinemaId={this.props.match.params.cinemaId}
-              movieId={this.props.match.params.movieId}
-              hallId={this.props.match.params.hallId}
-              time={this.props.match.params.time}
-              redirectByUrl={this.redirectByUrl}
-              displayBoughtTickets={this.displayBoughtTickets}
-              movies={this.props.movies}
-            />
+            additionalServices={this.props.additionalServices}
+            selectedSeats={this.props.selectedSeats}
+            buyTickets={(tickets) => this.buyTickets(tickets)}
+            cinemaId={this.props.match.params.cinemaId}
+            movieId={this.props.match.params.movieId}
+            hallId={this.props.match.params.hallId}
+            time={this.props.match.params.time}
+            redirectByUrl={this.redirectByUrl}
+            displayBoughtTickets={this.displayBoughtTickets}
+            movies={this.props.movies}
+          />
     );
   }
 }
@@ -74,21 +72,21 @@ const mapStateToProps = store => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  getAdditionalServicesAsync(id) {
-    return dispatch(getAdditionalServicesAsync(id));
+  getAdditionalServicesAsync(cinemaId) {
+    return dispatch({ type: GET_ADDITIONAL_SERVICES, cinemaId });
   },
   checkAuth() {
-    return dispatch(checkAuth());
+    return dispatch({ type: CHECK_AUTH });
   },
   clearBooking(userId) {
-    dispatch(clearBooking(userId));
+    dispatch({ type: CLEAR_BOOKING, userId });
   },
   onBuyTickets(tickets) {
-    dispatch(buyTicketsAsync(tickets));
-    dispatch(clearSelectedSeats())
+    dispatch({ type: BUY_TICKETS, tickets });
+    dispatch({ type: CLEAR_SELECTED_LIST })
   },
   getMoviesAsync() {
-    return dispatch(getMoviesAsync());
+    return dispatch({ type: GET_MOVIES });
   },
   showSpinner() {
     dispatch(showSpinner());

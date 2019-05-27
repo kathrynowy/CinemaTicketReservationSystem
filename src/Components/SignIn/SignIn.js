@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 
-import { signIn, checkAuth } from '../../actions/users';
+import { signIn } from '../../actions/users';
 import { Avatar, Button, CssBaseline, FormControl, Input, InputLabel, Paper, Typography } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import withStyles from '@material-ui/core/styles/withStyles';
 import { validateAll } from 'indicative';
+import { CHECK_AUTH, SIGN_UP, SIGN_IN } from '../../constans/actionTypes';
 
 
 const styles = theme => ({
@@ -132,11 +133,11 @@ class SignIn extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  signIn(user) {
-    return dispatch(signIn(user));
+  signIn(userData) {
+    return dispatch({ type: SIGN_IN, userData });
   },
   checkAuth() {
-    dispatch(checkAuth());
+    dispatch({ type: CHECK_AUTH });
   }
 })
 

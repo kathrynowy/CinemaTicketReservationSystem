@@ -8,9 +8,8 @@ import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import LocalIcon from '@material-ui/icons/LocalActivity';
 import FolderIcon from '@material-ui/icons/FolderOpen';
 
-import { getBoughtTicketsAsync } from '../../actions/tickets'
-
 import './UserPage.scss';
+import { GET_BOUGHT_TICKETS } from '../../constans/actionTypes';
 
 
 const OPTIONS_DATE = {
@@ -140,7 +139,7 @@ const mapStateToProps = store => ({
 
 const mapDispatchToProps = dispatch => ({
   getBoughtTickets(info) {
-    return dispatch(getBoughtTicketsAsync(info));
+    return dispatch({ type: GET_BOUGHT_TICKETS, info });
   }
 })
 

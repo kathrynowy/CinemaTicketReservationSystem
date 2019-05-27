@@ -3,8 +3,7 @@ import { Router, Route, Switch } from "react-router-dom";
 import createBrowseHistory from "history/createBrowserHistory";
 import { connect } from "react-redux";
 
-import { checkAuth, logOutSuccess, signInSuccess } from './actions/users';
-import { showSnackbar } from './actions/snackbar';
+import { showSnackbar } from './sagas/snackbar';
 import SignIn from './Components/SignIn/SignIn.js'
 import PrimarySearchAppBar from './Components/PrimarySearchAppBar/PrimarySearchAppBar.js'
 import MainPage from './Containers/MainPage/MainPage.js';
@@ -17,6 +16,7 @@ import Backdrop from './Components/Backdrop/Backdrop';
 import CustomSnackbar from './Components/Snackbar/Snackbar.js';
 import UserPage from './Components/UserPage/UserPage.js';
 import './App.scss';
+import { CHECK_AUTH, LOG_OUT_SUCCESS, SIGN_IN_SUCCESS } from './constans/actionTypes';
 
 export const history = createBrowseHistory();
 
@@ -32,10 +32,11 @@ class App extends Component {
     });
   };
 
-  componentWillMount() {
+  async componentWillMount() {
     history.listen((location) => {
       this.setState({ isSearchInputShown: location.pathname === "/" });
     });
+    await this.props.checkAuth();
   }
 
 
@@ -99,14 +100,14 @@ const mapStateToProps = store => ({
 
 const mapDispatchToProps = dispatch => ({
   checkAuth() {
-    return dispatch(checkAuth());
+    return dispatch({ type: CHECK_AUTH });
   },
   logOutSuccess() {
-    dispatch(logOutSuccess());
+    dispatch({ type: LOG_OUT_SUCCESS });
     dispatch(showSnackbar("You have successfully logged out!"));
   },
   signInSuccess() {
-    dispatch(signInSuccess());
+    dispatch({ type: SIGN_IN_SUCCESS });
     dispatch(showSnackbar("You have successfully logged in!"));
   }
 });

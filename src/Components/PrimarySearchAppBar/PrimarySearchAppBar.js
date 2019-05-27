@@ -10,9 +10,10 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import { logOut, checkAuth } from '../../actions/users';
-import { filterMovies } from '../../actions/movies';
+import { logOut } from '../../actions/users';
+import { filterMovies } from '../../sagas/movies';
 import { history } from '../../App';
+import { CHECK_AUTH, LOG_OUT } from '../../constans/actionTypes';
 
 
 const styles = theme => ({
@@ -283,10 +284,10 @@ const mapDispatchToProps = dispatch => ({
     dispatch(filterMovies(value));
   },
   logOut() {
-    dispatch(logOut());
+    dispatch({ type: LOG_OUT });
   },
   checkAuth() {
-    dispatch(checkAuth())
+    dispatch({ type: CHECK_AUTH })
   }
 });
 

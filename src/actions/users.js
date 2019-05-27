@@ -1,7 +1,7 @@
 import {
   SIGN_IN_SUCCESS,
   CHECK_AUTH_SUCCESS,
-  LOGOUT_SUCCESS
+  LOG_OUT_SUCCESS
 } from '../constans/actionTypes.js';
 
 import axios from 'axios';
@@ -62,7 +62,7 @@ export const logOut = () => {
 
 export const logOutSuccess = () => {
   return {
-    type: LOGOUT_SUCCESS
+    type: LOG_OUT_SUCCESS
   }
 }
 

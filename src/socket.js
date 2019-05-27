@@ -1,7 +1,7 @@
 import io from 'socket.io-client';
 import { apiBaseUrl } from "./configs/config";
-import { toggleSeat } from './actions/seats';
-import { addBoughtTicket } from './actions/tickets';
+import { TOGGLE_SEAT } from './constans/actionTypes'
+import { addBoughtTicket } from './sagas/tickets';
 
 
 const socket = io(apiBaseUrl);
@@ -15,7 +15,7 @@ const configureSocket = dispatch => {
     console.log('disconnected');
   });
 
-  socket.on('TOGGLE_SEAT', seat => dispatch(toggleSeat(seat)));
+  socket.on('TOGGLE_SEAT', seat => dispatch({ type: TOGGLE_SEAT, seat }));
   socket.on('BOUGHT_SEAT', ticket => dispatch(addBoughtTicket(ticket)));
 
   return socket;

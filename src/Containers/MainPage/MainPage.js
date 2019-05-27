@@ -3,14 +3,14 @@ import { connect } from "react-redux";
 
 import CardList from '../../Components/CardList/CardList.js';
 import Spinner from '../../Components/Spinner/Spinner';
-import { showSpinner, hideSpinner } from '../../actions/spinner'
-import { getMoviesAsync } from '../../actions/movies'
-
+import { showSpinner, hideSpinner } from '../../sagas/spinner';
+import { GET_MOVIES, CHECK_AUTH } from '../../constans/actionTypes';
 
 class MainPage extends Component {
   async componentDidMount() {
     this.props.showSpinner();
-    await this.props.getMoviesAsync()
+    await this.props.getMoviesAsync();
+    await this.props.checkAuth();
     this.props.hideSpinner();
   }
 
@@ -33,8 +33,11 @@ const mapStateToProps = store => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  getMoviesAsync(movieData) {
-    return dispatch(getMoviesAsync(movieData));
+  getMoviesAsync() {
+    return dispatch({ type: GET_MOVIES });
+  },
+  checkAuth() {
+    return dispatch({ type: CHECK_AUTH });
   },
   showSpinner() {
     dispatch(showSpinner());

@@ -1,7 +1,7 @@
 import {
   SIGN_IN_SUCCESS,
   CHECK_AUTH_SUCCESS,
-  LOGOUT_SUCCESS
+  LOG_OUT_SUCCESS
 } from '../constans/actionTypes.js'
 
 
@@ -14,7 +14,8 @@ export default function users(state = initialState, action) {
   switch (action.type) {
     case SIGN_IN_SUCCESS:
       return Object.assign({}, state, {
-        isUserLoggedIn: true
+        isUserLoggedIn: true,
+        currentUser: action.payload
       });
 
     case CHECK_AUTH_SUCCESS:
@@ -22,7 +23,7 @@ export default function users(state = initialState, action) {
         currentUser: action.payload
       });
 
-    case LOGOUT_SUCCESS:
+    case LOG_OUT_SUCCESS:
       return Object.assign({}, state, {
         currentUser: {},
         isUserLoggedIn: false
