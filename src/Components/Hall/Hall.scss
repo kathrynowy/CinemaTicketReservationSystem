@@ -30,6 +30,7 @@
   padding-top: 20px;
   flex-direction: row;
 
+  
   .session-info {
     display: flex;
     flex-direction: column;
@@ -82,6 +83,19 @@
   user-select: none;
   width: 80%;
   animation: hall 2s;
+
+
+  .canvas {
+    margin-top: 20px;
+  }
+
+  .seattt {
+      color: white;
+  
+      &:hover {
+        background-color: #d40754;
+      }
+  }
 
   &__screen { 
     border: 5px solid $bright-pink;

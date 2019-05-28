@@ -7,6 +7,9 @@ import ScheduleIcon from '@material-ui/icons/Schedule';
 import LocationIcon from '@material-ui/icons/LocationOn';
 import EventIcon from '@material-ui/icons/Event';
 import HallIcon from '@material-ui/icons/BorderAll';
+import { Stage, Layer, Star, Text, Rect, Shape, Line } from 'react-konva';
+import Konva from 'konva'
+
 
 const OPTIONS_DATE = {
   weekday: 'short',
@@ -21,6 +24,110 @@ const OPTIONS_TIME = {
 };
 
 class Hall extends Component {
+  componentDidMount() {
+    this.createSeats(this.props.seats.hall || []);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.seats.hall) {
+      this.createSeats(nextProps.seats.hall);
+    }
+  }
+
+  calcWidth(hall) {
+    let max = 0;
+    hall
+      ? hall.forEach(value => {
+        if (value.amountOfSeats > max) {
+          max = value.amountOfSeats;
+        }
+      })
+      : max = 0;
+    return max * 33;
+  }
+
+  calcHeight = (hall) => hall ? hall.length * 35 : 0;
+
+  createSeats(seats) {
+    const newseats = [];
+    let rows = [];
+    let numbers = [];
+    let stage = new Konva.Stage({
+      container: 'canvas',
+      width: 400,
+      height: 400
+    })
+    let seatLayer = new Konva.Layer();
+    let numberLayer = new Konva.Layer();
+    const newNumbers = [];
+
+    seats.map(seat => {
+      rows = [];
+      numbers = [];
+      [...Array(seat.amountOfSeats)].map((value, i) => {
+        const width = i >= 9 ? 8 : 11;
+        const rect = new Konva.Rect({
+          x: i * 33,
+          y: (seat.row - 1) * 33,
+          width: 30,
+          height: 30,
+          cornerRadius: 5,
+          fill: '#44373b',
+        });
+
+        rect.on('mouseover', function () {
+          this.fill('#d40754');
+          seatLayer.draw();
+        });
+
+        rect.on('mouseout', function () {
+          this.fill('#44373b');
+          seatLayer.draw();
+        });
+
+        rect.on('click', function () {
+          alert(`seat: ${i + 1} row: ${seat.row}`)
+        });
+
+        const number = new Konva.Text({
+          x: i * 33 + width,
+          y: (seat.row - 1) * 33 + 10,
+          width: 14,
+          height: 10,
+          fill: '#44373b',
+          text: i + 1,
+        })
+
+        number.on('mouseover', function () {
+          rect.fill('#d40754');
+          this.fill('white')
+          seatLayer.draw();
+          numberLayer.draw();
+        });
+
+        number.on('mouseout', function () {
+          this.fill('#44373b');
+          seatLayer.draw();
+          numberLayer.draw();
+        });
+
+        numbers.push(number);
+        rows.push(rect);
+      })
+
+      newseats.push(...rows);
+      newNumbers.push(...numbers);
+      numbers = [];
+      rows = [];
+    });
+
+    if (newseats.length && newNumbers.length) {
+      seatLayer.add(...newseats);
+      numberLayer.add(...newNumbers);
+      stage.add(seatLayer, numberLayer);
+    }
+  }
+
   render() {
     const { time, cinema, movie, hall } = this.props;
     return (
@@ -52,11 +159,10 @@ class Hall extends Component {
               </div>
             </div>
           </div>
-
           <div className="hall">
             <div className="hall__screen"></div>
             <div className="hall__screen-shadow"></div>
-            <SelectSeats
+            {/* <SelectSeats
               toggleSeat={this.props.onToggleSeat}
               selectedSeats={this.props.selectedSeats}
               boughtSeats={this.props.boughtSeats}
@@ -65,7 +171,10 @@ class Hall extends Component {
               hallId={hall.id}
               time={time}
               seats={this.props.seats.hall}
-            />{/* seatsmap */}
+            /> */}
+
+            <div id="canvas"> </div>
+
             <div className="hall-legend">
               <div className="hall-legend__seat-type hall-legend__seat-type_free">
                 <div className="hall-legend__icon hall-legend__icon_free"></div>
@@ -81,18 +190,19 @@ class Hall extends Component {
               </div>
             </div>
           </div>
+
+          {/*  <div className="seats-information">
+            <SeatsInfo
+              selectedSeats={this.props.selectedSeats}
+              cinemaId={cinema.id}
+              movieId={movie.id}
+              hallId={hall.id}
+              time={time}
+              clearInterval={this.props.clearInterval}
+            />
+          </div> */}
         </div>
-        <div className="seats-information">
-          <SeatsInfo
-            selectedSeats={this.props.selectedSeats}
-            cinemaId={cinema.id}
-            movieId={movie.id}
-            hallId={hall.id}
-            time={time}
-            clearInterval={this.props.clearInterval}
-          />
-        </div>
-      </div>
+      </div >
     );
   }
 }
