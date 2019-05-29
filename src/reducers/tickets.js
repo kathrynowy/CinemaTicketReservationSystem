@@ -12,12 +12,12 @@ export default function ticketsList(state = initialState, action) {
   switch (action.type) {
     case BUY_TICKETS_SUCCESS:
       return Object.assign({}, state, {
-        boughtTickets: action.payload
+        boughtTickets: [...action.payload, ...state.boughtTickets]
       })
 
     case GET_BOUGHT_TICKETS_SUCCESS:
       return Object.assign({}, state, {
-        boughtTickets: action.payload
+        boughtTickets: [...action.payload, ...state.boughtTickets]
       })
 
     case ADD_BOUGHT_TICKET: {

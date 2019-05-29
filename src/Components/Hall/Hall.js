@@ -30,7 +30,7 @@ class Hall extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.seats.hall && nextProps.cinema.id && nextProps.movie.id && nextProps.hall.id) {
-      this.createSeats(nextProps.seats.hall, nextProps.cinema, nextProps.movie, nextProps.boughtSeats, nextProps.hall);
+      this.createSeats(nextProps.seats.hall, nextProps.cinema, nextProps.movie, nextProps.boughtSeats, nextProps.hall, nextProps.selectedSeats);
     }
   }
 
@@ -48,7 +48,11 @@ class Hall extends Component {
 
   calcHeight = (hall) => hall ? hall.length * 35 : 0;
 
-  handleIsSelected = (boughtSeats, cinemaId, hallId, movieId, time, row, seat) => {
+  handleIsSelected = (array, row, seat) => {
+    return array.length && array.find(el => el.row === row && el.seat === seat);
+  }
+
+  handleIsBought = (boughtSeats, cinemaId, hallId, movieId, time, row, seat) => {
     return boughtSeats.length && boughtSeats.find(ticket => {
       return (
         ticket.cinemaId === cinemaId &&
@@ -61,7 +65,7 @@ class Hall extends Component {
     })
   }
 
-  createSeats(seats, cinema, movie, boughtSeats, hall) {
+  createSeats(seats, cinema, movie, boughtSeats, hall, selectedSeats) {
     let allSeats = [];
     let allNumbers = [];
     let rowSeats = [];
@@ -79,15 +83,19 @@ class Hall extends Component {
       rowSeats = [];
       rowNumbers = [];
       [...Array(seat.amountOfSeats)].map((value, i) => {
-        const isBought = this.handleIsSelected(boughtSeats, cinema.id, hall.id, movie.id, this.props.time, seat.row, i + 1);
+        const isBought = boughtSeats.length ? this.handleIsBought(boughtSeats, cinema.id, hall.id, movie.id, this.props.time, seat.row, i + 1) : false;
+        const isSelected = selectedSeats.length ? this.handleIsSelected(selectedSeats, seat.row, i + 1) : false;
+
+        if (isSelected) console.log('row: ', seat.row, 'seat: ', i + 1, '  ', isSelected);
         const width = i >= 9 ? 8 : 11;
+
         const rect = new Konva.Rect({
           x: i * 33 + 20,
           y: (seat.row - 1) * 33,
           width: 30,
           height: 30,
           cornerRadius: 5,
-          fill: isBought ? '#8f0b3eab' : '#44373b'
+          fill: isBought ? '#8f0b3eab' : isSelected ? '#d40754' : '#44373b'
         });
 
         const number = new Konva.Text({
@@ -95,14 +103,13 @@ class Hall extends Component {
           y: (seat.row - 1) * 33 + 10,
           width: 14,
           height: 10,
-          fill: isBought ? 'white' : 'transparent',
+          fill: isBought || isSelected ? 'white' : 'transparent',
           text: i + 1,
         })
 
-        if (isBought) {
-          console.log('row: ', seat.row, 'seat: ', i + 1, 'isBought');
+        if (isBought || isSelected) {
+          console.log('row: ', seat.row, 'seat: ', i + 1, 'bought');
         } else {
-          console.log('row: ', seat.row, 'seat: ', i + 1, 'not isBought');
           rect.on('mouseover', function () {
             this.fill('#d40754');
             number.fill('white');

@@ -29,7 +29,8 @@ let timer = '';
 
 class HallPage extends Component {
   state = {
-    timer: ''
+    timer: '',
+    isBookingSeatsTransformed: false
   }
 
   onToggleSeat = (seat) => {
@@ -69,6 +70,20 @@ class HallPage extends Component {
       }
     }
     this.props.hideSpinner();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.bookingSeats.length && !this.state.isBookingSeatsTransformed && nextProps.currentUser.id) {
+      for (let i = 0; i < nextProps.bookingSeats.length; i++) {
+        if (nextProps.bookingSeats[i].userId === nextProps.currentUser.id) {
+          nextProps.addSelectedSeat(nextProps.bookingSeats[i]);
+        }
+        else {
+          nextProps.addBoughtTicket(nextProps.bookingSeats[i]);
+        }
+      }
+      this.setState({ isBookingSeatsTransformed: true });
+    }
   }
 
   render() {
