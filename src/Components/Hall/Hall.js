@@ -49,9 +49,10 @@ class Hall extends Component {
   calcHeight = (hall) => hall ? hall.length * 35 : 0;
 
   createSeats(seats) {
-    const newseats = [];
-    let rows = [];
-    let numbers = [];
+    let allSeats = [];
+    let allNumbers = [];
+    let rowSeats = [];
+    let rowNumbers = [];
     let stage = new Konva.Stage({
       container: 'canvas',
       width: 400,
@@ -59,15 +60,15 @@ class Hall extends Component {
     })
     let seatLayer = new Konva.Layer();
     let numberLayer = new Konva.Layer();
-    const newNumbers = [];
+
 
     seats.map(seat => {
-      rows = [];
-      numbers = [];
+      rowSeats = [];
+      rowNumbers = [];
       [...Array(seat.amountOfSeats)].map((value, i) => {
         const width = i >= 9 ? 8 : 11;
         const rect = new Konva.Rect({
-          x: i * 33,
+          x: i * 33 + 20,
           y: (seat.row - 1) * 33,
           width: 30,
           height: 30,
@@ -75,55 +76,60 @@ class Hall extends Component {
           fill: '#44373b',
         });
 
+        const number = new Konva.Text({
+          x: i * 33 + width + 20,
+          y: (seat.row - 1) * 33 + 10,
+          width: 14,
+          height: 10,
+          fill: 'transparent',
+          text: i + 1,
+        })
+
         rect.on('mouseover', function () {
           this.fill('#d40754');
+          number.fill('white');
           seatLayer.draw();
+          numberLayer.draw();
         });
 
         rect.on('mouseout', function () {
           this.fill('#44373b');
+          number.fill('transparent');
           seatLayer.draw();
+          numberLayer.draw();
         });
 
         rect.on('click', function () {
           alert(`seat: ${i + 1} row: ${seat.row}`)
         });
 
-        const number = new Konva.Text({
-          x: i * 33 + width,
-          y: (seat.row - 1) * 33 + 10,
-          width: 14,
-          height: 10,
-          fill: '#44373b',
-          text: i + 1,
-        })
-
         number.on('mouseover', function () {
           rect.fill('#d40754');
-          this.fill('white')
+          this.fill('white');
           seatLayer.draw();
           numberLayer.draw();
         });
 
         number.on('mouseout', function () {
-          this.fill('#44373b');
+          this.fill('transparent');
+          rect.fill('#44373b');
           seatLayer.draw();
           numberLayer.draw();
         });
 
-        numbers.push(number);
-        rows.push(rect);
+        rowNumbers.push(number);
+        rowSeats.push(rect);
       })
 
-      newseats.push(...rows);
-      newNumbers.push(...numbers);
-      numbers = [];
-      rows = [];
+      allSeats.push(...rowSeats);
+      allNumbers.push(...rowNumbers);
+      rowNumbers = [];
+      rowSeats = [];
     });
 
-    if (newseats.length && newNumbers.length) {
-      seatLayer.add(...newseats);
-      numberLayer.add(...newNumbers);
+    if (allSeats.length && allNumbers.length) {
+      seatLayer.add(...allSeats);
+      numberLayer.add(...allNumbers);
       stage.add(seatLayer, numberLayer);
     }
   }
