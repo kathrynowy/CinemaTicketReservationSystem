@@ -24,13 +24,13 @@ const OPTIONS_TIME = {
 };
 
 class Hall extends Component {
-  componentDidMount() {
+  /* componentDidMount() {
     this.createSeats(this.props.seats.hall || []);
-  }
+  } */
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.seats.hall) {
-      this.createSeats(nextProps.seats.hall);
+    if (nextProps.seats.hall && nextProps.cinema.id && nextProps.movie.id && nextProps.hall.id) {
+      this.createSeats(nextProps.seats.hall, nextProps.cinema, nextProps.movie, nextProps.boughtSeats, nextProps.hall);
     }
   }
 
@@ -48,7 +48,20 @@ class Hall extends Component {
 
   calcHeight = (hall) => hall ? hall.length * 35 : 0;
 
-  createSeats(seats) {
+  handleIsSelected = (boughtSeats, cinemaId, hallId, movieId, time, row, seat) => {
+    return boughtSeats.length && boughtSeats.find(ticket => {
+      return (
+        ticket.cinemaId === cinemaId &&
+        ticket.hallId === hallId &&
+        ticket.movieId === movieId &&
+        ticket.time === +time &&
+        ticket.row === +row &&
+        ticket.seat === +seat
+      )
+    })
+  }
+
+  createSeats(seats, cinema, movie, boughtSeats, hall) {
     let allSeats = [];
     let allNumbers = [];
     let rowSeats = [];
@@ -66,6 +79,7 @@ class Hall extends Component {
       rowSeats = [];
       rowNumbers = [];
       [...Array(seat.amountOfSeats)].map((value, i) => {
+        const isBought = this.handleIsSelected(boughtSeats, cinema.id, hall.id, movie.id, this.props.time, seat.row, i + 1);
         const width = i >= 9 ? 8 : 11;
         const rect = new Konva.Rect({
           x: i * 33 + 20,
@@ -73,7 +87,7 @@ class Hall extends Component {
           width: 30,
           height: 30,
           cornerRadius: 5,
-          fill: '#44373b',
+          fill: isBought ? '#8f0b3eab' : '#44373b'
         });
 
         const number = new Konva.Text({
@@ -81,41 +95,46 @@ class Hall extends Component {
           y: (seat.row - 1) * 33 + 10,
           width: 14,
           height: 10,
-          fill: 'transparent',
+          fill: isBought ? 'white' : 'transparent',
           text: i + 1,
         })
 
-        rect.on('mouseover', function () {
-          this.fill('#d40754');
-          number.fill('white');
-          seatLayer.draw();
-          numberLayer.draw();
-        });
+        if (isBought) {
+          console.log('row: ', seat.row, 'seat: ', i + 1, 'isBought');
+        } else {
+          console.log('row: ', seat.row, 'seat: ', i + 1, 'not isBought');
+          rect.on('mouseover', function () {
+            this.fill('#d40754');
+            number.fill('white');
+            seatLayer.draw();
+            numberLayer.draw();
+          });
 
-        rect.on('mouseout', function () {
-          this.fill('#44373b');
-          number.fill('transparent');
-          seatLayer.draw();
-          numberLayer.draw();
-        });
+          rect.on('mouseout', function () {
+            this.fill('#44373b');
+            number.fill('transparent');
+            seatLayer.draw();
+            numberLayer.draw();
+          });
 
-        rect.on('click', function () {
-          alert(`seat: ${i + 1} row: ${seat.row}`)
-        });
+          rect.on('click', function () {
+            alert(`seat: ${i + 1} row: ${seat.row}`)
+          });
 
-        number.on('mouseover', function () {
-          rect.fill('#d40754');
-          this.fill('white');
-          seatLayer.draw();
-          numberLayer.draw();
-        });
+          number.on('mouseover', function () {
+            rect.fill('#d40754');
+            this.fill('white');
+            seatLayer.draw();
+            numberLayer.draw();
+          });
 
-        number.on('mouseout', function () {
-          this.fill('transparent');
-          rect.fill('#44373b');
-          seatLayer.draw();
-          numberLayer.draw();
-        });
+          number.on('mouseout', function () {
+            this.fill('transparent');
+            rect.fill('#44373b');
+            seatLayer.draw();
+            numberLayer.draw();
+          });
+        }
 
         rowNumbers.push(number);
         rowSeats.push(rect);

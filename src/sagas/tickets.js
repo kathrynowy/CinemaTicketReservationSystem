@@ -1,6 +1,6 @@
 import { put, call } from 'redux-saga/effects';
 import {
-  GET_BOUGHT_TICKETS,
+  GET_BOUGHT_TICKETS_SUCCESS,
   ADD_BOUGHT_TICKET,
   BUY_TICKETS_SUCCESS
 } from '../constans/actionTypes.js';
@@ -13,7 +13,7 @@ export function* getBoughtTicketsAsync(payload) {
   try {
     const token = localStorage.getItem('token');
     axios.defaults.headers.common['Authorization'] = token;
-    const { data } = payload ? yield call(() => axios.get(`buyTickets?info=true`)) : yield call(() => axios.get(`buyTickets`));
+    const { data } = yield payload.info ? call(() => axios.get(`buyTickets?info=true`)) : call(() => axios.get(`buyTickets`));
     yield put(getBoughtTicketsSuccess(data.length ? data : []));
   } catch (error) {
     console.log(error);
@@ -21,7 +21,7 @@ export function* getBoughtTicketsAsync(payload) {
 }
 
 export const getBoughtTicketsSuccess = tickets => ({
-  type: GET_BOUGHT_TICKETS,
+  type: GET_BOUGHT_TICKETS_SUCCESS,
   payload: tickets
 })
 

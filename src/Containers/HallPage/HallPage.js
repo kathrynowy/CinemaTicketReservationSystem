@@ -48,17 +48,17 @@ class HallPage extends Component {
     clearInterval(timer);
   }
 
-  async componentDidMount() {
-    this.props.showSpinner();
+  componentDidMount() {
     const { cinemaId, hallId, movieId, time } = this.props.match.params;
-    await this.props.getSeatsAsync(hallId);
+    this.props.showSpinner();
+    this.props.getSeatsAsync(hallId);
     this.props.checkAuth();
-    await this.props.getSelectedSeatsAsync(cinemaId, hallId, movieId, time);
-    await this.props.getBoughtTicketsAsync();
-    await this.props.getMovieAsync(movieId);
-    await this.props.getCinemaAsync(cinemaId);
-    await this.props.getHallAsync(hallId);
-    await this.props.clearSeats();
+    this.props.getSelectedSeatsAsync(cinemaId, hallId, movieId, time);
+    this.props.getBoughtTicketsAsync();
+    this.props.getMovieAsync(movieId);
+    this.props.getCinemaAsync(cinemaId);
+    this.props.getHallAsync(hallId);
+    this.props.clearSeats();
 
     for (let i = 0; i < this.props.bookingSeats.length; i++) {
       if (this.props.bookingSeats[i].userId === this.props.currentUser.id) {
@@ -104,48 +104,23 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getHallAsync(hallId) {
-    return dispatch({ type: GET_HALL, hallId });
-  },
-  getMovieAsync(movieId) {
-    return dispatch({ type: GET_MOVIE, movieId });
-  },
-  showSnackbar(message) {
-    dispatch(showSnackbar(message));
-  },
-  getCinemaAsync(cinemaId) {
-    return dispatch({ type: GET_CINEMA, cinemaId });
-  },
-  onToggleSeat(seat) {
-    return dispatch({ type: TOGGLE_SEAT, seat });
-  },
-  checkAuth() {
-    return dispatch({ type: CHECK_AUTH });
-  },
-  getSeatsAsync(hallId) {
-    return dispatch({ type: GET_SEATS, hallId });
-  },
-  getSelectedSeatsAsync(cinemaId, hallId, movieId, time) {
-    return dispatch({ type: GET_SELECTED_SEATS, cinemaId, hallId, movieId, time });
-  },
-  getBoughtTicketsAsync() {
-    return dispatch({ type: GET_BOUGHT_TICKETS });
-  },
-  clearSeats() {
-    return dispatch({ type: CLEAR_SELECTED_LIST });
-  },
-  addSelectedSeat(seat) {
-    dispatch(addSelectedSeat(seat));
-  },
-  addBoughtTicket(ticket) {
-    dispatch(addBoughtTicket(ticket));
-  },
-  showSpinner() {
-    dispatch(showSpinner());
-  },
-  hideSpinner() {
-    dispatch(hideSpinner());
-  }
+  getHallAsync: hallId => dispatch({ type: GET_HALL, hallId }),
+  getMovieAsync: movieId => dispatch({ type: GET_MOVIE, movieId }),
+  showSnackbar: message => dispatch(showSnackbar(message)),
+  getCinemaAsync: cinemaId => dispatch({ type: GET_CINEMA, cinemaId }),
+  onToggleSeat: seat => dispatch({ type: TOGGLE_SEAT, seat }),
+  addSelectedSeat: seat => dispatch(addSelectedSeat(seat)),
+  addBoughtTicket: ticket => dispatch(addBoughtTicket(ticket)),
+  getSeatsAsync: hallId => dispatch({ type: GET_SEATS, hallId }),
+  getSelectedSeatsAsync: (cinemaId, hallId, movieId, time) => dispatch({
+    type: GET_SELECTED_SEATS, cinemaId, hallId, movieId, time
+  }),
+  getBoughtTicketsAsync: () => dispatch({ type: GET_BOUGHT_TICKETS }),
+  clearSeats: () => dispatch({ type: CLEAR_SELECTED_LIST }),
+  checkAuth: () => dispatch({ type: CHECK_AUTH }),
+  showSpinner: () => dispatch(showSpinner()),
+  hideSpinner: () => dispatch(hideSpinner()),
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HallPage);
